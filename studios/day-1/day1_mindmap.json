@@ -1,0 +1,106 @@
+{
+  "name": "Trading Course Day 1: Trends",
+  "children": [
+    {
+      "name": "Trading Basics",
+      "children": [
+        {
+          "name": "Definition: Buying/selling at specific price levels"
+        },
+        {
+          "name": "Profit: Price moves above buy point or below sell point"
+        },
+        {
+          "name": "Candlesticks: Price fluctuations on charts"
+        },
+        {
+          "name": "Time Frames: Affect movement speed (fast or slow)"
+        },
+        {
+          "name": "Analysis vs. Gambling: Logical reasons for price movement"
+        }
+      ]
+    },
+    {
+      "name": "Required Tools",
+      "children": [
+        {
+          "name": "Forex Broker"
+        },
+        {
+          "name": "Trading View: For charting and analysis"
+        },
+        {
+          "name": "Crypto Brokerage: For deposits and withdrawals"
+        },
+        {
+          "name": "Stable Internet/Wi-Fi"
+        }
+      ]
+    },
+    {
+      "name": "The Three Market States",
+      "children": [
+        {
+          "name": "Uptrend",
+          "children": [
+            {
+              "name": "Higher Highs (HH)"
+            },
+            {
+              "name": "Higher Lows (HL)"
+            },
+            {
+              "name": "Structure: Price breaks previous highs"
+            }
+          ]
+        },
+        {
+          "name": "Downtrend",
+          "children": [
+            {
+              "name": "Lower Highs (LH)"
+            },
+            {
+              "name": "Lower Lows (LL)"
+            },
+            {
+              "name": "Structure: Price breaks previous lows"
+            }
+          ]
+        },
+        {
+          "name": "Consolidation",
+          "children": [
+            {
+              "name": "Sideways movement"
+            },
+            {
+              "name": "Rule-breaking price action"
+            },
+            {
+              "name": "Action: Do not trade"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fundamental Rules",
+      "children": [
+        {
+          "name": "Structure: Price follows established rules"
+        },
+        {
+          "name": "Patience: Stay away when rules are broken"
+        },
+        {
+          "name": "Higher Time Frames: Provide stronger signals"
+        },
+        {
+          "name": "ICC Process: Entry, exit, and stop-loss"
+        }
+      ]
+    }
+  ]
+}
