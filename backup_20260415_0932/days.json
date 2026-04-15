@@ -1,0 +1,36 @@
+[
+  {
+    "day": 1,
+    "title": "The Foundation - ICC Framework Decoded Part 1",
+    "titleEs": "La Base - Marco ICC Decodificado Parte 1",
+    "description": "Day 1 breaks down the ICC framework for futures trading.",
+    "descriptionEs": "El Dia 1 desglosa el marco ICC para futuros.",
+    "youtubeId": "DpY628SfdgM",
+    "reelUrl": "",
+    "studios": {
+      "en": {
+        "audioUrl": "./studios/day-1/day1_en.mp3",
+        "audioLabel": "Day 1 Audio Overview"
+      },
+      "es": {
+        "audioUrl": "",
+        "audioLabel": "Día 1 — Resumen en Español"
+      }
+    },
+    "infographicUrl": "./studios/day-1/day1_infographic.png",
+    "quizFile": "./studios/day-1/day1_quiz.md",
+    "keyTakeaways": [
+      "ICC Framework: Indications, Corrections, Continuations",
+      "How to read order flow and identify liquidity zones",
+      "The 3 market phases every futures trader must know",
+      "Real trade setups from the Trades by Sci curriculum"
+    ],
+    "keyTakeawaysEs": [
+      "Marco ICC: Indicaciones, Correcciones, Continuaciones",
+      "Como leer el flujo de ordenes e identificar zonas de liquidez",
+      "Las 3 fases del mercado para futuros",
+      "Setups reales del curriculo de Trades by Sci"
+    ],
+    "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
+  }
+]
