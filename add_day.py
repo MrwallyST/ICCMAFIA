@@ -181,7 +181,8 @@ def run_pipeline(
     tasks['blog'] = extract_id(out)
 
     print("   -> YouTube Script")
-    out = nlm(["generate", "report", "--format", "custom", "--append", "Write an engaging YouTube video script (video overview) covering these concepts.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    cta_msg = "Write an engaging YouTube video script (video overview) covering these concepts. IMPORTANT: The script MUST enthusiastically instruct viewers to click the link in the description (mrwallyst.github.io/ICCMAFIA) to access their free Interactive Study Guide, Quiz, Mind Map, and Audio Podcast for this lesson."
+    out = nlm(["generate", "report", "--format", "custom", "--append", cta_msg, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['ytscript'] = extract_id(out)
 
     print("   -> Twitter Thread")
