@@ -413,7 +413,7 @@
   <div class="nav-right">
     <div class="lang-toggle" id="global-lang-toggle">
       <button class="lang-btn active" onclick="setGlobalLang('en')">EN</button>
-      <button class="lang-btn" onclick="setGlobalLang('es')">ES</button>
+      <button class="lang-btn" onclick="setGlobalLang('es')">SPANISH</button>
     </div>
     <a href="journal.html" class="nav-link" style="color:var(--accent2); font-weight:700;">Trading Journal</a>
     <a href="#days" class="nav-link">All Days</a>
@@ -504,7 +504,7 @@
 
   function setGlobalLang(lang) {
     globalLang = lang;
-    document.querySelectorAll('#global-lang-toggle .lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+    document.querySelectorAll('#global-lang-toggle .lang-btn').forEach(b => b.classList.toggle('active', b.textContent === (lang === 'en' ? 'EN' : 'SPANISH')));
     document.querySelectorAll('.en-text').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
     document.querySelectorAll('.es-text').forEach(el => el.style.display = lang === 'es' ? '' : 'none');
     document.querySelectorAll('.en-title').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
@@ -554,7 +554,7 @@
     }
 
     const langTabs = availLangs.length > 1
-      ? availLangs.map(l => `<button class="card-lang-btn ${l === 'en' ? 'active' : ''}" data-lang="${l}" onclick="setCardLang(this.closest('.day-card'),'${l}')">${l.toUpperCase()}</button>`).join('')
+      ? availLangs.map(l => `<button class="card-lang-btn ${l === 'en' ? 'active' : ''}" data-lang="${l}" onclick="setCardLang(this.closest('.day-card'),'${l}')">${l === 'es' ? 'SPANISH' : l.toUpperCase()}</button>`).join('')
       : '';
 
     const enKey = (day.keyTakeaways || []).map(t => `<li>${t}</li>`).join('');
@@ -593,7 +593,7 @@
           ${rBtn(hasQuiz, '✅', 'Knowledge Quiz', 'Prueba Múltiple', 'Graded Interactive Test', 'Test Interactivo con Nota', `openResourceModal('${day.quizFile}', 'quiz')`)}
           ${rBtn(hasFlash, '📇', 'Flashcards', 'Tarjetas', 'Flip Cards · Interactive', 'Tarjetas Interactivas', `openResourceModal('${day.flashcardsUrl}', 'flashcards')`)}
           ${rBtn(hasMind, '🗺️', 'Mind Map', 'Mapa Mental', 'Visual Concept Tree', 'Árbol Conceptual Visual', `openResourceModal('${day.mindMapUrl}', 'mindmap')`)}
-          ${rLink(hasSlides, '🎞️', 'Slide Deck', 'Diapositivas', 'Lesson Presentation', 'Presentación de la Lección', day.slideDeckUrl)}
+          ${rBtn(hasSlides, '🎞️', 'Slide Deck', 'Diapositivas', 'Lesson Presentation', 'Presentación de la Lección', `openResourceModal('${day.slideDeckUrl}', 'slides')`)}
           ${rBtn(hasTable, '📊', 'Data Table', 'Tabla de Datos', 'Structured Reference', 'Referencia Estructurada', `openResourceModal('${day.dataTableUrl}', 'datatable')`)}
         </div>
         <div style="margin-top:14px;">
@@ -619,7 +619,7 @@
             <p class="es-title" style="display:none">${day.descriptionEs || day.description}</p>
           </div>
           <div class="day-tags">
-            ${availLangs.includes('es') ? '<span class="tag new">ES ✓</span>' : ''}
+            ${availLangs.includes('es') ? '<span class="tag new">SPANISH ✓</span>' : ''}
             ${day.studios?.en?.audioUrl && !day.studios.en.audioUrl.includes('PASTE') ? '<span class="tag has-audio">🎧 Audio</span>' : ''}
           </div>
           <div class="chevron">
@@ -698,6 +698,8 @@
         body.innerHTML = renderMindMap(text) + dlBtn;
       } else if (type === 'datatable') {
         body.innerHTML = renderDataTable(text) + dlBtn;
+      } else if (type === 'slides') {
+        body.innerHTML = `<h1 style="font-family:'Outfit',sans-serif;color:#fff;margin-bottom:12px;">🎞️ Slide Deck</h1><div style="background:var(--surface2);border-radius:12px;overflow:hidden;border:1px solid var(--border);"><iframe src="${url}" style="width:100%;height:70vh;border:none;"></iframe></div>` + dlBtn;
       } else {
         body.innerHTML = '<div class="md-content">' + marked.parse(text) + '</div>' + dlBtn;
       }
