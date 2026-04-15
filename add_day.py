@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-TradesBySci — Add Day Pipeline (V3 Learning Builder)
+TradesBySci — Add Day Pipeline (V4 Full Suite)
 =====================================
 Uses your MASTER NotebookLM notebook and adds each new day as a source.
-Generates Audio, Study Guide, Flashcards, Mind Map, Quiz, and Infographic concurrently.
-Downloads them locally and updates days.json for the TradesBySci UI.
+Generates 8 English artifacts + 1 Spanish audio concurrently.
+Downloads them locally, updates days.json, rebuilds index.html, and pushes to GitHub.
 
 Usage:
   python add_day.py --day 2 --youtube "https://www.youtube.com/watch?v=VIDEO_ID"
@@ -98,6 +98,20 @@ def rebuild_html():
     html_path.write_text(html, encoding="utf-8")
     print(f"   index.html updated with {len(days)} day(s) of data")
 
+def _clean_mind_map(file_path):
+    """Strip NotebookLM metadata prefix and clean invalid control characters from mind map JSON."""
+    try:
+        raw = open(file_path, 'rb').read().decode('utf-8-sig', errors='replace')
+        raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', ' ', raw)
+        idx = raw.find('{')
+        if idx >= 0:
+            data = json.loads(raw[idx:], strict=False)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            print(f"   Mind map cleaned: {data.get('name', 'unknown')}")
+    except Exception as e:
+        print(f"   Mind map cleanup warning: {e}")
+
 # ── Main pipeline ─────────────────────────────────────────────────────────────
 def run_pipeline(
     day_num: int,
@@ -109,7 +123,7 @@ def run_pipeline(
     takeaways_en: list,
     takeaways_es: list,
 ):
-    TOTAL = 6
+    TOTAL = 8
     day_dir = STUDIOS_DIR / f"day-{day_num}"
     day_dir.mkdir(parents=True, exist_ok=True)
     youtube_id = youtube_url.split("v=")[-1].split("&")[0] if "v=" in youtube_url else ""
@@ -144,8 +158,10 @@ def run_pipeline(
     tasks['flash'] = extract_id(out)
 
     print("   -> Mind Map")
-    out = nlm(["generate", "mind-map", f"Focus on Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
-    tasks['mind'] = extract_id(out)
+    out = nlm(["generate", "mind-map", "-n", MASTER_NOTEBOOK], timeout=120)
+    # Mind map returns note ID directly, not an artifact ID
+    mind_note_id = extract_id(out)
+    tasks['mind'] = mind_note_id
 
     print("   -> Quiz")
     out = nlm(["generate", "quiz", f"8 questions specifically about Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
@@ -196,7 +212,13 @@ def run_pipeline(
         nlm(["download", "flashcards", str(paths['flash']), "-a", active_tasks['flash'], "--force"])
     if 'mind' in active_tasks:
         print(f"   - Mind Map -> {paths['mind'].name}")
-        nlm(["download", "mind-map", str(paths['mind']), "-a", active_tasks['mind'], "--force"])
+        nlm(["note", "get", active_tasks['mind'], "-n", MASTER_NOTEBOOK], timeout=60)
+        # mind-map is done synchronously, save it via note get
+        mm_out = nlm(["note", "get", active_tasks['mind'], "-n", MASTER_NOTEBOOK], timeout=60)
+        with open(paths['mind'], 'w', encoding='utf-8') as f:
+            f.write(mm_out)
+        # Clean the JSON: strip metadata prefix
+        _clean_mind_map(paths['mind'])
     if 'quiz' in active_tasks:
         print(f"   - Quiz -> {paths['quiz'].name}")
         nlm(["download", "quiz", str(paths['quiz']), "-a", active_tasks['quiz'], "--force"])
@@ -210,8 +232,27 @@ def run_pipeline(
         print(f"   - Data Table -> {paths['table'].name}")
         nlm(["download", "data-table", str(paths['table']), "-a", active_tasks['table'], "--force"])
 
-    # 6. Update JSON
-    step(6, TOTAL, "Updating website data...")
+    # 6. Generate Spanish Audio
+    step(6, TOTAL, "Generating Spanish audio...")
+    es_audio_path = day_dir / f"day{day_num}_es.mp3"
+    try:
+        nlm(["language", "set", "es_MX"], timeout=30)
+        out = nlm(["generate", "audio",
+                   f"Enfocate especificamente en el Dia {day_num}: {title_es}. Temas clave: {', '.join(takeaways_es[:3])}. INSTRUCCION IMPORTANTE: Menciona que hagan click en el link en bio para obtener mas informacion sobre el Dia {day_num} y que los materiales de estudio son completamente gratis.",
+                   "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+        es_task_id = extract_id(out)
+        if es_task_id:
+            print(f"   Spanish audio started: {es_task_id[:8]}")
+            wait_for_all([es_task_id], max_wait=600)
+            nlm(["download", "audio", str(es_audio_path), "-a", es_task_id])
+        nlm(["language", "set", "en"], timeout=30)
+        print("   Language reset to English.")
+    except Exception as e:
+        print(f"   Spanish audio failed: {e}")
+        nlm(["language", "set", "en"], timeout=30)
+
+    # 7. Update JSON
+    step(7, TOTAL, "Updating website data...")
     if DAYS_JSON.exists():
         days = json.loads(DAYS_JSON.read_text(encoding="utf-8"))
     else:
@@ -230,7 +271,10 @@ def run_pipeline(
                 "audioUrl":   f"./studios/day-{day_num}/{paths['audio'].name}" if paths['audio'].exists() else "",
                 "audioLabel": f"Day {day_num} Audio Overview"
             },
-            "es": {"audioUrl": "", "audioLabel": f"Día {day_num} — Resumen en Español"}
+            "es": {
+                "audioUrl":   f"./studios/day-{day_num}/{es_audio_path.name}" if es_audio_path.exists() else "",
+                "audioLabel": f"Día {day_num} — Resumen en Español"
+            }
         },
         "infographicUrl": f"./studios/day-{day_num}/{paths['info'].name}" if paths['info'].exists() else "",
         "quizFile":       f"./studios/day-{day_num}/{paths['quiz'].name}" if paths['quiz'].exists() else "",
@@ -249,17 +293,28 @@ def run_pipeline(
     DAYS_JSON.write_text(json.dumps(days, indent=2, ensure_ascii=False), encoding="utf-8")
     rebuild_html()
 
+    # 8. Git push
+    step(8, TOTAL, "Pushing to GitHub Pages...")
+    try:
+        subprocess.run(["git", "add", "-A"], cwd=str(SCRIPT_DIR), env=ENV, timeout=30)
+        subprocess.run(["git", "commit", "-m", f"Day {day_num}: {title_en} — full learning suite"], cwd=str(SCRIPT_DIR), env=ENV, timeout=30)
+        subprocess.run(["git", "push"], cwd=str(SCRIPT_DIR), env=ENV, timeout=60)
+        print("   Pushed to GitHub! Site will update in ~60 seconds.")
+    except Exception as e:
+        print(f"   Git push failed: {e}. Push manually with: git add -A && git commit -m 'Day {day_num}' && git push")
+
     print("\n" + "="*60)
-    print(f"Day {day_num} Learning Modules Platform complete!")
-    print(f"  Audio      : {'OK' if paths['audio'].exists() else 'MISSING'}")
-    print(f"  Study Guide: {'OK' if paths['study'].exists() else 'MISSING'}")
-    print(f"  Flashcards : {'OK' if paths['flash'].exists() else 'MISSING'}")
-    print(f"  Mind Map   : {'OK' if paths['mind'].exists() else 'MISSING'}")
-    print(f"  Quiz       : {'OK' if paths['quiz'].exists() else 'MISSING'}")
-    print(f"  Infographic: {'OK' if paths['info'].exists() else 'MISSING'}")
-    print(f"  Slide Deck : {'OK' if paths['slides'].exists() else 'MISSING'}")
-    print(f"  Data Table : {'OK' if paths['table'].exists() else 'MISSING'}")
-    print(f"  index.html : Updated (open in Chrome to see changes)")
+    print(f"🎉 Day {day_num} COMPLETE — Full Learning Suite")
+    print(f"  🎧 Audio EN  : {'✅' if paths['audio'].exists() else '❌'}")
+    print(f"  🎧 Audio ES  : {'✅' if es_audio_path.exists() else '❌'}")
+    print(f"  📖 Study     : {'✅' if paths['study'].exists() else '❌'}")
+    print(f"  📇 Flashcards: {'✅' if paths['flash'].exists() else '❌'}")
+    print(f"  🗺️  Mind Map  : {'✅' if paths['mind'].exists() else '❌'}")
+    print(f"  ✅ Quiz      : {'✅' if paths['quiz'].exists() else '❌'}")
+    print(f"  🖼️  Infograph : {'✅' if paths['info'].exists() else '❌'}")
+    print(f"  🎞️  Slides    : {'✅' if paths['slides'].exists() else '❌'}")
+    print(f"  📊 Data Table: {'✅' if paths['table'].exists() else '❌'}")
+    print(f"  🌐 Live at   : https://mrwallyst.github.io/ICCMAFIA/")
     print("="*60)
 
 # ── CLI ───────────────────────────────────────────────────────────────────────

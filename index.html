@@ -691,7 +691,7 @@
       const dlBtn = `<div style="text-align:center;"><a href="${url}" download class="modal-dl-btn">⬇ Download File</a></div>`;
       
       if (type === 'quiz') {
-        body.innerHTML = parseQuizHtml(text);
+        body.innerHTML = parseQuizHtml(text) + dlBtn;
       } else if (type === 'flashcards') {
         body.innerHTML = renderFlashcards(text) + dlBtn;
       } else if (type === 'mindmap') {
