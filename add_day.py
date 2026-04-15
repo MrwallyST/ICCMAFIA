@@ -186,7 +186,7 @@ def run_pipeline(
     tasks['ytscript'] = extract_id(out)
 
     print("   -> Twitter Thread")
-    thread_prompt = "Write a viral 10-post Thread (optimized for X/Instagram Threads) summarizing the key concepts. CRITICAL: Each individual post MUST be strictly under 400 characters so I can easily copy and paste them as single messages. Number each post (1/10, 2/10, etc.) and include a strong hook in the first post."
+    thread_prompt = "Write a viral 10-post Thread (optimized for X/Instagram Threads) summarizing the key concepts. CRITICAL: Each individual post MUST be strictly under 400 characters so I can easily copy and paste them. Number each post (1/10, 2/10, etc.), include a punchy BOLD topic header for each post (e.g. 1/10 🚨 **TRADING VS. GAMBLING**), and include a strong hook in the first post."
     out = nlm(["generate", "report", "--format", "custom", "--append", thread_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['twitter'] = extract_id(out)
 
