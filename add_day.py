@@ -141,9 +141,18 @@ def run_pipeline(
     tasks = {}
 
     print("   -> Audio Overview")
-    out = nlm(["generate", "audio", 
-               f"Focus specifically on Day {day_num}: {title_en}. Key topics: {', '.join(takeaways_en[:3])}. IMPORTANT INSTRUCTION: Make sure to explicitly tell the listener 'Click the link in bio to get more information on Day {day_num}' and say that the learning materials are entirely free.", 
-               "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    audio_prompt = (
+        f"Focus specifically on Day {day_num}: {title_en}. "
+        f"Key topics: {', '.join(takeaways_en[:3])}. "
+        "STYLE: Real cinematic style, in-depth explainer format. "
+        "INTRO: You MUST open by saying: 'Welcome to ICCMAFIA-AI, summarizing the Tradesbysci ICC course! We will be doing all of the course videos...' "
+        "CORE: Automatically identify and explain the most important trading concepts from today's lesson. Break them down clearly as if teaching a complete beginner. "
+        "BONUS: Announce to the audience that a free, downloadable infographic summarizing today's topics is available at the link in bio. "
+        "WEBSITE CTA: Tell listeners to visit mrwallyst.github.io/ICCMAFIA to access the free interactive Study Guide, Quiz, Mind Map, Flashcards, and Audio Podcast for this lesson. "
+        "OUTRO: End with a strong, cinematic Call to Action reminding listeners to like, comment, and subscribe to the ICCMAFIA-AI channel. "
+        "CREDIT: Give explicit credit to Trades by Sci as the original course creator."
+    )
+    out = nlm(["generate", "audio", audio_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['audio'] = extract_id(out)
 
     print("   -> Study Guide")
@@ -165,7 +174,14 @@ def run_pipeline(
     tasks['quiz'] = extract_id(out)
 
     print("   -> Infographic")
-    out = nlm(["generate", "infographic", f"Visual overview of Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    info_prompt = (
+        f"Visual overview of Day {day_num}: {title_en}. "
+        "Create a clear, beginner-friendly visual breakdown of the exact core concepts discussed in today's lesson. "
+        "BRANDING: Prominently feature the channel name 'ICCMAFIA-AI' on the image. "
+        "CREDIT: Explicitly give credit to 'Trades by Sci' on the image. "
+        "WEBSITE: Include the URL mrwallyst.github.io/ICCMAFIA somewhere on the infographic."
+    )
+    out = nlm(["generate", "infographic", info_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['info'] = extract_id(out)
 
     print("   -> Slide Deck")
@@ -181,8 +197,16 @@ def run_pipeline(
     tasks['blog'] = extract_id(out)
 
     print("   -> YouTube Script")
-    cta_msg = "Write an engaging YouTube video script (video overview) covering these concepts. IMPORTANT: The script MUST enthusiastically instruct viewers to click the link in the description (mrwallyst.github.io/ICCMAFIA) to access their free Interactive Study Guide, Quiz, Mind Map, and Audio Podcast for this lesson."
-    out = nlm(["generate", "report", "--format", "custom", "--append", cta_msg, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    yt_prompt = (
+        "Write an engaging, cinematic YouTube video script (video overview) covering these concepts. "
+        "INTRO: The host MUST open by saying: 'Welcome to ICCMAFIA-AI, summarizing the Tradesbysci ICC course! We will be doing all of the course videos...' "
+        "CORE: Break down all key trading concepts from the lesson clearly like teaching a complete beginner. "
+        "BONUS: The host must announce that a free downloadable infographic summarizing today's topics is available. "
+        "WEBSITE CTA: The script MUST enthusiastically instruct viewers to click the link in the description (mrwallyst.github.io/ICCMAFIA) to access their free Interactive Study Guide, Quiz, Mind Map, Flashcards, and Audio Podcast. "
+        "OUTRO: End with a strong, cinematic Call to Action reminding viewers to like, comment, and subscribe to ICCMAFIA-AI. "
+        "CREDIT: Give explicit credit to Trades by Sci as the original course creator."
+    )
+    out = nlm(["generate", "report", "--format", "custom", "--append", yt_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['ytscript'] = extract_id(out)
 
     print("   -> Twitter Thread")
