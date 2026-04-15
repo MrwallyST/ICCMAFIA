@@ -117,11 +117,8 @@ def run_pipeline(
     day_num: int,
     youtube_url: str,
     title_en: str,
-    title_es: str,
     desc_en: str,
-    desc_es: str,
     takeaways_en: list,
-    takeaways_es: list,
 ):
     TOTAL = 8
     day_dir = STUDIOS_DIR / f"day-{day_num}"
@@ -280,27 +277,8 @@ def run_pipeline(
         print(f"   - FAQ Document -> {paths['faq'].name}")
         nlm(["download", "report", str(paths['faq']), "-a", active_tasks['faq'], "--force"])
 
-    # 6. Generate Spanish Audio
-    step(6, TOTAL, "Generating Spanish audio...")
-    es_audio_path = day_dir / f"day{day_num}_es.mp3"
-    try:
-        nlm(["language", "set", "es_MX"], timeout=30)
-        out = nlm(["generate", "audio",
-                   f"Enfocate especificamente en el Dia {day_num}: {title_es}. Temas clave: {', '.join(takeaways_es[:3])}. INSTRUCCION IMPORTANTE: Menciona que hagan click en el link en bio para obtener mas informacion sobre el Dia {day_num} y que los materiales de estudio son completamente gratis.",
-                   "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
-        es_task_id = extract_id(out)
-        if es_task_id:
-            print(f"   Spanish audio started: {es_task_id[:8]}")
-            wait_for_all([es_task_id], max_wait=600)
-            nlm(["download", "audio", str(es_audio_path), "-a", es_task_id])
-        nlm(["language", "set", "en"], timeout=30)
-        print("   Language reset to English.")
-    except Exception as e:
-        print(f"   Spanish audio failed: {e}")
-        nlm(["language", "set", "en"], timeout=30)
-
-    # 7. Update JSON
-    step(7, TOTAL, "Updating website data...")
+    # 6. Update JSON
+    step(6, TOTAL, "Updating website data...")
     if DAYS_JSON.exists():
         days = json.loads(DAYS_JSON.read_text(encoding="utf-8"))
     else:
@@ -310,20 +288,11 @@ def run_pipeline(
 
     new_day = {
         "day": day_num,
-        "title": title_en, "titleEs": title_es,
-        "description": desc_en, "descriptionEs": desc_es,
+        "title": title_en,
+        "description": desc_en,
         "youtubeId": youtube_id,
         "reelUrl": "",
-        "studios": {
-            "en": {
-                "audioUrl":   f"./studios/day-{day_num}/{paths['audio'].name}" if paths['audio'].exists() else "",
-                "audioLabel": f"Day {day_num} Audio Overview"
-            },
-            "es": {
-                "audioUrl":   f"./studios/day-{day_num}/{es_audio_path.name}" if es_audio_path.exists() else "",
-                "audioLabel": f"Día {day_num} — Resumen en Español"
-            }
-        },
+        "audioUrl": f"./studios/day-{day_num}/{paths['audio'].name}" if paths['audio'].exists() else "",
         "infographicUrl": f"./studios/day-{day_num}/{paths['info'].name}" if paths['info'].exists() else "",
         "quizFile":       f"./studios/day-{day_num}/{paths['quiz'].name}" if paths['quiz'].exists() else "",
         "studyGuideUrl":  f"./studios/day-{day_num}/{paths['study'].name}" if paths['study'].exists() else "",
@@ -338,7 +307,6 @@ def run_pipeline(
         "linkedinUrl":       f"./studios/day-{day_num}/{paths['linkedin'].name}" if paths['linkedin'].exists() else "",
         "faqUrl":            f"./studios/day-{day_num}/{paths['faq'].name}" if paths['faq'].exists() else "",
         "keyTakeaways":   takeaways_en,
-        "keyTakeawaysEs": takeaways_es,
         "notebookId":     MASTER_NOTEBOOK
     }
 
@@ -359,8 +327,7 @@ def run_pipeline(
 
     print("\n" + "="*60)
     print(f"🎉 Day {day_num} COMPLETE — Full Learning Suite")
-    print(f"  🎧 Audio EN  : {'✅' if paths['audio'].exists() else '❌'}")
-    print(f"  🎧 Audio ES  : {'✅' if es_audio_path.exists() else '❌'}")
+    print(f"  🎧 Audio     : {'✅' if paths['audio'].exists() else '❌'}")
     print(f"  📖 Study     : {'✅' if paths['study'].exists() else '❌'}")
     print(f"  📇 Flashcards: {'✅' if paths['flash'].exists() else '❌'}")
     print(f"  🗺️  Mind Map  : {'✅' if paths['mind'].exists() else '❌'}")
@@ -383,9 +350,7 @@ def main():
     p.add_argument("--day",       type=int,  required=True)
     p.add_argument("--youtube",   default="")
     p.add_argument("--title",     default="")
-    p.add_argument("--title-es",  default="")
     p.add_argument("--desc",      default="")
-    p.add_argument("--desc-es",   default="")
     args = p.parse_args()
 
     if not args.youtube:
@@ -393,17 +358,13 @@ def main():
         sys.exit(1)
 
     takeaways_en = ["ICC Framework: Indications, Corrections, Continuations", "How to read order flow and identify liquidity zones", "The 3 market phases every futures trader must know", "Real trade setups from the Trades by Sci curriculum"]
-    takeaways_es = ["Marco ICC: Indicaciones, Correcciones, Continuaciones", "Como leer el flujo de ordenes e identificar zonas de liquidez", "Las 3 fases del mercado para futuros", "Setups reales del curriculo de Trades by Sci"]
 
     run_pipeline(
         day_num    = args.day,
         youtube_url= args.youtube,
         title_en   = args.title  or f"TradesBySci Day {args.day}",
-        title_es   = args.title_es or f"TradesBySci Dia {args.day}",
         desc_en    = args.desc   or "AI-decoded Trades by Sci lesson.",
-        desc_es    = args.desc_es or "Leccion decodificada con IA.",
-        takeaways_en = takeaways_en,
-        takeaways_es = takeaways_es,
+        takeaways_en = takeaways_en
     )
 
 if __name__ == "__main__":
