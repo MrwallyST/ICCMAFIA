@@ -312,6 +312,44 @@
     .quiz-hint { margin-top: 15px; font-size: 14px; color: var(--accent3); display: none; padding: 14px; background: rgba(167, 139, 250, 0.1); border-left: 3px solid var(--accent3); border-radius: 0 8px 8px 0; }
     @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
 
+    /* ── INTERACTIVE FLASHCARDS ──────────────────── */
+    .fc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin-top: 20px; }
+    .fc-card { perspective: 600px; height: 200px; cursor: pointer; }
+    .fc-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+    .fc-card.flipped .fc-inner { transform: rotateY(180deg); }
+    .fc-front, .fc-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; font-size: 14px; line-height: 1.6; border: 1px solid var(--border); }
+    .fc-front { background: linear-gradient(145deg, var(--surface2), var(--surface1)); color: #fff; font-weight: 600; }
+    .fc-front::before { content: '🧠'; font-size: 22px; margin-bottom: 10px; }
+    .fc-back { background: linear-gradient(145deg, rgba(124,111,205,.15), rgba(52,211,153,.08)); color: var(--accent3); transform: rotateY(180deg); border-color: rgba(124,111,205,.3); }
+    .fc-back::before { content: '💡'; font-size: 22px; margin-bottom: 10px; }
+    .fc-counter { text-align: center; color: var(--muted); font-size: 13px; margin-top: 10px; font-weight: 600; }
+    .fc-nav { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+    .fc-nav button { padding: 10px 24px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-weight: 700; cursor: pointer; transition: all .2s; }
+    .fc-nav button:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── MIND MAP TREE ──────────────────────────── */
+    .mm-tree { margin-top: 20px; }
+    .mm-root { font-size: 20px; font-weight: 900; color: var(--accent2); text-align: center; margin-bottom: 24px; padding: 18px; background: linear-gradient(135deg, rgba(52,211,153,.08), rgba(99,102,241,.08)); border: 1px solid rgba(52,211,153,.2); border-radius: 14px; }
+    .mm-branch { margin-left: 0; margin-bottom: 16px; }
+    .mm-node { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; cursor: pointer; transition: all .25s; }
+    .mm-node:hover { border-color: var(--accent); transform: translateX(4px); }
+    .mm-node-title { font-weight: 800; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+    .mm-node-title::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+    .mm-children { margin-left: 28px; margin-top: 10px; border-left: 2px solid var(--border); padding-left: 18px; }
+    .mm-leaf { color: var(--muted); font-size: 13px; padding: 6px 0; display: flex; align-items: center; gap: 8px; }
+    .mm-leaf::before { content: '→'; color: var(--accent2); font-weight: 800; }
+
+    /* ── DATA TABLE ─────────────────────────────── */
+    .dt-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; margin-top: 16px; }
+    .dt-table th { background: linear-gradient(135deg, var(--surface2), var(--surface3)); color: var(--accent2); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 11px; padding: 14px 16px; text-align: left; border-bottom: 2px solid var(--accent); position: sticky; top: 0; }
+    .dt-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    .dt-table tr:hover td { background: rgba(124,111,205,.06); }
+    .dt-table tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+
+    /* ── MODAL DOWNLOAD BTN ─────────────────────── */
+    .modal-dl-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 10px 22px; border-radius: 999px; background: var(--surface2); border: 1px solid var(--border); color: var(--accent2); font-size: 13px; font-weight: 700; text-decoration: none; transition: all .2s; cursor: pointer; }
+    .modal-dl-btn:hover { border-color: var(--accent2); background: rgba(52,211,153,.08); }
+
     /* Takeaways */
     .takeaways-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
     .card-title { font-size: 11px; font-weight: 800; color: var(--accent2); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; }
@@ -553,10 +591,10 @@
         <div class="resources-grid">
           ${rBtn(hasStudy, '📖', 'Study Guide', 'Guía de Estudio', 'Interactive Report', 'Reporte Interactivo', `openResourceModal('${day.studyGuideUrl}', 'study')`)}
           ${rBtn(hasQuiz, '✅', 'Knowledge Quiz', 'Prueba Múltiple', 'Graded Interactive Test', 'Test Interactivo con Nota', `openResourceModal('${day.quizFile}', 'quiz')`)}
-          ${rLink(hasFlash, '📇', 'Flashcards', 'Tarjetas', 'Terms & Core Concepts', 'Conceptos Clave', day.flashcardsUrl)}
-          ${rLink(hasMind, '🗺️', 'Mind Map', 'Mapa Mental', 'Visual Concept Tree', 'Árbol Conceptual Visual', day.mindMapUrl)}
+          ${rBtn(hasFlash, '📇', 'Flashcards', 'Tarjetas', 'Flip Cards · Interactive', 'Tarjetas Interactivas', `openResourceModal('${day.flashcardsUrl}', 'flashcards')`)}
+          ${rBtn(hasMind, '🗺️', 'Mind Map', 'Mapa Mental', 'Visual Concept Tree', 'Árbol Conceptual Visual', `openResourceModal('${day.mindMapUrl}', 'mindmap')`)}
           ${rLink(hasSlides, '🎞️', 'Slide Deck', 'Diapositivas', 'Lesson Presentation', 'Presentación de la Lección', day.slideDeckUrl)}
-          ${rBtn(hasTable, '📊', 'Data Table', 'Tabla de Datos', 'Structured Reference', 'Referencia Estructurada', `openResourceModal('${day.dataTableUrl}', 'study')`)}
+          ${rBtn(hasTable, '📊', 'Data Table', 'Tabla de Datos', 'Structured Reference', 'Referencia Estructurada', `openResourceModal('${day.dataTableUrl}', 'datatable')`)}
         </div>
         <div style="margin-top:14px;">
           <div class="card-title en-title">📝 My Notes</div>
@@ -647,19 +685,127 @@
     document.body.style.overflow = 'hidden';
 
     try {
-      // Add a timestamp cache buster just in case
       const res = await fetch(url + '?v=' + new Date().getTime());
       if (!res.ok) throw new Error('File not found or local CORS blocked it.');
       const text = await res.text();
+      const dlBtn = `<div style="text-align:center;"><a href="${url}" download class="modal-dl-btn">⬇ Download File</a></div>`;
       
       if (type === 'quiz') {
         body.innerHTML = parseQuizHtml(text);
+      } else if (type === 'flashcards') {
+        body.innerHTML = renderFlashcards(text) + dlBtn;
+      } else if (type === 'mindmap') {
+        body.innerHTML = renderMindMap(text) + dlBtn;
+      } else if (type === 'datatable') {
+        body.innerHTML = renderDataTable(text) + dlBtn;
       } else {
-        body.innerHTML = marked.parse(text);
+        body.innerHTML = '<div class="md-content">' + marked.parse(text) + '</div>' + dlBtn;
       }
     } catch (e) {
       body.innerHTML = `<div style="color:#f87171; text-align:center; padding:40px;">⚠️ Error loading resource: ${e.message}<br><br><small>If you are on Windows viewing via file://, Chrome blocks fetches. Run a local server.</small></div>`;
     }
+  }
+
+  // ── FLASHCARD RENDERER ────────────────────────
+  function renderFlashcards(text) {
+    try {
+      // Strip leading non-JSON lines (NotebookLM sometimes prepends metadata)
+      const jsonStart = text.indexOf('{');
+      const data = JSON.parse(text.substring(jsonStart));
+      const cards = data.cards || [];
+      if (!cards.length) return '<p style="color:var(--muted)">No flashcards found.</p>';
+      let html = `<h1 style="font-family:'Outfit',sans-serif; color:#fff; margin-bottom:6px;">📇 ${data.title || 'Flashcards'}</h1>`;
+      html += `<p style="color:var(--muted); margin-bottom:20px;">${cards.length} cards — click to flip</p>`;
+      html += '<div class="fc-grid">';
+      cards.forEach((c, i) => {
+        html += `<div class="fc-card" onclick="this.classList.toggle('flipped')">
+          <div class="fc-inner">
+            <div class="fc-front"><span style="font-size:11px;color:var(--muted);position:absolute;top:12px;right:16px;">${i+1}/${cards.length}</span>${c.front}</div>
+            <div class="fc-back">${c.back}</div>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+      return html;
+    } catch(e) {
+      return '<div class="md-content">' + marked.parse(text) + '</div>';
+    }
+  }
+
+  // ── MIND MAP RENDERER ─────────────────────────
+  function renderMindMap(text) {
+    try {
+      // Extract JSON from possible metadata wrapper
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) return '<div class="md-content">' + marked.parse(text) + '</div>';
+      const data = JSON.parse(jsonMatch[0]);
+      let html = `<h1 style="font-family:'Outfit',sans-serif; color:#fff; margin-bottom:6px;">🗺️ Mind Map</h1>`;
+      html += `<div class="mm-tree">`;
+      html += `<div class="mm-root">${data.name || 'Concept Map'}</div>`;
+      if (data.children) {
+        data.children.forEach(branch => {
+          html += renderMmBranch(branch);
+        });
+      }
+      html += '</div>';
+      return html;
+    } catch(e) {
+      return '<div class="md-content">' + marked.parse(text) + '</div>';
+    }
+  }
+  function renderMmBranch(node) {
+    let h = `<div class="mm-branch"><div class="mm-node" onclick="const c=this.querySelector('.mm-children');if(c)c.style.display=c.style.display==='none'?'block':'none';"><div class="mm-node-title">${node.name}</div>`;
+    if (node.children && node.children.length) {
+      h += '<div class="mm-children">';
+      node.children.forEach(child => {
+        if (child.children && child.children.length) {
+          h += renderMmBranch(child);
+        } else {
+          h += `<div class="mm-leaf">${child.name}</div>`;
+        }
+      });
+      h += '</div>';
+    }
+    h += '</div></div>';
+    return h;
+  }
+
+  // ── DATA TABLE RENDERER ───────────────────────
+  function renderDataTable(text) {
+    try {
+      const lines = text.trim().split('\n');
+      if (lines.length < 2) return '<div class="md-content">' + marked.parse(text) + '</div>';
+      const headers = parseCSVLine(lines[0]);
+      let html = `<h1 style="font-family:'Outfit',sans-serif; color:#fff; margin-bottom:6px;">📊 Data Table</h1>`;
+      html += `<p style="color:var(--muted); margin-bottom:16px;">${lines.length - 1} entries — structured concept reference</p>`;
+      html += '<div style="overflow-x:auto;"><table class="dt-table"><thead><tr>';
+      headers.forEach(h => { html += `<th>${h.trim()}</th>`; });
+      html += '</tr></thead><tbody>';
+      for (let i = 1; i < lines.length; i++) {
+        if (!lines[i].trim()) continue;
+        const cols = parseCSVLine(lines[i]);
+        html += '<tr>';
+        cols.forEach((c,j) => {
+          const style = j === 0 ? ' style="font-weight:700;color:var(--accent2);white-space:nowrap;"' : '';
+          html += `<td${style}>${c.trim()}</td>`;
+        });
+        html += '</tr>';
+      }
+      html += '</tbody></table></div>';
+      return html;
+    } catch(e) {
+      return '<div class="md-content">' + marked.parse(text) + '</div>';
+    }
+  }
+  function parseCSVLine(line) {
+    const result = []; let current = ''; let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      if (line[i] === '"') { inQuotes = !inQuotes; }
+      else if (line[i] === ',' && !inQuotes) { result.push(current); current = ''; }
+      else { current += line[i]; }
+    }
+    result.push(current);
+    return result;
   }
 
   function closeResourceModal() {
