@@ -529,22 +529,34 @@
     const hasFlash = day.flashcardsUrl && !day.flashcardsUrl.includes('PASTE') && day.flashcardsUrl.trim() !== '';
     const hasMind = day.mindMapUrl && !day.mindMapUrl.includes('PASTE') && day.mindMapUrl.trim() !== '';
     const hasQuiz = day.quizFile && !day.quizFile.includes('PASTE') && day.quizFile.trim() !== '';
-    const hasSlides = day.slideDeckUrl && !day.slideDeckUrl.includes('PASTE') && day.slideDeckUrl.trim() !== '';
-    const hasTable = day.dataTableUrl && !day.dataTableUrl.includes('PASTE') && day.dataTableUrl.trim() !== '';
+    const hasSlides = (day.slideDeckUrl || '') && !((day.slideDeckUrl||'').includes('PASTE')) && (day.slideDeckUrl||'').trim() !== '';
+    const hasTable = (day.dataTableUrl || '') && !((day.dataTableUrl||'').includes('PASTE')) && (day.dataTableUrl||'').trim() !== '';
 
-    const anyResource = hasStudy || hasFlash || hasMind || hasQuiz || hasSlides || hasTable;
+    // Helper: active button or greyed-out placeholder
+    function rBtn(has, icon, enTitle, esTitle, enDesc, esDesc, onclickStr) {
+      if (has) {
+        return `<button onclick="${onclickStr}" class="resource-btn"><span class="resource-icon">${icon}</span><span class="resource-title"><span class="en-text">${enTitle}</span><span class="es-text" style="display:none">${esTitle}</span></span><span class="resource-desc"><span class="en-text">${enDesc}</span><span class="es-text" style="display:none">${esDesc}</span></span></button>`;
+      }
+      return `<div class="resource-btn" style="opacity:0.35; cursor:default; pointer-events:none;"><span class="resource-icon">${icon}</span><span class="resource-title"><span class="en-text">${enTitle}</span><span class="es-text" style="display:none">${esTitle}</span></span><span class="resource-desc" style="color:var(--muted);"><span class="en-text">Coming Soon</span><span class="es-text" style="display:none">Próximamente</span></span></div>`;
+    }
+    function rLink(has, icon, enTitle, esTitle, enDesc, esDesc, href) {
+      if (has) {
+        return `<a href="${href}" download class="resource-btn"><span class="resource-icon">${icon}</span><span class="resource-title"><span class="en-text">${enTitle}</span><span class="es-text" style="display:none">${esTitle}</span></span><span class="resource-desc"><span class="en-text">${enDesc}</span><span class="es-text" style="display:none">${esDesc}</span></span></a>`;
+      }
+      return `<div class="resource-btn" style="opacity:0.35; cursor:default; pointer-events:none;"><span class="resource-icon">${icon}</span><span class="resource-title"><span class="en-text">${enTitle}</span><span class="es-text" style="display:none">${esTitle}</span></span><span class="resource-desc" style="color:var(--muted);"><span class="en-text">Coming Soon</span><span class="es-text" style="display:none">Próximamente</span></span></div>`;
+    }
 
     let resourcesHtml = `
       <div class="full-col">
         <div class="card-title en-title" style="margin-top:14px; margin-bottom:10px;">📚 Learning Modules</div>
         <div class="card-title es-title" style="margin-top:14px; margin-bottom:10px; display:none;">📚 Módulos de Aprendizaje</div>
         <div class="resources-grid">
-          ${hasStudy ? `<button onclick="openResourceModal('${day.studyGuideUrl}', 'study')" class="resource-btn"><span class="resource-icon">📖</span><span class="resource-title"><span class="en-text">Study Guide</span><span class="es-text" style="display:none">Guía de Estudio</span></span><span class="resource-desc"><span class="en-text">Interactive Report</span><span class="es-text" style="display:none">Reporte Interactivo</span></span></button>` : ''}
-          ${hasFlash ? `<a href="${day.flashcardsUrl}" download class="resource-btn"><span class="resource-icon">📇</span><span class="resource-title"><span class="en-text">Flashcards</span><span class="es-text" style="display:none">Tarjetas</span></span><span class="resource-desc"><span class="en-text">Terms & Core Concepts</span><span class="es-text" style="display:none">Conceptos Clave</span></span></a>` : ''}
-          ${hasMind ? `<a href="${day.mindMapUrl}" download class="resource-btn"><span class="resource-icon">🗺️</span><span class="resource-title"><span class="en-text">Mind Map</span><span class="es-text" style="display:none">Mapa Mental</span></span><span class="resource-desc"><span class="en-text">Visual concept tree</span><span class="es-text" style="display:none">Árbol conceptual visual</span></span></a>` : ''}
-          ${hasQuiz ? `<button onclick="openResourceModal('${day.quizFile}', 'quiz')" class="resource-btn"><span class="resource-icon">✅</span><span class="resource-title"><span class="en-text">Knowledge Quiz</span><span class="es-text" style="display:none">Prueba Múltiple</span></span><span class="resource-desc"><span class="en-text">Interactive Test</span><span class="es-text" style="display:none">Test Interactivo</span></span></button>` : ''}
-          ${hasSlides ? `<a href="${day.slideDeckUrl}" download class="resource-btn"><span class="resource-icon">🎞️</span><span class="resource-title"><span class="en-text">Slide Deck</span><span class="es-text" style="display:none">Diapositivas</span></span><span class="resource-desc"><span class="en-text">Lesson Presentation</span><span class="es-text" style="display:none">Presentación de la Lección</span></span></a>` : ''}
-          ${hasTable ? `<button onclick="openResourceModal('${day.dataTableUrl}', 'study')" class="resource-btn"><span class="resource-icon">📊</span><span class="resource-title"><span class="en-text">Data Table</span><span class="es-text" style="display:none">Tabla de Datos</span></span><span class="resource-desc"><span class="en-text">Structured Reference</span><span class="es-text" style="display:none">Referencia Estructurada</span></span></button>` : ''}
+          ${rBtn(hasStudy, '📖', 'Study Guide', 'Guía de Estudio', 'Interactive Report', 'Reporte Interactivo', `openResourceModal('${day.studyGuideUrl}', 'study')`)}
+          ${rBtn(hasQuiz, '✅', 'Knowledge Quiz', 'Prueba Múltiple', 'Graded Interactive Test', 'Test Interactivo con Nota', `openResourceModal('${day.quizFile}', 'quiz')`)}
+          ${rLink(hasFlash, '📇', 'Flashcards', 'Tarjetas', 'Terms & Core Concepts', 'Conceptos Clave', day.flashcardsUrl)}
+          ${rLink(hasMind, '🗺️', 'Mind Map', 'Mapa Mental', 'Visual Concept Tree', 'Árbol Conceptual Visual', day.mindMapUrl)}
+          ${rLink(hasSlides, '🎞️', 'Slide Deck', 'Diapositivas', 'Lesson Presentation', 'Presentación de la Lección', day.slideDeckUrl)}
+          ${rBtn(hasTable, '📊', 'Data Table', 'Tabla de Datos', 'Structured Reference', 'Referencia Estructurada', `openResourceModal('${day.dataTableUrl}', 'study')`)}
         </div>
         <div style="margin-top:14px;">
           <div class="card-title en-title">📝 My Notes</div>
@@ -773,7 +785,7 @@
 
   // ── DATA EMBEDDED INLINE (works on local file:// AND hosted) ─────────────
   // This gets regenerated by add_day.py each time you add a new day.
-  const DAYS_DATA = [{"day":1,"title":"The Foundation - ICC Framework Decoded Part 1","titleEs":"TradesBySci Dia 1","description":"AI-decoded Trades by Sci lesson.","descriptionEs":"Leccion decodificada con IA.","youtubeId":"DpY628SfdgM","reelUrl":"","studios":{"en":{"audioUrl":"./studios/day-1/day1_en.mp3","audioLabel":"Day 1 Audio Overview"},"es":{"audioUrl":"","audioLabel":"Día 1 — Resumen en Español"}},"infographicUrl":"./studios/day-1/day1_infographic.png","quizFile":"./studios/day-1/day1_quiz.md","studyGuideUrl":"./studios/day-1/day1_study.md","flashcardsUrl":"","mindMapUrl":"","keyTakeaways":["ICC Framework: Indications, Corrections, Continuations","How to read order flow and identify liquidity zones","The 3 market phases every futures trader must know","Real trade setups from the Trades by Sci curriculum"],"keyTakeawaysEs":["Marco ICC: Indicaciones, Correcciones, Continuaciones","Como leer el flujo de ordenes e identificar zonas de liquidez","Las 3 fases del mercado para futuros","Setups reales del curriculo de Trades by Sci"],"notebookId":"8be24334-4293-41e0-a87d-cd20e67349ae"}];
+  const DAYS_DATA = [{"day":1,"title":"The Foundation - ICC Framework Decoded Part 1","titleEs":"TradesBySci Dia 1","description":"AI-decoded Trades by Sci lesson.","descriptionEs":"Leccion decodificada con IA.","youtubeId":"DpY628SfdgM","reelUrl":"","studios":{"en":{"audioUrl":"./studios/day-1/day1_en.mp3","audioLabel":"Day 1 Audio Overview"},"es":{"audioUrl":"","audioLabel":"Día 1 — Resumen en Español"}},"infographicUrl":"./studios/day-1/day1_infographic.png","quizFile":"./studios/day-1/day1_quiz.md","studyGuideUrl":"./studios/day-1/day1_study.md","flashcardsUrl":"","mindMapUrl":"","slideDeckUrl":"","dataTableUrl":"","keyTakeaways":["ICC Framework: Indications, Corrections, Continuations","How to read order flow and identify liquidity zones","The 3 market phases every futures trader must know","Real trade setups from the Trades by Sci curriculum"],"keyTakeawaysEs":["Marco ICC: Indicaciones, Correcciones, Continuaciones","Como leer el flujo de ordenes e identificar zonas de liquidez","Las 3 fases del mercado para futuros","Setups reales del curriculo de Trades by Sci"],"notebookId":"8be24334-4293-41e0-a87d-cd20e67349ae"}];
 
   function loadDays() {
     const days = DAYS_DATA;

@@ -22,6 +22,8 @@
     "studyGuideUrl": "./studios/day-1/day1_study.md",
     "flashcardsUrl": "",
     "mindMapUrl": "",
+    "slideDeckUrl": "",
+    "dataTableUrl": "",
     "keyTakeaways": [
       "ICC Framework: Indications, Corrections, Continuations",
       "How to read order flow and identify liquidity zones",
