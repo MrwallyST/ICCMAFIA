@@ -522,10 +522,6 @@
         </div>`;
     }
 
-    const langTabs = availLangs.length > 1
-      ? availLangs.map(l => `<button class="card-lang-btn ${l === 'en' ? 'active' : ''}" data-lang="${l}" onclick="setCardLang(this.closest('.day-card'),'${l}')">${l === 'es' ? 'SPANISH' : l.toUpperCase()}</button>`).join('')
-      : '';
-
     const enKey = (day.keyTakeaways || []).map(t => `<li>${t}</li>`).join('');
     const esKey = (day.keyTakeawaysEs || []).map(t => `<li>${t}</li>`).join('');
     const infographic = (day.infographicUrl && !day.infographicUrl.includes('PASTE') && day.infographicUrl.trim() !== '')
@@ -634,21 +630,12 @@
     const card = header.closest('.day-card');
     const isOpen = card.classList.contains('open');
     card.classList.toggle('open', !isOpen);
-    // Apply global language on open
     if (!isOpen) {
-      setCardLang(card, globalLang);
       setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
     }
   }
 
-  // Apply global lang text overrides (titles inside cards)
-  function applyGlobalLangToTitles() {
-    document.querySelectorAll('.en-title').forEach(el => el.style.display = globalLang === 'en' ? '' : 'none');
-    document.querySelectorAll('.es-title').forEach(el => el.style.display = globalLang === 'es' ? '' : 'none');
-  }
-
-  const _origSetGlobalLang = setGlobalLang;
-  // Monkey-patch to also toggle card titles
+  // ── Modal & Interactive Engine ──────────────────────────────────────────
   // (already handled via class patterns above)
 
   // ── Modal & Interactive Engine ──────────────────────────────────────────
@@ -922,7 +909,7 @@
 
     if (days.length > 0) {
       const first = container.querySelector('.day-card');
-      if (first) { first.classList.add('open'); setCardLang(first, globalLang); }
+      if (first) { first.classList.add('open'); }
     }
   }
 
