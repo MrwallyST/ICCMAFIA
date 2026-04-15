@@ -2,9 +2,9 @@
   {
     "day": 1,
     "title": "The Foundation - ICC Framework Decoded Part 1",
-    "titleEs": "La Fundación - Marco ICC Decodificado Parte 1",
+    "titleEs": "La Foundation - Marco ICC Decodificado Parte 1",
     "description": "AI-decoded Trades by Sci lesson. Learn the foundation of price action, the 3 market trends, and the ICC Framework.",
-    "descriptionEs": "Lección decodificada con IA. Aprende la base de la acción del precio, las 3 tendencias del mercado y el Marco ICC.",
+    "descriptionEs": "Leccion decodificada con IA. Aprende la base de la accion del precio, las 3 tendencias del mercado y el Marco ICC.",
     "youtubeId": "DpY628SfdgM",
     "reelUrl": "",
     "studios": {
@@ -20,10 +20,16 @@
     "infographicUrl": "./studios/day-1/day1_infographic.png",
     "quizFile": "./studios/day-1/day1_quiz.md",
     "studyGuideUrl": "./studios/day-1/day1_study.md",
-    "flashcardsUrl": "./studios/day-1/day1_flashcards.md",
-    "mindMapUrl": "./studios/day-1/day1_mindmap.md",
+    "flashcardsUrl": "",
+    "mindMapUrl": "",
     "slideDeckUrl": "./studios/day-1/day1_slides.pdf",
     "dataTableUrl": "./studios/day-1/day1_datatable.md",
+    "blogPostUrl": "",
+    "youtubeScriptUrl": "",
+    "twitterThreadUrl": "",
+    "newsletterUrl": "",
+    "linkedinUrl": "",
+    "faqUrl": "",
     "keyTakeaways": [
       "ICC Framework: Indications, Corrections, Continuations",
       "How to read order flow and identify liquidity zones",
@@ -32,9 +38,9 @@
     ],
     "keyTakeawaysEs": [
       "Marco ICC: Indicaciones, Correcciones, Continuaciones",
-      "Cómo leer el flujo de órdenes e identificar zonas de liquidez",
+      "Como leer el flujo de ordenes e identificar zonas de liquidez",
       "Las 3 fases del mercado para futuros",
-      "Setups reales del currículo de Trades by Sci"
+      "Setups reales del curriculo de Trades by Sci"
     ],
     "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
   }

@@ -179,6 +179,30 @@ def run_pipeline(
     out = nlm(["generate", "data-table", f"Organize key concepts, definitions, and examples from Day {day_num}: {title_en} into a structured reference table.", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['table'] = extract_id(out)
 
+    print("   -> Blog Post")
+    out = nlm(["generate", "report", "--format", "blog-post", f"Write a comprehensive blog post for Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['blog'] = extract_id(out)
+
+    print("   -> YouTube Script")
+    out = nlm(["generate", "report", "--format", "custom", "--append", "Write an engaging YouTube video script (video overview) covering these concepts.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['ytscript'] = extract_id(out)
+
+    print("   -> Twitter Thread")
+    out = nlm(["generate", "report", "--format", "custom", "--append", "Write a viral 10-tweet Twitter thread summarizing the key concepts.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['twitter'] = extract_id(out)
+
+    print("   -> Newsletter")
+    out = nlm(["generate", "report", "--format", "custom", "--append", "Write an engaging email newsletter summarizing this lesson.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['newsletter'] = extract_id(out)
+
+    print("   -> LinkedIn Carousel")
+    out = nlm(["generate", "report", "--format", "custom", "--append", "Write the text copy for a 5-slide LinkedIn carousel post.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['linkedin'] = extract_id(out)
+
+    print("   -> FAQ Document")
+    out = nlm(["generate", "report", "--format", "custom", "--append", "Write a Frequently Asked Questions (FAQ) document answering common beginner queries.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['faq'] = extract_id(out)
+
     # Clean None values in case of failure
     active_tasks = {k: v for k, v in tasks.items() if v}
     print(f"   Successfully launched {len(active_tasks)} parallel generations.")
@@ -198,6 +222,12 @@ def run_pipeline(
         'info':   day_dir / f"day{day_num}_infographic.png",
         'slides': day_dir / f"day{day_num}_slides.pdf",
         'table':  day_dir / f"day{day_num}_datatable.md",
+        'blog':   day_dir / f"day{day_num}_blog.md",
+        'ytscript': day_dir / f"day{day_num}_ytscript.md",
+        'twitter': day_dir / f"day{day_num}_twitter.md",
+        'newsletter': day_dir / f"day{day_num}_newsletter.md",
+        'linkedin': day_dir / f"day{day_num}_linkedin.md",
+        'faq':    day_dir / f"day{day_num}_faq.md",
     }
     
     if 'audio' in active_tasks:
@@ -231,6 +261,24 @@ def run_pipeline(
     if 'table' in active_tasks:
         print(f"   - Data Table -> {paths['table'].name}")
         nlm(["download", "data-table", str(paths['table']), "-a", active_tasks['table'], "--force"])
+    if 'blog' in active_tasks:
+        print(f"   - Blog Post -> {paths['blog'].name}")
+        nlm(["download", "report", str(paths['blog']), "-a", active_tasks['blog'], "--force"])
+    if 'ytscript' in active_tasks:
+        print(f"   - YouTube Script -> {paths['ytscript'].name}")
+        nlm(["download", "report", str(paths['ytscript']), "-a", active_tasks['ytscript'], "--force"])
+    if 'twitter' in active_tasks:
+        print(f"   - Twitter Thread -> {paths['twitter'].name}")
+        nlm(["download", "report", str(paths['twitter']), "-a", active_tasks['twitter'], "--force"])
+    if 'newsletter' in active_tasks:
+        print(f"   - Newsletter -> {paths['newsletter'].name}")
+        nlm(["download", "report", str(paths['newsletter']), "-a", active_tasks['newsletter'], "--force"])
+    if 'linkedin' in active_tasks:
+        print(f"   - LinkedIn Carousel -> {paths['linkedin'].name}")
+        nlm(["download", "report", str(paths['linkedin']), "-a", active_tasks['linkedin'], "--force"])
+    if 'faq' in active_tasks:
+        print(f"   - FAQ Document -> {paths['faq'].name}")
+        nlm(["download", "report", str(paths['faq']), "-a", active_tasks['faq'], "--force"])
 
     # 6. Generate Spanish Audio
     step(6, TOTAL, "Generating Spanish audio...")
@@ -283,6 +331,12 @@ def run_pipeline(
         "mindMapUrl":     f"./studios/day-{day_num}/{paths['mind'].name}" if paths['mind'].exists() else "",
         "slideDeckUrl":   f"./studios/day-{day_num}/{paths['slides'].name}" if paths['slides'].exists() else "",
         "dataTableUrl":   f"./studios/day-{day_num}/{paths['table'].name}" if paths['table'].exists() else "",
+        "blogPostUrl":       f"./studios/day-{day_num}/{paths['blog'].name}" if paths['blog'].exists() else "",
+        "youtubeScriptUrl":  f"./studios/day-{day_num}/{paths['ytscript'].name}" if paths['ytscript'].exists() else "",
+        "twitterThreadUrl":  f"./studios/day-{day_num}/{paths['twitter'].name}" if paths['twitter'].exists() else "",
+        "newsletterUrl":     f"./studios/day-{day_num}/{paths['newsletter'].name}" if paths['newsletter'].exists() else "",
+        "linkedinUrl":       f"./studios/day-{day_num}/{paths['linkedin'].name}" if paths['linkedin'].exists() else "",
+        "faqUrl":            f"./studios/day-{day_num}/{paths['faq'].name}" if paths['faq'].exists() else "",
         "keyTakeaways":   takeaways_en,
         "keyTakeawaysEs": takeaways_es,
         "notebookId":     MASTER_NOTEBOOK
@@ -314,6 +368,12 @@ def run_pipeline(
     print(f"  🖼️  Infograph : {'✅' if paths['info'].exists() else '❌'}")
     print(f"  🎞️  Slides    : {'✅' if paths['slides'].exists() else '❌'}")
     print(f"  📊 Data Table: {'✅' if paths['table'].exists() else '❌'}")
+    print(f"  📝 Blog Post : {'✅' if paths['blog'].exists() else '❌'}")
+    print(f"  🎬 YT Script : {'✅' if paths['ytscript'].exists() else '❌'}")
+    print(f"  🐦 Twitter   : {'✅' if paths['twitter'].exists() else '❌'}")
+    print(f"  📧 Newsletter: {'✅' if paths['newsletter'].exists() else '❌'}")
+    print(f"  📱 LinkedIn  : {'✅' if paths['linkedin'].exists() else '❌'}")
+    print(f"  ❓ FAQ Doc   : {'✅' if paths['faq'].exists() else '❌'}")
     print(f"  🌐 Live at   : https://mrwallyst.github.io/ICCMAFIA/")
     print("="*60)
 
