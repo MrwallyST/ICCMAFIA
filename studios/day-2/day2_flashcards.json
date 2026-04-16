@@ -1,265 +1,113 @@
 {
-  "title": "Trading Flashcards",
+  "title": "Day 2 Flashcards — Indications, Swings & ICC Framework",
   "cards": [
     {
-      "front": "According to the source, what is the core mindset shift required to see trading as a skill rather than a 'casino'?",
-      "back": "Viewing trading as a discipline built on strategy, logic, and understanding price movement rather than luck."
+      "front": "What is a Swing High?",
+      "back": "The highest point price reaches before reversing and heading lower."
     },
     {
-      "front": "What are the three basic moves or conditions the market can exist in?",
-      "back": "Uptrend, downtrend, and consolidation."
+      "front": "What is a Swing Low?",
+      "back": "The lowest point price reaches before pivoting and moving higher."
     },
     {
-      "front": "A market characterized by higher peaks and higher valleys is known as an _____.",
-      "back": "Uptrend"
+      "front": "On which two timeframes does TradesBySci primarily identify Indications?",
+      "back": "The 1-Hour (1H) and 4-Hour (4H) timeframes."
     },
     {
-      "front": "In an uptrend, what does the abbreviation 'HH' stand for?",
-      "back": "Higher High"
+      "front": "What is an 'Indication' in the ICC method?",
+      "back": "When price breaks above a Swing High (bullish) or below a Swing Low (bearish), signaling the start of a potential trend."
     },
     {
-      "front": "In an uptrend, what does the abbreviation 'HL' stand for?",
-      "back": "Higher Low"
+      "front": "Why is an Indication NOT an immediate entry signal?",
+      "back": "Because after an Indication, the market often performs a Liquidity Grab — a sharp reversal designed to wipe out breakout traders. You must wait for the Correction."
     },
     {
-      "front": "What sequence of highs and lows defines a healthy downtrend?",
-      "back": "Lower highs (LH) and lower lows (LL)."
+      "front": "What is the ICC Blueprint?",
+      "back": "Indication → Correction → Continuation. The 3-phase framework for identifying and entering trends."
     },
     {
-      "front": "Why is consolidation considered 'public enemy number one' for new traders?",
-      "back": "It is unpredictable, breaks rules, and lacks a clear direction."
+      "front": "What is a Liquidity Grab?",
+      "back": "A sharp, short-lived move in the opposite direction of a breakout designed to remove traders who entered on the initial Indication."
     },
     {
-      "front": "What is the recommended action for a trader when the market enters a period of consolidation?",
-      "back": "Walk away and stay out of the market."
+      "front": "What is a 'Fakeout'?",
+      "back": "When price breaks a Swing level once but immediately reverses with no follow-through — the Indication fails."
     },
     {
-      "front": "How does Trades by Sci define 'consolidation' in terms of price action?",
-      "back": "A choppy sideways mess where price breaks both previous highs and lows without a clear trend."
+      "front": "What is the 'second time around' concept?",
+      "back": "After a Fakeout or Liquidity Grab, real moves will retest the level (Correction) and then push through again (Continuation). Waiting for this second push is the safe entry approach."
     },
     {
-      "front": "What analogy is used to emphasize the importance of learning market fundamentals before advanced strategies?",
-      "back": "Learning to dribble a basketball before attempting a fadeaway three-pointer."
+      "front": "What swing pattern defines an Uptrend?",
+      "back": "Higher Highs (HH) and Higher Lows (HL)."
     },
     {
-      "front": "To make money in a 'buy' (long) position, where must the price move relative to the entry level?",
-      "back": "The price must move above the entry level."
+      "front": "What swing pattern defines a Downtrend?",
+      "back": "Lower Highs (LH) and Lower Lows (LL)."
     },
     {
-      "front": "To make money in a 'sell' (short) position, where must the price move relative to the entry level?",
-      "back": "The price must move under the entry level."
+      "front": "What does 'HH' stand for in market structure?",
+      "back": "Higher High — a price peak higher than the previous peak. A sign of an uptrend."
     },
     {
-      "front": "What visual tools are used every single day to see price fluctuation on a chart?",
-      "back": "Candlesticks"
+      "front": "What does 'HL' stand for in market structure?",
+      "back": "Higher Low — a valley higher than the previous valley. Confirms an uptrend is intact."
     },
     {
-      "front": "How does the chosen timeframe affect the appearance of price movement?",
-      "back": "Price will appear to fluctuate either fast or slow depending on the timeframe."
+      "front": "What does 'LH' stand for in market structure?",
+      "back": "Lower High — a peak lower than the previous peak. A sign of a downtrend."
     },
     {
-      "front": "What three basic technical requirements does a trader need to get started?",
-      "back": "A Forex broker, TradingView, and Wi-Fi."
+      "front": "What does 'LL' stand for in market structure?",
+      "back": "Lower Low — a valley lower than the previous valley. Confirms a downtrend."
     },
     {
-      "front": "What is the primary purpose of using a crypto brokerage like Coinbase or Kraken in trading?",
-      "back": "To deposit and withdraw funds between a bank account and a Forex broker via Bitcoin."
+      "front": "If a Higher Low (HL) is broken in an uptrend, what does that signal?",
+      "back": "The trend is either reversing or consolidating — it's time to stay out of the market."
     },
     {
-      "front": "Concept: Swing High",
-      "back": "Definition: The highest point price reaches before rejecting and heading in the opposite direction."
+      "front": "What does the Correction phase represent in the ICC Blueprint?",
+      "back": "The pullback/retracement after an Indication where the market grabs liquidity. This is the phase where you wait for the entry setup."
     },
     {
-      "front": "Concept: Swing Low",
-      "back": "Definition: The lowest point price reaches before pivoting and moving upward."
+      "front": "What does the Continuation phase represent in the ICC Blueprint?",
+      "back": "The resumption of the original trend direction after the Correction — this is when you execute the trade."
     },
     {
-      "front": "What is an 'indication' in the context of market trends?",
-      "back": "When price breaks above a high or below a low level, signaling the start of a trend."
+      "front": "What does the Indication phase give you as a trader?",
+      "back": "A blueprint: the direction of the trend and the potential target (Take Profit level)."
     },
     {
-      "front": "Indications typically occur when price breaks above or below _____.",
-      "back": "Swing levels (highs and lows)"
+      "front": "Why does TradesBySci prefer the 1H and 4H timeframes for finding Indications?",
+      "back": "Structure is stronger, signals are clearer, and there is greater potential to capture large moves with fewer false signals."
     },
     {
-      "front": "Which two timeframes are primarily recommended for identifying reliable swing levels?",
-      "back": "The $1$-hour and $4$-hour timeframes."
+      "front": "True or False: You should enter a trade immediately when an Indication occurs.",
+      "back": "False. You must wait for the Correction before entering to avoid being caught in a Liquidity Grab."
     },
     {
-      "front": "What are the three components of a trend's development following an indication?",
-      "back": "Indication, correction, and continuation."
+      "front": "What two questions should you ask yourself when a Swing level is broken?",
+      "back": "1) What is the trend direction? 2) Where is price headed?"
     },
     {
-      "front": "Why is an indication compared to a 'blueprint' for a trade?",
-      "back": "It helps identify where the entry and take-profit points should be located."
+      "front": "If price consistently makes higher Swing Highs and higher Swing Lows, what trend is in play?",
+      "back": "An Uptrend."
     },
     {
-      "front": "What two questions should a trader ask to determine the trend using swings?",
-      "back": "What is the trend currently and where is price headed?"
+      "front": "If price consistently makes lower Swing Highs and lower Swing Lows, what trend is in play?",
+      "back": "A Downtrend."
     },
     {
-      "front": "If swings are getting progressively higher, what market condition is likely starting?",
-      "back": "An uptrend."
+      "front": "What is the relationship between Swings and Market Structure?",
+      "back": "Swing Highs and Lows are the building blocks that define market structure — they tell you the trend direction and when a trend may be changing."
     },
     {
-      "front": "If swings are getting progressively lower, what market condition is occurring?",
-      "back": "A downtrend."
+      "front": "What does it mean when price 'respects' the Correction level?",
+      "back": "Price returns to retest the breakout level (now acting as support or resistance) and holds — confirming the Indication was real and the Continuation is next."
     },
     {
-      "front": "According to Day 2, what often happens immediately after price makes a new high or an indication?",
-      "back": "The market grabs liquidity to shake out traders."
-    },
-    {
-      "front": "What is the danger of trading based solely on the initial breakout or indication?",
-      "back": "Price can move in the opposite direction to 'liquidate' or wipe out breakout traders."
-    },
-    {
-      "front": "How does the source describe the 'Correction' phase?",
-      "back": "A movement where price pulls back to shake people out of the market after a new high is made."
-    },
-    {
-      "front": "In the momentum example, if price breaks above a level at $500$, it indicates potential to reach _____.",
-      "back": "$600$"
-    },
-    {
-      "front": "Why does Trades by Sci prefer trading on higher timeframes?",
-      "back": "Structure is stronger and there is potential to make more money from larger moves."
-    },
-    {
-      "front": "What is a 'fakeout' in market structure?",
-      "back": "When price breaks a level once but immediately returns to its original trend direction."
-    },
-    {
-      "front": "How does a trader avoid being caught in a fakeout during an indication?",
-      "back": "By waiting for the 'second time around' or the second push after a correction."
-    },
-    {
-      "front": "In an uptrend, price creates a _____ when it holds a level after a pullback.",
-      "back": "Support"
-    },
-    {
-      "front": "What is the sign that a trend is intended to reverse or is consolidating?",
-      "back": "Price breaks the established market structure (e.g., breaking an HL in an uptrend)."
-    },
-    {
-      "front": "Why is the indication considered the 'starting point' of a trend?",
-      "back": "It demonstrates momentum moving above or below a established swing level."
-    },
-    {
-      "front": "When price retests a previous swing high that now acts as a floor, it is respecting _____.",
-      "back": "Support"
-    },
-    {
-      "front": "According to the source, why should a trader look at indications as information rather than immediate entries?",
-      "back": "To avoid being caught in the liquidity grabs that follow breakouts."
-    },
-    {
-      "front": "Term: Liquidity Grab",
-      "back": "Definition: A sharp move in the opposite direction of a breakout designed to wipe out early traders."
-    },
-    {
-      "front": "What determines if a 'High' becomes a 'Lower High' (LH)?",
-      "back": "The new peak is at a lower price level than the peak immediately preceding it."
-    },
-    {
-      "front": "What determines if a 'Low' becomes a 'Higher Low' (HL)?",
-      "back": "The new valley is at a higher price level than the valley immediately preceding it."
-    },
-    {
-      "front": "True or False: A strong trend should consistently break its own rules and structure.",
-      "back": "False"
-    },
-    {
-      "front": "What specific asset has Trades by Sci traded for four years to make millions?",
-      "back": "NASDAQ"
-    },
-    {
-      "front": "How does Trades by Sci suggest managing a trade to maximize profits?",
-      "back": "By holding the trade for multiple days to capitalize on the whole trend instead of a small piece."
-    },
-    {
-      "front": "The process of price returning to 'retest' a level after an indication is part of the _____ stage.",
-      "back": "Correction"
-    },
-    {
-      "front": "Under what condition is price considered 'bullish'?",
-      "back": "When it is moving in an upward manner above swing highs."
-    },
-    {
-      "front": "Under what condition is price considered 'bearish'?",
-      "back": "When it is moving in a downward manner below swing lows."
-    },
-    {
-      "front": "If price breaks a support level once but fails to have a 'second push down' and returns above the level, it was likely a _____.",
-      "back": "Fakeout (or Liquidity Grab)"
-    },
-    {
-      "front": "Which timeframe does Trades by Sci personally find most useful for finding indications?",
-      "back": "The $1$-hour timeframe."
-    },
-    {
-      "front": "What is the 'ICC' method mentioned in the text?",
-      "back": "A three-step process used for entries, exits, and stop-losses."
-    },
-    {
-      "front": "In a downtrend, a new low that is lower than the previous low is called a _____.",
-      "back": "Lower Low (LL)"
-    },
-    {
-      "front": "Why is Wi-Fi listed as a fundamental requirement for trading?",
-      "back": "To access the broker, TradingView, and live market data."
-    },
-    {
-      "front": "According to Day 1, what should you do if you see price breaking the rules of an uptrend or downtrend?",
-      "back": "Get away from the market because it is likely consolidating or reversing."
-    },
-    {
-      "front": "What defines a 'Higher High' (HH)?",
-      "back": "A price peak that is higher than the previous price peak."
-    },
-    {
-      "front": "When identifying a trend, what serves as the evidence that the trend is following 'rules'?",
-      "back": "Price respecting the structure of higher highs/lows or lower highs/lows."
-    },
-    {
-      "front": "The 'starting point' of a trend where momentum is first shown is the _____.",
-      "back": "Indication"
-    },
-    {
-      "front": "What is the relationship between 'Swings' and 'Market Structure'?",
-      "back": "Swings (highs and lows) are the building blocks that define market structure."
-    },
-    {
-      "front": "According to Day 2, what should a trader wait for after an indication to find an entry?",
-      "back": "A correction."
-    },
-    {
-      "front": "What does a 'pivot' in price signify?",
-      "back": "The formation of a swing high or a swing low."
-    },
-    {
-      "front": "If price is trapped between a set high and a set low without breaking either, it is _____.",
-      "back": "Consolidating (or Ranging)"
-    },
-    {
-      "front": "What is the result of price breaking above a 'Swing High' level?",
-      "back": "A new swing high is created and bullish momentum is indicated."
-    },
-    {
-      "front": "Why is the $4$-hour timeframe sometimes used instead of the $1$-hour for indications?",
-      "back": "When the $1$-hour timeframe isn't clear enough."
-    },
-    {
-      "front": "In the sequence 'Indication -> Correction -> Continuation', which part provides the information for the Take Profit?",
-      "back": "The Indication"
-    },
-    {
-      "front": "What is the primary goal of the market when it creates 'subtle movements' against the breakout direction?",
-      "back": "To wipe out as much money as possible from traders entering on the breakout."
-    },
-    {
-      "front": "What is the relationship between 'Life Rules' and 'Trading Rules' according to Trades by Sci?",
-      "back": "Trading mirrors life; just as you avoid people who break rules, you avoid markets that break rules."
+      "front": "According to Day 2, what Phase should you enter a trade in?",
+      "back": "The Continuation phase — after waiting for the Indication to occur and the Correction to play out."
     }
   ]
 }
