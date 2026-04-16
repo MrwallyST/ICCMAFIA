@@ -186,8 +186,8 @@ def run_pipeline(
     tasks['info'] = extract_id(out)
 
     print("   -> Slide Deck")
-    slide_prompt = f"Lesson slides for Day {day_num}: {title_en}. IMPORTANT: Keep the deck SHORT — maximum 8 slides total. Cover only the essential concepts with bullet points, not paragraphs. One key idea per slide."
-    out = nlm(["generate", "slide-deck", slide_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    slide_prompt = f"Lesson slides for Day {day_num}: {title_en}. Cover only the essential concepts with bullet points. One key idea per slide."
+    out = nlm(["generate", "slide-deck", slide_prompt, "--length", "short", "--format", "presenter", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['slides'] = extract_id(out)
 
     print("   -> Data Table")
