@@ -120,6 +120,21 @@
     .filter-notice { display: flex; align-items: center; justify-content: space-between; background: rgba(124, 111, 205, 0.1); border: 1px solid var(--accent); color: var(--accent2); padding: 12px 20px; border-radius: 12px; margin-bottom: 20px; font-weight: 600; }
     .filter-notice button { background: var(--accent); color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; }
     .filter-notice button:hover { background: var(--accent2); }
+
+    /* Privacy Banner */
+    .privacy-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--green); padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+    .privacy-badge .dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse-green 2s infinite; }
+    @keyframes pulse-green { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    /* Privacy Modal */
+    .privacy-modal-overlay { position: fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(6px); z-index:2000; display:flex; align-items:center; justify-content:center; }
+    .privacy-modal-box { background: var(--surface2); border:1px solid var(--border); border-radius:20px; max-width:500px; width:90%; padding:36px; text-align:center; }
+    .privacy-modal-icon { font-size:48px; margin-bottom:16px; }
+    .privacy-modal-box h2 { font-family:'Outfit',sans-serif; font-size:24px; margin-bottom:12px; }
+    .privacy-modal-box p { color:var(--muted); font-size:14px; line-height:1.7; margin-bottom:10px; }
+    .privacy-modal-box .caveat { font-size:12px; color:var(--muted); opacity:0.7; margin-top:8px; }
+    .privacy-modal-box button { margin-top:20px; background:var(--green); color:#fff; border:none; padding:12px 32px; border-radius:10px; font-weight:700; font-size:16px; cursor:pointer; width:100%; transition:0.2s; }
+    .privacy-modal-box button:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(16,185,129,0.3); }
   </style>
 </head>
 <body>
@@ -138,6 +153,10 @@
 <div class="container">
   <div class="header">
     <h1>Trading Journal</h1>
+    <div class="privacy-badge">
+      <span class="dot"></span>
+      100% Local &amp; Private — Your data never leaves this device
+    </div>
   </div>
 
   <div class="stats-grid">
@@ -619,10 +638,34 @@
     reader.readAsText(file);
   }
 
+  // Privacy modal — show once per device
+  function showPrivacyModal() {
+    if(localStorage.getItem('tbs_privacy_seen')) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'privacy-modal-overlay';
+    overlay.innerHTML = `
+      <div class="privacy-modal-box">
+        <div class="privacy-modal-icon">🔒</div>
+        <h2>Your Journal is 100% Private</h2>
+        <p>Everything you log here is stored <strong>exclusively in your browser</strong> using HTML5 LocalStorage. Your trades, notes, and screenshots are <strong>never sent to any server, database, or third party</strong>.</p>
+        <p>No internet connection is required once this page loads. Not even we can see your data.</p>
+        <p class="caveat">⚠️ Important: Clearing your browser cache will delete your data. Use the "Export CSV" button regularly to back up your journal.</p>
+        <button onclick="dismissPrivacyModal(this)">Got it — Start Journaling 🚀</button>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  function dismissPrivacyModal(btn) {
+    localStorage.setItem('tbs_privacy_seen', '1');
+    btn.closest('.privacy-modal-overlay').remove();
+  }
+
   // Init
   loadTrades();
   renderDashboard();
   renderCalendar();
+  showPrivacyModal();
 
 </script>
 </body>
