@@ -14,6 +14,8 @@
   <meta name="twitter:card" content="summary" />
   <link rel="canonical" href="https://mrwallyst.github.io/ICCMAFIA/journal.html" />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- PapaParse — robust CSV parser -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -130,6 +132,32 @@
     .filter-notice button { background: var(--accent); color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; }
     .filter-notice button:hover { background: var(--accent2); }
 
+    /* Bulk Import Modal */
+    .import-overlay { position: fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(6px); z-index:2000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; }
+    .import-overlay.active { opacity:1; pointer-events:all; }
+    .import-box { background:var(--surface2); border:1px solid var(--border); border-radius:20px; max-width:560px; width:93%; padding:36px; }
+    .import-box h2 { font-family:'Outfit',sans-serif; font-size:22px; font-weight:700; margin-bottom:6px; }
+    .import-box .subtitle { color:var(--muted); font-size:13px; margin-bottom:24px; }
+    .drop-zone { border:2px dashed var(--border); border-radius:12px; padding:40px 20px; text-align:center; cursor:pointer; transition:.2s; background:var(--surface); }
+    .drop-zone:hover, .drop-zone.dragging { border-color:var(--accent2); background:rgba(167,139,250,.07); }
+    .drop-zone .dz-icon { font-size:40px; margin-bottom:12px; }
+    .drop-zone .dz-label { font-weight:600; font-size:15px; margin-bottom:4px; }
+    .drop-zone .dz-sub { color:var(--muted); font-size:13px; }
+    .import-results { margin-top:18px; display:none; }
+    .import-results.active { display:block; }
+    .result-row { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px; margin-bottom:8px; font-size:13px; }
+    .result-row.success { border-color:rgba(16,185,129,.3); color:var(--green); }
+    .result-row.warn { border-color:rgba(245,158,11,.3); color:#f59e0b; }
+    .import-actions { display:flex; gap:10px; margin-top:20px; }
+    .import-actions button { flex:1; padding:12px; border-radius:10px; font-weight:700; cursor:pointer; font-size:14px; border:none; transition:.2s; }
+    .btn-confirm-import { background:var(--green); color:#fff; }
+    .btn-confirm-import:hover { opacity:.9; transform:translateY(-1px); }
+    .btn-confirm-import:disabled { background:var(--surface3); color:var(--muted); cursor:not-allowed; transform:none; }
+    .btn-cancel-import { background:var(--surface3); color:var(--text); border:1px solid var(--border) !important; }
+    .schema-hint { margin-top:16px; background:var(--surface3); border-radius:8px; padding:12px; font-size:12px; color:var(--muted); }
+    .schema-hint strong { color:var(--accent2); display:block; margin-bottom:6px; }
+    code.col { background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:2px 6px; color:var(--text); font-family:monospace; margin:2px; display:inline-block; }
+
     /* Privacy Banner */
     .privacy-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--green); padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
     .privacy-badge .dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse-green 2s infinite; }
@@ -205,11 +233,11 @@
     <div class="trades-header">
       <h2>Trade Log</h2>
       <div style="display: flex; gap: 10px;">
-        <button class="add-trade-btn" style="background:var(--surface3); color:var(--text); border:1px solid var(--border);" onclick="triggerCSVImport()">↑ Import CSV</button>
-        <button class="add-trade-btn" style="background:var(--surface3); color:var(--text); border:1px solid var(--border);" onclick="exportCSV()">↓ Export CSV</button>
+        <button class="add-trade-btn" style="background:var(--surface3); color:var(--text); border:1px solid var(--border);" onclick="openImportModal()">&#11014; Bulk Import CSV</button>
+        <button class="add-trade-btn" style="background:var(--surface3); color:var(--text); border:1px solid var(--border);" onclick="exportCSV()">&#11015; Export CSV</button>
         <button class="add-trade-btn" onclick="openAddModal()">Log New Trade</button>
       </div>
-      <input type="file" id="csv-upload" accept=".csv" style="display:none;" onchange="handleCSVImport(event)">
+      <input type="file" id="csv-upload" accept=".csv" style="display:none;" onchange="handleFileChosen(event)">
     </div>
     <div style="overflow-x: auto;">
       <table>
@@ -309,6 +337,41 @@
 
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeViewModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bulk CSV Import Modal -->
+<div class="import-overlay" id="import-overlay" onclick="if(event.target===this)closeImportModal()">
+  <div class="import-box">
+    <h2>&#11014; Bulk CSV Import</h2>
+    <p class="subtitle">Drag &amp; drop your CSV file or click to browse. New trades will be appended to your existing journal.</p>
+
+    <div class="drop-zone" id="drop-zone"
+      onclick="document.getElementById('csv-upload').click()"
+      ondragover="handleDragOver(event)"
+      ondragleave="handleDragLeave(event)"
+      ondrop="handleDrop(event)">
+      <div class="dz-icon" id="dz-icon">📂</div>
+      <div class="dz-label" id="dz-label">Drop your CSV file here</div>
+      <div class="dz-sub" id="dz-sub">or click to browse &mdash; only .csv files accepted</div>
+    </div>
+
+    <div class="schema-hint">
+      <strong>Expected CSV column headers (in any order):</strong>
+      <code class="col">Date</code>
+      <code class="col">Pair/Ticker</code>
+      <code class="col">Direction</code>
+      <code class="col">Result / P&amp;L ($)</code>
+      <code class="col">Tags (Comma separated)</code>
+      <code class="col">Notes &amp; Analysis</code>
+    </div>
+
+    <div class="import-results" id="import-results"></div>
+
+    <div class="import-actions">
+      <button class="btn-cancel-import" onclick="closeImportModal()">Cancel</button>
+      <button class="btn-confirm-import" id="btn-confirm" disabled onclick="confirmImport()">Import Trades</button>
     </div>
   </div>
 </div>
@@ -602,49 +665,177 @@
     URL.revokeObjectURL(url);
   }
 
-  function triggerCSVImport() { document.getElementById('csv-upload').click(); }
+  // ─── Bulk CSV Import ─────────────────────────────────────────
+  let pendingImportTrades = [];
 
-  function handleCSVImport(event) {
-    const file = event.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const text = e.target.result;
-      const lines = text.split('\\n');
-      let imported = 0;
-      for(let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if(!line) continue;
-        
-        // Parse CSV respecting quoted fields
-        const match = line.match(/(?:\\"([^\\"]*(?:\\"\\"[^\\"]*)*)\\"|([^\\,]+))/g);
-        if(!match || match.length < 4) continue;
-        
-        const clean = match.map(m => m.startsWith('"') ? m.slice(1, -1).replace(/""/g, '"') : m);
-        
-        const date = clean[0];
-        const pair = clean[1];
-        const dir = clean[2];
-        const pnl = parseFloat(clean[3]);
-        const tags = clean[4] || '';
-        const notes = clean[5] || '';
-        
-        if(date && pair && !isNaN(pnl)) {
-          trades.push({ id: generateId(), date, pair, direction: dir, pnl, tags, notes });
-          imported++;
+  function openImportModal() {
+    pendingImportTrades = [];
+    document.getElementById('import-results').innerHTML = '';
+    document.getElementById('import-results').classList.remove('active');
+    document.getElementById('btn-confirm').disabled = true;
+    document.getElementById('dz-icon').textContent = '📂';
+    document.getElementById('dz-label').textContent = 'Drop your CSV file here';
+    document.getElementById('dz-sub').textContent = 'or click to browse — only .csv files accepted';
+    document.getElementById('import-overlay').classList.add('active');
+  }
+
+  function closeImportModal() {
+    document.getElementById('import-overlay').classList.remove('active');
+    document.getElementById('csv-upload').value = '';
+  }
+
+  // Drag-and-drop events
+  function handleDragOver(e) {
+    e.preventDefault();
+    document.getElementById('drop-zone').classList.add('dragging');
+  }
+  function handleDragLeave(e) {
+    document.getElementById('drop-zone').classList.remove('dragging');
+  }
+  function handleDrop(e) {
+    e.preventDefault();
+    document.getElementById('drop-zone').classList.remove('dragging');
+    const file = e.dataTransfer.files[0];
+    if(file) processCSVFile(file);
+  }
+  function handleFileChosen(e) {
+    const file = e.target.files[0];
+    if(file) processCSVFile(file);
+  }
+
+  // Column name aliases — maps any header variation to our schema key
+  const HEADER_MAP = {
+    'date': 'date',
+    'pair': 'pair',
+    'pair/ticker': 'pair',
+    'ticker': 'pair',
+    'symbol': 'pair',
+    'direction': 'direction',
+    'side': 'direction',
+    'type': 'direction',
+    'result / p&l ($)': 'pnl',
+    'result/p&l ($)': 'pnl',
+    'result / pnl': 'pnl',
+    'p&l': 'pnl',
+    'pnl': 'pnl',
+    'profit/loss': 'pnl',
+    'profit & loss': 'pnl',
+    'result ($)': 'pnl',
+    'tags (comma separated)': 'tags',
+    'tags': 'tags',
+    'notes & analysis': 'notes',
+    'notes': 'notes',
+    'analysis': 'notes',
+    'notes & analysis': 'notes'
+  };
+
+  function processCSVFile(file) {
+    if(!file.name.endsWith('.csv')) {
+      showImportResult('error', '❌ Invalid file type. Please upload a .csv file.');
+      return;
+    }
+
+    document.getElementById('dz-icon').textContent = '⏳';
+    document.getElementById('dz-label').textContent = `Processing: ${file.name}`;
+    document.getElementById('dz-sub').textContent = 'Parsing with PapaParse...';
+
+    Papa.parse(file, {
+      header: true,
+      skipEmptyLines: true,
+      transformHeader: h => h.trim().toLowerCase(),
+      complete: function(results) {
+        const raw = results.data;
+        pendingImportTrades = [];
+        let skipped = 0;
+        const warnings = [];
+
+        raw.forEach((row, idx) => {
+          // Map all columns to our schema using the alias map
+          const mapped = {};
+          Object.keys(row).forEach(col => {
+            const key = HEADER_MAP[col.trim().toLowerCase()];
+            if(key) mapped[key] = (row[col] || '').trim();
+          });
+
+          const rowNum = idx + 2; // +2 for 1-indexed + header row
+
+          // Validate required fields
+          if(!mapped.date) {
+            warnings.push(`Row ${rowNum}: Skipped — missing Date.`);
+            skipped++; return;
+          }
+          const pnlRaw = (mapped.pnl || '').replace(/[$,\s]/g, '');
+          const pnl = parseFloat(pnlRaw);
+          if(isNaN(pnl)) {
+            warnings.push(`Row ${rowNum}: Skipped — missing or invalid P&L ("${mapped.pnl || ''}").`);
+            skipped++; return;
+          }
+
+          // Normalize direction
+          let direction = (mapped.direction || 'Long');
+          if(direction.toLowerCase().includes('short')) direction = 'Short';
+          else direction = 'Long';
+
+          pendingImportTrades.push({
+            id: generateId(),
+            date: mapped.date,
+            pair: (mapped.pair || 'UNKNOWN').toUpperCase(),
+            direction,
+            pnl,
+            tags: mapped.tags || '',
+            notes: mapped.notes || ''
+          });
+        });
+
+        // Build results UI
+        const resEl = document.getElementById('import-results');
+        resEl.innerHTML = '';
+        resEl.classList.add('active');
+
+        if(pendingImportTrades.length > 0) {
+          resEl.insertAdjacentHTML('beforeend', `
+            <div class="result-row success">
+              ✅ <strong>${pendingImportTrades.length} trades ready to import</strong>
+              &nbsp;— Total Net P&L: ${pendingImportTrades.reduce((s,t)=>s+t.pnl,0) >= 0 ? '+' : ''}$${pendingImportTrades.reduce((s,t)=>s+t.pnl,0).toFixed(2)}
+            </div>`);
         }
+        if(warnings.length > 0) {
+          warnings.forEach(w => {
+            resEl.insertAdjacentHTML('beforeend', `<div class="result-row warn">⚠️ ${w}</div>`);
+          });
+        }
+        if(pendingImportTrades.length === 0) {
+          resEl.insertAdjacentHTML('beforeend', `<div class="result-row warn">❌ No valid trades found. Check that your headers match the expected format.</div>`);
+        }
+
+        document.getElementById('dz-icon').textContent = pendingImportTrades.length > 0 ? '✅' : '❌';
+        document.getElementById('dz-label').textContent = `${file.name}`;
+        document.getElementById('dz-sub').textContent = `${pendingImportTrades.length} valid rows found, ${skipped} skipped`;
+        document.getElementById('btn-confirm').disabled = pendingImportTrades.length === 0;
+      },
+      error: function(err) {
+        document.getElementById('dz-icon').textContent = '❌';
+        document.getElementById('dz-label').textContent = 'Parse Error';
+        document.getElementById('dz-sub').textContent = err.message;
       }
-      if(imported > 0) {
-        saveToStorage();
-        renderDashboard();
-        renderCalendar();
-        alert(`Successfully imported ${imported} trades!`);
-      } else {
-        alert("No valid trades found in CSV.");
-      }
-      event.target.value = ''; // reset
-    };
-    reader.readAsText(file);
+    });
+  }
+
+  function confirmImport() {
+    if(pendingImportTrades.length === 0) return;
+    const count = pendingImportTrades.length;
+    trades.push(...pendingImportTrades);
+    saveToStorage();
+    renderDashboard();
+    renderCalendar();
+    closeImportModal();
+    // Brief success toast
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#10b981;color:#fff;padding:14px 22px;border-radius:12px;font-weight:700;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.4);';
+    toast.textContent = `✅ ${count} trades imported successfully!`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3500);
+    pendingImportTrades = [];
   }
 
   // Privacy modal — show once per device
