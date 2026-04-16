@@ -202,7 +202,7 @@ def run_pipeline(
     print("   -> YouTube Script")
     yt_prompt = (
         "Write an engaging, cinematic YouTube video script (video overview) covering these concepts. "
-        "INTRO: The host MUST open by saying: 'Welcome to ICCMAFIA-AI, summarizing the Tradesbysci ICC course! We will be doing all of the course videos...' "
+        f"INTRO: The host MUST open by saying: 'Welcome to ICCMAFIA-AI, today we are summarizing Day {day_num} of the TradesbySci ICC course! We will be doing all of the course videos...' "
         "CORE: Break down all key trading concepts from the lesson clearly like teaching a complete beginner. "
         "BONUS: WEBSITE CTA: The script MUST enthusiastically instruct viewers to click the link in the description (mrwallyst.github.io/ICCMAFIA) to access their free Interactive Study Guide, Quiz, Mind Map, Flashcards, and Audio Podcast. "
         "OUTRO: End with a strong, cinematic Call to Action reminding viewers to like, comment, and subscribe to ICCMAFIA-AI. "
@@ -212,7 +212,7 @@ def run_pipeline(
     tasks['ytscript'] = extract_id(out)
 
     print("   -> Twitter Thread")
-    thread_prompt = "Write a viral 10-post Thread (optimized for X/Instagram Threads) summarizing the key concepts. CRITICAL: Each individual post MUST be strictly under 400 characters so I can easily copy and paste them. Number each post (1/10, 2/10, etc.), include a punchy BOLD topic header for each post (e.g. 1/10 🚨 **TRADING VS. GAMBLING**), and include a strong hook in the first post."
+    thread_prompt = f"Write a viral 10-post Thread (optimized for X/Instagram Threads) summarizing Day {day_num} concepts. CRITICAL: Each individual post MUST be strictly under 400 characters so I can easily copy and paste them. Number each post (1/10, 2/10, etc.), include a punchy BOLD topic header for each post (e.g. 1/10 🚨 **TRADING VS. GAMBLING**), and make sure the first post explicitly states 'Day {day_num} of the TradesbySci ICC Course'."
     out = nlm(["generate", "report", "--format", "custom", "--append", thread_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['twitter'] = extract_id(out)
 
