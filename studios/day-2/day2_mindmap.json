@@ -1,0 +1,130 @@
+{
+  "name": "Day 1 Trading Course: Market Fundamentals",
+  "children": [
+    {
+      "name": "Trading Mindset",
+      "children": [
+        {
+          "name": "Skill-based not gambling"
+        },
+        {
+          "name": "Strategic logic and analysis"
+        },
+        {
+          "name": "Repeatable patterns"
+        }
+      ]
+    },
+    {
+      "name": "Market Conditions",
+      "children": [
+        {
+          "name": "Uptrend",
+          "children": [
+            {
+              "name": "Higher Highs (HH)"
+            },
+            {
+              "name": "Higher Lows (HL)"
+            },
+            {
+              "name": "Bullish momentum"
+            }
+          ]
+        },
+        {
+          "name": "Downtrend",
+          "children": [
+            {
+              "name": "Lower Highs (LH)"
+            },
+            {
+              "name": "Lower Lows (LL)"
+            },
+            {
+              "name": "Staircase down"
+            }
+          ]
+        },
+        {
+          "name": "Consolidation",
+          "children": [
+            {
+              "name": "Sideways/Choppy mess"
+            },
+            {
+              "name": "Breaks rules/No predictability"
+            },
+            {
+              "name": "Avoid trading this"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Core Concepts",
+      "children": [
+        {
+          "name": "Price Action",
+          "children": [
+            {
+              "name": "Candlesticks"
+            },
+            {
+              "name": "Timeframes (1H, 4H)"
+            },
+            {
+              "name": "Support and Resistance"
+            }
+          ]
+        },
+        {
+          "name": "Indication",
+          "children": [
+            {
+              "name": "Breaking swing highs/lows"
+            },
+            {
+              "name": "Starting point of a trend"
+            },
+            {
+              "name": "Information for entry/exit"
+            }
+          ]
+        },
+        {
+          "name": "Market Structure",
+          "children": [
+            {
+              "name": "Swing points"
+            },
+            {
+              "name": "Liquidity grabs/Fakeouts"
+            },
+            {
+              "name": "Corrections and continuations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tools and Requirements",
+      "children": [
+        {
+          "name": "Trading View (Charting)"
+        },
+        {
+          "name": "Forex Broker"
+        },
+        {
+          "name": "Crypto Broker (Deposit/Withdraw)"
+        },
+        {
+          "name": "Stable Wi-Fi"
+        }
+      ]
+    }
+  ]
+}
