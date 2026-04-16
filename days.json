@@ -2,13 +2,14 @@
   {
     "day": 1,
     "title": "The Foundation - ICC Framework Decoded Part 1",
-    "description": "AI-decoded Trades by Sci lesson. Learn the foundation of price action, the 3 market trends, and the ICC Framework.",
+    "description": "AI-decoded Trades by Sci lesson.",
     "youtubeId": "DpY628SfdgM",
     "reelUrl": "",
+    "audioUrl": "./studios/day-1/day1_en.mp3",
     "infographicUrl": "./studios/day-1/day1_infographic.png",
     "quizFile": "./studios/day-1/day1_quiz.md",
     "studyGuideUrl": "./studios/day-1/day1_study.md",
-    "flashcardsUrl": "./studios/day-1/day1_flashcards.md",
+    "flashcardsUrl": "",
     "mindMapUrl": "./studios/day-1/day1_mindmap.json",
     "slideDeckUrl": "./studios/day-1/day1_slides.pdf",
     "dataTableUrl": "./studios/day-1/day1_datatable.md",
@@ -24,7 +25,6 @@
       "The 3 market phases every futures trader must know",
       "Real trade setups from the Trades by Sci curriculum"
     ],
-    "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae",
-    "audioUrl": "./studios/day-1/day1_en.mp3"
+    "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
   }
 ]

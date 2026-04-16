@@ -1,45 +1,22 @@
 {
-  "name": "Trading Course Day 1: Trends",
+  "name": "Market Fundamentals (Day 1)",
   "children": [
     {
-      "name": "Trading Basics",
+      "name": "Mindset Shift",
       "children": [
         {
-          "name": "Definition: Buying/selling at specific price levels"
+          "name": "Trading as a Skill"
         },
         {
-          "name": "Profit: Price moves above buy point or below sell point"
+          "name": "Strategy and Logic"
         },
         {
-          "name": "Candlesticks: Price fluctuations on charts"
-        },
-        {
-          "name": "Time Frames: Affect movement speed (fast or slow)"
-        },
-        {
-          "name": "Analysis vs. Gambling: Logical reasons for price movement"
+          "name": "Not a Casino/Lottery"
         }
       ]
     },
     {
-      "name": "Required Tools",
-      "children": [
-        {
-          "name": "Forex Broker"
-        },
-        {
-          "name": "Trading View: For charting and analysis"
-        },
-        {
-          "name": "Crypto Brokerage: For deposits and withdrawals"
-        },
-        {
-          "name": "Stable Internet/Wi-Fi"
-        }
-      ]
-    },
-    {
-      "name": "The Three Market States",
+      "name": "The Three Market Conditions",
       "children": [
         {
           "name": "Uptrend",
@@ -51,7 +28,7 @@
               "name": "Higher Lows (HL)"
             },
             {
-              "name": "Structure: Price breaks previous highs"
+              "name": "Staircase Going Up"
             }
           ]
         },
@@ -65,7 +42,7 @@
               "name": "Lower Lows (LL)"
             },
             {
-              "name": "Structure: Price breaks previous lows"
+              "name": "Staircase Going Down"
             }
           ]
         },
@@ -73,32 +50,65 @@
           "name": "Consolidation",
           "children": [
             {
-              "name": "Sideways movement"
+              "name": "Sideways/Choppy Mess"
             },
             {
-              "name": "Rule-breaking price action"
+              "name": "Breaks Rules/Structure"
             },
             {
-              "name": "Action: Do not trade"
+              "name": "Avoid/Stay Away"
             }
           ]
         }
       ]
     },
     {
-      "name": "Fundamental Rules",
+      "name": "Trading Basics",
       "children": [
         {
-          "name": "Structure: Price follows established rules"
+          "name": "Mechanics",
+          "children": [
+            {
+              "name": "Buy/Long"
+            },
+            {
+              "name": "Sell/Short"
+            },
+            {
+              "name": "Candlesticks"
+            }
+          ]
         },
         {
-          "name": "Patience: Stay away when rules are broken"
+          "name": "Tools Needed",
+          "children": [
+            {
+              "name": "Forex Broker"
+            },
+            {
+              "name": "TradingView"
+            },
+            {
+              "name": "Crypto Brokerage"
+            },
+            {
+              "name": "Wi-Fi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Core Principles",
+      "children": [
+        {
+          "name": "Predictability via Patterns"
         },
         {
-          "name": "Higher Time Frames: Provide stronger signals"
+          "name": "Protecting Capital and Sanity"
         },
         {
-          "name": "ICC Process: Entry, exit, and stop-loss"
+          "name": "Time Frames Influence Speed"
         }
       ]
     }
