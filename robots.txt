@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mrwallyst.github.io/ICCMAFIA/sitemap.xml
