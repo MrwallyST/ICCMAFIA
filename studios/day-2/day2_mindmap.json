@@ -1,129 +1,64 @@
 {
-  "name": "Day 1 Trading Course: Market Fundamentals",
+  "name": "Trading: Indication",
   "children": [
     {
-      "name": "Trading Mindset",
+      "name": "Definition",
       "children": [
-        {
-          "name": "Skill-based not gambling"
-        },
-        {
-          "name": "Strategic logic and analysis"
-        },
-        {
-          "name": "Repeatable patterns"
-        }
+        { "name": "Price breaks above/below swings" },
+        { "name": "Starting point of a trend" },
+        { "name": "Momentum signal" }
       ]
     },
     {
-      "name": "Market Conditions",
+      "name": "Swing Levels",
+      "children": [
+        { "name": "Swing Highs" },
+        { "name": "Swing Lows" },
+        { "name": "Time Frames: 1H and 4H" }
+      ]
+    },
+    {
+      "name": "Trend Identification",
       "children": [
         {
           "name": "Uptrend",
           "children": [
-            {
-              "name": "Higher Highs (HH)"
-            },
-            {
-              "name": "Higher Lows (HL)"
-            },
-            {
-              "name": "Bullish momentum"
-            }
+            { "name": "Swings getting higher" },
+            { "name": "New swing highs" }
           ]
         },
         {
           "name": "Downtrend",
           "children": [
-            {
-              "name": "Lower Highs (LH)"
-            },
-            {
-              "name": "Lower Lows (LL)"
-            },
-            {
-              "name": "Staircase down"
-            }
-          ]
-        },
-        {
-          "name": "Consolidation",
-          "children": [
-            {
-              "name": "Sideways/Choppy mess"
-            },
-            {
-              "name": "Breaks rules/No predictability"
-            },
-            {
-              "name": "Avoid trading this"
-            }
+            { "name": "Swings getting lower" },
+            { "name": "New swing lows" }
           ]
         }
       ]
     },
     {
-      "name": "Core Concepts",
+      "name": "Market Phases",
       "children": [
-        {
-          "name": "Price Action",
-          "children": [
-            {
-              "name": "Candlesticks"
-            },
-            {
-              "name": "Timeframes (1H, 4H)"
-            },
-            {
-              "name": "Support and Resistance"
-            }
-          ]
-        },
-        {
-          "name": "Indication",
-          "children": [
-            {
-              "name": "Breaking swing highs/lows"
-            },
-            {
-              "name": "Starting point of a trend"
-            },
-            {
-              "name": "Information for entry/exit"
-            }
-          ]
-        },
-        {
-          "name": "Market Structure",
-          "children": [
-            {
-              "name": "Swing points"
-            },
-            {
-              "name": "Liquidity grabs/Fakeouts"
-            },
-            {
-              "name": "Corrections and continuations"
-            }
-          ]
-        }
+        { "name": "Indication (Breakout)" },
+        { "name": "Correction (Pullback)" },
+        { "name": "Continuation (Entry point)" }
       ]
     },
     {
-      "name": "Tools and Requirements",
+      "name": "Trading Strategy Tips",
       "children": [
-        {
-          "name": "Trading View (Charting)"
-        },
-        {
-          "name": "Forex Broker"
-        },
-        {
-          "name": "Crypto Broker (Deposit/Withdraw)"
-        },
-        {
-          "name": "Stable Wi-Fi"
-        }
+        { "name": "Avoid trading the indication itself" },
+        { "name": "Watch for liquidity grabs/fakeouts" },
+        { "name": "Wait for market structure switch" },
+        { "name": "Use as a blueprint for entry/exit" }
+      ]
+    },
+    {
+      "name": "Volume and Momentum",
+      "children": [
+        { "name": "Higher time frame alignment" },
+        { "name": "In-session volume" },
+        { "name": "Price points/momentum levels" }
       ]
     }
   ]

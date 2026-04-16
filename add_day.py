@@ -125,17 +125,26 @@ def run_pipeline(
     day_dir.mkdir(parents=True, exist_ok=True)
     youtube_id = youtube_url.split("v=")[-1].split("&")[0] if "v=" in youtube_url else ""
 
-    # 1. Active context
-    step(1, TOTAL, "Setting master notebook as active context...")
-    out = nlm(["use", MASTER_NOTEBOOK])
+    # 1. Create ISOLATED Notebook for this Day
+    step(1, TOTAL, f"Creating isolated Notebook for Day {day_num}...")
+    nb_out = nlm(["create", f"TradesBySci Day {day_num}"])
+    # Extract Notebook ID
+    m = re.search(r"Created notebook:\s*([a-f0-9-]+)", nb_out)
+    notebook_id = m.group(1) if m else None
+    if not notebook_id:
+        print(f"Failed to create notebook. Output: {nb_out}")
+        sys.exit(1)
+        
+    print(f"   -> Isolated Notebook ID: {notebook_id}")
+    nlm(["use", notebook_id])
     
-    # 2. Add source
+    # 2. Add source to the isolated notebook
     step(2, TOTAL, f"Adding Day {day_num} YouTube video as source...")
-    out = nlm(["source", "add", youtube_url, "-n", MASTER_NOTEBOOK], timeout=60)
-    print("   Source requested. Waiting 15s for indexing...")
-    time.sleep(15)
+    out = nlm(["source", "add", youtube_url, "-n", notebook_id], timeout=60)
+    print("   Source requested. Waiting 20s for indexing...")
+    time.sleep(20)
 
-    # 3. Fire parallel generations
+    # 3. Fire parallel generations using the isolated notebook
     step(3, TOTAL, f"Requesting full learning suite for Day {day_num}...")
     
     tasks = {}
@@ -152,26 +161,26 @@ def run_pipeline(
         "OUTRO: End with a strong, cinematic Call to Action reminding listeners to like, comment, and subscribe to the ICCMAFIA-AI channel. "
         "CREDIT: Give explicit credit to Trades by Sci as the original course creator."
     )
-    out = nlm(["generate", "audio", audio_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "audio", audio_prompt, "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['audio'] = extract_id(out)
 
     print("   -> Study Guide")
     study_prompt = f"Focus on Day {day_num}: {title_en}. Keep it concise — max 2 pages of content. Only cover the most critical concepts, no filler."
-    out = nlm(["generate", "report", study_prompt, "--format", "study-guide", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "report", study_prompt, "--format", "study-guide", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['study'] = extract_id(out)
 
     print("   -> Flashcards")
-    out = nlm(["generate", "flashcards", f"Focus on Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "flashcards", f"Focus on Day {day_num}: {title_en}", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['flash'] = extract_id(out)
 
     print("   -> Mind Map")
-    out = nlm(["generate", "mind-map", "-n", MASTER_NOTEBOOK], timeout=120)
+    out = nlm(["generate", "mind-map", "-n", notebook_id], timeout=120)
     # Mind map returns note ID directly, not an artifact ID
     mind_note_id = extract_id(out)
     tasks['mind'] = mind_note_id
 
     print("   -> Quiz")
-    out = nlm(["generate", "quiz", f"8 questions specifically about Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "quiz", f"8 questions specifically about Day {day_num}: {title_en}", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['quiz'] = extract_id(out)
 
     print("   -> Infographic")
@@ -182,21 +191,21 @@ def run_pipeline(
         "CREDIT: Explicitly give credit to 'Trades by Sci' on the image. "
         "WEBSITE: Include the URL mrwallyst.github.io/ICCMAFIA somewhere on the infographic."
     )
-    out = nlm(["generate", "infographic", info_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "infographic", info_prompt, "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['info'] = extract_id(out)
 
     print("   -> Slide Deck")
     slide_prompt = f"Lesson slides for Day {day_num}: {title_en}. Cover only the essential concepts with bullet points. One key idea per slide."
-    out = nlm(["generate", "slide-deck", slide_prompt, "--length", "short", "--format", "presenter", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "slide-deck", slide_prompt, "--length", "short", "--format", "presenter", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['slides'] = extract_id(out)
 
     print("   -> Data Table")
-    out = nlm(["generate", "data-table", f"Organize key concepts, definitions, and examples from Day {day_num}: {title_en} into a structured reference table.", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "data-table", f"Organize key concepts, definitions, and examples from Day {day_num}: {title_en} into a structured reference table.", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['table'] = extract_id(out)
 
     print("   -> Blog Post")
     blog_prompt = f"Write a concise, SEO-optimized blog post for Day {day_num}: {title_en}. Keep it under 800 words. Focus on actionable takeaways, not fluff. Credit Trades by Sci. End with a CTA to visit mrwallyst.github.io/ICCMAFIA for free study materials."
-    out = nlm(["generate", "report", "--format", "blog-post", blog_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "report", "--format", "blog-post", blog_prompt, "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['blog'] = extract_id(out)
 
     print("   -> YouTube Script")
@@ -208,27 +217,27 @@ def run_pipeline(
         "OUTRO: End with a strong, cinematic Call to Action reminding viewers to like, comment, and subscribe to ICCMAFIA-AI. "
         "CREDIT: Give explicit credit to TradesbySci as the original course creator."
     )
-    out = nlm(["generate", "report", "--format", "custom", "--append", yt_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "report", "--format", "custom", "--append", yt_prompt, f"Day {day_num}: {title_en}", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['ytscript'] = extract_id(out)
 
     print("   -> Twitter Thread")
     thread_prompt = f"Write a viral 10-post Thread (optimized for X/Instagram Threads) summarizing Day {day_num} concepts. CRITICAL: Each individual post MUST be strictly under 400 characters so I can easily copy and paste them. Number each post (1/10, 2/10, etc.), include a punchy BOLD topic header for each post (e.g. 1/10 🚨 **TRADING VS. GAMBLING**), and make sure the first post explicitly states 'Day {day_num} of the TradesbySci ICC Course'."
-    out = nlm(["generate", "report", "--format", "custom", "--append", thread_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "report", "--format", "custom", "--append", thread_prompt, f"Day {day_num}: {title_en}", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['twitter'] = extract_id(out)
 
     print("   -> Newsletter")
     news_prompt = "Write a short, punchy email newsletter summarizing this lesson in under 400 words. Include a subject line, 3 key bullet points, and a CTA linking to mrwallyst.github.io/ICCMAFIA for free resources."
-    out = nlm(["generate", "report", "--format", "custom", "--append", news_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "report", "--format", "custom", "--append", news_prompt, f"Day {day_num}: {title_en}", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['newsletter'] = extract_id(out)
 
     print("   -> LinkedIn Carousel")
     li_prompt = "Write the text copy for a 5-slide LinkedIn carousel post. Each slide must be under 150 words. Slide 1 = hook, Slides 2-4 = key concepts, Slide 5 = CTA to mrwallyst.github.io/ICCMAFIA. Credit Trades by Sci."
-    out = nlm(["generate", "report", "--format", "custom", "--append", li_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "report", "--format", "custom", "--append", li_prompt, f"Day {day_num}: {title_en}", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['linkedin'] = extract_id(out)
 
     print("   -> FAQ Document")
     faq_prompt = "Write a Frequently Asked Questions (FAQ) document with exactly 8 Q&A pairs answering the most common beginner queries about this lesson. Keep answers under 3 sentences each."
-    out = nlm(["generate", "report", "--format", "custom", "--append", faq_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "report", "--format", "custom", "--append", faq_prompt, f"Day {day_num}: {title_en}", "-n", notebook_id, "--no-wait"], timeout=60)
     tasks['faq'] = extract_id(out)
 
     # Clean None values in case of failure
@@ -270,9 +279,9 @@ def run_pipeline(
         nlm(["download", "flashcards", str(paths['flash']), "-a", active_tasks['flash'], "--force"])
     if 'mind' in active_tasks:
         print(f"   - Mind Map -> {paths['mind'].name}")
-        nlm(["note", "get", active_tasks['mind'], "-n", MASTER_NOTEBOOK], timeout=60)
+        nlm(["note", "get", active_tasks['mind'], "-n", notebook_id], timeout=60)
         # mind-map is done synchronously, save it via note get
-        mm_out = nlm(["note", "get", active_tasks['mind'], "-n", MASTER_NOTEBOOK], timeout=60)
+        mm_out = nlm(["note", "get", active_tasks['mind'], "-n", notebook_id], timeout=60)
         with open(paths['mind'], 'w', encoding='utf-8') as f:
             f.write(mm_out)
         # Clean the JSON: strip metadata prefix
@@ -338,7 +347,7 @@ def run_pipeline(
         "linkedinUrl":       f"./studios/day-{day_num}/{paths['linkedin'].name}" if paths['linkedin'].exists() else "",
         "faqUrl":            f"./studios/day-{day_num}/{paths['faq'].name}" if paths['faq'].exists() else "",
         "keyTakeaways":   takeaways_en,
-        "notebookId":     MASTER_NOTEBOOK
+        "notebookId":     notebook_id
     }
 
     days.append(new_day)
