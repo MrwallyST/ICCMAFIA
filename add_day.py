@@ -156,7 +156,8 @@ def run_pipeline(
     tasks['audio'] = extract_id(out)
 
     print("   -> Study Guide")
-    out = nlm(["generate", "report", f"Focus on Day {day_num}: {title_en}", "--format", "study-guide", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    study_prompt = f"Focus on Day {day_num}: {title_en}. Keep it concise — max 2 pages of content. Only cover the most critical concepts, no filler."
+    out = nlm(["generate", "report", study_prompt, "--format", "study-guide", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['study'] = extract_id(out)
 
     print("   -> Flashcards")
@@ -185,7 +186,8 @@ def run_pipeline(
     tasks['info'] = extract_id(out)
 
     print("   -> Slide Deck")
-    out = nlm(["generate", "slide-deck", f"Lesson slides for Day {day_num}: {title_en}. Cover all key concepts as a structured presentation.", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    slide_prompt = f"Lesson slides for Day {day_num}: {title_en}. IMPORTANT: Keep the deck SHORT — maximum 8 slides total. Cover only the essential concepts with bullet points, not paragraphs. One key idea per slide."
+    out = nlm(["generate", "slide-deck", slide_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['slides'] = extract_id(out)
 
     print("   -> Data Table")
@@ -193,7 +195,8 @@ def run_pipeline(
     tasks['table'] = extract_id(out)
 
     print("   -> Blog Post")
-    out = nlm(["generate", "report", "--format", "blog-post", f"Write a comprehensive blog post for Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    blog_prompt = f"Write a concise, SEO-optimized blog post for Day {day_num}: {title_en}. Keep it under 800 words. Focus on actionable takeaways, not fluff. Credit Trades by Sci. End with a CTA to visit mrwallyst.github.io/ICCMAFIA for free study materials."
+    out = nlm(["generate", "report", "--format", "blog-post", blog_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['blog'] = extract_id(out)
 
     print("   -> YouTube Script")
@@ -215,15 +218,18 @@ def run_pipeline(
     tasks['twitter'] = extract_id(out)
 
     print("   -> Newsletter")
-    out = nlm(["generate", "report", "--format", "custom", "--append", "Write an engaging email newsletter summarizing this lesson.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    news_prompt = "Write a short, punchy email newsletter summarizing this lesson in under 400 words. Include a subject line, 3 key bullet points, and a CTA linking to mrwallyst.github.io/ICCMAFIA for free resources."
+    out = nlm(["generate", "report", "--format", "custom", "--append", news_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['newsletter'] = extract_id(out)
 
     print("   -> LinkedIn Carousel")
-    out = nlm(["generate", "report", "--format", "custom", "--append", "Write the text copy for a 5-slide LinkedIn carousel post.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    li_prompt = "Write the text copy for a 5-slide LinkedIn carousel post. Each slide must be under 150 words. Slide 1 = hook, Slides 2-4 = key concepts, Slide 5 = CTA to mrwallyst.github.io/ICCMAFIA. Credit Trades by Sci."
+    out = nlm(["generate", "report", "--format", "custom", "--append", li_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['linkedin'] = extract_id(out)
 
     print("   -> FAQ Document")
-    out = nlm(["generate", "report", "--format", "custom", "--append", "Write a Frequently Asked Questions (FAQ) document answering common beginner queries.", f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    faq_prompt = "Write a Frequently Asked Questions (FAQ) document with exactly 8 Q&A pairs answering the most common beginner queries about this lesson. Keep answers under 3 sentences each."
+    out = nlm(["generate", "report", "--format", "custom", "--append", faq_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['faq'] = extract_id(out)
 
     # Clean None values in case of failure
