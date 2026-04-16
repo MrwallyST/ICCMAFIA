@@ -176,7 +176,12 @@
   <div class="trades-section">
     <div class="trades-header">
       <h2>Trade Log</h2>
-      <button class="add-trade-btn" onclick="openAddModal()">Log New Trade</button>
+      <div style="display: flex; gap: 10px;">
+        <button class="add-trade-btn" style="background:var(--surface3); color:var(--text); border:1px solid var(--border);" onclick="triggerCSVImport()">↑ Import CSV</button>
+        <button class="add-trade-btn" style="background:var(--surface3); color:var(--text); border:1px solid var(--border);" onclick="exportCSV()">↓ Export CSV</button>
+        <button class="add-trade-btn" onclick="openAddModal()">Log New Trade</button>
+      </div>
+      <input type="file" id="csv-upload" accept=".csv" style="display:none;" onchange="handleCSVImport(event)">
     </div>
     <div style="overflow-x: auto;">
       <table>
@@ -548,6 +553,70 @@
     }
     
     document.getElementById('view-modal').classList.add('active');
+  }
+
+  function exportCSV() {
+    if(trades.length === 0) return alert("No trades to export!");
+    let csv = "Date,Pair,Direction,P&L,Tags,Notes\\n";
+    trades.forEach(t => {
+      const row = [
+        t.date, t.pair, t.direction, t.pnl,
+        `"${(t.tags || '').replace(/"/g, '""')}"`,
+        `"${(t.notes || '').replace(/"/g, '""')}"`
+      ];
+      csv += row.join(",") + "\\n";
+    });
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `tradesbysci_journal_${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function triggerCSVImport() { document.getElementById('csv-upload').click(); }
+
+  function handleCSVImport(event) {
+    const file = event.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const text = e.target.result;
+      const lines = text.split('\\n');
+      let imported = 0;
+      for(let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if(!line) continue;
+        
+        // Parse CSV respecting quoted fields
+        const match = line.match(/(?:\\"([^\\"]*(?:\\"\\"[^\\"]*)*)\\"|([^\\,]+))/g);
+        if(!match || match.length < 4) continue;
+        
+        const clean = match.map(m => m.startsWith('"') ? m.slice(1, -1).replace(/""/g, '"') : m);
+        
+        const date = clean[0];
+        const pair = clean[1];
+        const dir = clean[2];
+        const pnl = parseFloat(clean[3]);
+        const tags = clean[4] || '';
+        const notes = clean[5] || '';
+        
+        if(date && pair && !isNaN(pnl)) {
+          trades.push({ id: generateId(), date, pair, direction: dir, pnl, tags, notes });
+          imported++;
+        }
+      }
+      if(imported > 0) {
+        saveToStorage();
+        renderDashboard();
+        renderCalendar();
+        alert(`Successfully imported ${imported} trades!`);
+      } else {
+        alert("No valid trades found in CSV.");
+      }
+      event.target.value = ''; // reset
+    };
+    reader.readAsText(file);
   }
 
   // Init
