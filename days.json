@@ -31,13 +31,13 @@
     "day": 2,
     "title": "ICC Framework Decoded Part 2 - Support & Resistance",
     "description": "AI-decoded Trades by Sci lesson.",
-    "youtubeId": "",
+    "youtubeId": "IGIxQD8PBMo",
     "reelUrl": "",
     "audioUrl": "./studios/day-2/day2_en.mp3",
     "infographicUrl": "./studios/day-2/day2_infographic.png",
-    "quizFile": "",
+    "quizFile": "./studios/day-2/day2_quiz.md",
     "studyGuideUrl": "./studios/day-2/day2_study.md",
-    "flashcardsUrl": "",
+    "flashcardsUrl": "./studios/day-2/day2_flashcards.json",
     "mindMapUrl": "./studios/day-2/day2_mindmap.json",
     "slideDeckUrl": "./studios/day-2/day2_slides.pdf",
     "dataTableUrl": "./studios/day-2/day2_datatable.md",
@@ -48,10 +48,10 @@
     "linkedinUrl": "./studios/day-2/day2_linkedin.md",
     "faqUrl": "./studios/day-2/day2_faq.md",
     "keyTakeaways": [
-      "ICC Framework: Indications, Corrections, Continuations",
-      "How to read order flow and identify liquidity zones",
-      "The 3 market phases every futures trader must know",
-      "Real trade setups from the Trades by Sci curriculum"
+      "Identifying 1H and 4H Swing Highs and Swing Lows",
+      "The Concept of Indication: When does a trend begin?",
+      "The Liquidity Trap: Why you must avoid the breakout entry",
+      "The 3-Phase Entry Blueprint: Indication, Correction, Continuation"
     ],
     "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
   }

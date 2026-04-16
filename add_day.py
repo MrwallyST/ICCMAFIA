@@ -388,7 +388,12 @@ def main():
         print("Error: --youtube is required")
         sys.exit(1)
 
-    takeaways_en = ["ICC Framework: Indications, Corrections, Continuations", "How to read order flow and identify liquidity zones", "The 3 market phases every futures trader must know", "Real trade setups from the Trades by Sci curriculum"]
+    takeaways_en = [
+        f"Core Strategy & Concepts from Day {args.day}",
+        "High-Probability Institutional Trading Setups",
+        "Market Structure & Liquidity Mapping",
+        "Actionable Rule-Based Execution Plan"
+    ]
 
     run_pipeline(
         day_num    = args.day,
