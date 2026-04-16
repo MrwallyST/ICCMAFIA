@@ -9,7 +9,7 @@
     "infographicUrl": "./studios/day-1/day1_infographic.png",
     "quizFile": "./studios/day-1/day1_quiz.md",
     "studyGuideUrl": "./studios/day-1/day1_study.md",
-    "flashcardsUrl": "",
+    "flashcardsUrl": "./studios/day-1/day1_flashcards.json",
     "mindMapUrl": "./studios/day-1/day1_mindmap.json",
     "slideDeckUrl": "./studios/day-1/day1_slides.pdf",
     "dataTableUrl": "./studios/day-1/day1_datatable.md",
