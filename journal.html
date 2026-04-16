@@ -97,6 +97,29 @@
     /* View Modal Specific */
     .view-notes { background: var(--surface); padding: 15px; border-radius: 8px; border: 1px solid var(--border); font-size: 14px; white-space: pre-wrap; line-height: 1.5; margin-top: 10px; }
     .view-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); margin-top: 15px; }
+
+    /* Calendar Specific */
+    .calendar-wrapper { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 40px; }
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .calendar-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; }
+    .calendar-nav button { background: var(--surface2); border: 1px solid var(--border); color: var(--text); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; transition: 0.2s; font-weight: bold; }
+    .calendar-nav button:hover { background: var(--surface3); color: #fff; border-color: var(--accent); }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .day-name { text-align: center; font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; padding-bottom: 10px; }
+    .calendar-day { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; min-height: 80px; padding: 8px; display: flex; flex-direction: column; cursor: pointer; transition: 0.2s; position: relative; }
+    .calendar-day:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .calendar-day.empty-day { background: transparent; border: none; cursor: default; }
+    .calendar-day.empty-day:hover { transform: none; box-shadow: none; }
+    .day-number { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: auto; }
+    .day-pnl { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 12px; text-align: right; margin-top: 8px; border-radius: 4px; padding: 2px 4px; }
+    .day-pnl.win { color: var(--green); background: var(--green-bg); border: 1px solid rgba(16, 185, 129, 0.2); }
+    .day-pnl.loss { color: var(--red); background: var(--red-bg); border: 1px solid rgba(239, 68, 68, 0.2); }
+    .day-pnl.breakeven { color: var(--muted); background: var(--surface3); }
+    .calendar-day.active-filter { border-color: var(--accent2); box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.4); }
+    
+    .filter-notice { display: flex; align-items: center; justify-content: space-between; background: rgba(124, 111, 205, 0.1); border: 1px solid var(--accent); color: var(--accent2); padding: 12px 20px; border-radius: 12px; margin-bottom: 20px; font-weight: 600; }
+    .filter-notice button { background: var(--accent); color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+    .filter-notice button:hover { background: var(--accent2); }
   </style>
 </head>
 <body>
@@ -129,6 +152,24 @@
     <div class="stat-card">
       <div class="stat-name">Total Trades</div>
       <div class="stat-value" id="stat-count">0</div>
+    </div>
+  </div>
+
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <div class="calendar-title" id="calendar-month-year"></div>
+      <div class="calendar-nav">
+        <button onclick="changeMonth(-1)">&lt;</button>
+        <button onclick="changeMonth(1)">&gt;</button>
+      </div>
+    </div>
+    <div class="calendar-grid" id="calendar-grid"></div>
+  </div>
+
+  <div id="filter-notice-container" style="display: none;">
+    <div class="filter-notice">
+      <span id="filter-notice-text"></span>
+      <button onclick="clearDateFilter()">View All Trades</button>
     </div>
   </div>
 
@@ -241,6 +282,8 @@
 
 <script>
   let trades = [];
+  let activeFilterDate = null;
+  let currentCalDate = new Date();
 
   // Load from LocalStorage
   function loadTrades() {
@@ -283,9 +326,99 @@
     reader.readAsDataURL(file);
   });
 
+  function renderCalendar() {
+    const grid = document.getElementById('calendar-grid');
+    grid.innerHTML = '';
+    
+    const year = currentCalDate.getFullYear();
+    const month = currentCalDate.getMonth();
+    
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.getElementById('calendar-month-year').textContent = `${monthNames[month]} ${year}`;
+    
+    // Days of week header
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    days.forEach(d => {
+      grid.insertAdjacentHTML('beforeend', `<div class="day-name">${d}</div>`);
+    });
+    
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    
+    // Group trades by date string (YYYY-MM-DD)
+    const pnlByDate = {};
+    trades.forEach(t => {
+      if(!pnlByDate[t.date]) pnlByDate[t.date] = 0;
+      pnlByDate[t.date] += parseFloat(t.pnl || 0);
+    });
+
+    // Empty slots before first day
+    for(let i = 0; i < firstDay; i++) {
+      grid.insertAdjacentHTML('beforeend', `<div class="calendar-day empty-day"></div>`);
+    }
+    
+    // Days of month
+    for(let i = 1; i <= daysInMonth; i++) {
+      const mStr = String(month+1).padStart(2, '0');
+      const dStr = String(i).padStart(2, '0');
+      const dateStr = `${year}-${mStr}-${dStr}`;
+      
+      let pnlHtml = '';
+      if(pnlByDate[dateStr] !== undefined) {
+        const val = pnlByDate[dateStr];
+        let cls = 'breakeven';
+        if(val > 0) cls = 'win';
+        else if (val < 0) cls = 'loss';
+        const sign = val > 0 ? '+' : '';
+        pnlHtml = `<div class="day-pnl ${cls}">${sign}$${Math.abs(val).toFixed(2)}</div>`;
+      }
+
+      const activeCls = (activeFilterDate === dateStr) ? 'active-filter' : '';
+      
+      const dayHtml = `
+        <div class="calendar-day ${activeCls}" onclick="filterByDate('${dateStr}')">
+          <div class="day-number">${i}</div>
+          ${pnlHtml}
+        </div>
+      `;
+      grid.insertAdjacentHTML('beforeend', dayHtml);
+    }
+  }
+
+  function changeMonth(delta) {
+    currentCalDate.setMonth(currentCalDate.getMonth() + delta);
+    renderCalendar();
+  }
+
+  function filterByDate(dateStr) {
+    if(activeFilterDate === dateStr) activeFilterDate = null;
+    else activeFilterDate = dateStr;
+    renderDashboard();
+    renderCalendar();
+  }
+
+  function clearDateFilter() {
+    activeFilterDate = null;
+    renderDashboard();
+    renderCalendar();
+  }
+
   function renderDashboard() {
     const tbody = document.getElementById('trades-tbody');
     tbody.innerHTML = '';
+
+    let displayTrades = trades;
+    const filterContainer = document.getElementById('filter-notice-container');
+    const filterText = document.getElementById('filter-notice-text');
+    
+    if (activeFilterDate) {
+      displayTrades = trades.filter(t => t.date === activeFilterDate);
+      filterContainer.style.display = 'block';
+      let formattedDate = new Date(activeFilterDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+      filterText.textContent = `Showing trades for ${formattedDate}`;
+    } else {
+      filterContainer.style.display = 'none';
+    }
 
     if (trades.length === 0) {
       tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state">No trades logged yet. Click "Log New Trade" to start your journal.</div></td></tr>`;
@@ -294,14 +427,18 @@
       document.getElementById('stat-count').textContent = '0';
       return;
     }
+    
+    if (displayTrades.length === 0 && activeFilterDate) {
+      tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state" style="padding:30px;">No trades found for this specific date.</div></td></tr>`;
+    }
 
     // Sort descending by date
-    trades.sort((a,b) => new Date(b.date) - new Date(a.date));
+    displayTrades.sort((a,b) => new Date(b.date) - new Date(a.date));
 
     let totalPnl = 0;
     let wins = 0;
 
-    trades.forEach((t, i) => {
+    displayTrades.forEach((t, i) => {
       const pnl = parseFloat(t.pnl || 0);
       totalPnl += pnl;
       if (pnl > 0) wins++;
@@ -377,6 +514,7 @@
 
     saveToStorage();
     renderDashboard();
+    renderCalendar();
     closeModal();
   }
 
@@ -385,6 +523,7 @@
     trades = trades.filter(t => t.id !== id);
     saveToStorage();
     renderDashboard();
+    renderCalendar();
   }
 
   function viewTrade(id) {
@@ -414,6 +553,7 @@
   // Init
   loadTrades();
   renderDashboard();
+  renderCalendar();
 
 </script>
 </body>
