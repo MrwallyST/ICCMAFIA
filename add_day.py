@@ -204,10 +204,9 @@ def run_pipeline(
         "Write an engaging, cinematic YouTube video script (video overview) covering these concepts. "
         "INTRO: The host MUST open by saying: 'Welcome to ICCMAFIA-AI, summarizing the Tradesbysci ICC course! We will be doing all of the course videos...' "
         "CORE: Break down all key trading concepts from the lesson clearly like teaching a complete beginner. "
-        "BONUS: The host must announce that a free downloadable infographic summarizing today's topics is available. "
-        "WEBSITE CTA: The script MUST enthusiastically instruct viewers to click the link in the description (mrwallyst.github.io/ICCMAFIA) to access their free Interactive Study Guide, Quiz, Mind Map, Flashcards, and Audio Podcast. "
+        "BONUS: WEBSITE CTA: The script MUST enthusiastically instruct viewers to click the link in the description (mrwallyst.github.io/ICCMAFIA) to access their free Interactive Study Guide, Quiz, Mind Map, Flashcards, and Audio Podcast. "
         "OUTRO: End with a strong, cinematic Call to Action reminding viewers to like, comment, and subscribe to ICCMAFIA-AI. "
-        "CREDIT: Give explicit credit to Trades by Sci as the original course creator."
+        "CREDIT: Give explicit credit to TradesbySci as the original course creator."
     )
     out = nlm(["generate", "report", "--format", "custom", "--append", yt_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['ytscript'] = extract_id(out)
