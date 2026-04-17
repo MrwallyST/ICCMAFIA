@@ -910,7 +910,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     document.getElementById('view-modal').classList.add('active');
   }
 
-  function exportCSV() {
+  async function exportCSV() {
     if(trades.length === 0) return alert("No trades to export!");
     let csv = "Date,Pair,Direction,P&L,Tags,Notes\n";
     trades.forEach(t => {
@@ -922,19 +922,43 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       csv += row.join(",") + "\n";
     });
     
-    // Add UTF-8 BOM so Excel handles emojis and special characters perfectly
+    const fileName = `tradesbysci_journal_${new Date().toISOString().split('T')[0]}.csv`;
     const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; 
-    a.download = `tradesbysci_journal_${new Date().toISOString().split('T')[0]}.csv`;
     
-    // Critical for Mobile iOS/Android: Must append to body before clicking
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    // 1. Try Native Web Share API (Best for Mobile / Hermit / WebView)
+    if (navigator.share) {
+      try {
+        const file = new File([blob], fileName, { type: 'text/csv' });
+        // Some older browsers have navigator.share but don't support file sharing
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: 'Trading Journal Export',
+          });
+          return; // Success, user handled it via Share Sheet
+        }
+      } catch (err) {
+        console.log("Share API failed or cancelled", err);
+      }
+    }
+
+    // 2. Standard Download Fallback (Best for Desktop)
+    try {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; 
+      a.download = fileName;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 100);
+    } catch(err) {
+      // 3. Absolute Bulletproof Fallback (If WebView strictly blocks blobs)
+      navigator.clipboard.writeText(csv).then(() => {
+        alert("Your browser blocks direct file downloads. We have COPIED the CSV text to your clipboard. You can paste it into an empty text file or send it to yourself!");
+      });
+    }
   }
 
   // ─── Bulk CSV Import (no CDN — built-in parser) ──────────────
