@@ -164,6 +164,13 @@
     .rules-no { color: var(--red); }
     .section-divider { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin: 18px 0 10px; border-top: 1px solid var(--border); padding-top: 14px; }
 
+    /* Checklist Modal Specifics */
+    .checklist-items { display: flex; flex-direction: column; gap: 14px; }
+    .cl-label { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text); font-weight: 500; line-height: 1.4; cursor: pointer; padding: 12px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; transition: 0.2s; user-select: none; }
+    .cl-label:hover { border-color: var(--accent); background: rgba(167, 139, 250, 0.05); }
+    .cl-label.completed { border-color: var(--green); background: rgba(16, 185, 129, 0.05); }
+    .cl-check { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent2); cursor: pointer; flex-shrink: 0; }
+
     /* Bulk Import Modal */
     .import-overlay { position: fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(6px); z-index:2000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; }
     .import-overlay.active { opacity:1; pointer-events:all; }
@@ -434,6 +441,40 @@
   </div>
 </div>
 
+<!-- Checklist Modal -->
+<div class="modal-overlay" id="checklist-modal" onclick="if(event.target===this)closeChecklistModal()">
+  <div class="modal-content" style="max-width: 500px;">
+    <div class="modal-title" style="margin-bottom:10px;">📋 Pre-Market Drill</div>
+    <div style="color:var(--muted); font-size:14px; margin-bottom:24px; line-height:1.6;">
+      Before logging new trades, complete your routine. Discipline equals freedom.
+    </div>
+    
+    <div class="checklist-items">
+      <label class="cl-label">
+        <input type="checkbox" class="cl-check" onchange="verifyChecklist(this)"> 
+        Checked Economic Calendar (Avoid Red Folder traps)
+      </label>
+      <label class="cl-label">
+        <input type="checkbox" class="cl-check" onchange="verifyChecklist(this)"> 
+        Mapped out Higher Timeframe structure &amp; bias
+      </label>
+      <label class="cl-label">
+        <input type="checkbox" class="cl-check" onchange="verifyChecklist(this)"> 
+        Mentally reset: No FOMO or revenge trading from yesterday
+      </label>
+      <label class="cl-label">
+        <input type="checkbox" class="cl-check" onchange="verifyChecklist(this)"> 
+        Remembered the rule: Buy Lows, Sell Highs (Wait for liquidity sweeps)
+      </label>
+    </div>
+
+    <div class="modal-actions" style="margin-top: 24px;">
+      <button class="btn-cancel" onclick="closeChecklistModal()">Cancel</button>
+      <button id="btn-checklist-submit" class="btn-save" style="opacity:0.5; pointer-events:none;" onclick="completeChecklist()">I am ready.</button>
+    </div>
+  </div>
+</div>
+
 <!-- Bulk CSV Import Modal -->
 <div class="import-overlay" id="import-overlay" onclick="if(event.target===this)closeImportModal()">
   <div class="import-box">
@@ -686,7 +727,52 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
   function generateId() { return Math.random().toString(36).substr(2, 9); }
 
+  function getLocalToday() {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  }
+
+  function verifyChecklist(cb) {
+    const parent = cb.parentElement;
+    if (cb.checked) parent.classList.add('completed');
+    else parent.classList.remove('completed');
+
+    const total = document.querySelectorAll('.cl-check').length;
+    const checked = document.querySelectorAll('.cl-check:checked').length;
+    const btn = document.getElementById('btn-checklist-submit');
+    
+    if (total === checked) {
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'all';
+    } else {
+      btn.style.opacity = '0.5';
+      btn.style.pointerEvents = 'none';
+    }
+  }
+
+  function closeChecklistModal() {
+    document.getElementById('checklist-modal').classList.remove('active');
+  }
+
+  function completeChecklist() {
+    localStorage.setItem('tbs_daily_checklist', getLocalToday());
+    closeChecklistModal();
+    setTimeout(() => { openAddModalBypass(); }, 50);
+  }
+
   function openAddModal() {
+    // Only force checklist once per day
+    const lastDone = localStorage.getItem('tbs_daily_checklist');
+    if (lastDone !== getLocalToday()) {
+      // reset checklist state
+      document.querySelectorAll('.cl-check').forEach(cb => { cb.checked = false; verifyChecklist(cb); });
+      document.getElementById('checklist-modal').classList.add('active');
+      return;
+    }
+    openAddModalBypass();
+  }
+
+  function openAddModalBypass() {
     document.getElementById('modal-title').textContent = 'Log Trade';
     document.getElementById('trade-id').value = '';
     document.getElementById('trade-date').value = new Date().toISOString().split('T')[0];
