@@ -223,7 +223,6 @@
   </a>
   <div class="nav-right">
     <a href="index.html">← Back to Course</a>
-    <a href="comments.html">&#128172; Comments</a>
     <a href="#" class="primary" onclick="openAddModal()">✚ Log Trade</a>
   </div>
 </nav>
@@ -688,6 +687,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function generateId() { return Math.random().toString(36).substr(2, 9); }
 
   function openAddModal() {
+    document.getElementById('modal-title').textContent = 'Log Trade';
     document.getElementById('trade-id').value = '';
     document.getElementById('trade-date').value = new Date().toISOString().split('T')[0];
     document.getElementById('trade-pair').value = '';
@@ -751,12 +751,15 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     
     closeViewModal();
     
-    document.getElementById('trade-id').value = t.id;
-    document.getElementById('trade-date').value = t.date;
-    document.getElementById('trade-pair').value = t.pair;
-    document.getElementById('trade-direction').value = t.direction;
-    document.getElementById('trade-pnl').value = t.pnl;
-    document.getElementById('trade-tags').value = t.tags || '';
+    // Quick timeout to let view modal close safely before opening add modal
+    setTimeout(() => {
+      document.getElementById('modal-title').textContent = 'Edit Trade';
+      document.getElementById('trade-id').value = t.id;
+      document.getElementById('trade-date').value = normalizeDate(t.date);
+      document.getElementById('trade-pair').value = t.pair;
+      document.getElementById('trade-direction').value = t.direction;
+      document.getElementById('trade-pnl').value = t.pnl;
+      document.getElementById('trade-tags').value = t.tags || '';
     document.getElementById('trade-notes').value = t.notes || '';
     document.getElementById('trade-risk').value = t.risk || '';
     document.getElementById('trade-rr').value = t.rr || '';
@@ -770,10 +773,11 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       document.getElementById('trade-image-preview').style.display = 'block';
     } else {
       document.getElementById('trade-image-preview').style.display = 'none';
-      document.getElementById('trade-image').value = '';
+      document.getElementById('trade-image-data').value = '';
     }
 
     document.getElementById('trade-modal').classList.add('active');
+    }, 50); // delay allows fade transitions to not overlap jarringly
   }
 
   function viewTrade(id) {
