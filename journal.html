@@ -912,20 +912,28 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
   function exportCSV() {
     if(trades.length === 0) return alert("No trades to export!");
-    let csv = "Date,Pair,Direction,P&L,Tags,Notes\\n";
+    let csv = "Date,Pair,Direction,P&L,Tags,Notes\n";
     trades.forEach(t => {
       const row = [
         t.date, t.pair, t.direction, t.pnl,
         `"${(t.tags || '').replace(/"/g, '""')}"`,
         `"${(t.notes || '').replace(/"/g, '""')}"`
       ];
-      csv += row.join(",") + "\\n";
+      csv += row.join(",") + "\n";
     });
-    const blob = new Blob([csv], { type: 'text/csv' });
+    
+    // Add UTF-8 BOM so Excel handles emojis and special characters perfectly
+    const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `tradesbysci_journal_${new Date().toISOString().split('T')[0]}.csv`;
+    a.href = url; 
+    a.download = `tradesbysci_journal_${new Date().toISOString().split('T')[0]}.csv`;
+    
+    // Critical for Mobile iOS/Android: Must append to body before clicking
+    a.style.display = 'none';
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }
 
