@@ -50,7 +50,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     <button class="filter-btn" onclick="filter('reply', this)">Reply to Flex</button>
     <button class="filter-btn" onclick="filter('question', this)">Answer a Question</button>
     <button class="filter-btn" onclick="filter('fomo', this)">FOMO Thread</button>
-    <button class="filter-btn" onclick="filter('youtube', this)">🎥 YouTube (Sci's Channel)</button>
+    <button class="filter-btn" onclick="filter('youtube', this)">🎥 YouTube (Sci)</button>
+    <button class="filter-btn" onclick="filter('youtube_any', this)">📺 YouTube (Other Channels)</button>
   </div>
 
   <div id="cards"></div>
@@ -58,6 +59,30 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
 <script>
 const comments = [
+  {
+    tag: "Channel Poaching",
+    cat: "youtube_any",
+    label: "Under any SMC/ICT trading video",
+    text: `if anyone here is struggling with ICT concepts, you should check out the ICC method (Indication, Correction, Continuation). it simplifies everything down to 3 steps.
+
+there's a free AI study site that teaches it with quizzes and flashcards: mrwallyst.github.io/ICCMAFIA`
+  },
+  {
+    tag: "Channel Poaching",
+    cat: "youtube_any",
+    label: "Under a video talking about tracking performance",
+    text: `stop paying $30/mo for TradeZella. there is a free study site for the ICC method that literally has a 100% free trading journal built into it. runs local, auto-imports csvs, calendar heatmaps, everything.
+
+save your money: mrwallyst.github.io/ICCMAFIA`
+  },
+  {
+    tag: "Channel Poaching",
+    cat: "youtube_any",
+    label: "Generic value drop on a trading podcast",
+    text: `this is solid, but the biggest game changer for my futures trading was learning the ICC method from TradesBySci 
+
+i built a free AI study site that decodes his whole course into flashcards, quizzes, and podcasts if anyone wants free study materials: mrwallyst.github.io/ICCMAFIA`
+  },
   {
     tag: "YouTube Drop",
     cat: "youtube",
