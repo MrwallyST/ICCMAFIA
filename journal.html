@@ -252,6 +252,14 @@
     </div>
   </div>
 
+  <div style="background:var(--surface2); border:1px solid var(--accent); border-left:4px solid var(--accent2); padding:16px 20px; border-radius:12px; margin-bottom:40px; display:flex; align-items:flex-start; gap:16px;">
+    <div style="font-size:24px;">&#129302;</div>
+    <div>
+      <div style="font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:4px;color:var(--text);">Psychology &amp; Risk Management > Strategy</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6;">AI Analysis shows that 80% of blown accounts come from revenge trading or oversized risk, not bad entries. Always set your maximum risk amount <em>before</em> pulling the trigger on an ICC setup.</div>
+    </div>
+  </div>
+
   <div class="calendar-wrapper">
     <div class="calendar-header">
       <div class="calendar-title" id="calendar-month-year"></div>
@@ -422,6 +430,7 @@
 
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeViewModal()">Close</button>
+      <button class="btn-cancel" style="background:rgba(124,111,205,0.1); color:var(--accent2); border:1px solid var(--accent);" id="btn-edit-trade">Edit Trade</button>
     </div>
   </div>
 </div>
@@ -733,6 +742,38 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     saveToStorage();
     renderDashboard();
     renderCalendar();
+    closeViewModal();
+  }
+
+  function editTrade(id) {
+    const t = trades.find(tr => tr.id === id);
+    if (!t) return;
+    
+    closeViewModal();
+    
+    document.getElementById('trade-id').value = t.id;
+    document.getElementById('trade-date').value = t.date;
+    document.getElementById('trade-pair').value = t.pair;
+    document.getElementById('trade-direction').value = t.direction;
+    document.getElementById('trade-pnl').value = t.pnl;
+    document.getElementById('trade-tags').value = t.tags || '';
+    document.getElementById('trade-notes').value = t.notes || '';
+    document.getElementById('trade-risk').value = t.risk || '';
+    document.getElementById('trade-rr').value = t.rr || '';
+    document.getElementById('trade-emotion').value = t.emotion || 'Calm';
+    document.getElementById('trade-grade').value = t.grade || 'A+';
+    document.getElementById('trade-rules').value = t.rules || 'Yes';
+    
+    document.getElementById('trade-image-data').value = t.image || '';
+    if (t.image) {
+      document.getElementById('trade-image-preview').src = t.image;
+      document.getElementById('trade-image-preview').style.display = 'block';
+    } else {
+      document.getElementById('trade-image-preview').style.display = 'none';
+      document.getElementById('trade-image').value = '';
+    }
+
+    document.getElementById('trade-modal').classList.add('active');
   }
 
   function viewTrade(id) {
@@ -765,6 +806,9 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     
     document.getElementById('view-notes').textContent = t.notes || 'No notes added.';
     
+    // Bind Edit button
+    document.getElementById('btn-edit-trade').onclick = () => editTrade(t.id);
+
     const imgContainer = document.getElementById('view-image-container');
     if (t.image) {
       document.getElementById('view-image').src = t.image;
