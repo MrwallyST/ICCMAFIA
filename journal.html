@@ -524,11 +524,12 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     
-    // Group trades by date string (YYYY-MM-DD)
+    // Group trades by date string (YYYY-MM-DD), normalizing any legacy format
     const pnlByDate = {};
     trades.forEach(t => {
-      if(!pnlByDate[t.date]) pnlByDate[t.date] = 0;
-      pnlByDate[t.date] += parseFloat(t.pnl || 0);
+      const key = normalizeDate(t.date);
+      if(!pnlByDate[key]) pnlByDate[key] = 0;
+      pnlByDate[key] += parseFloat(t.pnl || 0);
     });
 
     // Empty slots before first day
@@ -870,6 +871,22 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     return parseFloat(s);
   }
 
+  // Normalize any date format to YYYY-MM-DD for consistent calendar lookup
+  function normalizeDate(raw) {
+    raw = (raw || '').trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw; // already YYYY-MM-DD
+    // MM/DD/YYYY or M/D/YYYY
+    const m1 = raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (m1) return `${m1[3]}-${m1[1].padStart(2,'0')}-${m1[2].padStart(2,'0')}`;
+    // DD-MM-YYYY
+    const m2 = raw.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+    if (m2) return `${m2[3]}-${m2[1].padStart(2,'0')}-${m2[2].padStart(2,'0')}`;
+    // MM.DD.YYYY
+    const m3 = raw.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+    if (m3) return `${m3[3]}-${m3[1].padStart(2,'0')}-${m3[2].padStart(2,'0')}`;
+    return raw; // fallback: return as-is
+  }
+
   function processCSVRows(rows, sourceName) {
     pendingImportTrades = [];
     let skipped = 0;
@@ -898,7 +915,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
       pendingImportTrades.push({
         id: generateId(),
-        date: mapped.date.trim(),
+        date: normalizeDate(mapped.date.trim()),
         pair: (mapped.pair || 'UNKNOWN').trim().toUpperCase(),
         direction, pnl,
         tags: (mapped.tags || '').trim(),
