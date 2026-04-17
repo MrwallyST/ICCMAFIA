@@ -37,8 +37,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   <a href="index.html" class="back-btn">&#8592; Back to Course</a>
 
   <div class="header">
-    <h1>&#128172; Threads Comment Toolkit</h1>
-    <p>Click any comment to copy it instantly. Drop these under trading threads to drive traffic to the site.</p>
+    <h1>&#128172; Social Comment Toolkit</h1>
+    <p>Click any comment to copy it instantly. Drop these under trading threads or Sci's YouTube videos.</p>
   </div>
 
   <div class="stat">&#128200; Site: <strong>mrwallyst.github.io/ICCMAFIA</strong> &nbsp;|&nbsp; &#127919; Goal: Drive organic traffic from Threads</div>
@@ -50,6 +50,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     <button class="filter-btn" onclick="filter('reply', this)">Reply to Flex</button>
     <button class="filter-btn" onclick="filter('question', this)">Answer a Question</button>
     <button class="filter-btn" onclick="filter('fomo', this)">FOMO Thread</button>
+    <button class="filter-btn" onclick="filter('youtube', this)">🎥 YouTube (Sci's Channel)</button>
   </div>
 
   <div id="cards"></div>
@@ -57,6 +58,30 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
 <script>
 const comments = [
+  {
+    tag: "YouTube Drop",
+    cat: "youtube",
+    label: "Under one of Sci's new ICC videos",
+    text: `this method literally changed everything for me. i couldn't keep up with taking notes so i actually built an AI site that auto-decodes these videos into flashcards and quizzes lol 
+
+if anyone wants to use it to study this lesson it's totally free at mrwallyst.github.io/ICCMAFIA`
+  },
+  {
+    tag: "YouTube Drop",
+    cat: "youtube",
+    label: "When someone asks how to practice what Sci is teaching",
+    text: `bro i've been using a free study site that literally turns this exact video into a quiz and flashcards so you can grind the concepts. it even has a built-in trading journal.
+  
+no signup needed: mrwallyst.github.io/ICCMAFIA`
+  },
+  {
+    tag: "YouTube Drop",
+    cat: "youtube",
+    label: "Replying to someone confused about Indication vs Correction",
+    text: `the correction is just the pullback AFTER the swing gets broken (indication). don't overthink it!
+
+there's an AI site that breaks down this exact lesson into a free study guide if you want to see it mapped out visually: mrwallyst.github.io/ICCMAFIA`
+  },
   {
     tag: "Struggling Traders",
     cat: "struggle",
