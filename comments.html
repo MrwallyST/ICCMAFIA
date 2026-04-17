@@ -203,6 +203,9 @@ all free → mrwallyst.github.io/ICCMAFIA`
   }
 ];
 
+// Assign absolute IDs so filtering doesn't break the copy index
+comments.forEach((c, i) => c.id = i);
+
 function render(data) {
   const el = document.getElementById('cards');
   el.innerHTML = '';
@@ -210,7 +213,8 @@ function render(data) {
     el.innerHTML = '<p style="color:var(--muted);text-align:center;padding:40px">No comments in this category.</p>';
     return;
   }
-  data.forEach((c, i) => {
+  data.forEach((c) => {
+    const i = c.id;
     el.insertAdjacentHTML('beforeend', `
       <div class="comment-card" data-cat="${c.cat}">
         <div class="card-top">
