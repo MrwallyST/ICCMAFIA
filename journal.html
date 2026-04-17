@@ -962,6 +962,12 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
   function parseCSVText(text) {
     text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    // If text looks like an Excel/Sheets paste (contains tabs but usually no commas as delimiters), convert TSV to CSV
+    if (text.indexOf('\t') !== -1) {
+      // Very naive but effective TSV->CSV conversion for raw pastes
+      const lines = text.split('\n');
+      text = lines.map(l => l.split('\t').map(c => `"${c.replace(/"/g, '""')}"`).join(',')).join('\n');
+    }
     const rows = [];
     let cur = '', inQ = false;
     const cells = [];
@@ -1004,13 +1010,13 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       'notes & analysis': 'notes', 'notes': 'notes', 'analysis': 'notes'
     };
     if (exact[h]) return exact[h];
-    // Substring fallback for messy headers
-    if (h.includes('date')) return 'date';
-    if (h.includes('pair') || h.includes('ticker') || h.includes('symbol')) return 'pair';
-    if (h.includes('direction') || h.includes('side')) return 'direction';
-    if (h.includes('p&l') || h.includes('pnl') || h.includes('result') || h.includes('profit')) return 'pnl';
+    // Substring fallback for messy headers from TradeZella, Tradervue, etc.
+    if (h.includes('date') || h.includes('time') || h.includes('opened') || h.includes('closed')) return 'date';
+    if (h.includes('pair') || h.includes('ticker') || h.includes('symbol') || h.includes('asset') || h.includes('instrument') || h.includes('market')) return 'pair';
+    if (h.includes('direction') || h.includes('side') || h.includes('type') || h.includes('action')) return 'direction';
+    if (h.includes('p&l') || h.includes('pnl') || h.includes('result') || h.includes('profit') || h.includes('loss') || h.includes('net') || h.includes('return')) return 'pnl';
     if (h.includes('tag')) return 'tags';
-    if (h.includes('note') || h.includes('analysis')) return 'notes';
+    if (h.includes('note') || h.includes('analysis') || h.includes('comment')) return 'notes';
     return null;
   }
 
