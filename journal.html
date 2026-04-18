@@ -925,6 +925,17 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     const fileName = `tradesbysci_journal_${new Date().toISOString().split('T')[0]}.csv`;
     const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
     
+    // Mobile/Hermit Bypass: Let the user opt-out of the buggy OS file system entirely
+    if (window.innerWidth < 768) {
+      if (confirm("Mobile browser detected.\n\nHit [OK] to COPY the raw CSV data to your clipboard (safest method to bypass Android file errors).\n\nHit [CANCEL] to attempt a normal File share.")) {
+        navigator.clipboard.writeText(csv).then(() => {
+          alert("✅ CSV copied to your clipboard! You can now paste it into an email or notes app and send it to your laptop.");
+        }).catch(() => {
+          alert("Clipboard access denied. Trying file download instead.");
+        });
+        return;
+      }
+    }
     // 1. Try Native Web Share API (Best for Mobile / Hermit / WebView)
     if (navigator.share) {
       try {
