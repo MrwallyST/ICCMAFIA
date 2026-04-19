@@ -569,7 +569,6 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   let activeFilterDate = null;
   let currentCalDate = new Date();
 
-  let trades = [];
   let accounts = [{id: 'default', name: 'Live Account', balance: 0}];
   let activeAccountId = 'default';
 
@@ -821,12 +820,13 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     const tbody = document.getElementById('trades-tbody');
     tbody.innerHTML = '';
 
-    let displayTrades = trades;
+    const accountTrades = getActiveTrades();
+    let displayTrades = accountTrades;
     const filterContainer = document.getElementById('filter-notice-container');
     const filterText = document.getElementById('filter-notice-text');
     
     if (activeFilterDate) {
-      displayTrades = trades.filter(t => t.date === activeFilterDate);
+      displayTrades = accountTrades.filter(t => t.date === activeFilterDate);
       filterContainer.style.display = 'block';
       let formattedDate = new Date(activeFilterDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
       filterText.textContent = `Showing trades for ${formattedDate}`;
@@ -834,11 +834,12 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       filterContainer.style.display = 'none';
     }
 
-    if (trades.length === 0) {
+    if (accountTrades.length === 0) {
       tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state">No trades logged yet. Click "Log New Trade" to start your journal.</div></td></tr>`;
       document.getElementById('stat-pnl').textContent = '$0.00';
       document.getElementById('stat-winrate').textContent = '0%';
       document.getElementById('stat-count').textContent = '0';
+      renderAnalytics({});
       return;
     }
     
