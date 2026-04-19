@@ -123,7 +123,7 @@ def run_pipeline(
     TOTAL = 8
     day_dir = STUDIOS_DIR / f"day-{day_num}"
     day_dir.mkdir(parents=True, exist_ok=True)
-    youtube_id = youtube_url.split("v=")[-1].split("&")[0] if "v=" in youtube_url else ""
+    youtube_id = youtube_url.split("v=")[-1].split("&")[0] if "v=" in youtube_url else youtube_url.split("/")[-1].split("?")[0]
 
     # 1. Active context
     step(1, TOTAL, "Setting master notebook as active context...")
