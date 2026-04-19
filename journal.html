@@ -642,9 +642,10 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function switchAccount() {
     activeAccountId = document.getElementById('account-switcher').value;
     saveAccounts();
-    renderStats();
-    renderTable();
+    renderDashboard();
     renderCalendar();
+    renderStats();
+    if(typeof Chart !== 'undefined') renderEquityChart();
   }
 
   function openAccountModal() {
@@ -863,11 +864,10 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       const dirBadge = t.direction === 'Long' ? `<span class="badge long">Long</span>` : `<span class="badge short">Short</span>`;
       
       let tagsHtml = '';
-      if (t.tags) {
-        t.tags.split(',').forEach(tag => {
-          if(tag.trim()) tagsHtml += `<span class="badge tag">${tag.trim()}</span>`;
-        });
-      }
+      const tagArr = Array.isArray(t.tags) ? t.tags : (t.tags || '').split(',');
+      tagArr.forEach(tag => {
+        if(tag && tag.trim()) tagsHtml += `<span class="badge tag">${tag.trim()}</span>`;
+      });
 
       const row = `
         <tr style="cursor:pointer;" onclick="viewTrade('${t.id}')">
@@ -888,8 +888,9 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     pnlEl.textContent = (totalPnl >= 0 ? '+$' : '-$') + Math.abs(totalPnl).toFixed(2);
     pnlEl.className = 'stat-value ' + (totalPnl >= 0 ? 'win' : 'loss');
 
-    document.getElementById('stat-count').textContent = trades.length;
-    document.getElementById('stat-winrate').textContent = Math.round((wins / trades.length) * 100) + '%';
+    document.getElementById('stat-count').textContent = accountTrades.length;
+    document.getElementById('stat-winrate').textContent = accountTrades.length ? Math.round((wins / accountTrades.length) * 100) + '%' : '0%';
+    renderStats();
   }
 
   let equityChartInstance = null;
@@ -971,16 +972,16 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
        if(p>0) wins++; 
        else if(p<0) losses++; 
        
-       if (t.tags && Array.isArray(t.tags)) {
-           t.tags.forEach(tag => {
-               if(!tag.trim()) return;
-               const ft = tag.trim().toUpperCase();
-               if(!tagMap[ft]) tagMap[ft] = { count: 0, wins: 0, pnl: 0, original: tag.trim() };
-               tagMap[ft].count++;
-               tagMap[ft].pnl += p;
-               if(p > 0) tagMap[ft].wins++;
-           });
-       }
+       // Normalize tags: handle both string (legacy) and array (new)
+       const tagArr = Array.isArray(t.tags) ? t.tags : (t.tags || '').split(',');
+       tagArr.forEach(tag => {
+           if(!tag || !tag.trim()) return;
+           const ft = tag.trim().toUpperCase();
+           if(!tagMap[ft]) tagMap[ft] = { count: 0, wins: 0, pnl: 0, original: tag.trim() };
+           tagMap[ft].count++;
+           tagMap[ft].pnl += p;
+           if(p > 0) tagMap[ft].wins++;
+       });
     });
 
     document.getElementById('stat-pnl').textContent = pnl < 0 ? '-$' + Math.abs(pnl).toFixed(2) : '$' + pnl.toFixed(2);
@@ -1105,7 +1106,9 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
     if(!date || !pair || pnl === '') return alert("Please fill date, pair, and P&L");
 
-    const trade = { id, accountId: activeAccountId, date, pair, direction, pnl: parseFloat(pnl), tags, notes, risk: parseFloat(risk) || null, rr, emotion, grade, rules };
+    // Normalize tags to array on save for consistent analytics
+    const tagsArr = tags.split(',').map(s => s.trim()).filter(Boolean);
+    const trade = { id, accountId: activeAccountId, date, pair, direction, pnl: parseFloat(pnl), tags: tagsArr, notes, risk: parseFloat(risk) || null, rr, emotion, grade, rules };
     
     if (image) {
       trade.imageId = 'img_' + id;
@@ -1569,6 +1572,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   loadAccounts();
   loadTrades();
   renderDashboard();
+  renderStats();
   renderCalendar();
   if(typeof Chart !== 'undefined') renderEquityChart();
   showPrivacyModal();
