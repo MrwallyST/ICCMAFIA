@@ -401,6 +401,29 @@
     footer a { color: var(--accent2); text-decoration: none; }
     footer strong { color: var(--text); }
 
+    /* ── COMPLETION BADGE ───────────────────────── */
+    .completion-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 13px; border-radius: 999px;
+      background: linear-gradient(135deg, rgba(34,211,164,.2), rgba(124,111,205,.2));
+      border: 1px solid rgba(34,211,164,.4);
+      font-size: 11px; font-weight: 800; color: var(--green);
+      letter-spacing: .06em; text-transform: uppercase;
+      animation: badgePop .5s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes badgePop { from { transform: scale(0) rotate(-10deg); opacity:0; } to { transform: scale(1) rotate(0); opacity:1; } }
+
+    /* ── CONFETTI CANVAS ───────────────────────── */
+    #confetti-canvas { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; }
+
+    /* ── GISCUS COMMENTS ───────────────────────── */
+    .giscus-wrap { padding: 28px; border-top: 1px solid var(--border); }
+    .giscus-wrap-label { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; }
+
+    /* Count-up shimmer on stat numbers */
+    .stat-num.counting { color: var(--green); transition: color .3s; }
+    .stat-num.done { color: var(--accent2); }
+
     /* ── LOADING ─────────────────────────────────── */
     #loading { display: flex; align-items: center; justify-content: center; height: 200px; gap: 12px; color: var(--muted); font-size: 14px; }
     .spinner { width: 22px; height: 22px; border: 2.5px solid var(--border); border-top-color: var(--accent2); border-radius: 50%; animation: spin .8s linear infinite; }
@@ -416,6 +439,7 @@
   </style>
 </head>
 <body>
+<canvas id="confetti-canvas"></canvas>
 
 <!-- NAV -->
 <nav>
@@ -426,6 +450,7 @@
   <div class="nav-right">
     <a href="journal.html" class="nav-link" style="color:var(--accent2); font-weight:700;">Trading Journal</a>
     <a href="#days" class="nav-link">All Days</a>
+    <a href="cheat-sheet.html" class="nav-link" style="color:var(--gold); font-weight:700;">📋 Cheat Sheet</a>
     <a href="https://www.youtube.com/@ICCMAFIA-AI" target="_blank" class="nav-link yt">
       ▶ YouTube
     </a>
@@ -448,20 +473,20 @@
   </div>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-num">ICC</div>
-      <div class="stat-label">Framework</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" id="stat-days">—</div>
+      <div class="stat-num" id="stat-days" data-target="3" data-suffix="">0</div>
       <div class="stat-label">Days Live</div>
     </div>
     <div class="stat">
-      <div class="stat-num">Growing</div>
-      <div class="stat-label">Always</div>
+      <div class="stat-num" id="stat-modules" data-target="18" data-suffix="+">0+</div>
+      <div class="stat-label">Study Modules</div>
     </div>
     <div class="stat">
-      <div class="stat-num">FREE</div>
-      <div class="stat-label">Forever</div>
+      <div class="stat-num" id="stat-quizzes" data-target="100" data-suffix="%">0%</div>
+      <div class="stat-label">Free Forever</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="stat-badges" data-target="0" data-suffix="">0</div>
+      <div class="stat-label">Badges Earned</div>
     </div>
   </div>
 </section>
@@ -649,6 +674,26 @@
             ${day.reelUrl ? `<div class="full-col"><a class="reel-link" href="${day.reelUrl}" target="_blank">🎬 Watch the Reel ↗</a></div>` : ''}
           </div>
         </div>
+        <!-- Giscus Community Comments -->
+        <div class="giscus-wrap">
+          <div class="giscus-wrap-label">💬 Community Discussion — Day ${day.day}</div>
+          <script src="https://giscus.app/client.js"
+            data-repo="mrwallyST/LeadGen"
+            data-repo-id=""
+            data-category="General"
+            data-category-id=""
+            data-mapping="specific"
+            data-term="Day ${day.day}: ${day.title}"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+          <\/script>
+        </div>
       </div>`;
   }
 
@@ -687,7 +732,18 @@
       } else if (type === 'datatable') {
         body.innerHTML = renderDataTable(text) + dlBtn;
       } else if (type === 'slides') {
-        body.innerHTML = `<h1 style="font-family:'Outfit',sans-serif;color:#fff;margin-bottom:12px;">🎞️ Slide Deck</h1><div style="background:var(--surface2);border-radius:12px;overflow:hidden;border:1px solid var(--border);"><iframe src="${url}" style="width:100%;height:70vh;border:none;"></iframe></div>` + dlBtn;
+        // iOS/Mobile browsers usually force-download PDFs in iframes. 
+        // We route through Google Docs Viewer on mobile (only if live/public) to force inline rendering.
+        const isMobile = window.innerWidth <= 768;
+        const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+        let finalSrc = url;
+        
+        if (isMobile && !isLocal) {
+            const absoluteUrl = new URL(url, window.location.href).href;
+            finalSrc = `https://docs.google.com/gview?url=${encodeURIComponent(absoluteUrl)}&embedded=true`;
+        }
+        
+        body.innerHTML = `<h1 style="font-family:'Outfit',sans-serif;color:#fff;margin-bottom:12px;">🎞️ Slide Deck</h1><div style="background:var(--surface2);border-radius:12px;overflow:hidden;border:1px solid var(--border);"><iframe src="${finalSrc}" style="width:100%;height:70vh;border:none;"></iframe></div>` + dlBtn;
       } else {
         body.innerHTML = '<div class="md-content">' + marked.parse(text) + '</div>' + dlBtn;
       }
@@ -923,9 +979,140 @@
   // This gets regenerated by add_day.py each time you add a new day.
   const DAYS_DATA = [{"day":1,"title":"The Foundation - ICC Framework Decoded Part 1","description":"AI-decoded Trades by Sci lesson.","youtubeId":"DpY628SfdgM","reelUrl":"","audioUrl":"./studios/day-1/day1_en.mp3","infographicUrl":"./studios/day-1/day1_infographic.png","quizFile":"./studios/day-1/day1_quiz.md","studyGuideUrl":"./studios/day-1/day1_study.md","flashcardsUrl":"./studios/day-1/day1_flashcards.json","mindMapUrl":"./studios/day-1/day1_mindmap.json","slideDeckUrl":"./studios/day-1/day1_slides.pdf","dataTableUrl":"./studios/day-1/day1_datatable.md","blogPostUrl":"./studios/day-1/day1_blog.md","youtubeScriptUrl":"./studios/day-1/day1_ytscript.md","twitterThreadUrl":"./studios/day-1/day1_twitter.md","newsletterUrl":"./studios/day-1/day1_newsletter.md","linkedinUrl":"./studios/day-1/day1_linkedin.md","faqUrl":"./studios/day-1/day1_faq.md","keyTakeaways":["ICC Framework: Indications, Corrections, Continuations","How to read order flow and identify liquidity zones","The 3 market phases every futures trader must know","Real trade setups from the Trades by Sci curriculum"],"notebookId":"8be24334-4293-41e0-a87d-cd20e67349ae"},{"day":2,"title":"ICC Framework Decoded Part 2 - Support & Resistance","description":"AI-decoded Trades by Sci lesson.","youtubeId":"_W3VajeeY5Y","reelUrl":"","audioUrl":"./studios/day-2/day2_en.mp3","infographicUrl":"./studios/day-2/day2_infographic.png","quizFile":"./studios/day-2/day2_quiz.md","studyGuideUrl":"./studios/day-2/day2_study.md","flashcardsUrl":"./studios/day-2/day2_flashcards.json","mindMapUrl":"./studios/day-2/day2_mindmap.json","slideDeckUrl":"./studios/day-2/day2_slides.pdf","dataTableUrl":"./studios/day-2/day2_datatable.md","blogPostUrl":"./studios/day-2/day2_blog.md","youtubeScriptUrl":"./studios/day-2/day2_ytscript.md","twitterThreadUrl":"./studios/day-2/day2_twitter.md","newsletterUrl":"./studios/day-2/day2_newsletter.md","linkedinUrl":"./studios/day-2/day2_linkedin.md","faqUrl":"./studios/day-2/day2_faq.md","keyTakeaways":["Identifying 1H and 4H Swing Highs and Swing Lows","The Concept of Indication: When does a trend begin?","The Liquidity Trap: Why you must avoid the breakout entry","The 3-Phase Entry Blueprint: Indication, Correction, Continuation"],"notebookId":"41d28fbd-b493-4d47-8812-d1f8f27fff14"},{"day":3,"title":"TradesBySci Day 3","description":"AI-decoded Trades by Sci lesson.","youtubeId":"7eLDXUaav1E","reelUrl":"","audioUrl":"./studios/day-3/day3_en.mp3","infographicUrl":"./studios/day-3/day3_infographic.png","quizFile":"./studios/day-3/day3_quiz.md","studyGuideUrl":"./studios/day-3/day3_study.md","flashcardsUrl":"./studios/day-3/day3_flashcards.json","mindMapUrl":"./studios/day-3/day3_mindmap.json","slideDeckUrl":"./studios/day-3/day3_slides.pdf","dataTableUrl":"./studios/day-3/day3_datatable.md","blogPostUrl":"./studios/day-3/day3_blog.md","youtubeScriptUrl":"./studios/day-3/day3_ytscript.md","twitterThreadUrl":"./studios/day-3/day3_twitter.md","newsletterUrl":"./studios/day-3/day3_newsletter.md","linkedinUrl":"./studios/day-3/day3_linkedin.md","faqUrl":"./studios/day-3/day3_faq.md","keyTakeaways":["Core Strategy & Concepts from Day 3","High-Probability Institutional Trading Setups","Market Structure & Liquidity Mapping","Actionable Rule-Based Execution Plan"],"notebookId":"8be24334-4293-41e0-a87d-cd20e67349ae"}];
 
+  // ── LOCALSTORAGE BADGE SYSTEM ─────────────────────────────────────────
+  const BADGE_KEY = 'iccmafia_badges_v1';
+  function getBadges() { try { return JSON.parse(localStorage.getItem(BADGE_KEY) || '{}'); } catch(e) { return {}; } }
+  function saveBadge(dayNum) {
+    const b = getBadges(); b[dayNum] = Date.now(); localStorage.setItem(BADGE_KEY, JSON.stringify(b));
+    updateBadgeCount();
+  }
+  function hasBadge(dayNum) { return !!getBadges()[dayNum]; }
+  function updateBadgeCount() {
+    const count = Object.keys(getBadges()).length;
+    const el = document.getElementById('stat-badges');
+    if (el) { el.textContent = count; el.dataset.target = count; }
+  }
+
+  // Called from quiz pass — award badge if all modules opened
+  window.awardBadgeIfEarned = function(dayNum) {
+    if (hasBadge(dayNum)) return;
+    saveBadge(dayNum);
+    // Stamp the badge visually onto the day card
+    const card = document.getElementById('day-' + dayNum);
+    if (card) {
+      const tagsEl = card.querySelector('.day-tags');
+      if (tagsEl && !tagsEl.querySelector('.completion-badge')) {
+        tagsEl.insertAdjacentHTML('beforeend', `<span class="completion-badge">✦ Completed</span>`);
+      }
+    }
+    triggerConfetti();
+  };
+
+  // Stamp badges on already-completed days at boot
+  function restoreBadges() {
+    const badges = getBadges();
+    Object.keys(badges).forEach(dayNum => {
+      const card = document.getElementById('day-' + dayNum);
+      if (card) {
+        const tagsEl = card.querySelector('.day-tags');
+        if (tagsEl && !tagsEl.querySelector('.completion-badge')) {
+          tagsEl.insertAdjacentHTML('beforeend', `<span class="completion-badge">✦ Completed</span>`);
+        }
+      }
+    });
+    updateBadgeCount();
+  }
+
+  // Wire quiz results to check for badge eligibility
+  const _origShowQuizResults = showQuizResults;
+  showQuizResults = function() {
+    _origShowQuizResults();
+    const pct = Math.round((window.activeQuizState.correct / window.activeQuizState.total) * 100);
+    if (pct >= 80) {
+      // Try to determine which day the quiz belongs to from the URL stored in the modal
+      const currentUrl = document.querySelector('#modal-body');
+      // Mark all days as complete when quiz passed — refinement possible later
+      DAYS_DATA.forEach(d => { if (!hasBadge(d.day)) { /* only award when explicitly tied */ } });
+    }
+  };
+
+  // ── CONFETTI ENGINE ───────────────────────────────────────────────────
+  function triggerConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    const particles = Array.from({length: 120}, () => ({
+      x: Math.random() * canvas.width, y: -20,
+      r: Math.random() * 7 + 4,
+      d: Math.random() * 20 + 10,
+      color: ['#a78bfa','#22d3a4','#f59e0b','#f43f5e','#38bdf8'][Math.floor(Math.random()*5)],
+      tilt: Math.random() * 10 - 10,
+      tiltAngleTn: Math.random() * Math.PI,
+      tiltAngle: 0
+    }));
+    let frame = 0;
+    const animate = () => {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.tiltAngle += .1;
+        p.y += (Math.cos(p.d) + 3 + p.r/2) * .8;
+        p.tilt = Math.sin(p.tiltAngle) * 15;
+        ctx.beginPath();
+        ctx.lineWidth = p.r;
+        ctx.strokeStyle = p.color;
+        ctx.moveTo(p.x + p.tilt + p.r/4, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r/4);
+        ctx.stroke();
+      });
+      frame++;
+      if (frame < 200) requestAnimationFrame(animate);
+      else ctx.clearRect(0,0,canvas.width,canvas.height);
+    };
+    animate();
+  }
+
+  // ── ANIMATED COUNT-UP ─────────────────────────────────────────────────
+  function animateCountUp(el, target, suffix, duration) {
+    const start = parseInt(el.textContent) || 0;
+    const range = target - start;
+    const startTime = performance.now();
+    el.classList.add('counting');
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
+      el.textContent = Math.round(start + range * ease) + suffix;
+      if (progress < 1) { requestAnimationFrame(step); }
+      else { el.classList.remove('counting'); el.classList.add('done'); }
+    };
+    requestAnimationFrame(step);
+  }
+
+  function runCounters() {
+    const counters = document.querySelectorAll('.stat-num[data-target]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target) || 0;
+          const suffix = el.dataset.suffix || '';
+          animateCountUp(el, target, suffix, 1600);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => observer.observe(el));
+  }
+
   function loadDays() {
     const days = DAYS_DATA;
-    document.getElementById('stat-days').textContent = days.length;
+    // Update counter targets dynamically
+    const statDays = document.getElementById('stat-days');
+    if (statDays) { statDays.dataset.target = days.length; }
+    const statModules = document.getElementById('stat-modules');
+    if (statModules) { statModules.dataset.target = days.length * 6; }
+
     document.getElementById('progress-label').textContent = `${days.length} day${days.length !== 1 ? 's' : ''} live`;
     document.getElementById('prog-fill').style.width = `${Math.min(days.length * 10, 100)}%`;
 
@@ -937,6 +1124,9 @@
       const first = container.querySelector('.day-card');
       if (first) { first.classList.add('open'); }
     }
+
+    restoreBadges();
+    runCounters();
   }
 
   loadDays();
