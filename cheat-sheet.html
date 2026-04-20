@@ -275,7 +275,7 @@
     const desc = document.getElementById('status-desc');
     const countSpan = document.getElementById('chk-count');
     
-    countSpan.textContent = \`\${checkedCount}/\${totalItems}\`;
+    if (countSpan) countSpan.textContent = checkedCount + '/' + totalItems;
 
     if (checkedCount === totalItems) {
       banner.classList.add('unlocked');
@@ -284,7 +284,7 @@
     } else {
       banner.classList.remove('unlocked');
       title.textContent = '❌ NOT CLEARED TO TRADE';
-      desc.innerHTML = \`Complete your daily Pre-Market Rules checklist above. <span id="chk-count" style="font-weight:800;color:#fff;">\${checkedCount}/\${totalItems}</span> locked.\`;
+      desc.innerHTML = 'Complete your daily Pre-Market Rules checklist above. <span style="font-weight:800;color:#fff;">' + checkedCount + '/' + totalItems + '</span> locked.';
     }
   }
 
