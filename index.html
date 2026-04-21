@@ -623,9 +623,9 @@
         <div class="resources-grid">
           ${rBtn(hasBlog, '📝', 'Blog Post', 'SEO Optimized Copy', `openResourceModal('${day.blogPostUrl}', 'blog')`)}
           ${rBtn(hasScript, '🎬', 'YouTube Script', 'Video Outline & Hook', `openResourceModal('${day.youtubeScriptUrl}', 'script')`)}
-          ${rBtn(hasTwitter, '🐦', 'Twitter Thread', '10-Tweet Viral Hook', `openResourceModal('${day.twitterThreadUrl}', 'twitter')`)}
-          ${rBtn(hasNewsletter, '📧', 'Newsletter', 'Email Subscriber Digest', `openResourceModal('${day.newsletterUrl}', 'newsletter')`)}
-          ${rBtn(hasLinkedin, '📱', 'LinkedIn Carousel', '5-Slide Business Content', `openResourceModal('${day.linkedinUrl}', 'linkedin')`)}
+          ${rBtn(false, '📸', 'IG Caption', 'Instagram Reel Caption', '')}
+          ${rBtn(false, '🎵', 'TikTok Script', 'TikTok Hook & Caption', '')}
+          ${rBtn(hasLinkedin, '💼', 'LinkedIn', '5-Slide Business Content', `openResourceModal('${day.linkedinUrl}', 'linkedin')`)}
           ${rBtn(hasFaq, '❓', 'FAQ Doc', 'Common Questions Answered', `openResourceModal('${day.faqUrl}', 'faq')`)}
         </div>
         <div style="margin-top:14px;">
@@ -947,25 +947,51 @@
 
   function showQuizResults() {
       const pct = Math.round((window.activeQuizState.correct / window.activeQuizState.total) * 100);
-      let grade = 'F';
-      let color = '#f87171';
-      if (pct >= 90) { grade = 'A+'; color = '#34d399'; }
-      else if (pct >= 80) { grade = 'B'; color = '#3b82f6'; }
-      else if (pct >= 70) { grade = 'C'; color = '#fbbf24'; }
-      else if (pct >= 60) { grade = 'D'; color = '#f97316'; }
-      
+      let grade = 'F'; let color = '#f87171'; let emoji = '😬';
+      if (pct >= 90) { grade = 'A+'; color = '#34d399'; emoji = '🏆'; }
+      else if (pct >= 80) { grade = 'B'; color = '#3b82f6'; emoji = '🎯'; }
+      else if (pct >= 70) { grade = 'C'; color = '#fbbf24'; emoji = '📈'; }
+      else if (pct >= 60) { grade = 'D'; color = '#f97316'; emoji = '⚠️'; }
+
+      // Remove any existing results card first
+      const existing = document.getElementById('quiz-results-card');
+      if (existing) existing.remove();
+
       const resHtml = `
-      <div id="quiz-results-card" style="margin-top: 40px; padding: 30px; background: var(--surface2); border: 2px solid ${color}; border-radius: 16px; text-align: center; animation: slideUpFade 0.5s;">
-         <h2 style="font-family: 'Outfit', sans-serif; font-size: 32px; color: ${color}; margin-top: 0; margin-bottom:10px;">Quiz Complete!</h2>
-         <div style="font-size: 48px; font-weight: 800; color: #fff; margin: 10px 0;">${grade} <span style="font-size:24px; color:var(--muted)">(${pct}%)</span></div>
-         <p style="color: var(--muted); margin-bottom: 25px; font-size: 16px;">You scored ${window.activeQuizState.correct} out of ${window.activeQuizState.total} correctly.</p>
-         <button onclick="retryQuiz()" style="background: var(--surface1); color: var(--text); padding: 12px 24px; border-radius: 8px; border: 1px solid var(--border); font-weight: 600; cursor: pointer; font-size: 15px; transition: 0.2s;">↻ Retry Quiz</button>
+      <div id="quiz-results-card" style="
+        position: sticky; top: 0; z-index: 50;
+        background: var(--surface); border: 2px solid ${color};
+        border-radius: 20px; padding: 36px 24px; text-align: center;
+        box-shadow: 0 0 60px ${color}40;
+        margin-bottom: 24px;
+        animation: slideUpFade 0.4s ease-out;
+      ">
+        <div style="font-size: 56px; margin-bottom: 8px;">${emoji}</div>
+        <h2 style="font-family:'Outfit',sans-serif; font-size:26px; color:${color}; margin-bottom:6px;">Quiz Complete!</h2>
+        <div style="font-size: 64px; font-weight: 900; color:#fff; line-height:1; margin: 8px 0;">${
+          grade
+        }</div>
+        <div style="font-size: 22px; color:${color}; font-weight:700; margin-bottom:6px;">${pct}%</div>
+        <p style="color:var(--muted); margin-bottom: 28px; font-size:15px;">
+          You scored <strong style="color:#fff;">${window.activeQuizState.correct}</strong> out of
+          <strong style="color:#fff;">${window.activeQuizState.total}</strong> correctly.
+          ${ pct >= 80 ? '<br><span style="color:#34d399; font-weight:700;">🎉 80%+ — You earned your Day Badge!</span>' : '<br><span style="color:#f87171;">Score 80%+ to earn your completion badge.</span>' }
+        </p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <button onclick="retryQuiz()" style="background:var(--surface2); color:var(--text); padding:12px 28px; border-radius:99px; border:1px solid var(--border); font-weight:700; cursor:pointer; font-size:15px; transition:0.2s;">↻ Retake Quiz</button>
+          ${ pct >= 80 ? `<button onclick="closeResourceModal()" style="background:${color}; color:#000; padding:12px 28px; border-radius:99px; border:none; font-weight:800; cursor:pointer; font-size:15px;">✓ Done!</button>` : '' }
+        </div>
       </div>`;
-      
-      document.getElementById('modal-body').insertAdjacentHTML('beforeend', resHtml);
-      setTimeout(() => {
-          document.getElementById('quiz-results-card').scrollIntoView({ behavior: 'smooth', block: 'end' });
-      }, 100);
+
+      // Insert at TOP of modal body, not the end
+      const modalBody = document.getElementById('modal-body');
+      modalBody.insertAdjacentHTML('afterbegin', resHtml);
+      modalBody.closest('.modal-overlay').scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Award badge for 80%+
+      if (pct >= 80 && window._currentQuizDay) {
+        window.awardBadgeIfEarned(window._currentQuizDay);
+      }
   }
 
   window.retryQuiz = function() {

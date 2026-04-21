@@ -106,6 +106,69 @@
   </div>
 </nav>
 
+<!-- LIVE SESSION BANNER -->
+<div id="session-banner" style="
+  text-align:center; padding: 10px 20px; font-size: 13px; font-weight: 700;
+  letter-spacing: .05em; border-bottom: 1px solid var(--border);
+  transition: background 0.5s, color 0.5s;
+">
+  <span id="session-dot" style="display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; vertical-align:middle;"></span>
+  <span id="session-text">Checking session...</span>
+</div>
+
+<script>
+  function updateSessionBanner() {
+    const banner = document.getElementById('session-banner');
+    const dot = document.getElementById('session-dot');
+    const text = document.getElementById('session-text');
+    // Get current CST time (UTC-6, no DST adjustment for simplicity)
+    const now = new Date();
+    const utcHour = now.getUTCHours();
+    const utcMin = now.getUTCMinutes();
+    const cstHour = (utcHour - 6 + 24) % 24; // CST = UTC-6
+    const cstMin = utcMin;
+    const cstTime = cstHour + cstMin / 60;
+
+    // Session windows (CST):
+    // Asian: 6:00 PM – 11:00 PM  (18:00–23:00)
+    // NY Pre-Market: 8:00 AM – 9:30 AM
+    // NY Open: 9:30 AM – 11:30 AM  ← PRIME TIME
+    // NY Midday Chop: 11:30 AM – 1:00 PM
+    // NY Afternoon: 1:00 PM – 3:00 PM
+    // Closed: 3:00 PM – 6:00 PM AND 11:00 PM – 8:00 AM
+
+    let msg, bg, dotColor;
+
+    if (cstTime >= 18 && cstTime < 23) {
+      msg = '🌏 ASIAN SESSION LIVE (6PM–11PM CST) — Watch for key level reactions. Buy lows, sell highs.';
+      bg = 'rgba(99,102,241,0.12)'; dotColor = '#818cf8';
+    } else if (cstTime >= 8 && cstTime < 9.5) {
+      msg = '⏳ NY PRE-MARKET (8AM–9:30AM CST) — Complete your checklist NOW before open.';
+      bg = 'rgba(245,158,11,0.12)'; dotColor = '#f59e0b';
+    } else if (cstTime >= 9.5 && cstTime < 11.5) {
+      msg = '🔥 NY OPEN LIVE (9:30AM–11:30AM CST) — HIGH PROBABILITY WINDOW. ICC setups forming.';
+      bg = 'rgba(34,211,164,0.12)'; dotColor = '#22d3a4';
+    } else if (cstTime >= 11.5 && cstTime < 13) {
+      msg = '⚠️ LUNCH CHOP ZONE (11:30AM–1PM CST) — DO NOT TRADE. Low volume. Trap territory.';
+      bg = 'rgba(244,63,94,0.12)'; dotColor = '#f43f5e';
+    } else if (cstTime >= 13 && cstTime < 15) {
+      msg = '📉 PM SESSION (1PM–3PM CST) — Watch for continuation or reversal off morning levels.';
+      bg = 'rgba(251,191,36,0.12)'; dotColor = '#fbbf24';
+    } else {
+      msg = '💤 MARKET CLOSED — Study, review your journal, prepare for tomorrow.';
+      bg = 'rgba(119,120,160,0.1)'; dotColor = '#7778a0';
+    }
+
+    banner.style.background = bg;
+    dot.style.background = dotColor;
+    dot.style.boxShadow = '0 0 6px ' + dotColor;
+    text.textContent = msg;
+  }
+
+  updateSessionBanner();
+  setInterval(updateSessionBanner, 60000); // refresh every minute
+</script>
+
 <div class="header">
   <div class="eyebrow">Printable Desk Reference</div>
   <h1>The ICC <span>Master Blueprint</span></h1>
