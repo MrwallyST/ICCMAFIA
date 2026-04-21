@@ -1,33 +1,145 @@
 {
-  "title": "Continuations & Entries",
+  "title": "Continuations & The Entry Model — Flashcards",
   "cards": [
     {
-      "front": "What is the Continuation?",
-      "back": "Step 3 of the ICC Framework. It happens right after the correction is over, when price flips back into the original trend direction."
+      "front": "What is Step 3 of the ICC Framework called?",
+      "back": "The Continuation — the moment the market resumes its original trend direction after the Correction is over."
     },
     {
-      "front": "The Market Cycle",
-      "back": "Indication ➡️ Correction ➡️ Continuation ➡️ Repeat."
+      "front": "What is the full ICC Market Cycle?",
+      "back": "Indication ➡️ Correction ➡️ Continuation ➡️ Repeat. This is the heartbeat of every liquid, institutional market."
     },
     {
-      "front": "The Surgeon Analogy: 1-Hour Chart",
-      "back": "The X-Ray: Used to find the massive, overall direction and the main Indication."
+      "front": "When exactly does the Continuation begin?",
+      "back": "When the Correction ends — price stops making new lows (or highs against the trend), flips, and begins a new push in the original direction."
     },
     {
-      "front": "The Surgeon Analogy: 5-Minute Chart",
-      "back": "The Scalpel: Used to pinpoint exactly when the correction is over and execute the precision entry."
+      "front": "In the Surgeon Analogy, what does the 1-Hour chart represent?",
+      "back": "The X-Ray. It gives you the overall direction, the location of the Indication, and the massive structural Take Profit target."
     },
     {
-      "front": "The Second Time Around Rule",
-      "back": "Never trade the first breakout. Wait for the market to form a correction, and enter the second time it pushes past your key level."
+      "front": "In the Surgeon Analogy, what does the 5-Minute chart represent?",
+      "back": "The Scalpel. It allows you to zoom inside the trend and pinpoint exactly when the Correction ends and the real move is starting."
     },
     {
-      "front": "Stop Loss Placement",
-      "back": "Safely above or below the previous peak (the lower high or higher low) created during the correction."
+      "front": "Why is the Surgeon Analogy used in Day 4?",
+      "back": "Because a surgeon uses an X-Ray to identify the general problem, then uses precise instruments to cut in the right place. A trader uses the 1H chart for direction and the 5m chart for precision entry."
     },
     {
-      "front": "Take Profit Target",
-      "back": "The massive 1-Hour level where the original indication started, anticipating a brand new low or high."
+      "front": "What is 'The Second Time Around' rule?",
+      "back": "Never trade the first breakout of a level. Wait for the market to correct and enter only the SECOND time price pushes past your key level on the 5-Minute chart."
+    },
+    {
+      "front": "Why should you never trade the first breakout of a level?",
+      "back": "The first push is often a liquidity grab — it triggers retail stop-losses and then reverses. The real institutional move begins on the second push after the correction."
+    },
+    {
+      "front": "Where do you place your Stop Loss on a Continuation entry?",
+      "back": "Safely above the previous Lower High (for a long trade) or below the previous Higher Low (for a short trade) formed during the Correction on the 5-minute chart."
+    },
+    {
+      "front": "Where is your Take Profit target on a Continuation trade?",
+      "back": "The massive 1-Hour structural level where the original Indication formed — the market is anticipated to create a brand new High or Low at that level."
+    },
+    {
+      "front": "What is a 'Liquidity Grab'?",
+      "back": "The market's move to push past a key level to trigger retail stop-losses, fueling a brief spike before reversing in the true institutional direction."
+    },
+    {
+      "front": "What does a Lower High (LH) tell you during a bullish Correction?",
+      "back": "It confirms the Correction is still in progress. Price is pulling back but failing to break the prior high — giving you a structural reference for your Stop Loss."
+    },
+    {
+      "front": "What does a Higher Low (HL) tell you during a bearish Correction?",
+      "back": "It confirms the Correction is still active. Price is pulling back but failing to break the prior low — giving you a structural Stop Loss reference."
+    },
+    {
+      "front": "What is the first step in executing a Continuation trade?",
+      "back": "Identify the Indication and Correction on the 1-Hour chart. Mark the macro direction and the 1H Take Profit target level."
+    },
+    {
+      "front": "What is the second step in executing a Continuation trade?",
+      "back": "Drop to the 5-Minute chart and watch the Correction form its micro-structure (LH and HL patterns)."
+    },
+    {
+      "front": "What is the third step in executing a Continuation trade?",
+      "back": "Wait for the Correction to stall — price stops making new aggressive moves against the trend."
+    },
+    {
+      "front": "What is the fourth step in executing a Continuation trade?",
+      "back": "Identify your key 5-minute level — the structural point where you expect the second push to occur."
+    },
+    {
+      "front": "What is the fifth step in executing a Continuation trade?",
+      "back": "Enter on the second push past that key level on the 5-minute chart, confirming the real move has begun."
+    },
+    {
+      "front": "Why is Stop Loss placement 'structurally protected' in the ICC model?",
+      "back": "Because it is placed beyond the most recent structure of the Correction. If that level breaks, the setup is invalid — the Correction is not truly over."
+    },
+    {
+      "front": "True or False: The Take Profit target is an arbitrary number of pips away from your entry.",
+      "back": "False. The Take Profit is always set at the massive 1-Hour structural level that the original Indication pointed toward — a specific, logical destination."
+    },
+    {
+      "front": "What happens to retail traders who buy the first breakout?",
+      "back": "They get stopped out during the Correction (the liquidity grab), funding the real institutional move that the patient trader is waiting to enter."
+    },
+    {
+      "front": "What does a 'flip' in market structure signal on the 5-Minute chart?",
+      "back": "That the Correction is ending — price structure has changed from moving against the trend to beginning to move back in the original direction."
+    },
+    {
+      "front": "How does the ICC Continuation model differ from a simple 'buy the breakout' strategy?",
+      "back": "ICC requires waiting for the Correction after the initial breakout, then entering only on the second, confirmed push — avoiding the liquidity grab that destroys breakout traders."
+    },
+    {
+      "front": "In an uptrend, the Continuation begins when price creates a _____ after the Correction.",
+      "back": "A new Higher High (HH) — breaking past the Indication level and heading toward the 1-Hour Take Profit target."
+    },
+    {
+      "front": "In a downtrend, the Continuation begins when price creates a _____ after the Correction.",
+      "back": "A new Lower Low (LL) — breaking below the Indication level and heading toward the 1-Hour Take Profit target."
+    },
+    {
+      "front": "Why is the 1-Hour (or 4-Hour) chart used for the overall setup but NOT for the entry?",
+      "back": "Because the 1-Hour chart shows the macro direction and target, but its structure is too broad to pinpoint the precise entry moment. The 5-Minute chart reveals the micro-level flip."
+    },
+    {
+      "front": "If you only used the 1-Hour chart to trade, what problem would you encounter?",
+      "back": "Your entries would be imprecise and often too early or too late — missing the optimal entry during the Correction and potentially entering during the liquidity grab."
+    },
+    {
+      "front": "If you only used the 5-Minute chart to trade, what problem would you encounter?",
+      "back": "You would lose the macro context — you wouldn't know the overall direction, the Indication target, or the correct Take Profit level."
+    },
+    {
+      "front": "The Second Time Around rule protects traders from what specific market behavior?",
+      "back": "Liquidity grabs — the first push that triggers amateur stop-losses before the real institutional move begins."
+    },
+    {
+      "front": "What is the purpose of the Correction phase within the ICC cycle?",
+      "back": "To grab amateur liquidity, shake out weak hands, and create a structurally safe entry point for the patient trader on the Continuation."
+    },
+    {
+      "front": "How does the Continuation phase 'fund' itself?",
+      "back": "Through the liquidity grabbed during the Correction — the stop-losses of retail traders become the fuel for the institutional Continuation move."
+    },
+    {
+      "front": "Define 'market flip' in the context of the Continuation.",
+      "back": "The moment on the 5-Minute chart when price stops moving against the trend (Correction) and begins creating structure back in the direction of the Indication."
+    },
+    {
+      "front": "The massive 1-Hour structural target represents what in terms of market mechanics?",
+      "back": "A price level with significant institutional interest — a prior high or low that the market intends to sweep, creating a brand new High or Low."
+    },
+    {
+      "front": "Why is the patience to 'wait for the second push' psychologically difficult?",
+      "back": "Because after the Correction, when price starts moving again, it looks like you are missing the move. Discipline is required to wait for the structural confirmation before entering."
+    },
+    {
+      "front": "What would confirm that a trade setup using the ICC Continuation model is invalidated?",
+      "back": "If price breaks the Correction's structural reference point (the LH for a long or the HL for a short), the setup is invalidated and the Stop Loss should be respected."
     }
   ]
 }
