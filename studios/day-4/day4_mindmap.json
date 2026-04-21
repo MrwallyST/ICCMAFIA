@@ -1,0 +1,59 @@
+{
+  "title": "Continuations & Entries",
+  "children": [
+    {
+      "title": "1. The Grand Finale",
+      "children": [
+        { "title": "Step 3: The Continuation" },
+        { "title": "Happens after Correction is over" },
+        { "title": "Market Cycle: Indication > Correction > Continuation > Repeat" }
+      ]
+    },
+    {
+      "title": "2. The Surgeon Analogy",
+      "children": [
+        {
+          "title": "1-Hour Chart (The X-Ray)",
+          "children": [
+            { "title": "Overall Setup" },
+            { "title": "Massive Direction" }
+          ]
+        },
+        {
+          "title": "5-Minute Chart (The Scalpel)",
+          "children": [
+            { "title": "Precision Entry" },
+            { "title": "Pinpoints Correction End" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. The Execution Blueprint",
+      "children": [
+        {
+          "title": "The Second Time Around",
+          "children": [
+            { "title": "Never trade first breakout" },
+            { "title": "Wait for Correction drop" },
+            { "title": "Enter on second push past key level" }
+          ]
+        },
+        {
+          "title": "Stop Loss",
+          "children": [
+            { "title": "Placed safely above/below previous peak" },
+            { "title": "Uses Lower High / Higher Low of Correction" }
+          ]
+        },
+        {
+          "title": "Take Profit Target",
+          "children": [
+            { "title": "The original massive 1-Hour level" },
+            { "title": "Anticipating brand new High or Low" }
+          ]
+        }
+      ]
+    }
+  ]
+}
