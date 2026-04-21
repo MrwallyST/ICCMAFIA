@@ -1,56 +1,56 @@
 {
-  "title": "Continuations & Entries",
+  "name": "Continuations & Entries",
   "children": [
     {
-      "title": "1. The Grand Finale",
+      "name": "1. The Grand Finale",
       "children": [
-        { "title": "Step 3: The Continuation" },
-        { "title": "Happens after Correction is over" },
-        { "title": "Market Cycle: Indication > Correction > Continuation > Repeat" }
+        { "name": "Step 3: The Continuation" },
+        { "name": "Happens after Correction is over" },
+        { "name": "Market Cycle: Indication > Correction > Continuation > Repeat" }
       ]
     },
     {
-      "title": "2. The Surgeon Analogy",
+      "name": "2. The Surgeon Analogy",
       "children": [
         {
-          "title": "1-Hour Chart (The X-Ray)",
+          "name": "1-Hour Chart (The X-Ray)",
           "children": [
-            { "title": "Overall Setup" },
-            { "title": "Massive Direction" }
+            { "name": "Overall Setup" },
+            { "name": "Massive Direction" }
           ]
         },
         {
-          "title": "5-Minute Chart (The Scalpel)",
+          "name": "5-Minute Chart (The Scalpel)",
           "children": [
-            { "title": "Precision Entry" },
-            { "title": "Pinpoints Correction End" }
+            { "name": "Precision Entry" },
+            { "name": "Pinpoints Correction End" }
           ]
         }
       ]
     },
     {
-      "title": "3. The Execution Blueprint",
+      "name": "3. The Execution Blueprint",
       "children": [
         {
-          "title": "The Second Time Around",
+          "name": "The Second Time Around",
           "children": [
-            { "title": "Never trade first breakout" },
-            { "title": "Wait for Correction drop" },
-            { "title": "Enter on second push past key level" }
+            { "name": "Never trade first breakout" },
+            { "name": "Wait for Correction drop" },
+            { "name": "Enter on second push past key level" }
           ]
         },
         {
-          "title": "Stop Loss",
+          "name": "Stop Loss",
           "children": [
-            { "title": "Placed safely above/below previous peak" },
-            { "title": "Uses Lower High / Higher Low of Correction" }
+            { "name": "Placed safely above/below previous peak" },
+            { "name": "Uses Lower High / Higher Low of Correction" }
           ]
         },
         {
-          "title": "Take Profit Target",
+          "name": "Take Profit Target",
           "children": [
-            { "title": "The original massive 1-Hour level" },
-            { "title": "Anticipating brand new High or Low" }
+            { "name": "The original massive 1-Hour level" },
+            { "name": "Anticipating brand new High or Low" }
           ]
         }
       ]

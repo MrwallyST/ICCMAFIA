@@ -1,30 +1,33 @@
-[
-  {
-    "front": "What is the Continuation?",
-    "back": "Step 3 of the ICC Framework. It happens right after the correction is over, when price flips back into the original trend direction."
-  },
-  {
-    "front": "The Market Cycle",
-    "back": "Indication ➡️ Correction ➡️ Continuation ➡️ Repeat."
-  },
-  {
-    "front": "The Surgeon Analogy: 1-Hour Chart",
-    "back": "The X-Ray: Used to find the massive, overall direction and the main Indication."
-  },
-  {
-    "front": "The Surgeon Analogy: 5-Minute Chart",
-    "back": "The Scalpel: Used to pinpoint exactly when the correction is over and execute the precision entry."
-  },
-  {
-    "front": "The Second Time Around Rule",
-    "back": "Never trade the first breakout. Wait for the market to form a correction, and enter the second time it pushes past your key level."
-  },
-  {
-    "front": "Stop Loss Placement",
-    "back": "Safely above or below the previous peak (the lower high or higher low) created during the correction."
-  },
-  {
-    "front": "Take Profit Target",
-    "back": "The massive 1-Hour level where the original indication started, anticipating a brand new low or high."
-  }
-]
+{
+  "title": "Continuations & Entries",
+  "cards": [
+    {
+      "front": "What is the Continuation?",
+      "back": "Step 3 of the ICC Framework. It happens right after the correction is over, when price flips back into the original trend direction."
+    },
+    {
+      "front": "The Market Cycle",
+      "back": "Indication ➡️ Correction ➡️ Continuation ➡️ Repeat."
+    },
+    {
+      "front": "The Surgeon Analogy: 1-Hour Chart",
+      "back": "The X-Ray: Used to find the massive, overall direction and the main Indication."
+    },
+    {
+      "front": "The Surgeon Analogy: 5-Minute Chart",
+      "back": "The Scalpel: Used to pinpoint exactly when the correction is over and execute the precision entry."
+    },
+    {
+      "front": "The Second Time Around Rule",
+      "back": "Never trade the first breakout. Wait for the market to form a correction, and enter the second time it pushes past your key level."
+    },
+    {
+      "front": "Stop Loss Placement",
+      "back": "Safely above or below the previous peak (the lower high or higher low) created during the correction."
+    },
+    {
+      "front": "Take Profit Target",
+      "back": "The massive 1-Hour level where the original indication started, anticipating a brand new low or high."
+    }
+  ]
+}
