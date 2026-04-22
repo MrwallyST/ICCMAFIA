@@ -18,6 +18,8 @@
   <meta name="twitter:image" content="https://mrwallyst.github.io/ICCMAFIA/studios/day-1/day1_infographic.png" />
   <!-- Canonical -->
   <link rel="canonical" href="https://mrwallyst.github.io/ICCMAFIA/" />
+  <link rel="manifest" href="/ICCMAFIA/manifest.json">
+  <meta name="theme-color" content="#7c6fcd">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
   <!-- Markdown Parser for Interactive Engine -->
@@ -466,6 +468,7 @@
     <a href="#days" class="nav-link">All Days</a>
     <a href="cheat-sheet.html" class="nav-link" style="color:var(--gold); font-weight:700;">📋 Cheat Sheet</a>
     <a href="psychology.html" class="nav-link" style="color:#f87171; font-weight:700;">🧠 Psychology</a>
+    <a href="calendar.html" class="nav-link" style="color:var(--green); font-weight:700;">📅 Calendar</a>
     <a href="https://www.youtube.com/@ICCMAFIA-AI" target="_blank" class="nav-link yt">
       ▶ YouTube
     </a>
@@ -548,9 +551,36 @@
 <!-- DAYS -->
 <section class="days-section" id="days">
   <div class="section-label">📅 All Days — Trades by Sci</div>
+
+  <!-- Your Progress Card -->
+  <div id="user-progress-card" style="background:var(--surface2); border:1px solid var(--border); border-radius:16px; padding:20px 24px; margin-bottom:28px; display:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <div style="font-family:'Outfit',sans-serif; font-size:16px; font-weight:700;">🎯 Your Progress</div>
+      <span id="progress-count-label" style="font-size:13px; font-weight:700; color:var(--accent2);">0 of 0 completed</span>
+    </div>
+    <div style="height:8px; background:var(--surface3); border-radius:999px; overflow:hidden; border:1px solid var(--border);">
+      <div id="user-prog-fill" style="height:100%; border-radius:999px; background:linear-gradient(90deg,var(--accent),var(--green)); transition:width 0.6s ease; width:0%;"></div>
+    </div>
+    <div style="font-size:11px; color:var(--muted); margin-top:8px;">Mark each day complete after watching the video &amp; studying the materials.</div>
+  </div>
+
   <div id="loading"><div class="spinner"></div> Loading sessions...</div>
   <div id="days-container"></div>
 </section>
+
+<!-- Certificate Modal -->
+<div id="cert-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(8px); z-index:3000; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--surface2); border:1px solid var(--border); border-top:4px solid var(--gold); border-radius:20px; max-width:500px; width:100%; padding:40px; text-align:center; position:relative; animation:slideUpFade .4s ease;">
+    <div style="font-size:64px; margin-bottom:16px;">🎓</div>
+    <h2 style="font-family:'Outfit',sans-serif; font-size:28px; font-weight:900; margin-bottom:12px; color:var(--gold);">Course Complete!</h2>
+    <p style="color:var(--muted); font-size:15px; line-height:1.7; margin-bottom:24px;">You've completed all available ICC course days!<br><strong style="color:var(--text);">New days drop weekly</strong> — keep coming back.</p>
+    <div style="background:var(--surface3); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:24px; font-size:13px; color:var(--muted);">
+      Certificate issued to this device on <strong style="color:var(--text);" id="cert-date"></strong>
+    </div>
+    <button onclick="document.getElementById('cert-modal').style.display='none';" style="background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border:none; padding:12px 32px; border-radius:99px; font-weight:800; font-size:15px; cursor:pointer; width:100%; margin-bottom:10px;">Continue Learning ✨</button>
+    <button onclick="document.getElementById('cert-modal').style.display='none';" style="background:transparent; border:1px solid var(--border); color:var(--muted); padding:10px; border-radius:99px; font-weight:600; font-size:13px; cursor:pointer; width:100%;">Close</button>
+  </div>
+</div>
 
 <div class="disclaimer-bar">
   <span>⚠️ Disclaimer</span>This site is for <strong>educational purposes only</strong>. Nothing here is financial advice. We are not financial advisors. Trading involves significant risk — always do your own research and consult a licensed professional before making any financial decisions.
@@ -735,6 +765,12 @@
 
             ${day.reelUrl ? `<div class="full-col"><a class="reel-link" href="${day.reelUrl}" target="_blank">🎬 Watch the Reel ↗</a></div>` : ''}
           </div>
+        </div>
+        <!-- Mark Complete Button -->
+        <div style="padding:16px 28px; border-top:1px solid var(--border); display:flex; align-items:center; gap:12px; justify-content:flex-end;" id="complete-row-${day.day}">
+          <button onclick="toggleDayComplete(${day.day})" id="complete-btn-${day.day}" style="display:inline-flex; align-items:center; gap:7px; padding:8px 20px; border-radius:99px; font-size:13px; font-weight:700; cursor:pointer; transition:all .2s; border:1px solid var(--border); background:var(--surface3); color:var(--muted);">
+            ✓ Mark Complete
+          </button>
         </div>
         <!-- Giscus Community Comments -->
         <div class="giscus-wrap">
@@ -1208,6 +1244,61 @@
     counters.forEach(el => observer.observe(el));
   }
 
+  // ── COMPLETION TRACKING ────────────────────────────
+  const TOTAL_PLANNED_DAYS = 14;
+
+  function getCompletedDays() {
+    try { return JSON.parse(localStorage.getItem('tbs_completed_days') || '[]'); } catch(e) { return []; }
+  }
+
+  function saveCompletedDays(arr) {
+    localStorage.setItem('tbs_completed_days', JSON.stringify(arr));
+  }
+
+  function toggleDayComplete(dayNum) {
+    let completed = getCompletedDays();
+    const idx = completed.indexOf(dayNum);
+    if (idx >= 0) completed.splice(idx, 1);
+    else completed.push(dayNum);
+    saveCompletedDays(completed);
+    updateCompletionUI(completed);
+    applyCompletionStyles(completed);
+  }
+
+  function updateCompletionUI(completed) {
+    const liveDays = DAYS_DATA.filter(d => !d.comingSoonDate).length;
+    const completedCount = completed.filter(n => DAYS_DATA.some(d => d.day === n && !d.comingSoonDate)).length;
+    const pct = liveDays > 0 ? Math.round((completedCount / TOTAL_PLANNED_DAYS) * 100) : 0;
+    const card = document.getElementById('user-progress-card');
+    if (card) { card.style.display = 'block'; }
+    const fill = document.getElementById('user-prog-fill');
+    if (fill) fill.style.width = Math.min(pct, 100) + '%';
+    const lbl = document.getElementById('progress-count-label');
+    if (lbl) lbl.textContent = `${completedCount} of ${TOTAL_PLANNED_DAYS} completed`;
+
+    // Show certificate if all live days are completed
+    if (liveDays > 0 && completedCount >= liveDays) {
+      const certModal = document.getElementById('cert-modal');
+      const certDate = document.getElementById('cert-date');
+      if (certModal && certDate) {
+        certDate.textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        certModal.style.display = 'flex';
+      }
+    }
+  }
+
+  function applyCompletionStyles(completed) {
+    DAYS_DATA.forEach(day => {
+      const btn = document.getElementById('complete-btn-' + day.day);
+      if (!btn) return;
+      const isDone = completed.includes(day.day);
+      btn.style.background = isDone ? 'rgba(34,211,164,.15)' : 'var(--surface3)';
+      btn.style.borderColor = isDone ? 'rgba(34,211,164,.4)' : 'var(--border)';
+      btn.style.color = isDone ? 'var(--green)' : 'var(--muted)';
+      btn.textContent = isDone ? '✓ Completed' : '✓ Mark Complete';
+    });
+  }
+
   function loadDays() {
     const days = DAYS_DATA;
     // Update counter targets dynamically
@@ -1228,6 +1319,11 @@
       if (first) { first.classList.add('open'); }
     }
 
+    // Init completion tracking
+    const completed = getCompletedDays();
+    updateCompletionUI(completed);
+    applyCompletionStyles(completed);
+
     restoreBadges();
     runCounters();
   }
@@ -1240,5 +1336,6 @@
   <a href="comments.html" style="color:var(--muted); font-size:12px; text-decoration:none; opacity:0.5;">&#128172; Admin: Threads Comments</a>
 </div>
 
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/ICCMAFIA/sw.js');</script>
 </body>
 </html>
