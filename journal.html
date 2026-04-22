@@ -219,6 +219,74 @@
     .privacy-modal-box .caveat { font-size:12px; color:var(--muted); opacity:0.7; margin-top:8px; }
     .privacy-modal-box button { margin-top:20px; background:var(--green); color:#fff; border:none; padding:12px 32px; border-radius:10px; font-weight:700; font-size:16px; cursor:pointer; width:100%; transition:0.2s; }
     .privacy-modal-box button:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(16,185,129,0.3); }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE MOBILE STYLES — fits all phones
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      /* Nav */
+      nav { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+      .nav-right { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .nav-right a { font-size: 12px; padding: 6px 10px; }
+      #account-switcher { font-size: 12px; padding: 6px 8px; }
+
+      /* Container */
+      .container { padding: 0 12px; margin: 16px auto; }
+      .header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+      .header h1 { font-size: 22px; }
+      .privacy-badge { font-size: 11px; padding: 6px 10px; }
+
+      /* Stats grid — 2 columns on mobile */
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+      .stat-card { padding: 14px; }
+      .stat-value { font-size: 22px; }
+      .stat-name { font-size: 11px; }
+
+      /* Trades section */
+      .trades-section { border-radius: 10px; }
+      .trades-header { flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px; }
+      .trades-header h2 { font-size: 16px; }
+      .trades-header > div { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+      .add-trade-btn { font-size: 12px; padding: 8px 12px; flex: 1; min-width: 100px; text-align: center; }
+
+      /* Table — hide Tags column, compress padding */
+      th, td { padding: 10px 8px; font-size: 12px; }
+      th:nth-child(5), td:nth-child(5) { display: none; } /* hide Tags */
+      .badge { font-size: 11px; padding: 3px 7px; }
+
+      /* Modals */
+      .modal-content { padding: 20px 16px; border-radius: 12px; }
+      .modal-title { font-size: 18px; }
+      .form-row { flex-direction: column; gap: 0; }
+      .form-control { font-size: 16px; } /* prevent iOS zoom on input focus */
+      select.form-control { font-size: 16px; }
+
+      /* Import modal */
+      .import-box { padding: 20px 16px; border-radius: 14px; }
+      .paste-area { font-size: 12px; min-height: 120px; }
+
+      /* Calendar */
+      .calendar-wrapper { padding: 12px; }
+      .calendar-grid { gap: 3px; }
+      .calendar-day { min-height: 48px; padding: 4px; border-radius: 6px; }
+      .day-name { font-size: 9px; padding-bottom: 6px; }
+      .day-number { font-size: 10px; }
+      .day-pnl { font-size: 8px; padding: 1px 2px; margin-top: 3px; }
+      .calendar-title { font-size: 15px; }
+      .calendar-nav button { width: 26px; height: 26px; font-size: 12px; }
+
+      /* Psychology grid */
+      .psych-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Equity chart container */
+      #equityChart { max-height: 200px; }
+    }
+
+    @media (max-width: 400px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .calendar-day { min-height: 38px; padding: 2px; }
+      .day-pnl { font-size: 7px; }
+    }
   </style>
 
   <!-- External Library for Equity Curve -->
@@ -1454,18 +1522,11 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     const fileName = `iccmafia_journal_${new Date().toISOString().split('T')[0]}.csv`;
     const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
 
-    // ── Strategy 1: Native File Share API (Android / iOS share sheet) ──
-    if (navigator.canShare) {
-      try {
-        const file = new File([blob], fileName, { type: 'text/csv' });
-        if (navigator.canShare({ files: [file] })) {
-          await navigator.share({ files: [file], title: 'Trading Journal CSV' });
-          return;
-        }
-      } catch(err) { /* share cancelled or not supported — fall through */ }
-    }
+    // ── Mobile: skip unreliable Share/blob APIs, go straight to copy modal ──
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth < 768;
+    if (isMobile) { showCSVModal(csv, fileName); return; }
 
-    // ── Strategy 2: Standard anchor download (Desktop Chrome/Firefox) ──
+    // ── Desktop Strategy 1: Standard anchor download ──
     try {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
