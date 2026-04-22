@@ -1644,6 +1644,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
       pendingImportTrades.push({
         id: generateId(),
+        accountId: activeAccountId,
         date: normalizeDate(mapped.date.trim()),
         pair: (mapped.pair || 'UNKNOWN').trim().toUpperCase(),
         direction, pnl,
@@ -1732,7 +1733,8 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function confirmImport() {
     if (pendingImportTrades.length === 0) return;
     const count = pendingImportTrades.length;
-    trades.push(...pendingImportTrades);
+    // Always stamp with current active account at confirm time
+    trades.push(...pendingImportTrades.map(t => ({ ...t, accountId: activeAccountId })));
     saveToStorage();
     renderDashboard();
     renderCalendar();
