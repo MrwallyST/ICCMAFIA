@@ -1438,65 +1438,111 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   }
 
   async function exportCSV() {
-    if(trades.length === 0) return alert("No trades to export!");
-    let csv = "Date,Pair,Direction,P&L,Tags,Notes\n";
+    if(trades.length === 0) { alert("No trades to export!"); return; }
+    let csv = "Date,Pair,Direction,P&L,Tags,Notes,Risk,RR,Emotion,Grade,Rules\n";
     getActiveTrades().forEach(t => {
+      const tags = Array.isArray(t.tags) ? t.tags.join(';') : (t.tags || '');
       const row = [
         t.date, t.pair, t.direction, t.pnl,
-        `"${(t.tags || '').replace(/"/g, '""')}"`,
-        `"${(t.notes || '').replace(/"/g, '""')}"`
+        `"${tags.replace(/"/g, '""')}"`,
+        `"${(t.notes || '').replace(/"/g, '""')}"`,
+        t.risk || '', t.rr || '', t.emotion || '', t.grade || '', t.rules || ''
       ];
       csv += row.join(",") + "\n";
     });
-    
-    const fileName = `tradesbysci_journal_${new Date().toISOString().split('T')[0]}.csv`;
+
+    const fileName = `iccmafia_journal_${new Date().toISOString().split('T')[0]}.csv`;
     const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
-    
-    // Mobile/Hermit Bypass: Let the user opt-out of the buggy OS file system entirely
-    if (window.innerWidth < 768) {
-      if (confirm("Mobile browser detected.\n\nHit [OK] to COPY the raw CSV data to your clipboard (safest method to bypass Android file errors).\n\nHit [CANCEL] to attempt a normal File share.")) {
-        navigator.clipboard.writeText(csv).then(() => {
-          alert("✅ CSV copied to your clipboard! You can now paste it into an email or notes app and send it to your laptop.");
-        }).catch(() => {
-          alert("Clipboard access denied. Trying file download instead.");
-        });
-        return;
-      }
-    }
-    // 1. Try Native Web Share API (Best for Mobile / Hermit / WebView)
-    if (navigator.share) {
+
+    // ── Strategy 1: Native File Share API (Android / iOS share sheet) ──
+    if (navigator.canShare) {
       try {
         const file = new File([blob], fileName, { type: 'text/csv' });
-        // Some older browsers have navigator.share but don't support file sharing
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            files: [file],
-            title: 'Trading Journal Export',
-          });
-          return; // Success, user handled it via Share Sheet
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({ files: [file], title: 'Trading Journal CSV' });
+          return;
         }
-      } catch (err) {
-        console.log("Share API failed or cancelled", err);
-      }
+      } catch(err) { /* share cancelled or not supported — fall through */ }
     }
 
-    // 2. Standard Download Fallback (Best for Desktop)
+    // ── Strategy 2: Standard anchor download (Desktop Chrome/Firefox) ──
     try {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url; 
-      a.download = fileName;
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(url), 100);
-    } catch(err) {
-      // 3. Absolute Bulletproof Fallback (If WebView strictly blocks blobs)
-      navigator.clipboard.writeText(csv).then(() => {
-        alert("Your browser blocks direct file downloads. We have COPIED the CSV text to your clipboard. You can paste it into an empty text file or send it to yourself!");
-      });
-    }
+      a.href = url; a.download = fileName; a.style.display = 'none';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 200);
+      return;
+    } catch(err) { /* WebView blocked blob URL — fall through */ }
+
+    // ── Strategy 3: Clipboard + full-screen text modal (Hermit/WebView fallback) ──
+    // This is guaranteed to work even in locked-down WebViews that block everything else.
+    showCSVModal(csv, fileName);
+  }
+
+  function showCSVModal(csv, fileName) {
+    // Remove any existing modal
+    const existing = document.getElementById('csv-export-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'csv-export-modal';
+    modal.style.cssText = `
+      position:fixed; top:0; left:0; right:0; bottom:0;
+      background:rgba(0,0,0,0.92); z-index:9999;
+      display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+      padding:20px; overflow-y:auto;
+    `;
+
+    const tryClipboard = async (btn, ta) => {
+      try {
+        await navigator.clipboard.writeText(ta.value);
+        btn.textContent = '✅ Copied!';
+        btn.style.background = 'var(--green)';
+        setTimeout(() => { btn.textContent = '📋 Copy All to Clipboard'; btn.style.background = 'var(--accent)'; }, 3000);
+      } catch(e) {
+        ta.select();
+        document.execCommand('copy');
+        btn.textContent = '✅ Selected — Now tap Copy';
+        setTimeout(() => { btn.textContent = '📋 Copy All to Clipboard'; }, 3000);
+      }
+    };
+
+    modal.innerHTML = `
+      <div style="background:var(--surface2); border:1px solid var(--border); border-radius:16px; width:100%; max-width:600px; padding:24px;">
+        <div style="font-family:'Outfit',sans-serif; font-size:20px; font-weight:700; margin-bottom:8px;">📤 Export CSV</div>
+        <div style="color:var(--muted); font-size:13px; margin-bottom:16px; line-height:1.5;">
+          Your browser doesn't allow direct file downloads. Tap <strong>Copy All</strong>, then paste into <strong>Notes / Gmail / Google Sheets</strong> and save as <em>${fileName}</em>.
+        </div>
+        <textarea id="csv-export-ta" readonly
+          style="width:100%; height:200px; background:var(--surface); border:1px solid var(--border);
+          border-radius:8px; padding:12px; color:var(--text); font-family:monospace;
+          font-size:11px; resize:vertical; line-height:1.4;"
+        >${csv}</textarea>
+        <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;">
+          <button id="csv-copy-btn"
+            style="flex:1; padding:14px; background:var(--accent); color:#fff; border:none;
+            border-radius:10px; font-weight:700; font-size:15px; cursor:pointer; min-width:160px;">
+            📋 Copy All to Clipboard
+          </button>
+          <button onclick="document.getElementById('csv-export-modal').remove()"
+            style="padding:14px 20px; background:var(--surface3); color:var(--text);
+            border:1px solid var(--border); border-radius:10px; font-weight:700; cursor:pointer;">
+            Close
+          </button>
+        </div>
+        <div style="margin-top:12px; font-size:12px; color:var(--muted);">
+          💡 <strong>Tip:</strong> Long-press inside the text box → "Select All" → "Copy" if the button doesn't work.
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+    const ta = document.getElementById('csv-export-ta');
+    const btn = document.getElementById('csv-copy-btn');
+    btn.addEventListener('click', () => tryClipboard(btn, ta));
+    // Auto-select text for easy manual copy
+    setTimeout(() => { ta.focus(); ta.select(); }, 100);
   }
 
   // ─── Bulk CSV Import (no CDN — built-in parser) ──────────────
