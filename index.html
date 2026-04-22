@@ -458,11 +458,29 @@
     <a href="journal.html" class="nav-link" style="color:var(--accent2); font-weight:700;">Trading Journal</a>
     <a href="#days" class="nav-link">All Days</a>
     <a href="cheat-sheet.html" class="nav-link" style="color:var(--gold); font-weight:700;">📋 Cheat Sheet</a>
+    <a href="psychology.html" class="nav-link" style="color:#f87171; font-weight:700;">🧠 Psychology</a>
     <a href="https://www.youtube.com/@ICCMAFIA-AI" target="_blank" class="nav-link yt">
       ▶ YouTube
     </a>
   </div>
 </nav>
+
+<!-- HARD REFRESH BANNER -->
+<div id="refresh-banner" style="display:none; background:rgba(124,111,205,0.12); border-bottom:1px solid rgba(167,139,250,0.3); padding:10px 20px; text-align:center; font-size:13px; font-weight:600; color:var(--accent2);">
+  🆕 New content is available! <button onclick="document.getElementById('refresh-banner').style.display='none'; localStorage.setItem('icc_version','2026-04-21-v2'); location.reload(true);" style="margin-left:12px; background:var(--accent); color:#fff; border:none; padding:5px 14px; border-radius:6px; cursor:pointer; font-weight:700;">Refresh Now</button>
+  <button onclick="document.getElementById('refresh-banner').style.display='none';" style="margin-left:6px; background:transparent; color:var(--muted); border:1px solid var(--border); padding:5px 10px; border-radius:6px; cursor:pointer; font-size:12px;">Dismiss</button>
+</div>
+<script>
+  (function(){
+    const SITE_VERSION = '2026-04-21-v2';
+    const stored = localStorage.getItem('icc_version');
+    if (stored && stored !== SITE_VERSION) {
+      document.getElementById('refresh-banner').style.display = 'block';
+    } else {
+      localStorage.setItem('icc_version', SITE_VERSION);
+    }
+  })();
+</script>
 
 <!-- HERO -->
 <section class="hero">

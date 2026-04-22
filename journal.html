@@ -236,6 +236,8 @@
       <option value="default">Live Account</option>
     </select>
     <a href="#" onclick="openAccountModal()" style="height:34px; display:flex; align-items:center; padding:0 10px; font-size:13px;">⚙</a>
+    <a href="psychology.html" style="height:34px; display:flex; align-items:center; color:#f87171; font-weight:700;">🧠 Psychology</a>
+    <a href="cheat-sheet.html" style="height:34px; display:flex; align-items:center; color:var(--accent2); font-weight:600;">📋 Cheat Sheet</a>
     <a href="index.html" style="height:34px; display:flex; align-items:center;">← Course</a>
     <a href="#" class="primary" onclick="openAddModal()" style="height:34px; display:flex; align-items:center;">✚ Log Trade</a>
   </div>
@@ -263,6 +265,16 @@
       <div class="stat-name">Total Trades</div>
       <div class="stat-value" id="stat-count">0</div>
     </div>
+    <div class="stat-card">
+      <div class="stat-name">Current Streak</div>
+      <div class="stat-value" id="stat-streak" style="font-size:24px;">—</div>
+      <div style="font-size:11px; color:var(--muted); margin-top:2px;" id="stat-streak-label">No trades yet</div>
+    </div>
+  </div>
+
+  <!-- Weekly Review Button -->
+  <div style="display:flex; justify-content:flex-end; margin-bottom:20px;">
+    <button onclick="openWeeklyReview()" style="background:var(--surface2); border:1px solid var(--border); color:var(--accent2); padding:9px 18px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13px; transition:0.2s;" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">📝 Weekly Review</button>
   </div>
 
   <div class="calendar-wrapper" style="margin-bottom: 40px;">
@@ -271,6 +283,17 @@
     </div>
     <div style="position: relative; height: 300px; width: 100%;">
       <canvas id="equityChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Emotion vs P&L Chart -->
+  <div class="calendar-wrapper" style="margin-bottom: 40px; display:none;" id="emotion-chart-container">
+    <div class="calendar-header" style="margin-bottom: 20px;">
+      <div class="calendar-title">🧠 Emotional State vs Avg P&L</div>
+      <div style="font-size:12px; color:var(--muted);">Green = profitable mindset · Red = destructive pattern</div>
+    </div>
+    <div style="position:relative; height:220px; width:100%;">
+      <canvas id="emotionChart"></canvas>
     </div>
   </div>
 
@@ -1568,6 +1591,139 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     btn.closest('.privacy-modal-overlay').remove();
   }
 
+  // ── STREAK CALCULATOR ─────────────────────────────
+  function calcStreak(trades) {
+    if (!trades.length) return { count: 0, type: null };
+    const byDate = {};
+    trades.forEach(t => {
+      const d = normalizeDate(t.date);
+      if (!byDate[d]) byDate[d] = 0;
+      byDate[d] += parseFloat(t.pnl || 0);
+    });
+    const dates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
+    const latest = byDate[dates[0]] >= 0 ? 'win' : 'loss';
+    let count = 0;
+    for (const d of dates) {
+      const isWin = byDate[d] >= 0;
+      if ((latest === 'win') === isWin) count++;
+      else break;
+    }
+    return { count, type: latest };
+  }
+
+  // ── EMOTION CHART ─────────────────────────────────
+  let emotionChartInstance = null;
+  function renderEmotionChart() {
+    const container = document.getElementById('emotion-chart-container');
+    const canvas = document.getElementById('emotionChart');
+    if (!canvas) return;
+    const allTrades = getActiveTrades().filter(t => t.emotion);
+    if (allTrades.length < 2) { container.style.display = 'none'; return; }
+
+    const emotionMap = {};
+    allTrades.forEach(t => {
+      const e = t.emotion;
+      if (!emotionMap[e]) emotionMap[e] = { total: 0, count: 0 };
+      emotionMap[e].total += parseFloat(t.pnl || 0);
+      emotionMap[e].count++;
+    });
+
+    const order = ['Calm','Confident','Anxious','Bored','FOMO','Revenge'];
+    const labels = [], data = [], colors = [];
+    order.forEach(e => {
+      if (!emotionMap[e]) return;
+      const avg = emotionMap[e].total / emotionMap[e].count;
+      labels.push(`${e} (${emotionMap[e].count})`);
+      data.push(parseFloat(avg.toFixed(2)));
+      colors.push(avg >= 0 ? 'rgba(16,185,129,0.7)' : 'rgba(239,68,68,0.7)');
+    });
+
+    container.style.display = 'block';
+    const ctx = canvas.getContext('2d');
+    if (emotionChartInstance) emotionChartInstance.destroy();
+    emotionChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: { labels, datasets: [{ label: 'Avg P&L ($)', data, backgroundColor: colors, borderRadius: 6 }] },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => (c.raw >= 0 ? '+$' : '-$') + Math.abs(c.raw).toFixed(2) } } },
+        scales: {
+          x: { grid: { color: '#25263a' }, ticks: { color: '#94a3b8', font: { size: 11 } } },
+          y: { grid: { color: '#25263a' }, ticks: { color: '#94a3b8', callback: v => (v >= 0 ? '+$' : '-$') + Math.abs(v) } }
+        }
+      }
+    });
+  }
+
+  // ── WEEKLY REVIEW ─────────────────────────────────
+  function getWeekRange() {
+    const now = new Date();
+    const day = now.getDay();
+    const mon = new Date(now); mon.setDate(now.getDate() - (day === 0 ? 6 : day - 1));
+    const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+    const fmt = d => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const toISO = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    return { label: `${fmt(mon)} – ${fmt(sun)}`, start: toISO(mon), end: toISO(sun) };
+  }
+
+  function openWeeklyReview() {
+    const { label, start, end } = getWeekRange();
+    document.getElementById('weekly-review-range').textContent = `Week of ${label}`;
+    const weekTrades = getActiveTrades().filter(t => { const d = normalizeDate(t.date); return d >= start && d <= end; });
+    const pnl = weekTrades.reduce((s,t) => s + parseFloat(t.pnl||0), 0);
+    const wins = weekTrades.filter(t => parseFloat(t.pnl||0) > 0).length;
+    const wr = weekTrades.length ? Math.round(wins/weekTrades.length*100) : 0;
+    document.getElementById('weekly-stats-grid').innerHTML = `
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;margin-bottom:6px;">Week P&L</div>
+        <div style="font-size:24px;font-weight:700;color:${pnl>=0?'var(--green)':'var(--red)'};">${pnl>=0?'+$':'-$'}${Math.abs(pnl).toFixed(2)}</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;margin-bottom:6px;">Trades · Win Rate</div>
+        <div style="font-size:24px;font-weight:700;">${weekTrades.length} <span style="font-size:15px;color:${wr>=50?'var(--green)':'var(--red)'};">${wr}%</span></div>
+      </div>`;
+    const saved = JSON.parse(localStorage.getItem('tbs_weekly_review_' + start) || '{}');
+    document.getElementById('wr-went-well').value = saved.wentWell || '';
+    document.getElementById('wr-broke-rules').value = saved.brokeRules || '';
+    document.getElementById('wr-adjustment').value = saved.adjustment || '';
+    document.getElementById('wr-goal').value = saved.goal || '';
+    document.getElementById('weekly-review-modal').classList.add('active');
+  }
+
+  function saveWeeklyReview() {
+    const { start } = getWeekRange();
+    const data = {
+      wentWell: document.getElementById('wr-went-well').value,
+      brokeRules: document.getElementById('wr-broke-rules').value,
+      adjustment: document.getElementById('wr-adjustment').value,
+      goal: document.getElementById('wr-goal').value,
+      savedAt: new Date().toISOString()
+    };
+    localStorage.setItem('tbs_weekly_review_' + start, JSON.stringify(data));
+    closeWeeklyReview();
+    const btn = document.querySelector('[onclick="openWeeklyReview()"]');
+    if (btn) { btn.textContent = '✅ Review Saved'; setTimeout(() => btn.textContent = '📝 Weekly Review', 2000); }
+  }
+
+  function closeWeeklyReview() {
+    document.getElementById('weekly-review-modal').classList.remove('active');
+  }
+
+  // ── PATCH renderStats to include streak ───────────
+  const _origRenderStats = renderStats;
+  renderStats = function() {
+    _origRenderStats();
+    const streak = calcStreak(getActiveTrades());
+    const el = document.getElementById('stat-streak');
+    const lbl = document.getElementById('stat-streak-label');
+    if (streak.count === 0) { el.textContent = '—'; lbl.textContent = 'No trades yet'; return; }
+    const emoji = streak.type === 'win' ? '🔥' : '❄️';
+    el.textContent = `${emoji} ${streak.count}`;
+    el.style.color = streak.type === 'win' ? 'var(--green)' : 'var(--red)';
+    lbl.textContent = streak.type === 'win' ? `${streak.count} winning day${streak.count>1?'s':''} in a row` : `${streak.count} losing day${streak.count>1?'s':''} — take a break`;
+    renderEmotionChart();
+  };
+
   // Init
   loadAccounts();
   loadTrades();
@@ -1578,6 +1734,38 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   showPrivacyModal();
 
 </script>
+<!-- Weekly Review Modal -->
+<div class="modal-overlay" id="weekly-review-modal" onclick="if(event.target===this)closeWeeklyReview()">
+  <div class="modal-content" style="max-width:580px;">
+    <div class="modal-title">📝 Weekly Review</div>
+    <div style="color:var(--muted);font-size:13px;margin-bottom:20px;" id="weekly-review-range"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;" id="weekly-stats-grid"></div>
+
+    <div class="form-group">
+      <label>✅ What went well this week?</label>
+      <textarea id="wr-went-well" class="form-control" rows="3" placeholder="Setups I executed perfectly, discipline wins..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>❌ What rules did I break?</label>
+      <textarea id="wr-broke-rules" class="form-control" rows="3" placeholder="FOMO entries, moved stop loss, oversized..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>🔧 One adjustment for next week</label>
+      <textarea id="wr-adjustment" class="form-control" rows="2" placeholder="I will only trade the NY open session..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>🎯 Next week goal</label>
+      <input type="text" id="wr-goal" class="form-control" placeholder="e.g. 2 A+ setups only, risk max $50/trade">
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeWeeklyReview()">Close</button>
+      <button class="btn-save" onclick="saveWeeklyReview()">💾 Save Review</button>
+    </div>
+  </div>
+</div>
+
 <!-- Account Modal -->
 <div class="modal-overlay" id="account-modal">
   <div class="modal-content" style="max-width: 400px;">
