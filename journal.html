@@ -381,6 +381,19 @@
     </div>
   </div>
 
+  <!-- Payout History Panel -->
+  <div id="payout-panel" style="display:none; background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(74,222,128,0.05)); border:1px solid rgba(245,158,11,0.25); border-radius:16px; padding:20px; margin-bottom:20px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+      <div style="font-family:'Outfit',sans-serif; font-size:18px; font-weight:700; color:#f59e0b;">💸 Payout History</div>
+      <div id="payout-panel-total" style="font-size:22px; font-weight:900; color:#4ade80;"></div>
+    </div>
+    <div id="payout-panel-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+    <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(245,158,11,0.2); display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="openPayoutModal(activeAccountId)" style="background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:#f59e0b; padding:8px 16px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13px;">+ Log New Payout</button>
+      <button onclick="openEditBalanceModal(activeAccountId)" style="background:rgba(124,111,205,0.15); border:1px solid rgba(124,111,205,0.4); color:var(--accent2); padding:8px 16px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13px;">✏️ Edit Starting Balance</button>
+    </div>
+  </div>
+
   <!-- Prop Firm Tracker -->
   <div class="prop-card" id="prop-firm-card">
     <div class="prop-card-header" onclick="togglePropCard()">
@@ -943,6 +956,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     renderDashboard();
     renderCalendar();
     renderStats();
+    renderPayoutPanel();
     if(typeof Chart !== 'undefined') renderEquityChart();
   }
 
@@ -963,7 +977,10 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
               <strong id="acct-name-${a.id}">${a.name}</strong>
               ${a.payoutRequested ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); border-radius:6px; font-size:11px; font-weight:700; padding:2px 8px;">💸 $${(a.payouts||[]).reduce((s,p)=>s+p.amount,0).toLocaleString()} Paid Out</span>` : ''}
             </div>
-            <span style="color:var(--muted); font-size:12px;">Balance: $${(parseFloat(a.balance)||0).toLocaleString()}</span>
+            <span style="color:var(--muted); font-size:12px;">Balance: <strong style="color:var(--text);">$${(parseFloat(a.balance)||0).toLocaleString()}</strong>
+              <button onclick="openEditBalanceModal('${a.id}')" style="background:none;border:none;color:var(--accent2);cursor:pointer;font-size:11px;padding:0 4px;" title="Edit balance">✏️</button>
+            </span>
+            ${(a.payouts && a.payouts.length) ? `<div style="margin-top:4px;">${a.payouts.map(p=>`<span style="font-size:11px;color:#4ade80;margin-right:8px;">+$${p.amount.toLocaleString()} <span style="color:var(--muted);">${p.date}</span></span>`).join('')}</div>` : ''}
           </div>
           <div style="display:flex; gap:6px; flex-shrink:0;">
             <button onclick="renameAccount('${a.id}')" class="action-btn" title="Rename" style="color:var(--accent2); font-size:13px;">✏️</button>
@@ -1028,6 +1045,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     saveAccounts();
     renderAccountDropdown();
     renderAccountList();
+    renderPayoutPanel();
     document.getElementById('payout-modal').classList.remove('active');
     showPayoutCongrats(amount);
   }
@@ -1035,6 +1053,55 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function showPayoutCongrats(amount) {
     document.getElementById('congrats-amount').textContent = '$' + amount.toLocaleString();
     document.getElementById('congrats-modal').classList.add('active');
+  }
+
+  function openEditBalanceModal(id) {
+    const acct = accounts.find(a => a.id === id);
+    if (!acct) return;
+    document.getElementById('edit-balance-acct-id').value = id;
+    document.getElementById('edit-balance-input').value = parseFloat(acct.balance) || 0;
+    document.getElementById('edit-balance-modal').classList.add('active');
+    setTimeout(() => document.getElementById('edit-balance-input').focus(), 100);
+  }
+
+  function confirmEditBalance() {
+    const id = document.getElementById('edit-balance-acct-id').value;
+    const val = parseFloat(document.getElementById('edit-balance-input').value);
+    if (isNaN(val) || val < 0) return alert('Enter a valid balance');
+    const acct = accounts.find(a => a.id === id);
+    if (!acct) return;
+    acct.balance = val;
+    saveAccounts();
+    renderAccountDropdown();
+    renderAccountList();
+    renderPayoutPanel();
+    document.getElementById('edit-balance-modal').classList.remove('active');
+  }
+
+  function renderPayoutPanel() {
+    const acct = accounts.find(a => a.id === activeAccountId);
+    const panel = document.getElementById('payout-panel');
+    const list = document.getElementById('payout-panel-list');
+    const total = document.getElementById('payout-panel-total');
+    if (!acct || !acct.payouts || acct.payouts.length === 0) {
+      panel.style.display = 'none';
+      return;
+    }
+    panel.style.display = 'block';
+    const totalAmt = acct.payouts.reduce((s, p) => s + p.amount, 0);
+    total.textContent = '$' + totalAmt.toLocaleString() + ' total paid out';
+    list.innerHTML = acct.payouts.slice().reverse().map((p, i) => `
+      <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.2); border-radius:10px; padding:10px 14px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:20px;">💸</span>
+          <div>
+            <div style="font-weight:700; color:var(--text); font-size:14px;">Payout Withdrawn</div>
+            <div style="font-size:12px; color:var(--muted);">${p.date}</div>
+          </div>
+        </div>
+        <div style="font-size:20px; font-weight:900; color:#4ade80;">+$${p.amount.toLocaleString()}</div>
+      </div>
+    `).join('');
   }
 
   function createAccount() {
@@ -2470,6 +2537,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   loadPropRules();
   renderDashboard();
   renderStats();
+  renderPayoutPanel();
   renderCalendar();
   if(typeof Chart !== 'undefined') renderEquityChart();
   showPrivacyModal();
@@ -2558,6 +2626,23 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     <div id="congrats-amount" style="font-size:36px;font-weight:900;color:#f59e0b;margin-bottom:12px;"></div>
     <div style="font-size:13px;color:var(--muted);margin-bottom:20px;">That's real money. Keep executing the plan. 🔥</div>
     <button class="btn-save" onclick="document.getElementById('congrats-modal').classList.remove('active')" style="width:100%;">Let's Go 🚀</button>
+  </div>
+</div>
+
+<!-- Edit Balance Modal -->
+<div class="modal-overlay" id="edit-balance-modal">
+  <div class="modal-content" style="max-width:320px;">
+    <div class="modal-title">✏️ Edit Starting Balance</div>
+    <input type="hidden" id="edit-balance-acct-id">
+    <div class="form-group" style="margin-bottom:18px;">
+      <label>Starting Balance ($)</label>
+      <input type="number" id="edit-balance-input" class="form-control" placeholder="e.g. 25000" min="0" style="font-size:18px;font-weight:700;"
+        onkeydown="if(event.key==='Enter') confirmEditBalance()">
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn-cancel" onclick="document.getElementById('edit-balance-modal').classList.remove('active')" style="flex:1;">Cancel</button>
+      <button class="btn-save" onclick="confirmEditBalance()" style="flex:1;">Save</button>
+    </div>
   </div>
 </div>
 
