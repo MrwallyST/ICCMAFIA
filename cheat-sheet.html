@@ -46,6 +46,18 @@
     .card.mind::before { background: linear-gradient(90deg, var(--red), var(--gold)); }
     .card.exec::before { background: linear-gradient(90deg, var(--green), #10b981); }
     .card.fomo::before { background: linear-gradient(90deg, #6366f1, #3b82f6); }
+    .card.mindset::before { background: linear-gradient(90deg, #10b981, #a78bfa); }
+    .mindset-section { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 20px 0 10px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .mindset-section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    .cl-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; }
+    .cl-item:last-child { border-bottom: none; }
+    .cl-item input[type=checkbox] { width: 18px; height: 18px; margin-top: 2px; accent-color: #10b981; cursor: pointer; flex-shrink: 0; }
+    .cl-item label { font-size: 14px; color: var(--text); line-height: 1.5; cursor: pointer; }
+    .cl-item label small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+    .cl-item.checked label { color: var(--muted); text-decoration: line-through; opacity: .6; }
+    .mindset-progress { height: 6px; background: var(--surface3); border-radius: 99px; margin: 20px 0 8px; overflow: hidden; }
+    .mindset-progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #10b981, #a78bfa); transition: width .4s ease; }
+    .mindset-status { font-size: 12px; font-weight: 700; color: var(--muted); text-align: right; margin-bottom: 16px; }
     
     .card-icon { font-size: 32px; margin-bottom: 16px; display: block; }
     .card h2 { font-family: 'Outfit', sans-serif; font-size: 24px; margin-bottom: 20px; color: #fff; }
@@ -274,6 +286,40 @@
     </div>
   </div>
 
+  <!-- Pre-Trade Mindset Checklist — full width -->
+  <div class="card mindset" style="grid-column: 1 / -1;">
+    <span class="card-icon">🧠</span>
+    <h2>5. Pre-Trade Mindset Checklist</h2>
+    <p style="color:var(--muted); font-size:14px; margin-bottom:20px; line-height:1.6;">Run through this before every session. <strong style="color:#10b981;">All green = cleared to trade.</strong> Any red = step away.</p>
+
+    <div class="mindset-progress"><div class="mindset-progress-fill" id="ms-fill" style="width:0%"></div></div>
+    <div class="mindset-status"><span id="ms-count">0</span> / <span id="ms-total">0</span> checked — <span id="ms-label" style="color:var(--red);">Not ready</span></div>
+
+    <div class="mindset-section">😌 Mental State</div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>I am calm — no anger, no frustration from yesterday<small>If you're emotional, the market will punish it.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>No FOMO. I don't need to trade today to feel successful<small>The best trade is sometimes no trade.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>I accept I may take a loss today — and that's part of the process<small>A disciplined loss beats an undisciplined win.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>I am rested and alert — not trading tired or distracted<small>Fatigue kills discipline faster than anything else.</small></label></div>
+
+    <div class="mindset-section">📋 Pre-Market Prep</div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>Checked the Economic Calendar — no surprise red events hitting my session<small>Especially FOMC, CPI, NFP, EIA Oil Inventory.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>Identified my HTF bias (1H/4H): bullish or bearish today?<small>Mark your key swing highs and lows before touching any entry.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>I know where the liquidity pools are sitting today<small>Where are the stop-hunts likely to happen?</small></label></div>
+
+    <div class="mindset-section">⏰ Session Rules</div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>🌏 Asian session: I will NOT enter before 7:00 PM CT — waiting for the BOS<small>Entering early = getting caught in the trap. The move starts at 7PM.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>🗽 NY session: I will NOT trade the first candle on emotion<small>Wait for structure confirmation, not the open spike.</small></label></div>
+
+    <div class="mindset-section">⚡ ICC Setup Gate</div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>Step 1 confirmed — I can see a clear Indication (trend is established)<small>No Indication = no trade. Period.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>Step 2 confirmed — Price has corrected. I am NOT chasing the move<small>Entering during the impulse = bad risk. Wait for the pullback.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>Step 3 ready — I have a BOS entry signal on the Continuation<small>CHoCH or BOS on LTF is your trigger. Not a gut feeling.</small></label></div>
+
+    <div class="mindset-section">💰 Risk Gate</div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>My stop loss is placed at the correction structure — not arbitrary<small>SL should be at the level that invalidates your setup.</small></label></div>
+    <div class="cl-item" onclick="toggleMindset(this)"><input type="checkbox"><label>I know my max loss for today — and I will stop trading if I hit it<small>Prop firm rule. No exceptions.</small></label></div>
+  </div>
+
   <div class="clear-banner" id="status-banner">
     <h2 id="status-title">❌ NOT CLEARED TO TRADE</h2>
     <p id="status-desc">Complete your daily Pre-Market Rules checklist above. <span id="chk-count">0/12</span> locked.</p>
@@ -426,7 +472,50 @@
   }
 
   // Boot
-  document.addEventListener('DOMContentLoaded', loadState);
+  document.addEventListener('DOMContentLoaded', () => { loadState(); initMindset(); });
+
+  // ── Mindset Checklist ─────────────────────────────
+  function initMindset() {
+    const saved = JSON.parse(localStorage.getItem('tbs_mindset_' + getTodayKey()) || '[]');
+    const items = document.querySelectorAll('.cl-item');
+    document.getElementById('ms-total').textContent = items.length;
+    items.forEach((item, i) => {
+      if (saved.includes(i)) { item.querySelector('input').checked = true; item.classList.add('checked'); }
+    });
+    updateMindsetProgress();
+  }
+
+  function toggleMindset(item) {
+    const cb = item.querySelector('input');
+    cb.checked = !cb.checked;
+    item.classList.toggle('checked', cb.checked);
+    saveMindset();
+    updateMindsetProgress();
+  }
+
+  function saveMindset() {
+    const checked = [];
+    document.querySelectorAll('.cl-item').forEach((item, i) => { if (item.querySelector('input').checked) checked.push(i); });
+    localStorage.setItem('tbs_mindset_' + getTodayKey(), JSON.stringify(checked));
+  }
+
+  function updateMindsetProgress() {
+    const items = document.querySelectorAll('.cl-item');
+    const checked = document.querySelectorAll('.cl-item input:checked').length;
+    const total = items.length;
+    const pct = total ? Math.round((checked / total) * 100) : 0;
+    document.getElementById('ms-fill').style.width = pct + '%';
+    document.getElementById('ms-count').textContent = checked;
+    const lbl = document.getElementById('ms-label');
+    if (checked === total) { lbl.textContent = '✅ Cleared to trade'; lbl.style.color = '#10b981'; }
+    else if (pct >= 70) { lbl.textContent = '⚠️ Almost there'; lbl.style.color = '#f59e0b'; }
+    else { lbl.textContent = 'Not ready'; lbl.style.color = 'var(--red)'; }
+  }
+
+  function getTodayKey() {
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
 </script>
 
 <div style="background:rgba(245,158,11,0.06);border-top:1px solid rgba(245,158,11,0.2);padding:14px 24px;text-align:center;font-size:12px;color:#94a06a;line-height:1.6;">
