@@ -119,4 +119,35 @@
     ],
     "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
   }
+,
+  {
+    "day": 5,
+    "title": "Day 5: The 1 Secret 90% of Traders Don't Know",
+    "description": "AI-decoded Trades by Sci lesson.",
+    "youtubeId": "sqH6vqv6bMY",
+    "reelUrl": "",
+    "audioUrl": "./studios/day-5/day5_en.mp3",
+    "infographicUrl": "./studios/day-5/day5_infographic.png",
+    "quizFile": "./studios/day-5/day5_quiz.md",
+    "studyGuideUrl": "./studios/day-5/day5_study.md",
+    "flashcardsUrl": "./studios/day-5/day5_flashcards.json",
+    "mindMapUrl": "./studios/day-5/day5_mindmap.json",
+    "slideDeckUrl": "./studios/day-5/day5_slides.pdf",
+    "dataTableUrl": "./studios/day-5/day5_datatable.md",
+    "blogPostUrl": "./studios/day-5/day5_blog.md",
+    "youtubeScriptUrl": "./studios/day-5/day5_ytscript.md",
+    "igCaptionUrl": "./studios/day-5/day5_ig.md",
+    "tiktokUrl": "./studios/day-5/day5_tiktok.md",
+    "twitterThreadUrl": "./studios/day-5/day5_twitter.md",
+    "newsletterUrl": "./studios/day-5/day5_newsletter.md",
+    "linkedinUrl": "./studios/day-5/day5_linkedin.md",
+    "faqUrl": "./studios/day-5/day5_faq.md",
+    "keyTakeaways": [
+      "The Brick Wall: Highs and Lows as physical barriers where the 'Bosses' sit",
+      "Swing Levels Rule: Above a low = bullish potential. Below a high = bearish potential.",
+      "Liquidity Demystified: The market grabs your stop-loss money to fuel the next move",
+      "The 3 Traps: FOMO, Greed, and Revenge Trading - how the market eats 90% of traders"
+    ],
+    "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
+  }
 ]
