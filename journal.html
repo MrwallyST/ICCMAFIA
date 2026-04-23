@@ -974,13 +974,24 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function renameAccount(id) {
     const acct = accounts.find(a => a.id === id);
     if (!acct) return;
-    const newName = prompt('Rename account:', acct.name);
-    if (!newName || !newName.trim()) return;
-    acct.name = newName.trim();
+    document.getElementById('rename-acct-id').value = id;
+    document.getElementById('rename-acct-input').value = acct.name;
+    document.getElementById('rename-modal').classList.add('active');
+    setTimeout(() => document.getElementById('rename-acct-input').focus(), 100);
+  }
+
+  function confirmRename() {
+    const id = document.getElementById('rename-acct-id').value;
+    const newName = document.getElementById('rename-acct-input').value.trim();
+    if (!newName) return;
+    const acct = accounts.find(a => a.id === id);
+    if (!acct) return;
+    acct.name = newName;
     saveAccounts();
     renderAccountDropdown();
     renderAccountList();
     switchAccount();
+    document.getElementById('rename-modal').classList.remove('active');
   }
 
   function togglePayout(id) {
@@ -2481,6 +2492,23 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     <button class="btn-save" onclick="createAccount()" style="width:100%;">Create Account</button>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="document.getElementById('account-modal').classList.remove('active')" style="width:100%">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Rename Account Modal -->
+<div class="modal-overlay" id="rename-modal">
+  <div class="modal-content" style="max-width:340px;">
+    <div class="modal-title">Rename Account</div>
+    <input type="hidden" id="rename-acct-id">
+    <div class="form-group" style="margin-bottom:18px;">
+      <label>Account Name</label>
+      <input type="text" id="rename-acct-input" class="form-control" placeholder="e.g. 25K Funded Account"
+        onkeydown="if(event.key==='Enter') confirmRename()" style="font-size:16px;">
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn-cancel" onclick="document.getElementById('rename-modal').classList.remove('active')" style="flex:1;">Cancel</button>
+      <button class="btn-save" onclick="confirmRename()" style="flex:1;">Save</button>
     </div>
   </div>
 </div>
