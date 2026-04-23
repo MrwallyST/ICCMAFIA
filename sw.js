@@ -1,4 +1,4 @@
-const CACHE_NAME = 'iccmafia-v1';
+const CACHE_NAME = 'iccmafia-v3';
 const CORE_PAGES = [
   '/ICCMAFIA/',
   '/ICCMAFIA/index.html',
@@ -23,22 +23,36 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Only handle GET requests
   if (event.request.method !== 'GET') return;
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        // Cache successful responses for core pages
+
+  const url = new URL(event.request.url);
+  const isCorePage = CORE_PAGES.some(p => url.pathname === p || url.pathname.endsWith(p));
+
+  if (isCorePage) {
+    // Network-first for HTML pages: always try to get fresh version,
+    // fall back to cache only when offline
+    event.respondWith(
+      fetch(event.request).then(response => {
         if (response && response.status === 200) {
-          const url = new URL(event.request.url);
-          if (CORE_PAGES.some(p => url.pathname === p || url.pathname.endsWith(p))) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return response;
+      }).catch(() => caches.match(event.request))
+    );
+  } else {
+    // Cache-first for assets (mp3, png, pdf, json, etc.)
+    event.respondWith(
+      caches.match(event.request).then(cached => {
+        if (cached) return cached;
+        return fetch(event.request).then(response => {
+          if (response && response.status === 200) {
             const clone = response.clone();
             caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
           }
-        }
-        return response;
-      }).catch(() => cached); // fallback to cache on network failure
-    })
-  );
+          return response;
+        });
+      })
+    );
+  }
 });
