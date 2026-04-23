@@ -613,13 +613,18 @@
     <div class="form-row">
       <div class="form-group">
         <label>Session</label>
-        <select id="trade-session" class="form-control">
+        <select id="trade-session" class="form-control" onchange="checkAsianSessionTime()">
           <option value="">— Select session —</option>
           <option value="NY">🗽 NY Session</option>
           <option value="Asian">🌏 Asian Session</option>
           <option value="London">🇬🇧 London Session</option>
           <option value="Other">Other</option>
         </select>
+        <div id="asian-time-warning" style="display:none; margin-top:10px; padding:12px 14px; border-radius:10px; border:1px solid rgba(239,68,68,0.4); background:rgba(239,68,68,0.08); font-size:13px; line-height:1.6;">
+          <strong style="color:#f43f5e;">⚠️ Asian Session Rule Violation</strong><br>
+          <span id="asian-time-msg" style="color:#94a3b8;"></span><br>
+          <span style="color:#f59e0b; font-weight:700; font-size:12px;">Wait for the 7:00 PM CT volume shift + BOS before entering.</span>
+        </div>
       </div>
       <div class="form-group">
         <label>ICC Setup Type</label>
@@ -681,6 +686,7 @@
           <option value="A">A — Strong setup</option>
           <option value="B">B — Acceptable setup</option>
           <option value="C">C — Weak / forced setup</option>
+          <option value="F">F — Broke the rules</option>
         </select>
       </div>
     </div>
@@ -1475,6 +1481,33 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   }
 
   function closeModal() { document.getElementById('trade-modal').classList.remove('active'); }
+
+  function checkAsianSessionTime() {
+    const session = document.getElementById('trade-session').value;
+    const warning = document.getElementById('asian-time-warning');
+    const msg = document.getElementById('asian-time-msg');
+    if (session !== 'Asian') { warning.style.display = 'none'; return; }
+
+    // Get current time in Central Time (handles CDT/CST automatically)
+    const now = new Date();
+    const ctStr = now.toLocaleTimeString('en-US', { timeZone: 'America/Chicago', hour: '2-digit', minute: '2-digit', hour12: false });
+    const [h, m] = ctStr.split(':').map(Number);
+    const ctMinutes = h * 60 + m;
+    const target = 19 * 60; // 7:00 PM CT
+
+    if (ctMinutes < target) {
+      const remaining = target - ctMinutes;
+      const rHours = Math.floor(remaining / 60);
+      const rMins = remaining % 60;
+      const timeLeft = rHours > 0 ? `${rHours}h ${rMins}m` : `${rMins} min`;
+      msg.textContent = `It's currently ${h}:${String(m).padStart(2,'0')} CT — ${timeLeft} until the 7:00 PM volume shift.`;
+      warning.style.display = 'block';
+    } else {
+      // Past 7PM — show green confirmation
+      warning.style.cssText = 'display:block; margin-top:10px; padding:12px 14px; border-radius:10px; border:1px solid rgba(16,185,129,0.4); background:rgba(16,185,129,0.08); font-size:13px; line-height:1.6;';
+      warning.innerHTML = '<strong style="color:#10b981;">✅ Past 7:00 PM CT</strong><br><span style="color:#94a3b8;">Asian session is open. Wait for your BOS confirmation before entering.</span>';
+    }
+  }
   function closeViewModal() { document.getElementById('view-modal').classList.remove('active'); }
 
   function saveTrade() {
@@ -1641,14 +1674,16 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
   async function exportCSV() {
     if(trades.length === 0) { alert("No trades to export!"); return; }
-    let csv = "Date,Pair,Direction,P&L,Tags,Notes,Risk,RR,Emotion,Grade,Rules\n";
+    let csv = "Date,Pair,Direction,P&L,Tags,Notes,Session,ICC Setup,Emotion,Grade,Rules,Risk,RR,MFE,MAE\n";
     getActiveTrades().forEach(t => {
       const tags = Array.isArray(t.tags) ? t.tags.join(';') : (t.tags || '');
       const row = [
         t.date, t.pair, t.direction, t.pnl,
         `"${tags.replace(/"/g, '""')}"`,
         `"${(t.notes || '').replace(/"/g, '""')}"`,
-        t.risk || '', t.rr || '', t.emotion || '', t.grade || '', t.rules || ''
+        t.session || '', t.iccSetup || '',
+        t.emotion || '', t.grade || '', t.rules || '',
+        t.risk || '', t.rr || '', t.mfe || '', t.mae || ''
       ];
       csv += row.join(",") + "\n";
     });
@@ -1826,7 +1861,16 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       'net p&l': 'pnl', 'realized p&l': 'pnl',
       'profit/loss': 'pnl', 'profit & loss': 'pnl', 'result ($)': 'pnl',
       'tags (comma separated)': 'tags', 'tags': 'tags',
-      'notes & analysis': 'notes', 'notes': 'notes', 'analysis': 'notes',
+      'notes & analysis': 'notes', 'notes': 'notes', 'analysis': 'notes', 'comment': 'notes',
+      'session': 'session', 'trading session': 'session',
+      'icc setup': 'iccSetup', 'icc setup type': 'iccSetup', 'setup type': 'iccSetup',
+      'emotion': 'emotion', 'emotional state': 'emotion', 'mental state': 'emotion', 'mindset': 'emotion',
+      'grade': 'grade', 'setup grade': 'grade', 'trade grade': 'grade',
+      'rules': 'rules', 'rules followed': 'rules', 'followed rules': 'rules', 'followed your icc rules?': 'rules', 'did you follow your icc rules?': 'rules',
+      'risk': 'risk', 'risk amount ($)': 'risk', 'risk ($)': 'risk',
+      'rr': 'rr', 'r:r': 'rr', 'r:r ratio': 'rr', 'rr ratio': 'rr',
+      'mfe': 'mfe', 'max favorable excursion ($)': 'mfe',
+      'mae': 'mae', 'max adverse excursion ($)': 'mae',
       // TopStep: "Commission" — ignore (net P&L already accounts for it)
       'commission': null,
       // TopStep: "Qty" / "Quantity" / "Size" — store as qty (don't break)
@@ -1931,6 +1975,31 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       // Handle TopStep B/S single-letter format, plus "Buy"/"Sell", "Long"/"Short"
       direction = (direction === 'B' || direction.toLowerCase() === 'buy' || direction.toLowerCase() === 'long') ? 'Long' : 'Short';
 
+      // Normalize emotion value
+      let emotion = (mapped.emotion || '').trim();
+      const emotionMap = {'calm':'Calm','focused':'Calm','confident':'Confident','anxious':'Anxious','nervous':'Anxious','fomo':'FOMO','revenge':'Revenge','bored':'Bored'};
+      emotion = emotionMap[emotion.toLowerCase()] || emotion || '';
+
+      // Normalize grade value
+      let grade = (mapped.grade || '').trim().toUpperCase();
+      if (!['A+','A','B','C','F'].includes(grade)) grade = grade || '';
+
+      // Normalize rules value
+      let rules = (mapped.rules || '').trim();
+      if (rules.toLowerCase() === 'yes' || rules.toLowerCase() === 'true' || rules === '1') rules = 'Yes';
+      else if (rules.toLowerCase() === 'no' || rules.toLowerCase() === 'false' || rules === '0') rules = 'No';
+      else if (rules.toLowerCase().includes('partial')) rules = 'Partial';
+
+      // Normalize session
+      let session = (mapped.session || '').trim();
+      const sessionMap = {'ny':'NY','new york':'NY','asian':'Asian','asia':'Asian','london':'London','london session':'London'};
+      session = sessionMap[session.toLowerCase()] || session || '';
+
+      // Normalize ICC setup
+      let iccSetup = (mapped.iccSetup || '').trim();
+      const iccMap2 = {'indication':'Indication','correction':'Correction','continuation':'Continuation','icc inside icc':'ICC Inside ICC'};
+      iccSetup = iccMap2[iccSetup.toLowerCase()] || iccSetup || '';
+
       pendingImportTrades.push({
         id: generateId(),
         accountId: activeAccountId,
@@ -1938,7 +2007,12 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
         pair: (mapped.pair || 'UNKNOWN').trim().toUpperCase(),
         direction, pnl,
         tags: (mapped.tags || '').trim(),
-        notes: (mapped.notes || '').trim()
+        notes: (mapped.notes || '').trim(),
+        session, iccSetup, emotion, grade, rules,
+        risk: parseFloat(mapped.risk) || null,
+        rr: (mapped.rr || '').trim(),
+        mfe: parseFloat(mapped.mfe) || null,
+        mae: parseFloat(mapped.mae) || null
       });
     });
 
