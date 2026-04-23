@@ -1,0 +1,245 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "In market structure, what does a 'high' represent regarding participant behavior?",
+      "back": "It is the highest point price reaches because sellers enter the market to drive it down."
+    },
+    {
+      "front": "What signifies that buyers have stepped into the market at a 'low' point?",
+      "back": "Price reaches its lowest point and then begins to move back up."
+    },
+    {
+      "front": "According to the source, what is the potential market sentiment when price stays above a swing low?",
+      "back": "Potential bullishness."
+    },
+    {
+      "front": "What is the potential market sentiment when price stays below a swing high?",
+      "back": "Potential bearishness."
+    },
+    {
+      "front": "Which two specific timeframes are identified as 'keys' for finding swing highs and lows?",
+      "back": "The 1-hour and 4-hour timeframes."
+    },
+    {
+      "front": "How does the author define 'liquidity' in its simplest terms?",
+      "back": "Grabbing more money from the market."
+    },
+    {
+      "front": "Why does the market aim to liquidate traders who have no stop-losses or short stop-losses?",
+      "back": "To collect the money lost by those traders."
+    },
+    {
+      "front": "In an uptrend, what does a breakout above a previous high indicate about the sellers at that level?",
+      "back": "They have been swept out by new buyers and are no longer in control."
+    },
+    {
+      "front": "What typically happens when buyers reach a 'new boss' or higher level of sellers?",
+      "back": "The market will liquidate to grab more money before continuing."
+    },
+    {
+      "front": "Retail traders who jump into a breakout immediately are often acting on _____.",
+      "back": "FOMO and greed."
+    },
+    {
+      "front": "The second move down after a breakout is often characterized by _____ trading.",
+      "back": "Revenge."
+    },
+    {
+      "front": "What is the primary benefit of switching to a higher timeframe mindset for trade analysis?",
+      "back": "It avoids the market noise often shown on social media."
+    },
+    {
+      "front": "According to the source, what should a trader do instead of trading every 15-minute movement?",
+      "back": "Understand the movement as part of a long-term trend."
+    },
+    {
+      "front": "What is the suggested approach for daily bias instead of switching between buys and sells?",
+      "back": "Stick with one direction based on the higher timeframe."
+    },
+    {
+      "front": "Where should a trade entry ideally be placed according to the reaction level strategy?",
+      "back": "At the point where the initial momentum (bullish or bearish) initiates."
+    },
+    {
+      "front": "When taking a bullish trade, where should the stop-loss be positioned?",
+      "back": "At a level that respects the previous higher low."
+    },
+    {
+      "front": "Why does the author advise against trading under a recently broken high?",
+      "back": "Price retains the potential to sell off when it is back under that level."
+    },
+    {
+      "front": "If price breaks a strong higher-timeframe support level, what does this usually indicate?",
+      "back": "The trend is changing direction or the market is grabbing deeper liquidity."
+    },
+    {
+      "front": "What must buyers be in order to push price back above a level controlled by sellers?",
+      "back": "Stronger than the sellers holding that level."
+    },
+    {
+      "front": "What timeframe is recommended to scale down to for finding the final entry?",
+      "back": "The 15-minute timeframe."
+    },
+    {
+      "front": "In market structure, what is the significance of price creating 'higher lows'?",
+      "back": "It indicates that the market is becoming increasingly bullish."
+    },
+    {
+      "front": "According to the author's mindset, a high level acts like a _____ that prevents price from going higher.",
+      "back": "Brick wall."
+    },
+    {
+      "front": "What does 'revenge trading' typically follow in the cycle described by the author?",
+      "back": "Losing trades on the initial breakout move."
+    },
+    {
+      "front": "What are traders actually doing when they make money, according to the market's 'perspective'?",
+      "back": "Stealing money from the market."
+    },
+    {
+      "front": "What does a 'lower high' signify regarding market participants?",
+      "back": "Bears (sellers) are coming into the market."
+    },
+    {
+      "front": "What is the result of sellers sitting at a high level and trying their best to drive price down?",
+      "back": "Resistance or a sharp move lower."
+    },
+    {
+      "front": "Why is the first move up in a breakout considered a result of deficiency-based thinking?",
+      "back": "Traders feel they need to get money immediately rather than thinking long-term."
+    },
+    {
+      "front": "How long has the author been trading using these specific market structure principles?",
+      "back": "Four years."
+    },
+    {
+      "front": "What index does the author explicitly mention trading almost exclusively?",
+      "back": "The NASDAQ."
+    },
+    {
+      "front": "According to the text, why should you ignore the 'noise' of social media traders?",
+      "back": "Their portrayals are often untrue and focus on small, inconsistent scalps."
+    },
+    {
+      "front": "What does the author suggest using to find answers to basic technical questions like calculating pips?",
+      "back": "Google or ChatGPT."
+    },
+    {
+      "front": "What is the 'indication' for a potential bullish trend change on the 1-hour chart?",
+      "back": "Price breaking above a previous high level."
+    },
+    {
+      "front": "Why is it important to wait for a 'second push' back above a level before entering?",
+      "back": "To confirm that buyers have reclaimed control from the sellers at that level."
+    },
+    {
+      "front": "The author defines market structure as playing a key role in identifying _____ levels.",
+      "back": "Reaction."
+    },
+    {
+      "front": "What does it mean when price breaks through a level where buyers were previously sitting?",
+      "back": "There are no longer enough buyers to hold that level, and momentum is shifting bearish."
+    },
+    {
+      "front": "What creates a 'new low' in market structure?",
+      "back": "Price breaking through a previous support level where buyers were located."
+    },
+    {
+      "front": "In the author's strategy, what is the 'correction' relative to an 'indication'?",
+      "back": "The move that follows the initial breakout before the trend continues."
+    },
+    {
+      "front": "Why is a 4-hour timeframe 'higher high' sometimes insufficient for an immediate trade?",
+      "back": "One must wait for price to develop a higher low or show clear direction on the 1-hour."
+    },
+    {
+      "front": "How should a trader view global news and economies in relation to their charts?",
+      "back": "As factors that influence the market long-term rather than every 15 minutes."
+    },
+    {
+      "front": "When price enters a level previously occupied by sellers, what must occur for price to continue upward?",
+      "back": "A reaction or breakout that shows sellers are no longer in control."
+    },
+    {
+      "front": "What is the relationship between 'volume' and 'momentum' in the entry process?",
+      "back": "Price moves with volume once momentum is initiated above or below a level."
+    },
+    {
+      "front": "What does the 'Chanel bag' analogy explain about market movement?",
+      "back": "Price pulls back (liquidates) to 'find more money' before attempting to reach a higher level."
+    },
+    {
+      "front": "Why is it recommended to 'sit on your hands' during certain market phases?",
+      "back": "To wait for price to clearly show its intended long-term direction."
+    },
+    {
+      "front": "What determines if a level has potential for 'selling' after it was previously a 'buying' level?",
+      "back": "Whether price has broken and stayed below that specific level."
+    },
+    {
+      "front": "What is the core difference between 'break and retest' and the author's view of 'liquidation'?",
+      "back": "Liquidation involves price sweeping everything and potentially staying below a level rather than just tapping it."
+    },
+    {
+      "front": "According to the source, why do retail traders often lose during the liquidation phase?",
+      "back": "They think price is selling off for good and enter sales too late or with poor bias."
+    },
+    {
+      "front": "What mindset shift is necessary to hold trades for a week instead of taking 30 trades a day?",
+      "back": "Switching to a long-term, higher-timeframe perspective."
+    },
+    {
+      "front": "In the author's example, what happened when price broke the buyers' low level?",
+      "back": "It created a new momentum reaction back down to previous levels."
+    },
+    {
+      "front": "What is the ' kindergarten level' explanation of a bullish trend?",
+      "back": "Price breaking out and pushing up to make new highs while creating higher supports."
+    },
+    {
+      "front": "A higher high on a 4-hour timeframe suggests price may be making a _____ to progress further.",
+      "back": "Higher low."
+    },
+    {
+      "front": "Why does the author emphasize watching his videos 'over and over and over'?",
+      "back": "To ensure the concepts of correction and entry click in the student's head."
+    },
+    {
+      "front": "What defines 'full control' of the markets for sellers at a specific level?",
+      "back": "Price remaining under the level where those sellers are established."
+    },
+    {
+      "front": "If price is currently trading at its highest point, what role do the participants at that level play?",
+      "back": "They are sellers driving price down."
+    },
+    {
+      "front": "What is the purpose of drawing lines across the highs of a 1-hour chart?",
+      "back": "To identify areas where sellers are sitting and where price needs to break for bullish momentum."
+    },
+    {
+      "front": "How should a trader respond if price breaks a support level and then corrects?",
+      "back": "Look for a continuation back under the level to take out the previous low."
+    },
+    {
+      "front": "What signifies that a 'trend is changing' rather than just grabbing liquidity?",
+      "back": "A sustained break of structural levels on the 1-hour or 4-hour timeframes."
+    },
+    {
+      "front": "According to the source, what does the market do to people who trade without 'proper knowledge'?",
+      "back": "It stops them out or takes their money through liquidation moves."
+    },
+    {
+      "front": "What characterizes the 'mindset of future terms' in trading?",
+      "back": "Using proper knowledge to predict where price is going long-term rather than reacting to greed."
+    },
+    {
+      "front": "Why is the 15-minute timeframe mentioned in the context of entries?",
+      "back": "It is used to refine the entry point once the higher timeframe bias is confirmed."
+    },
+    {
+      "front": "In the author's example, what does a sharp move down after a high indicate?",
+      "back": "That the move has caused a break in structure."
+    }
+  ]
+}

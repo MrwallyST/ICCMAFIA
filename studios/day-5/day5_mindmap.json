@@ -1,0 +1,135 @@
+{
+  "name": "Market Structure and Reaction Levels",
+  "children": [
+    {
+      "name": "Fundamental Levels",
+      "children": [
+        {
+          "name": "Swing Highs",
+          "children": [
+            {
+              "name": "Sellers in control"
+            },
+            {
+              "name": "Resistance points"
+            },
+            {
+              "name": "Potential bearishness below"
+            }
+          ]
+        },
+        {
+          "name": "Swing Lows",
+          "children": [
+            {
+              "name": "Buyers in control"
+            },
+            {
+              "name": "Support levels"
+            },
+            {
+              "name": "Potential bullishness above"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Time Frame Strategy",
+      "children": [
+        {
+          "name": "1 Hour and 4 Hour Keys"
+        },
+        {
+          "name": "Daily Perspective"
+        },
+        {
+          "name": "Avoid 15-minute noise"
+        },
+        {
+          "name": "Long-term mindset"
+        }
+      ]
+    },
+    {
+      "name": "Market Dynamics",
+      "children": [
+        {
+          "name": "Liquidity",
+          "children": [
+            {
+              "name": "Grabbing money"
+            },
+            {
+              "name": "Sweeping stop-losses"
+            },
+            {
+              "name": "Market manipulation"
+            }
+          ]
+        },
+        {
+          "name": "Trader Psychology",
+          "children": [
+            {
+              "name": "FOMO and Greed"
+            },
+            {
+              "name": "Revenge trading"
+            },
+            {
+              "name": "Impatience on breakouts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trade Execution",
+      "children": [
+        {
+          "name": "Entry Criteria",
+          "children": [
+            {
+              "name": "Wait for momentum initiation"
+            },
+            {
+              "name": "Scale to 15m for entry"
+            },
+            {
+              "name": "Identify correction end"
+            }
+          ]
+        },
+        {
+          "name": "Momentum",
+          "children": [
+            {
+              "name": "Trading with volume"
+            },
+            {
+              "name": "Reacting to broken structures"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Price Progression",
+      "children": [
+        {
+          "name": "Breakout of seller levels"
+        },
+        {
+          "name": "Creation of higher lows"
+        },
+        {
+          "name": "Trend continuation"
+        },
+        {
+          "name": "Indication, Correction, Continuation"
+        }
+      ]
+    }
+  ]
+}
