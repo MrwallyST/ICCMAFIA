@@ -930,7 +930,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
   function renderAccountDropdown() {
     const sel = document.getElementById('account-switcher');
-    sel.innerHTML = accounts.map(a => `<option value="${a.id}" ${a.id === activeAccountId ? 'selected' : ''}>${a.name}</option>`).join('');
+    sel.innerHTML = accounts.map(a => `<option value="${a.id}" ${a.id === activeAccountId ? 'selected' : ''}>${a.payoutRequested ? '💸 ' : ''}${a.name}</option>`).join('');
   }
 
   function switchAccount() {
@@ -952,11 +952,44 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function renderAccountList() {
     const list = document.getElementById('accounts-list');
     list.innerHTML = accounts.map(a => `
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--surface); border:1px solid var(--border); border-radius:8px;">
-        <div><strong>${a.name}</strong> <span style="color:var(--muted); font-size:12px; display:block;">Starting Balance: $${a.balance}</span></div>
-        ${a.id !== 'default' ? `<button onclick="deleteAccount('${a.id}')" class="action-btn" style="color:var(--red);">✖</button>` : `<span style="font-size:11px; color:var(--muted)">Core</span>`}
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px; margin-bottom:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <strong id="acct-name-${a.id}">${a.name}</strong>
+              ${a.payoutRequested ? '<span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); border-radius:6px; font-size:11px; font-weight:700; padding:2px 8px;">💸 Payout Requested</span>' : ''}
+            </div>
+            <span style="color:var(--muted); font-size:12px;">Starting Balance: $${a.balance}</span>
+          </div>
+          <div style="display:flex; gap:6px; flex-shrink:0;">
+            <button onclick="renameAccount('${a.id}')" class="action-btn" title="Rename" style="color:var(--accent2); font-size:13px;">✏️</button>
+            <button onclick="togglePayout('${a.id}')" class="action-btn" title="${a.payoutRequested ? 'Mark Active' : 'Mark Payout Requested'}" style="color:#f59e0b; font-size:13px;">💸</button>
+            ${a.id !== 'default' ? `<button onclick="deleteAccount('${a.id}')" class="action-btn" style="color:var(--red); font-size:13px;">🗑️</button>` : ''}
+          </div>
+        </div>
       </div>
     `).join('');
+  }
+
+  function renameAccount(id) {
+    const acct = accounts.find(a => a.id === id);
+    if (!acct) return;
+    const newName = prompt('Rename account:', acct.name);
+    if (!newName || !newName.trim()) return;
+    acct.name = newName.trim();
+    saveAccounts();
+    renderAccountDropdown();
+    renderAccountList();
+    switchAccount();
+  }
+
+  function togglePayout(id) {
+    const acct = accounts.find(a => a.id === id);
+    if (!acct) return;
+    acct.payoutRequested = !acct.payoutRequested;
+    saveAccounts();
+    renderAccountDropdown();
+    renderAccountList();
   }
 
   function createAccount() {
