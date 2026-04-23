@@ -957,13 +957,13 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
           <div style="flex:1;">
             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
               <strong id="acct-name-${a.id}">${a.name}</strong>
-              ${a.payoutRequested ? '<span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); border-radius:6px; font-size:11px; font-weight:700; padding:2px 8px;">💸 Payout Requested</span>' : ''}
+              ${a.payoutRequested ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); border-radius:6px; font-size:11px; font-weight:700; padding:2px 8px;">💸 $${(a.payouts||[]).reduce((s,p)=>s+p.amount,0).toLocaleString()} Paid Out</span>` : ''}
             </div>
-            <span style="color:var(--muted); font-size:12px;">Starting Balance: $${a.balance}</span>
+            <span style="color:var(--muted); font-size:12px;">Balance: $${(parseFloat(a.balance)||0).toLocaleString()}</span>
           </div>
           <div style="display:flex; gap:6px; flex-shrink:0;">
             <button onclick="renameAccount('${a.id}')" class="action-btn" title="Rename" style="color:var(--accent2); font-size:13px;">✏️</button>
-            <button onclick="togglePayout('${a.id}')" class="action-btn" title="${a.payoutRequested ? 'Mark Active' : 'Mark Payout Requested'}" style="color:#f59e0b; font-size:13px;">💸</button>
+            <button onclick="openPayoutModal('${a.id}')" class="action-btn" title="Log Payout" style="color:#f59e0b; font-size:13px;">💸</button>
             ${a.id !== 'default' ? `<button onclick="deleteAccount('${a.id}')" class="action-btn" style="color:var(--red); font-size:13px;">🗑️</button>` : ''}
           </div>
         </div>
@@ -994,13 +994,43 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     document.getElementById('rename-modal').classList.remove('active');
   }
 
-  function togglePayout(id) {
+  function openPayoutModal(id) {
     const acct = accounts.find(a => a.id === id);
     if (!acct) return;
-    acct.payoutRequested = !acct.payoutRequested;
+    document.getElementById('payout-acct-id').value = id;
+    document.getElementById('payout-amount-input').value = '';
+    const totalPaid = (acct.payouts || []).reduce((s, p) => s + p.amount, 0);
+    document.getElementById('payout-history-info').innerHTML = (acct.payouts && acct.payouts.length)
+      ? `<div style="margin-bottom:12px;padding:10px;background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:8px;font-size:12px;">
+           <div style="color:#f59e0b;font-weight:700;margin-bottom:6px;">💸 Payout History</div>
+           ${acct.payouts.map(p => `<div style="display:flex;justify-content:space-between;color:var(--text);"><span>${p.date}</span><span style="color:#4ade80;font-weight:700;">+$${p.amount.toLocaleString()}</span></div>`).join('')}
+           <div style="border-top:1px solid rgba(245,158,11,0.2);margin-top:6px;padding-top:6px;display:flex;justify-content:space-between;font-weight:700;color:#f59e0b;"><span>Total Paid Out</span><span>$${totalPaid.toLocaleString()}</span></div>
+         </div>` : '';
+    document.getElementById('payout-modal').classList.add('active');
+    setTimeout(() => document.getElementById('payout-amount-input').focus(), 100);
+  }
+
+  function confirmPayout() {
+    const id = document.getElementById('payout-acct-id').value;
+    const amount = parseFloat(document.getElementById('payout-amount-input').value);
+    if (!amount || amount <= 0) return alert('Enter a valid amount');
+    const acct = accounts.find(a => a.id === id);
+    if (!acct) return;
+    if (!acct.payouts) acct.payouts = [];
+    const date = new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+    acct.payouts.push({ amount, date });
+    acct.payoutRequested = true;
+    acct.balance = Math.max(0, (parseFloat(acct.balance) || 0) - amount);
     saveAccounts();
     renderAccountDropdown();
     renderAccountList();
+    document.getElementById('payout-modal').classList.remove('active');
+    showPayoutCongrats(amount);
+  }
+
+  function showPayoutCongrats(amount) {
+    document.getElementById('congrats-amount').textContent = '$' + amount.toLocaleString();
+    document.getElementById('congrats-modal').classList.add('active');
   }
 
   function createAccount() {
@@ -2493,6 +2523,37 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     <div class="modal-actions">
       <button class="btn-cancel" onclick="document.getElementById('account-modal').classList.remove('active')" style="width:100%">Close</button>
     </div>
+  </div>
+</div>
+
+<!-- Payout Modal -->
+<div class="modal-overlay" id="payout-modal">
+  <div class="modal-content" style="max-width:360px;">
+    <div class="modal-title">💸 Log Payout</div>
+    <input type="hidden" id="payout-acct-id">
+    <div id="payout-history-info"></div>
+    <div class="form-group" style="margin-bottom:18px;">
+      <label>Payout Amount ($)</label>
+      <input type="number" id="payout-amount-input" class="form-control" placeholder="e.g. 1000" min="1" style="font-size:18px;font-weight:700;"
+        onkeydown="if(event.key==='Enter') confirmPayout()">
+      <div style="font-size:11px;color:var(--muted);margin-top:4px;">This will be subtracted from your account balance.</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn-cancel" onclick="document.getElementById('payout-modal').classList.remove('active')" style="flex:1;">Cancel</button>
+      <button class="btn-save" onclick="confirmPayout()" style="flex:1;">Confirm Payout</button>
+    </div>
+  </div>
+</div>
+
+<!-- Congrats Modal -->
+<div class="modal-overlay" id="congrats-modal" onclick="this.classList.remove('active')">
+  <div class="modal-content" style="max-width:340px;text-align:center;" onclick="event.stopPropagation()">
+    <div style="font-size:52px;margin-bottom:8px;">🏆</div>
+    <div style="font-size:22px;font-weight:800;color:#4ade80;margin-bottom:6px;">Payout Logged!</div>
+    <div style="font-size:15px;color:var(--muted);margin-bottom:4px;">You just pulled out</div>
+    <div id="congrats-amount" style="font-size:36px;font-weight:900;color:#f59e0b;margin-bottom:12px;"></div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:20px;">That's real money. Keep executing the plan. 🔥</div>
+    <button class="btn-save" onclick="document.getElementById('congrats-modal').classList.remove('active')" style="width:100%;">Let's Go 🚀</button>
   </div>
 </div>
 
