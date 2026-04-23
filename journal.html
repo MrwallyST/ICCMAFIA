@@ -977,8 +977,10 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
               <strong id="acct-name-${a.id}">${a.name}</strong>
               ${a.payoutRequested ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); border-radius:6px; font-size:11px; font-weight:700; padding:2px 8px;">💸 $${(a.payouts||[]).reduce((s,p)=>s+p.amount,0).toLocaleString()} Paid Out</span>` : ''}
             </div>
-            <span style="color:var(--muted); font-size:12px;">Balance: <strong style="color:var(--text);">$${(parseFloat(a.balance)||0).toLocaleString()}</strong>
-              <button onclick="openEditBalanceModal('${a.id}')" style="background:none;border:none;color:var(--accent2);cursor:pointer;font-size:11px;padding:0 4px;" title="Edit balance">✏️</button>
+            <span style="color:var(--muted); font-size:12px;">
+              Starting: $${(parseFloat(a.balance)||0).toLocaleString()}
+              <button onclick="openEditBalanceModal('${a.id}')" style="background:none;border:none;color:var(--accent2);cursor:pointer;font-size:11px;padding:0 4px;" title="Edit starting balance">✏️</button>
+              &nbsp;|&nbsp; <strong style="color:${getNetBalance(a)>=0?'#4ade80':'#f87171'};">Net: $${getNetBalance(a).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
             </span>
             ${(a.payouts && a.payouts.length) ? `<div style="margin-top:4px;">${a.payouts.map(p=>`<span style="font-size:11px;color:#4ade80;margin-right:8px;">+$${p.amount.toLocaleString()} <span style="color:var(--muted);">${p.date}</span></span>`).join('')}</div>` : ''}
           </div>
@@ -1020,6 +1022,12 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     if (!acct) return;
     document.getElementById('payout-acct-id').value = id;
     document.getElementById('payout-amount-input').value = '';
+    const netBal = getNetBalance(acct);
+    document.getElementById('payout-current-bal').innerHTML =
+      `<div style="margin-bottom:12px;padding:10px;background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.2);border-radius:8px;font-size:13px;display:flex;justify-content:space-between;">
+        <span style="color:var(--muted);">Current Balance</span>
+        <strong style="color:${netBal>=0?'#4ade80':'#f87171'};">$${netBal.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</strong>
+       </div>`;
     const totalPaid = (acct.payouts || []).reduce((s, p) => s + p.amount, 0);
     document.getElementById('payout-history-info').innerHTML = (acct.payouts && acct.payouts.length)
       ? `<div style="margin-bottom:12px;padding:10px;background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:8px;font-size:12px;">
@@ -1041,7 +1049,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     const date = new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
     acct.payouts.push({ amount, date });
     acct.payoutRequested = true;
-    acct.balance = Math.max(0, (parseFloat(acct.balance) || 0) - amount);
+    // Do NOT touch acct.balance (starting balance) — net balance is calculated dynamically
     saveAccounts();
     renderAccountDropdown();
     renderAccountList();
@@ -1053,6 +1061,15 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function showPayoutCongrats(amount) {
     document.getElementById('congrats-amount').textContent = '$' + amount.toLocaleString();
     document.getElementById('congrats-modal').classList.add('active');
+  }
+
+  // Net balance = starting balance + all trade P&L for this account - all payouts
+  function getNetBalance(acct) {
+    if (!acct) return 0;
+    const startBal = parseFloat(acct.balance) || 0;
+    const tradePnl = trades.filter(t => t.accountId === acct.id).reduce((s, t) => s + (parseFloat(t.pnl) || 0), 0);
+    const totalPayouts = (acct.payouts || []).reduce((s, p) => s + p.amount, 0);
+    return startBal + tradePnl - totalPayouts;
   }
 
   function openEditBalanceModal(id) {
@@ -1089,7 +1106,10 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     }
     panel.style.display = 'block';
     const totalAmt = acct.payouts.reduce((s, p) => s + p.amount, 0);
-    total.textContent = '$' + totalAmt.toLocaleString() + ' total paid out';
+    const netBal = getNetBalance(acct);
+    total.innerHTML = `<span style="font-size:13px;color:var(--muted);font-weight:400;">$${totalAmt.toLocaleString()} paid out</span>
+      &nbsp;&nbsp;<span style="font-size:14px;color:var(--muted);font-weight:400;">Current Balance:</span>
+      <span style="color:${netBal>=0?'#4ade80':'#f87171'};">$${netBal.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</span>`;
     list.innerHTML = acct.payouts.slice().reverse().map((p, i) => `
       <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.2); border-radius:10px; padding:10px 14px;">
         <div style="display:flex; align-items:center; gap:10px;">
@@ -2603,6 +2623,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   <div class="modal-content" style="max-width:360px;">
     <div class="modal-title">💸 Log Payout</div>
     <input type="hidden" id="payout-acct-id">
+    <div id="payout-current-bal"></div>
     <div id="payout-history-info"></div>
     <div class="form-group" style="margin-bottom:18px;">
       <label>Payout Amount ($)</label>
