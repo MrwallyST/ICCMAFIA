@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarvis AI Terminal — ICCMAFIA</title>
+  <meta name="theme-color" content="#7c6fcd">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08090e;
+      --surface: #0f1015;
+      --surface2: #16171f;
+      --surface3: #1e1f2c;
+      --border: #25263a;
+      --accent: #7c6fcd;
+      --accent2: #a78bfa;
+      --green: #10b981;
+      --green-bg: rgba(16, 185, 129, 0.15);
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.15);
+      --text: #eeeef5;
+      --muted: #94a3b8;
+    }
+    body { font-family: 'Pretendard', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    
+    /* Nav */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--border); background: rgba(15, 16, 21, 0.8); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 20px; }
+    .nav-logo-icon { background: linear-gradient(135deg, var(--accent2), var(--accent)); width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .nav-right a { color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px; background: var(--surface2); border: 1px solid var(--border); transition: 0.2s; }
+    .nav-right a.primary { background: var(--text); color: var(--bg); }
+    .nav-right a:hover { transform: translateY(-2px); }
+
+    /* Terminal Layout */
+    .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; flex: 1; display: flex; flex-direction: column; }
+    
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .header h1 { font-family: 'Outfit', sans-serif; font-size: 32px; display: flex; align-items: center; gap: 10px; }
+    
+    .status-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); color: var(--green); padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+    .status-badge.offline { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.25); color: var(--red); }
+    .status-badge .dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse-green 2s infinite; }
+    .status-badge.offline .dot { background: var(--red); animation: none; }
+    @keyframes pulse-green { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    .chat-box { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; height: 60vh; }
+    
+    .chat-history { flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+    .message { max-width: 85%; padding: 14px 18px; border-radius: 12px; font-size: 15px; line-height: 1.5; white-space: pre-wrap; }
+    .msg-user { background: var(--surface2); border: 1px solid var(--border); color: var(--text); align-self: flex-end; border-bottom-right-radius: 4px; }
+    .msg-jarvis { background: rgba(124, 111, 205, 0.1); border: 1px solid rgba(124, 111, 205, 0.3); color: #fff; align-self: flex-start; border-bottom-left-radius: 4px; font-family: 'Outfit', sans-serif; }
+    
+    .msg-jarvis.grading-a { border-color: rgba(16, 185, 129, 0.5); background: rgba(16, 185, 129, 0.05); }
+    .msg-jarvis.grading-f { border-color: rgba(239, 68, 68, 0.5); background: rgba(239, 68, 68, 0.05); }
+
+    .image-preview-msg { max-width: 100%; border-radius: 8px; margin-bottom: 8px; border: 1px solid var(--border); }
+
+    .input-area { padding: 16px; background: var(--surface2); border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+    
+    .input-row { display: flex; gap: 12px; align-items: flex-end; }
+    
+    textarea { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px; color: var(--text); font-family: 'Pretendard', sans-serif; font-size: 15px; outline: none; resize: none; max-height: 120px; transition: 0.2s; }
+    textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(124, 111, 205, 0.2); }
+    
+    .action-btn { background: var(--surface3); border: 1px solid var(--border); color: var(--text); border-radius: 12px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; transition: 0.2s; flex-shrink: 0; }
+    .action-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent2); transform: translateY(-2px); }
+    
+    .send-btn { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border: none; }
+    .send-btn:hover { box-shadow: 0 4px 15px rgba(124, 111, 205, 0.4); }
+    
+    .image-attachment-preview { display: none; align-items: center; gap: 10px; background: var(--surface); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); align-self: flex-start; }
+    .image-attachment-preview img { height: 40px; border-radius: 4px; }
+    .image-attachment-preview button { background: none; border: none; color: var(--red); cursor: pointer; font-size: 16px; }
+
+    /* Settings Strip */
+    .settings-strip { display: flex; gap: 12px; padding: 12px 24px; background: var(--surface3); border-bottom: 1px solid var(--border); font-size: 13px; align-items: center; }
+    .settings-strip select { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 4px 8px; border-radius: 4px; outline: none; }
+
+    /* Loader */
+    .typing-indicator { display: none; align-self: flex-start; padding: 12px 18px; background: rgba(124, 111, 205, 0.05); border: 1px solid rgba(124, 111, 205, 0.2); border-radius: 12px; color: var(--accent2); font-size: 14px; font-weight: 600; }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+      .nav-right { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .nav-right a { font-size: 12px; padding: 6px 10px; }
+      .container { padding: 0 12px; margin: 16px auto; }
+      .header h1 { font-size: 24px; }
+      .status-badge { font-size: 11px; padding: 6px 10px; }
+      .chat-box { height: 65vh; border-radius: 12px; }
+      .settings-strip { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">🔷</div>
+    <span class="nav-logo-text">Trades<span>BySci</span></span>
+  </a>
+  <div class="nav-right" id="nav-links">
+    <a href="jarvis.html" style="color:#38bdf8; font-weight:700; border-color:rgba(56,189,248,0.3); background:rgba(56,189,248,0.05);">🤖 Jarvis AI</a>
+    <a href="journal.html">📓 Journal</a>
+    <a href="psychology.html" style="color:#f87171;">🧠 Psychology</a>
+    <a href="cheat-sheet.html" style="color:var(--accent2);">📋 Cheat Sheet</a>
+    <a href="calendar.html" style="color:var(--green);">📅 Calendar</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="header">
+    <h1>🤖 Jarvis Terminal <span style="font-size:14px; font-weight:400; color:var(--muted); background:var(--surface2); padding:4px 8px; border-radius:6px; border:1px solid var(--border);">Vertex AI</span></h1>
+    <div class="status-badge" id="conn-status">
+      <span class="dot"></span>
+      <span id="conn-text">Connecting...</span>
+    </div>
+  </div>
+
+  <div class="chat-box">
+    <div class="settings-strip">
+      <span style="color:var(--muted); font-weight:600;">Backend Link:</span>
+      <select id="backend-url" onchange="checkConnection()">
+        <option value="http://100.96.19.66:8000">Tailscale (Anywhere)</option>
+        <option value="http://192.168.68.113:8000">Local WiFi (Home)</option>
+        <option value="http://localhost:8000">Localhost (This PC)</option>
+      </select>
+      <button onclick="checkConnection()" style="background:var(--surface2); border:1px solid var(--border); color:var(--text); padding:4px 10px; border-radius:4px; cursor:pointer; font-size:12px;">Reconnect</button>
+    </div>
+
+    <div class="chat-history" id="chat-history">
+      <div class="message msg-jarvis">
+        ⚡ <b>Jarvis Online.</b><br><br>
+        I am your ICCMAFIA trading enforcer. Upload a chart before taking a trade. I will grade it strictly against the 7-Point ICC Checklist. I will tell you if it's garbage.
+      </div>
+    </div>
+
+    <div class="typing-indicator" id="typing-indicator">
+      Jarvis is analyzing...
+    </div>
+
+    <div class="input-area">
+      <div class="image-attachment-preview" id="image-preview-container">
+        <img id="preview-img" src="" alt="attachment">
+        <span id="preview-name" style="font-size:12px; color:var(--muted);">image.png</span>
+        <button onclick="clearImage()">×</button>
+      </div>
+      
+      <div class="input-row">
+        <button class="action-btn" onclick="document.getElementById('file-input').click()" title="Upload Chart">
+          📷
+        </button>
+        <input type="file" id="file-input" accept="image/*" style="display:none;" onchange="handleImageSelect(event)">
+        
+        <textarea id="msg-input" rows="1" placeholder="Add context or ask a question... (Shift+Enter for newline)" onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault(); sendMessage();}"></textarea>
+        
+        <button class="action-btn send-btn" onclick="sendMessage()">
+          ➤
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentFile = null;
+
+  async function checkConnection() {
+    const url = document.getElementById("backend-url").value;
+    const statusEl = document.getElementById("conn-status");
+    const textEl = document.getElementById("conn-text");
+    
+    statusEl.className = "status-badge";
+    textEl.innerText = "Checking...";
+
+    try {
+      // Small ping to check if server is reachable
+      const res = await fetch(`${url}/docs`, { method: "HEAD", mode: 'no-cors' });
+      statusEl.className = "status-badge";
+      textEl.innerText = "Connected";
+    } catch (e) {
+      statusEl.className = "status-badge offline";
+      textEl.innerText = "Offline";
+    }
+  }
+
+  // Auto resize textarea
+  const textarea = document.getElementById("msg-input");
+  textarea.addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  });
+
+  function handleImageSelect(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    currentFile = file;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview-img').src = e.target.result;
+      document.getElementById('preview-name').innerText = file.name;
+      document.getElementById('image-preview-container').style.display = 'flex';
+    }
+    reader.readAsDataURL(file);
+  }
+
+  function clearImage() {
+    currentFile = null;
+    document.getElementById('file-input').value = "";
+    document.getElementById('image-preview-container').style.display = 'none';
+  }
+
+  function appendMessage(role, text, imageUrl = null) {
+    const history = document.getElementById("chat-history");
+    const div = document.createElement("div");
+    div.className = `message ${role === 'user' ? 'msg-user' : 'msg-jarvis'}`;
+    
+    if (imageUrl) {
+      div.innerHTML += `<img src="${imageUrl}" class="image-preview-msg"><br>`;
+    }
+    
+    // Auto-detect grade styles
+    if (role === 'jarvis') {
+      if (text.includes("A+") || text.includes("VERDICT: PASS")) div.classList.add("grading-a");
+      if (text.includes("F") || text.includes("GARBAGE") || text.includes("VERDICT: FAIL")) div.classList.add("grading-f");
+    }
+
+    div.innerHTML += text.replace(/\n/g, "<br>");
+    history.appendChild(div);
+    history.scrollTop = history.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = textarea.value.trim();
+    if (!text && !currentFile) return;
+
+    const url = document.getElementById("backend-url").value;
+    const history = document.getElementById("chat-history");
+    const indicator = document.getElementById("typing-indicator");
+
+    // UI Updates
+    let imgDataUrl = null;
+    if (currentFile) {
+      imgDataUrl = document.getElementById('preview-img').src;
+    }
+    appendMessage("user", text, imgDataUrl);
+    
+    const fileToSend = currentFile;
+    const textToSend = text;
+    
+    textarea.value = "";
+    textarea.style.height = "auto";
+    clearImage();
+    
+    indicator.style.display = "block";
+    history.scrollTop = history.scrollHeight;
+
+    try {
+      let response;
+      if (fileToSend) {
+        // Send image + text
+        const formData = new FormData();
+        formData.append("image", fileToSend);
+        if (textToSend) formData.append("context", textToSend);
+        
+        response = await fetch(`${url}/api/analyze-chart`, {
+          method: "POST",
+          body: formData
+        });
+      } else {
+        // Text only chat
+        const formData = new FormData();
+        formData.append("message", textToSend);
+        response = await fetch(`${url}/api/chat`, {
+          method: "POST",
+          body: formData
+        });
+      }
+
+      const data = await response.json();
+      indicator.style.display = "none";
+      
+      if (response.ok) {
+        appendMessage("jarvis", data.response || data.analysis);
+      } else {
+        appendMessage("jarvis", "⚠️ Error: " + (data.detail || "Connection failed. Check if Jarvis is running."));
+      }
+
+    } catch (err) {
+      indicator.style.display = "none";
+      appendMessage("jarvis", "⚠️ Network Error: Could not reach the Jarvis backend. Ensure Tailscale is connected and the server is running.");
+      document.getElementById("conn-status").className = "status-badge offline";
+      document.getElementById("conn-text").innerText = "Offline";
+    }
+  }
+
+  // Initial check
+  setTimeout(checkConnection, 1000);
+</script>
+
+</body>
+</html>
