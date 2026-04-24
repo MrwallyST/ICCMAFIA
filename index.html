@@ -1010,6 +1010,7 @@
     let currentOpts = [];
     let currentHint = '';
     let qNum = 1;
+    let inQuestion = false;
 
     function flushQuestion() {
       if (!currentQ.trim()) return;
@@ -1034,16 +1035,17 @@
       let line = lines[i];
       if (line.match(/^##\s+Question/i) || line.match(/^##\s+\d+/)) {
         flushQuestion(); // Flush previous if exists
+        inQuestion = true;
       } else if (line.match(/^- \[\s?\]/)) {
-        currentOpts.push({text: line.replace(/^- \[\s?\]/, '').trim(), correct: false});
+        if (inQuestion) currentOpts.push({text: line.replace(/^- \[\s?\]/, '').trim(), correct: false});
       } else if (line.match(/^- \[x\]/i)) {
-        currentOpts.push({text: line.replace(/^- \[x\]/i, '').trim(), correct: true});
+        if (inQuestion) currentOpts.push({text: line.replace(/^- \[x\]/i, '').trim(), correct: true});
       } else if (line.trim().toLowerCase().startsWith('**hint:**')) {
-        currentHint = line.replace(/\*\*Hint:\*\*/i, '').trim();
+        if (inQuestion) currentHint = line.replace(/\*\*Hint:\*\*/i, '').trim();
       } else if (line.trim().toLowerCase().startsWith('hint:')) {
-        currentHint = line.replace(/Hint:/i, '').trim();
+        if (inQuestion) currentHint = line.replace(/Hint:/i, '').trim();
       } else {
-         if (line.trim() !== '') currentQ += line + '\n';
+         if (inQuestion && line.trim() !== '') currentQ += line + '\n';
       }
     }
     flushQuestion();
