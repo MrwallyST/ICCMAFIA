@@ -1,0 +1,11 @@
+{
+  "cards": [
+    { "front": "What is 'Timeframe Correlation' in the ICC framework?", "back": "The discipline of reading multiple timeframes in alignment (top-down) so that every trade entry has the full weight of higher-timeframe structure confirming it." },
+    { "front": "What are the three tiers of the timeframe hierarchy?", "back": "Tier 1: Daily/4-Hour (Map — overall direction). Tier 2: 1-Hour (Setup — structural analysis). Tier 3: 15-Minute/5-Minute (Entry — execution trigger)." },
+    { "front": "What is the job of the Daily / 4-Hour timeframe?", "back": "To determine the overall trend direction and macro bias. It answers: 'Where is price going long-term?'" },
+    { "front": "What is the job of the 1-Hour timeframe?", "back": "To identify where price is in relation to key structural levels — specifically, to confirm when a Correction is completing and where the entry zone is." },
+    { "front": "What is the job of the 15-Minute timeframe?", "back": "Precision execution only. You use it to pull the trigger AFTER Tier 1 (4H) and Tier 2 (1H) are already confirmed. Never for determining direction." },
+    { "front": "What is the 'Traffic Light System' in timeframe correlation?", "back": "Red (4H) = direction. Yellow (1H) = setup zone. Green (15M) = entry trigger. All three must be aligned before trading." },
+    { "front": "Can you look for buys on the 1H if the 4H is bearish?", "back": "No. The higher timeframe always wins. If the 4H is bearish, you only look for sells — period." }
+  ]
+}

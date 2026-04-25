@@ -448,6 +448,70 @@
     .spinner { width: 22px; height: 22px; border: 2.5px solid var(--border); border-top-color: var(--accent2); border-radius: 50%; animation: spin .8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── NEW BEGINNER FLOW SECTIONS ────────────────── */
+    .flow-section { max-width: 900px; margin: 64px auto 0; padding: 0 24px; }
+    .flow-section-title { font-size: 24px; font-weight: 900; margin-bottom: 24px; color: #fff; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 10px; }
+    .flow-section-title span { color: var(--accent2); }
+
+    /* Checklist Section */
+    .checklist-grid { display: flex; flex-direction: column; gap: 12px; }
+    .check-item { display: flex; align-items: flex-start; gap: 14px; background: var(--surface2); border: 1px solid var(--border); padding: 18px 20px; border-radius: 12px; transition: transform 0.2s; }
+    .check-item:hover { border-color: rgba(167, 139, 250, 0.4); transform: translateX(4px); }
+    .check-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; }
+    .check-content h4 { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .check-content p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* Audience Split */
+    .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .audience-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+    .audience-card.for { border-top: 3px solid var(--green); }
+    .audience-card.not-for { border-top: 3px solid var(--red); }
+    .audience-title { font-size: 16px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .audience-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .audience-list li { font-size: 14px; color: var(--text); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+    .audience-card.for li::before { content: '✅'; flex-shrink: 0; margin-top: 2px; }
+    .audience-card.not-for li::before { content: '❌'; flex-shrink: 0; margin-top: 2px; }
+
+    /* Risk Center */
+    .risk-center { background: linear-gradient(145deg, var(--surface2), var(--surface)); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; }
+    .risk-center::before { content: ''; position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(244,63,94,0.1) 0%, transparent 70%); pointer-events: none; }
+    .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+    .risk-input-group { margin-bottom: 16px; }
+    .risk-input-group label { display: block; font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .risk-input { width: 100%; background: var(--surface3); border: 1px solid var(--border); color: #fff; padding: 12px 16px; border-radius: 8px; font-size: 16px; font-family: 'Outfit', sans-serif; transition: border-color 0.2s; }
+    .risk-input:focus { outline: none; border-color: var(--red); }
+    .risk-results { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 16px; border: 1px solid var(--border); }
+    .risk-stat { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px dashed var(--border); }
+    .risk-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .risk-stat-label { font-size: 13px; color: var(--muted); font-weight: 600; }
+    .risk-stat-value { font-size: 18px; font-weight: 900; color: #fff; font-family: 'Outfit', sans-serif; }
+    .risk-stat-value.danger { color: var(--red); }
+    .risk-warning { margin-top: 10px; font-size: 12px; color: var(--red); background: rgba(244, 63, 94, 0.1); padding: 10px; border-radius: 6px; border-left: 2px solid var(--red); display: none; }
+
+    /* Prop Firm Readiness */
+    .prop-firm-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: left; }
+    .prop-firm-card p.intro { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+    .prop-firm-checks { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
+    .prop-firm-check { display: flex; align-items: center; gap: 12px; background: var(--surface3); padding: 14px 18px; border-radius: 8px; border: 1px solid var(--border); font-size: 14px; font-weight: 600; }
+    .prop-firm-check input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+    .prop-disclaimer { font-size: 11px; color: var(--muted); font-style: italic; text-align: center; margin-top: 16px; }
+
+    /* Community Placeholder */
+    .community-box { background: linear-gradient(135deg, rgba(124,111,205,0.1), rgba(34,211,164,0.05)); border: 1px solid rgba(124,111,205,0.3); border-radius: 16px; padding: 40px 24px; text-align: center; margin-top: 64px; }
+    .community-box h2 { font-size: 28px; font-family: 'Outfit', sans-serif; font-weight: 900; margin-bottom: 12px; color: #fff; }
+    .community-box p { font-size: 15px; color: var(--muted); max-width: 500px; margin: 0 auto 24px; line-height: 1.6; }
+    .community-form { display: flex; max-width: 400px; margin: 0 auto; gap: 8px; }
+    .community-form input { flex: 1; padding: 12px 16px; border-radius: 99px; border: 1px solid var(--border); background: var(--surface); color: #fff; outline: none; }
+    .community-form button { padding: 12px 24px; border-radius: 99px; background: var(--text); color: var(--bg); font-weight: 800; border: none; cursor: pointer; transition: transform 0.2s; }
+    .community-form button:hover { transform: translateY(-2px); }
+
+    /* End of lesson checklist */
+    .end-lesson-checklist { background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 20px 0; }
+    .end-lesson-checklist h5 { font-size: 12px; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .el-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .el-item:last-child { margin-bottom: 0; }
+    .el-item::before { content: '▢'; font-size: 16px; color: var(--border); }
+
     @media(max-width: 640px) {
       nav { padding: 14px 16px; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
       .nav-logo { flex-shrink: 0; }
@@ -480,6 +544,9 @@
       .journal-callout { padding: 20px 16px !important; width: calc(100% - 32px) !important; }
       .journal-callout h3 { display: block !important; font-size: 20px !important; line-height: 1.25; overflow-wrap: anywhere; }
       .journal-callout p { font-size: 14px !important; overflow-wrap: anywhere; }
+      .audience-grid, .risk-grid { grid-template-columns: 1fr; }
+      .community-form { flex-direction: column; }
+    }
     }
 
     /* ── COMING SOON CARD ──────────────────────── */
@@ -532,19 +599,21 @@
 <section class="hero">
   <div class="hero-eyebrow">
     <span class="live-dot"></span>
-    <span>AI-Decoded · Updated Every 2-3 Days</span>
+    <span>Beginner-Friendly Trading System</span>
   </div>
   <h1>Master Order Flow.<br/><span class="grad">Stop Gambling.</span></h1>
   <p class="hero-sub">
-    <strong>ICCMAFIA-AI</strong> decodes the Trades by Sci curriculum daily — Indications, Corrections, Continuations, order flow, and liquidity. Watch the video, download the NotebookLM studio, study on your own time.
+    <strong>ICCMAFIA</strong> is a free trading study system that turns the TradesBySci curriculum into structured daily lessons, quizzes, notes, psychology tracking, and risk-first discipline tools — so beginners can study with structure instead of guessing.
   </p>
   <div class="hero-ctas">
-    <a href="#days" class="btn-primary">📅 Start Day 1</a>
-    <a href="https://www.youtube.com/@ICCMAFIA-AI" target="_blank" rel="noopener noreferrer" class="btn-secondary">▶ Watch on YouTube</a>
+    <a href="#days" class="btn-primary" aria-label="Start Day 1">📅 Start Day 1</a>
+    <a href="journal.html" class="btn-secondary" aria-label="Open Trading Journal">📓 Open Trading Journal</a>
+    <a href="cheat-sheet.html" class="btn-secondary" aria-label="View Cheat Sheet" style="color:var(--gold); border-color:rgba(245,158,11,0.3);">📋 View Cheat Sheet</a>
+    <a href="#prop-firm" class="btn-secondary" aria-label="Check Prop Firm Readiness">🏦 Prop Firm Readiness</a>
   </div>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-num" id="stat-days" data-target="5" data-suffix="">0</div>
+      <div class="stat-num" id="stat-days" data-target="6" data-suffix="">0</div>
       <div class="stat-label">Days Live</div>
     </div>
     <div class="stat">
@@ -560,6 +629,159 @@
       <div class="stat-label">Badges Earned</div>
     </div>
   </div>
+</section>
+
+<!-- START HERE: BEGINNER CHECKLIST -->
+<section class="flow-section" id="start-here">
+  <h2 class="flow-section-title"><span>01.</span> Start Here: The Mission Checklist</h2>
+  <p style="color:var(--muted); margin-bottom:20px; font-size:15px;">New to trading? Follow this exact sequence. Do not trade live money until your risk rules are understood.</p>
+  <div class="checklist-grid">
+    <div class="check-item">
+      <div class="check-num">1</div>
+      <div class="check-content">
+        <h4>Watch Day 1</h4>
+        <p>Start with the very first module. Don't skip ahead to entries.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">2</div>
+      <div class="check-content">
+        <h4>Review the Glossary</h4>
+        <p>Open the Cheat Sheet to understand terms like BOS, CHoCH, and FVG.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">3</div>
+      <div class="check-content">
+        <h4>Take Notes & Complete the Quiz</h4>
+        <p>Use the built-in study guides and quizzes to solidify your knowledge.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">4</div>
+      <div class="check-content">
+        <h4>Journal One Demo Trade</h4>
+        <p>Open the Trading Journal and log a backtested example. Get used to logging your logic.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-num">5</div>
+      <div class="check-content">
+        <h4>Mark the Lesson Complete</h4>
+        <p>Earn your badge and move on to the next day when you're ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="flow-section">
+  <h2 class="flow-section-title"><span>02.</span> Who is this for?</h2>
+  <div class="audience-grid">
+    <div class="audience-card for">
+      <div class="audience-title">This IS for:</div>
+      <ul class="audience-list">
+        <li>Beginner traders who need strict structure</li>
+        <li>Traders studying order flow and liquidity</li>
+        <li>Traders using the TradesBySci curriculum</li>
+        <li>Traders who want to build unbreakable discipline</li>
+        <li>Traders preparing before taking prop firm challenges</li>
+      </ul>
+    </div>
+    <div class="audience-card not-for">
+      <div class="audience-title">This is NOT for:</div>
+      <ul class="audience-list">
+        <li>People looking for signals or copy-trading</li>
+        <li>People expecting guaranteed profits overnight</li>
+        <li>People trying to gamble funded accounts</li>
+        <li>People who skip risk management</li>
+        <li>People who want shortcuts instead of practice</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RISK COMMAND CENTER -->
+<section class="flow-section" id="risk-tools">
+  <h2 class="flow-section-title"><span>03.</span> Risk First Command Center</h2>
+  <p style="color:var(--muted); margin-bottom:20px; font-size:15px;">Before you even look at a chart, define your risk. Use this local calculator to set your daily boundaries.</p>
+  
+  <div class="risk-center">
+    <div class="risk-grid">
+      <div class="risk-inputs">
+        <div class="risk-input-group">
+          <label>Account Size ($)</label>
+          <input type="number" id="risk-acc-size" class="risk-input" value="10000" oninput="calculateRisk()">
+        </div>
+        <div class="risk-input-group">
+          <label>Risk Per Trade (%)</label>
+          <input type="number" id="risk-pct" class="risk-input" value="1" step="0.1" max="5" oninput="calculateRisk()">
+        </div>
+        <div class="risk-input-group">
+          <label>Max Daily Loss (%)</label>
+          <input type="number" id="risk-daily-loss" class="risk-input" value="3" step="0.1" oninput="calculateRisk()">
+        </div>
+        <div class="risk-input-group">
+          <label>Max Total Drawdown (%)</label>
+          <input type="number" id="risk-max-dd" class="risk-input" value="8" step="0.1" oninput="calculateRisk()">
+        </div>
+      </div>
+      
+      <div class="risk-results">
+        <div class="risk-stat">
+          <span class="risk-stat-label">Dollar Risk Per Trade</span>
+          <span class="risk-stat-value" id="res-dollar-risk">$100.00</span>
+        </div>
+        <div class="risk-stat">
+          <span class="risk-stat-label">Max Daily Loss Limit</span>
+          <span class="risk-stat-value" id="res-daily-loss">$300.00</span>
+        </div>
+        <div class="risk-stat">
+          <span class="risk-stat-label">Max Total Drawdown</span>
+          <span class="risk-stat-value" id="res-max-dd">$800.00</span>
+        </div>
+        
+        <div class="risk-warning" id="risk-warning">
+          ⚠️ Your risk per trade is very high. Consider lowering it to 1% or less to survive long-term.
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Client-side risk calculator logic
+    function calculateRisk() {
+      const accSize = parseFloat(document.getElementById('risk-acc-size').value) || 0;
+      const riskPct = parseFloat(document.getElementById('risk-pct').value) || 0;
+      const dailyLossPct = parseFloat(document.getElementById('risk-daily-loss').value) || 0;
+      const maxDDPct = parseFloat(document.getElementById('risk-max-dd').value) || 0;
+
+      // Save to localStorage so they don't have to retype
+      localStorage.setItem('icc_acc_size', accSize);
+      localStorage.setItem('icc_risk_pct', riskPct);
+
+      const dollarRisk = (accSize * (riskPct / 100));
+      const dailyLoss = (accSize * (dailyLossPct / 100));
+      const maxDD = (accSize * (maxDDPct / 100));
+
+      document.getElementById('res-dollar-risk').innerText = `$${dollarRisk.toFixed(2)}`;
+      document.getElementById('res-daily-loss').innerText = `$${dailyLoss.toFixed(2)}`;
+      document.getElementById('res-max-dd').innerText = `$${maxDD.toFixed(2)}`;
+
+      const warningEl = document.getElementById('risk-warning');
+      if (riskPct > 2) {
+        warningEl.style.display = 'block';
+      } else {
+        warningEl.style.display = 'none';
+      }
+    }
+
+    // Load from local storage on init
+    window.addEventListener('DOMContentLoaded', () => {
+      if(localStorage.getItem('icc_acc_size')) document.getElementById('risk-acc-size').value = localStorage.getItem('icc_acc_size');
+      if(localStorage.getItem('icc_risk_pct')) document.getElementById('risk-pct').value = localStorage.getItem('icc_risk_pct');
+      calculateRisk();
+    });
+  </script>
 </section>
 
 <!-- Marketing & SEO Banner -->
@@ -604,6 +826,47 @@
   <div id="days-container"></div>
 </section>
 
+<!-- PROP FIRM READINESS -->
+<section class="flow-section" id="prop-firm">
+  <h2 class="flow-section-title"><span>04.</span> Prop Firm Readiness</h2>
+  <div class="prop-firm-card">
+    <p class="intro">Before using any prop firm, prove you can follow rules, manage drawdown, journal trades, and stop trading when your plan says stop. Most beginners fail challenges because they lack these four pillars of discipline.</p>
+    
+    <div class="prop-firm-checks">
+      <div class="prop-firm-check">
+        <input type="checkbox" id="pf1">
+        <label for="pf1">I have a defined Max Daily Loss and I stop trading when I hit it.</label>
+      </div>
+      <div class="prop-firm-check">
+        <input type="checkbox" id="pf2">
+        <label for="pf2">I have backtested the ICC framework for at least 30 days.</label>
+      </div>
+      <div class="prop-firm-check">
+        <input type="checkbox" id="pf3">
+        <label for="pf3">I log every single trade in my Trading Journal.</label>
+      </div>
+      <div class="prop-firm-check">
+        <input type="checkbox" id="pf4">
+        <label for="pf4">I understand that passing a challenge requires risk management, not just strategy.</label>
+      </div>
+    </div>
+    
+    <p class="prop-disclaimer">Affiliate comparisons coming later — education first, funding second.</p>
+  </div>
+</section>
+
+<!-- COMMUNITY PLACEHOLDER -->
+<section class="flow-section" style="margin-bottom: 80px;">
+  <div class="community-box">
+    <h2>Join the Mafia</h2>
+    <p>Get notified when new lessons drop, share your progress, and join a community of disciplined order flow traders.</p>
+    <form class="community-form" onsubmit="event.preventDefault(); alert('Community backend coming soon. Keep studying!');">
+      <input type="email" placeholder="Enter your email address" required aria-label="Email Address">
+      <button type="submit" aria-label="Subscribe">Get Updates</button>
+    </form>
+  </div>
+</section>
+
 <!-- Certificate Modal -->
 <div id="cert-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(8px); z-index:3000; align-items:center; justify-content:center; padding:20px;">
   <div style="background:var(--surface2); border:1px solid var(--border); border-top:4px solid var(--gold); border-radius:20px; max-width:500px; width:100%; padding:40px; text-align:center; position:relative; animation:slideUpFade .4s ease;">
@@ -619,7 +882,7 @@
 </div>
 
 <div class="disclaimer-bar">
-  <span>⚠️ Disclaimer</span>This site is for <strong>educational purposes only</strong>. Nothing here is financial advice. We are not financial advisors. Trading involves significant risk — always do your own research and consult a licensed professional before making any financial decisions.
+  <span>⚠️ Disclaimer</span>This site is for <strong>educational purposes only</strong>. We are not financial advisors. Trading involves significant risk of loss. There are no guaranteed results. Some future links may be affiliate links. This does not change our education-first approach. Always read all prop firm rules before purchasing any challenge.
 </div>
 
 <footer>
@@ -800,6 +1063,16 @@
             <div class="infographic-card full-col">${infographic}</div>
 
             ${day.reelUrl ? `<div class="full-col"><a class="reel-link" href="${day.reelUrl}" target="_blank" rel="noopener noreferrer">🎬 Watch the Reel ↗</a></div>` : ''}
+          </div>
+        </div>
+        <!-- End of Lesson Checklist -->
+        <div style="padding: 0 28px;">
+          <div class="end-lesson-checklist">
+            <h5>After this lesson:</h5>
+            <div class="el-item">Take at least 3 bullet point notes</div>
+            <div class="el-item">Complete the interactive knowledge quiz</div>
+            <div class="el-item">Review key terms in the Cheat Sheet</div>
+            <div class="el-item">Journal one backtested example applying this concept</div>
           </div>
         </div>
         <!-- Mark Complete Button -->
@@ -1153,7 +1426,7 @@
     {"day":3,"title":"TradesBySci Day 3","description":"AI-decoded Trades by Sci lesson.","youtubeId":"7eLDXUaav1E","reelUrl":"","audioUrl":"./studios/day-3/day3_en.mp3","infographicUrl":"./studios/day-3/day3_infographic.png","quizFile":"./studios/day-3/day3_quiz.md","studyGuideUrl":"./studios/day-3/day3_study.md","flashcardsUrl":"./studios/day-3/day3_flashcards.json","mindMapUrl":"./studios/day-3/day3_mindmap.json","slideDeckUrl":"./studios/day-3/day3_slides.pdf","dataTableUrl":"./studios/day-3/day3_datatable.md","blogPostUrl":"./studios/day-3/day3_blog.md","youtubeScriptUrl":"./studios/day-3/day3_ytscript.md","igCaptionUrl":"./studios/day-3/day3_ig.md","twitterThreadUrl":"./studios/day-3/day3_twitter.md","newsletterUrl":"./studios/day-3/day3_newsletter.md","linkedinUrl":"./studios/day-3/day3_linkedin.md","faqUrl":"./studios/day-3/day3_faq.md","keyTakeaways":["Core Strategy & Concepts from Day 3","High-Probability Institutional Trading Setups","Market Structure & Liquidity Mapping","Actionable Rule-Based Execution Plan"],"notebookId":"8be24334-4293-41e0-a87d-cd20e67349ae"},
     {"day":4,"title":"ICC Framework Decoded Part 4 - Continuations & The Entry Model","description":"AI-decoded Trades by Sci lesson.","youtubeId":"vYHD7Cs71MU","reelUrl":"","audioUrl":"./studios/day-4/day4_en.mp3","infographicUrl":"./studios/day-4/day4_infographic.png","quizFile":"./studios/day-4/day4_quiz.md","studyGuideUrl":"./studios/day-4/day4_study.md","flashcardsUrl":"./studios/day-4/day4_flashcards.json","mindMapUrl":"./studios/day-4/day4_mindmap.json","slideDeckUrl":"./studios/day-4/day4_slides.pdf","dataTableUrl":"./studios/day-4/day4_datatable.md","blogPostUrl":"./studios/day-4/day4_blog.md","youtubeScriptUrl":"./studios/day-4/day4_ytscript.md","igCaptionUrl":"./studios/day-4/day4_ig.md","tiktokUrl":"./studios/day-4/day4_tiktok.md","twitterThreadUrl":"./studios/day-4/day4_twitter.md","newsletterUrl":"./studios/day-4/day4_newsletter.md","linkedinUrl":"./studios/day-4/day4_linkedin.md","faqUrl":"./studios/day-4/day4_faq.md","keyTakeaways":["The Continuation: Step 3 of the ICC Framework— where you get paid","The Surgeon Analogy: 1H X-Ray for direction, 5m Scalpel for precision entry","The Second Time Around: Never trade the first breakout of a level","Stop Loss on the Correction structure, Take Profit at the massive 1H level"],"notebookId":"8be24334-4293-41e0-a87d-cd20e67349ae"},
     {"day":5,"title":"Day 5: The 1 Secret 90% of Traders Don't Know","description":"AI-decoded Trades by Sci lesson.","youtubeId":"sqH6vqv6bMY","reelUrl":"","audioUrl":"./studios/day-5/day5_en.mp3","infographicUrl":"./studios/day-5/day5_infographic.png","quizFile":"./studios/day-5/day5_quiz.md","studyGuideUrl":"./studios/day-5/day5_study.md","flashcardsUrl":"./studios/day-5/day5_flashcards.json","mindMapUrl":"./studios/day-5/day5_mindmap.json","slideDeckUrl":"./studios/day-5/day5_slides.pdf","dataTableUrl":"./studios/day-5/day5_datatable.md","blogPostUrl":"./studios/day-5/day5_blog.md","youtubeScriptUrl":"./studios/day-5/day5_ytscript.md","igCaptionUrl":"./studios/day-5/day5_ig.md","twitterThreadUrl":"./studios/day-5/day5_twitter.md","newsletterUrl":"./studios/day-5/day5_newsletter.md","linkedinUrl":"./studios/day-5/day5_linkedin.md","faqUrl":"./studios/day-5/day5_faq.md","keyTakeaways":["The Brick Wall: Highs and Lows as physical barriers where the 'Bosses' sit","Swing Levels Rule: Above a low = bullish potential. Below a high = bearish potential.","Liquidity Demystified: The market grabs your stop-loss money to fuel the next move","The 3 Traps: FOMO, Greed, and Revenge Trading — how the market eats 90% of traders"],"notebookId":"8be24334-4293-41e0-a87d-cd20e67349ae"},
-    {"day":6,"title":"Day 6 Module","description":"Coming soon — AI-decoded Trades by Sci lesson.","comingSoonDate":"Apr 25, 2026 @ 8:30 AM CST"},
+    {"day":6,"title":"Day 6: Timeframe Correlation","description":"AI-decoded Trades by Sci lesson.","youtubeId":"YSShuo0qtDE","reelUrl":"","audioUrl":"./studios/day-6/day6_en.mp3","infographicUrl":"./studios/day-6/day6_infographic.png","quizFile":"./studios/day-6/day6_quiz.md","studyGuideUrl":"./studios/day-6/day6_study.md","flashcardsUrl":"./studios/day-6/day6_flashcards.json","mindMapUrl":"./studios/day-6/day6_mindmap.json","slideDeckUrl":"./studios/day-6/day6_slides.pdf","dataTableUrl":"./studios/day-6/day6_datatable.md","blogPostUrl":"./studios/day-6/day6_blog.md","youtubeScriptUrl":"./studios/day-6/day6_ytscript.md","igCaptionUrl":"./studios/day-6/day6_ig.md","twitterThreadUrl":"./studios/day-6/day6_twitter.md","newsletterUrl":"./studios/day-6/day6_newsletter.md","linkedinUrl":"./studios/day-6/day6_linkedin.md","faqUrl":"./studios/day-6/day6_faq.md","tiktokUrl":"./studios/day-6/day6_tiktok.md","keyTakeaways":["The Three-Tier Hierarchy: Daily/4H (Map), 1H (Setup), 15M (Trigger)","The Traffic Light System: All three timeframes must align before entry","Timeframe Hopping: The most destructive habit in retail trading","Confluence: When multiple timeframes point to the same price level"],"notebookId":"926274bc-aeb4-4d9d-b22a-edc327d7c938"},
     {"day":7,"title":"Day 7 Module","description":"Coming soon — AI-decoded Trades by Sci lesson.","comingSoonDate":"Apr 27, 2026 @ 8:30 AM CST"},
     {"day":8,"title":"Day 8 Module","description":"Coming soon — AI-decoded Trades by Sci lesson.","comingSoonDate":"Apr 29, 2026 @ 8:30 AM CST"},
     {"day":9,"title":"Day 9 Module","description":"Coming soon — AI-decoded Trades by Sci lesson.","comingSoonDate":"May 1, 2026 @ 8:30 AM CST"},

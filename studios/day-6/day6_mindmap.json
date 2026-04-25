@@ -1,0 +1,21 @@
+{
+  "name": "Day 6: Timeframe Correlation",
+  "children": [
+    {
+      "name": "The Three-Tier Hierarchy",
+      "children": [
+        { "name": "Tier 1: Daily / 4H — The Map (Direction)" },
+        { "name": "Tier 2: 1-Hour — The Setup (Structure)" },
+        { "name": "Tier 3: 15-Minute — The Entry (Execution)" }
+      ]
+    },
+    {
+      "name": "The Traffic Light System",
+      "children": [
+        { "name": "RED: 4H Macro Bias" },
+        { "name": "YELLOW: 1H Setup Zone" },
+        { "name": "GREEN: 15M Entry Trigger" }
+      ]
+    }
+  ]
+}
