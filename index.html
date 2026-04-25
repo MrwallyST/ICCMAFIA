@@ -1627,8 +1627,9 @@
     const statModules = document.getElementById('stat-modules');
     if (statModules) { statModules.dataset.target = days.length * 6; }
 
-    document.getElementById('progress-label').textContent = `${days.length} day${days.length !== 1 ? 's' : ''} live`;
-    document.getElementById('prog-fill').style.width = `${Math.min(days.length * 10, 100)}%`;
+    const liveCount = days.filter(d => !d.comingSoonDate).length;
+    document.getElementById('progress-label').textContent = `${liveCount} day${liveCount !== 1 ? 's' : ''} live`;
+    document.getElementById('prog-fill').style.width = `${Math.min(liveCount * 10, 100)}%`;
 
     const container = document.getElementById('days-container');
     container.innerHTML = days.map(renderCard).join('');
