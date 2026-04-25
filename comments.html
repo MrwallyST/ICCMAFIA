@@ -39,25 +39,27 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
   <div class="header">
     <h1>&#128172; Social Comment Toolkit</h1>
-    <p>Click any comment to copy it instantly. Drop these under trading threads or Sci's YouTube videos.</p>
+    <p>Use these as comment starters. Personalize before posting. Add value first, promote rarely.</p>
+  </div>
+
+  <div style="background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.3); color: #f43f5e; padding: 14px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 700; margin-bottom: 28px;">
+    ⚠️ Do not spam. Do not paste the same comment repeatedly. Personalize every reply.
   </div>
 
   <div class="stat">&#128200; Site: <strong>mrwallyst.github.io/ICCMAFIA</strong> &nbsp;|&nbsp; &#127919; Goal: Drive organic traffic from Threads</div>
 
-  <div class="filter-group-title">📱 Short-Form (X / Threads)</div>
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="filter('all', this)">All</button>
-    <button class="filter-btn" onclick="filter('struggle', this)">Struggling Traders</button>
-    <button class="filter-btn" onclick="filter('value', this)">Value Drop</button>
-    <button class="filter-btn" onclick="filter('reply', this)">Reply to Flex</button>
-    <button class="filter-btn" onclick="filter('question', this)">Answer a Question</button>
-    <button class="filter-btn" onclick="filter('fomo', this)">FOMO Thread</button>
-  </div>
-
-  <div class="filter-group-title" style="margin-top: 8px;">🎥 Long-Form (YouTube)</div>
+  <div class="filter-group-title">Engagement Categories</div>
   <div class="filter-bar" style="margin-bottom: 32px;">
-    <button class="filter-btn" onclick="filter('youtube', this)">Sci's Channel</button>
-    <button class="filter-btn" onclick="filter('youtube_any', this)">Other Channels (ICT / SMC)</button>
+    <button class="filter-btn active" onclick="filter('all', this)">All</button>
+    <button class="filter-btn" onclick="filter('value', this)">Value Comment</button>
+    <button class="filter-btn" onclick="filter('question', this)">Question Comment</button>
+    <button class="filter-btn" onclick="filter('beginner', this)">Beginner Help</button>
+    <button class="filter-btn" onclick="filter('journal', this)">Journaling Angle</button>
+    <button class="filter-btn" onclick="filter('risk', this)">Risk Management</button>
+    <button class="filter-btn" onclick="filter('soft', this)">Soft ICCMAFIA Mention</button>
+    <button class="filter-btn" onclick="filter('nolink', this)">No-Link Comment</button>
+    <button class="filter-btn" onclick="filter('hate', this)">Reply to Hate</button>
+    <button class="filter-btn" onclick="filter('whatis', this)">Reply to "What is ICC?"</button>
   </div>
 
   <div id="cards"></div>
@@ -66,192 +68,83 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <script>
 const comments = [
   {
-    tag: "Channel Poaching",
-    cat: "youtube_any",
-    label: "Under any SMC/ICT trading video",
-    text: `if anyone here is struggling with ICT concepts, you should check out the ICC method (Indication, Correction, Continuation). it simplifies everything down to 3 steps.
-
-there's a free AI study site that teaches it with quizzes and flashcards. you can click my channel to check it out for the link`
-  },
-  {
-    tag: "Channel Poaching",
-    cat: "youtube_any",
-    label: "Under a video talking about tracking performance",
-    text: `stop paying $30/mo for TradeZella. there is a free study site for the ICC method that literally has a 100% free trading journal built into it. runs local, auto-imports csvs, calendar heatmaps, everything.
-
-save your money. click my channel and check it out for the link`
-  },
-  {
-    tag: "Channel Poaching",
-    cat: "youtube_any",
-    label: "Generic value drop on a trading podcast",
-    text: `this is solid, but the biggest game changer for my futures trading was learning the ICC method from TradesBySci 
-
-i built a free AI study site that decodes his whole course into flashcards, quizzes, and podcasts if anyone wants free study materials. click my channel and check it out for the link`
-  },
-  {
-    tag: "YouTube Drop",
-    cat: "youtube",
-    label: "Under one of Sci's new ICC videos",
-    text: `this method literally changed everything for me. i couldn't keep up with taking notes so i actually built an AI site that auto-decodes these videos into flashcards and quizzes lol 
-
-if anyone wants to use it to study this lesson it's totally free. click my channel and check it out for the link`
-  },
-  {
-    tag: "YouTube Drop",
-    cat: "youtube",
-    label: "When someone asks how to practice what Sci is teaching",
-    text: `bro i've been using a free study site that literally turns this exact video into a quiz and flashcards so you can grind the concepts. it even has a built-in trading journal.
-  
-no signup needed: link is in my bio`
-  },
-  {
-    tag: "YouTube Drop",
-    cat: "youtube",
-    label: "Replying to someone confused about Indication vs Correction",
-    text: `the correction is just the pullback AFTER the swing gets broken (indication). don't overthink it!
-
-there's an AI site that breaks down this exact lesson into a free study guide if you want to see it mapped out visually: link is in my bio`
-  },
-  {
-    tag: "Struggling Traders",
-    cat: "struggle",
-    label: "When someone says they keep losing money",
-    text: `biggest thing that helped me stop blowing up was waiting for the correction after an indication instead of chasing breakouts.
-
-we built a free AI study site for the ICC method with a built-in private trading journal. no signup. link in bio`
-  },
-  {
-    tag: "Struggling Traders",
-    cat: "struggle",
-    label: "When someone says trading is gambling",
-    text: `it was for me too until i found a structure that made sense
-
-indication → correction → continuation. once you see it you can't unsee it
-
-there's a free site that decodes the full method with quizzes and flashcards if you want to check it out → link is in my bio`
-  },
-  {
-    tag: "Value Drop",
+    tag: "Value Comment",
     cat: "value",
-    label: "Drop value on any trading thread",
-    text: `if you're learning futures, 3 things changed everything for me:
+    label: "Dropping knowledge on a general thread",
+    text: `most people complicate futures. 3 things changed my win rate:
+1. wait for the correction AFTER the structural break
+2. only trade off 1H/4H swing levels
+3. log every trade in a private journal
 
-1. stop trading consolidation
-2. wait for the correction AFTER an indication
-3. 1H/4H swings > everything smaller
-
-we made a free AI-decoded study site for this → link is in my bio`
+if you're studying order flow, the ICC method is worth looking into. i built a free study site for it (link in bio) if anyone needs resources.`
   },
   {
-    tag: "Value Drop",
-    cat: "value",
-    label: "Posting on a trading education thread",
-    text: `we've been decoding the TradesBySci ICC course with AI every day — full study guides, flashcards, quizzes, mind maps, all free
-
-it also includes a 100% free local trading journal so you don't have to pay $30/mo for TradeZella.
-
-if you're serious about learning futures this is worth bookmarking
-
-link is in my bio 🔷`
-  },
-  {
-    tag: "Value Drop",
-    cat: "value",
-    label: "Under a 'free resources' or 'study' post",
-    text: `adding to this — we built a free AI trading study site
-
-every lesson gets decoded into: study guide, quiz, flashcards, mind map, and a podcast version
-
-also has a 100% private trading journal built in (nothing stored server-side)
-
-link is in my bio`
-  },
-  {
-    tag: "Journal Defector",
-    cat: "value",
-    label: "When someone complains about paying for TradeZella/Tradervue",
-    text: `stop paying $30/mo just to log your trades bro
-
-we built a 100% free private trading journal right into our study site. it runs locally on your device, auto-imports csvs, has calendar heatmaps, everything. 
-
-link is in my bio`
-  },
-  {
-    tag: "Reply to Flex",
-    cat: "reply",
-    label: "When someone posts a big trading win",
-    text: `let's go 🔥 what method are you running?
-
-we've been documenting the ICC method daily if you ever want free study materials to go deeper
-
-link is in my bio`
-  },
-  {
-    tag: "Reply to Flex",
-    cat: "reply",
-    label: "When an educator posts a lesson",
-    text: `this is exactly what we've been building study materials around — ICC is underrated for futures
-
-made a free site that decodes each lesson with AI: quizzes, flashcards, the whole thing
-
-link is in my bio`
-  },
-  {
-    tag: "Answer a Question",
+    tag: "Question Comment",
     cat: "question",
-    label: "When someone asks how to learn trading for free",
-    text: `start here:
+    label: "Engaging a creator's post",
+    text: `great breakdown. how do you handle the correction phase when the 15m structure looks messy? 
 
-→ learn the 3 market conditions
-→ study swing highs & lows on 1H/4H
-→ look for indication → correction → continuation entries
-
-we built a free site that teaches this with AI decoded lessons & a trading journal. link in bio — no signup`
+i've been using the ICC framework to filter out the noise and waiting for clear 1H confluences, but curious how you approach it.`
   },
   {
-    tag: "Answer a Question",
-    cat: "question",
-    label: "When someone asks what ICC means",
-    text: `ICC = Indication → Correction → Continuation
+    tag: "Beginner Help",
+    cat: "beginner",
+    label: "Replying to a struggling newbie",
+    text: `don't stress, we've all blown accounts early on. the biggest fix for me was stopping the random breakouts and waiting for a clear indication -> correction -> continuation setup.
 
-indication: price breaks a swing high/low
-correction: price pulls back (this is where you enter)
-continuation: price moves in original direction
-
-free site that teaches this in depth w/ quizzes → link in my bio`
+i actually put together a free study companion for the ICC method with quizzes and flashcards if you want a structured way to learn it. no signups or anything, link in my bio.`
   },
   {
-    tag: "FOMO Thread",
-    cat: "fomo",
-    label: "When someone panic-bought or chased a trade",
-    text: `been there. the correction phase exists specifically to shake out people who entered the indication too early
+    tag: "Journaling Angle",
+    cat: "journal",
+    label: "When people discuss trading psychology",
+    text: `if you aren't logging your emotional state before clicking buy/sell, you're missing half the data. 
 
-learning to wait for it is the difference between 50% and 80% win rate
-
-here's the free resource that finally made it click for me → link is in my bio`
+i got tired of paying for TradeZella so i just built a local, private trading journal into my free study site. it tracks psychology, mistakes, and ICC setups. link in bio if you want to use it.`
   },
   {
-    tag: "FOMO Thread",
-    cat: "fomo",
-    label: "When a thread is hype about a specific asset moving",
-    text: `genuine question: is this an indication, or is it just consolidation breaking?
+    tag: "Risk Management",
+    cat: "risk",
+    label: "Under a post about blowing a funded account",
+    text: `man, prop firms are designed to make you fail if you don't have a hard daily stop loss. 
 
-check the 1H and 4H swing structure before entering
-
-we have a free AI study site that covers exactly how to tell the difference → link is in my bio`
+you have to treat the max daily loss as a brick wall. we have a whole section on prop firm readiness and risk discipline on the ICCMAFIA-AI study site. it's free to read through, might help reframe your approach.`
   },
   {
-    tag: "Value Drop",
-    cat: "value",
-    label: "Threads bio link drive",
-    text: `🔷 ICCMAFIA AI — free AI-decoded trading course
+    tag: "Soft Mention",
+    cat: "soft",
+    label: "A subtle plug in a relevant conversation",
+    text: `agreed. liquidity traps are brutal. once i started mapping out the 1H/4H swings like physical barriers (the way ICC teaches it), my drawdowns basically vanished. 
 
-📚 study guides + quizzes + flashcards every day
-🎙️ audio lessons you can listen to on the go
-📓 private trading journal (100% local, no account needed)
+been using a free study companion site to drill the concepts daily. highly recommend finding a system and sticking to it.`
+  },
+  {
+    tag: "No-Link Comment",
+    cat: "nolink",
+    label: "Pure value, zero promotion (algorithm friendly)",
+    text: `the market will literally pay you to be patient. 
 
-all free → link is in my bio`
+if you just wait for the high/low to break (indication), and then wait for the pullback (correction) to trap the early buyers/sellers... the continuation is the easiest trade you'll ever take. structure is everything.`
+  },
+  {
+    tag: "Reply to Hate",
+    cat: "hate",
+    label: "Defusing a troll or skeptic",
+    text: `hey man, everyone trades differently and that's totally fine. what works for me might not work for you. 
+
+the ICC framework just gave me the structure i needed to stop gambling. wishing you the best in the markets!`
+  },
+  {
+    tag: "Reply to What is ICC?",
+    cat: "whatis",
+    label: "Explaining the framework simply",
+    text: `ICC stands for Indication, Correction, Continuation.
+
+1. Indication: Price breaks a major structure (showing intent).
+2. Correction: Price pulls back to grab liquidity (the trap).
+3. Continuation: Price moves in the true direction (the entry).
+
+it's a mechanical way to trade order flow. i actually built a free study site called ICCMAFIA-AI that breaks it all down with quizzes and a journal if you want to learn it. link is in my bio.`
   }
 ];
 
