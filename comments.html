@@ -33,9 +33,62 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .copy-btn{margin-top:12px;display:flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
 .copy-btn:hover{opacity:.88;transform:translateY(-1px)}
 .copy-btn.copied{background:var(--green)}
+.section-title{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.stat{display:inline-block;background:var(--surface3);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--muted);margin-bottom:20px}
+.stat strong{color:var(--accent2)}
 .disclaimer{background:rgba(245,158,11,.06);border-top:1px solid rgba(245,158,11,.2);padding:14px 24px;text-align:center;font-size:12px;color:#d6d080;line-height:1.6;margin:40px -16px -32px}
 .disclaimer strong:first-child{color:#f59e0b;margin-right:6px}
 @media(max-width:520px){body{padding:24px 12px}.header h1{font-size:28px}.comment-card{padding:16px}.filter-btn{flex:1 1 auto}.copy-btn{width:100%;justify-content:center}}
+
+/* --- SMART COMMENTS STEALTH UI --- */
+#stealth-btn { position:fixed; bottom:20px; right:20px; width:40px; height:40px; background:rgba(124,111,205,0.1); border:1px solid rgba(124,111,205,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0.2; transition:all 0.3s ease; z-index:9998; font-size:16px; user-select:none; }
+#stealth-btn:hover { opacity:1; background:rgba(124,111,205,0.2); border-color:var(--accent2); box-shadow:0 0 15px rgba(167,139,250,0.4); transform:scale(1.05); }
+
+#smart-drawer { position:fixed; top:0; right:-100%; width:100%; max-width:480px; height:100vh; background:rgba(15,16,21,0.95); backdrop-filter:blur(12px); border-left:1px solid var(--border); box-shadow:-10px 0 30px rgba(0,0,0,0.5); z-index:9999; transition:right 0.3s cubic-bezier(0.2,0.8,0.2,1); display:flex; flex-direction:column; }
+#smart-drawer.open { right:0; }
+
+.drawer-header { padding:20px 24px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface2); }
+.drawer-title { font-family:'Outfit',sans-serif; font-size:18px; font-weight:700; color:#fff; display:flex; align-items:center; gap:8px; }
+.drawer-close { background:transparent; border:none; color:var(--muted); font-size:24px; cursor:pointer; transition:0.2s; line-height:1; }
+.drawer-close:hover { color:var(--red); }
+
+.drawer-body { padding:24px; overflow-y:auto; flex:1; }
+.drawer-body::-webkit-scrollbar { width:6px; }
+.drawer-body::-webkit-scrollbar-track { background:var(--bg); }
+.drawer-body::-webkit-scrollbar-thumb { background:var(--surface3); border-radius:3px; }
+
+.form-group { margin-bottom:16px; }
+.form-group label { display:block; font-size:12px; font-weight:600; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
+.smart-control { width:100%; padding:10px 12px; background:var(--surface); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:'Inter',sans-serif; font-size:14px; transition:0.2s; outline:none; }
+.smart-control:focus { border-color:var(--accent2); box-shadow:0 0 0 2px rgba(167,139,250,0.2); }
+
+.smart-btn-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:24px; margin-bottom:32px; }
+.smart-btn { padding:12px; border:none; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; transition:0.2s; text-align:center; }
+.btn-generate { background:var(--accent); color:#fff; grid-column:span 2; box-shadow:0 4px 12px rgba(124,111,205,0.3); }
+.btn-generate:hover { transform:translateY(-2px); opacity:0.9; }
+.btn-secondary { background:var(--surface3); color:var(--text); border:1px solid var(--border); }
+.btn-secondary:hover { border-color:var(--muted); }
+
+.daily-tracker { background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.2); border-radius:10px; padding:16px; margin-bottom:24px; }
+.tracker-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:12px; font-weight:700; color:var(--green); text-transform:uppercase; }
+.tracker-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:6px; margin-bottom:12px; }
+.tracker-btn { background:var(--surface); border:1px solid var(--border); color:var(--text); font-size:11px; padding:6px 0; border-radius:6px; cursor:pointer; font-weight:600; text-align:center; transition:0.2s; }
+.tracker-btn:hover { border-color:var(--green); color:var(--green); }
+.tracker-total { text-align:center; font-size:12px; color:var(--muted); }
+.tracker-warning { margin-top:10px; font-size:12px; font-weight:600; padding:8px; border-radius:6px; text-align:center; display:none; }
+
+.output-section { margin-bottom:24px; }
+.output-title { font-size:13px; font-weight:700; color:var(--accent2); margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; }
+.smart-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:12px; position:relative; }
+.smart-card:hover { border-color:var(--accent); }
+.smart-card-text { font-size:13px; line-height:1.6; color:var(--text); margin-bottom:12px; white-space:pre-wrap; }
+.smart-card-actions { display:flex; gap:8px; }
+.s-action { font-size:11px; padding:6px 12px; border-radius:6px; border:1px solid var(--border); background:var(--surface3); color:var(--muted); cursor:pointer; font-weight:600; transition:0.2s; }
+.s-action:hover { color:var(--text); border-color:var(--accent); }
+.s-action.fav { color:#f59e0b; }
+.s-action.fav:hover { background:rgba(245,158,11,0.1); border-color:#f59e0b; }
+
+.warning-banner { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#f87171; font-size:11px; padding:10px; border-radius:8px; margin-bottom:20px; font-weight:600; line-height:1.5; }
 </style>
 </head>
 <body>
@@ -72,6 +125,134 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 
 <div class="disclaimer"><strong>&#9888; Disclaimer</strong>This site is for <strong>educational purposes only</strong>. Nothing here is financial advice. We are not financial advisors. Trading involves significant risk - always do your own research and consult a licensed professional before making any financial decisions.<br>Engagement tools and site built by ICCMAFIA-AI. ICC course curriculum by TradesBySci.</div>
+
+<!-- STEALTH BUTTON -->
+<div id="stealth-btn" onclick="toggleSmartPanel()" title="Tools">⚡</div>
+
+<!-- SMART COMMENTS COMMAND CENTER (HIDDEN DRAWER) -->
+<div id="smart-drawer">
+  <div class="drawer-header">
+    <div class="drawer-title">🧠 Smart Comments Center</div>
+    <button class="drawer-close" onclick="toggleSmartPanel()">&times;</button>
+  </div>
+  <div class="drawer-body">
+    <div class="warning-banner">
+      ⚠️ Manual use only. Do not spam. Personalize every comment. Add value first, no auto-posting.
+    </div>
+
+    <!-- Daily Tracker -->
+    <div class="daily-tracker">
+      <div class="tracker-header">
+        <span>📅 Today's Tracker</span>
+        <span class="tracker-total" id="tracker-total">Total: 0</span>
+      </div>
+      <div class="tracker-grid">
+        <button class="tracker-btn" onclick="addTrackCount('yt')">+ YT</button>
+        <button class="tracker-btn" onclick="addTrackCount('tt')">+ TT</button>
+        <button class="tracker-btn" onclick="addTrackCount('ig')">+ IG</button>
+        <button class="tracker-btn" onclick="addTrackCount('x')">+ X</button>
+        <button class="tracker-btn" onclick="addTrackCount('rd')">+ RD</button>
+      </div>
+      <div style="display:flex; justify-content:flex-end;">
+        <button style="background:transparent; border:none; color:var(--muted); font-size:10px; cursor:pointer;" onclick="resetTracker()">Reset Today</button>
+      </div>
+      <div class="tracker-warning" id="tracker-warning"></div>
+    </div>
+
+    <!-- Form Inputs -->
+    <div class="form-group">
+      <label>Platform</label>
+      <select class="smart-control" id="smart-platform">
+        <option value="yt-long">YouTube Long-form</option>
+        <option value="yt-short">YouTube Shorts</option>
+        <option value="tiktok">TikTok</option>
+        <option value="ig">Instagram Reels</option>
+        <option value="x">X / Threads</option>
+        <option value="reddit">Reddit</option>
+        <option value="fb">Facebook</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Category</label>
+      <select class="smart-control" id="smart-category">
+        <option value="icc">ICC / SMC / price action</option>
+        <option value="journal">Trading journal</option>
+        <option value="prop">Prop firm</option>
+        <option value="psych">Trading psychology</option>
+        <option value="risk">Risk management</option>
+        <option value="beginner">Beginner trading</option>
+        <option value="mtf">Multi-timeframe analysis</option>
+        <option value="entry">Entry confirmation</option>
+        <option value="target">Target setting</option>
+        <option value="edu">General trading education</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Intent</label>
+      <select class="smart-control" id="smart-intent">
+        <option value="value">Value comment</option>
+        <option value="question">Question comment</option>
+        <option value="beginner">Beginner help</option>
+        <option value="journal_angle">Journaling angle</option>
+        <option value="risk_angle">Risk management angle</option>
+        <option value="psych_angle">Psychology angle</option>
+        <option value="soft_icc">Soft ICCMAFIA mention</option>
+        <option value="nolink">No-link version</option>
+        <option value="what_is_icc">Reply to "what is ICC?"</option>
+        <option value="criticism">Reply to criticism</option>
+        <option value="thanks">Thank-you comment</option>
+        <option value="discussion">Community discussion starter</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Course Day Angle</label>
+      <select class="smart-control" id="smart-day">
+        <option value="none">None</option>
+        <option value="day1">Day 1: Correlation Problem</option>
+        <option value="day2">Day 2: HTF Compass</option>
+        <option value="day3">Day 3: LTF Microscope</option>
+        <option value="day4">Day 4: Aligning for Entry</option>
+        <option value="day5">Day 5: Setting Your Target</option>
+        <option value="day6">Day 6: 3 Timeframes</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Optional Topic</label>
+      <input type="text" class="smart-control" id="smart-topic" placeholder="e.g. early entries, prop firm drawdown">
+    </div>
+
+    <div class="form-group">
+      <label>Link Mode</label>
+      <select class="smart-control" id="smart-link">
+        <option value="nolink">No link</option>
+        <option value="soft">Soft mention only</option>
+        <option value="ifasked">Link only if asked</option>
+      </select>
+    </div>
+
+    <div class="smart-btn-row">
+      <button class="smart-btn btn-generate" onclick="generateSmartComments()">Generate Smart Comments</button>
+      <button class="smart-btn btn-secondary" onclick="copyAllSmart()">Copy All</button>
+      <button class="smart-btn btn-secondary" onclick="document.getElementById('smart-topic').value='';">Reset</button>
+    </div>
+
+    <!-- Output Sections -->
+    <div id="smart-output" style="display:none;">
+      <!-- Sections injected by JS -->
+    </div>
+
+    <!-- Saved Favorites -->
+    <div style="border-top:1px solid var(--border); margin-top:20px; padding-top:20px;">
+      <div class="output-title">⭐ Saved Favorites</div>
+      <div id="smart-favorites"></div>
+      <button style="margin-top:10px; font-size:11px; background:transparent; border:none; color:var(--red); cursor:pointer;" onclick="clearAllFavorites()">Clear All Favorites</button>
+    </div>
+  </div>
+</div>
 
 <script>
 const comments = [
@@ -197,6 +378,234 @@ function filter(cat, el) {
 }
 
 render(comments);
+
+/* --- SMART COMMENTS COMMAND CENTER LOGIC --- */
+
+// Toggle Drawer
+function toggleSmartPanel() {
+  document.getElementById('smart-drawer').classList.toggle('open');
+}
+
+// Keyboard Shortcut & Hash Trigger
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+    e.preventDefault();
+    toggleSmartPanel();
+  }
+});
+if (window.location.hash === '#smart') {
+  setTimeout(() => toggleSmartPanel(), 500);
+}
+
+// Daily Tracker Logic
+let dailyTracker = JSON.parse(localStorage.getItem('iccmafiaSmartCommentDailyTracker')) || { date: '', count: 0 };
+function initTracker() {
+  const today = new Date().toLocaleDateString();
+  if (dailyTracker.date !== today) {
+    dailyTracker = { date: today, count: 0 };
+    saveTracker();
+  }
+  updateTrackerUI();
+}
+function saveTracker() {
+  localStorage.setItem('iccmafiaSmartCommentDailyTracker', JSON.stringify(dailyTracker));
+}
+function addTrackCount(plat) {
+  dailyTracker.count++;
+  saveTracker();
+  updateTrackerUI();
+}
+function resetTracker() {
+  dailyTracker.count = 0;
+  saveTracker();
+  updateTrackerUI();
+}
+function updateTrackerUI() {
+  document.getElementById('tracker-total').textContent = `Total: ${dailyTracker.count}`;
+  const warn = document.getElementById('tracker-warning');
+  if (dailyTracker.count >= 10) {
+    warn.style.display = 'block';
+    warn.style.background = 'rgba(239,68,68,0.1)';
+    warn.style.color = '#f87171';
+    warn.textContent = 'Upper limit reached (10+). Stop mass-commenting today.';
+  } else if (dailyTracker.count >= 5) {
+    warn.style.display = 'block';
+    warn.style.background = 'rgba(245,158,11,0.1)';
+    warn.style.color = '#fbbf24';
+    warn.textContent = 'Daily target reached (5). Switch to replies or prep for tomorrow.';
+  } else {
+    warn.style.display = 'none';
+  }
+}
+initTracker();
+
+// Favorites Logic
+let smartFavorites = JSON.parse(localStorage.getItem('iccmafiaSmartCommentFavorites')) || [];
+function saveSmartFavorite(text) {
+  if (!smartFavorites.includes(text)) {
+    smartFavorites.push(text);
+    localStorage.setItem('iccmafiaSmartCommentFavorites', JSON.stringify(smartFavorites));
+    renderSmartFavorites();
+  }
+}
+function removeSmartFavorite(index) {
+  smartFavorites.splice(index, 1);
+  localStorage.setItem('iccmafiaSmartCommentFavorites', JSON.stringify(smartFavorites));
+  renderSmartFavorites();
+}
+function clearAllFavorites() {
+  if(confirm("Clear all saved favorites?")) {
+    smartFavorites = [];
+    localStorage.setItem('iccmafiaSmartCommentFavorites', JSON.stringify(smartFavorites));
+    renderSmartFavorites();
+  }
+}
+function copySmart(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+function renderSmartFavorites() {
+  const container = document.getElementById('smart-favorites');
+  if (smartFavorites.length === 0) {
+    container.innerHTML = '<div style="font-size:12px; color:var(--muted);">No favorites saved yet.</div>';
+    return;
+  }
+  container.innerHTML = smartFavorites.map((fav, i) => `
+    <div class="smart-card">
+      <div class="smart-card-text">${fav}</div>
+      <div class="smart-card-actions">
+        <button class="s-action" onclick="copySmart(this, \`${fav.replace(/`/g, '\\`')}\`)">Copy</button>
+        <button class="s-action fav" onclick="removeSmartFavorite(${i})">Remove</button>
+      </div>
+    </div>
+  `).join('');
+}
+renderSmartFavorites();
+
+// Generation Logic
+const templates = {
+  short: [
+    "No correction = no confirmation. Process over P&L.",
+    "The biggest mistake is treating every pullback like an entry.",
+    "Tracking the reason for entry > tracking the dollar amount.",
+    "HTF gives the bias, LTF is just for timing.",
+    "A green trade can still be a bad trade if it broke the model."
+  ],
+  medium: [
+    "Most prop firm failures come from repeating the same untracked mistake. Journaling the entry reason is underrated.",
+    "HTF gives the bias, but LTF should only refine timing. A lot of traders flip that and let the small timeframe confuse the whole idea.",
+    "This is why journaling the reason for entry matters. P&L alone doesn't show whether the trade actually followed the model.",
+    "The correction phase is where patience gets tested. If there's no confirmation, the entry is usually just FOMO.",
+    "A green trade can still be a bad trade if it broke the model. That's why review matters more than just the result."
+  ],
+  question: [
+    "How do you handle the correction phase when the 15m structure looks messy?",
+    "Curious how you filter out LTF noise when your HTF bias is clear?",
+    "What's your biggest struggle right now: finding the Indication or waiting for the Correction?",
+    "Do you track your 'Grade A' setups separately from your impulsive trades?",
+    "How often do you review your past trades to spot repeating mistakes?"
+  ],
+  soft: [
+    "This is the exact reason I started building a free ICC-style journal for myself — tracking whether the setup actually followed the process changed how I review trades.",
+    "I was struggling with this until I built my own study system for the ICC method. Keeping the rules strict is the only way.",
+    "If you're studying order flow, the ICC method is worth looking into. I built a free study site for it to help myself stay disciplined."
+  ],
+  nolink: [
+    "Tracking the reason for entry is underrated. It shows whether the trade followed the model or whether it was just a reaction.",
+    "Patience during the correction phase is literally what separates gamblers from traders.",
+    "Reviewing your trades on the weekend is a cheat code. It exposes patterns you miss in the moment."
+  ],
+  replies: [
+    "Totally agree with this. If there's no confirmation, there's no edge.",
+    "This is exactly what I've been working on. Great breakdown.",
+    "The way I'm studying it, ICC is about reading the sequence: Indication, Correction, then Continuation. The key is not skipping the correction phase."
+  ],
+  pinned: [
+    "Drop your biggest takeaway from this breakdown below 👇 Did you spot the correction phase?",
+    "What's your #1 rule for staying disciplined during the Asian session? Let me know 👇"
+  ],
+  followup: [
+    "But honestly, how many of us actually wait for the clear continuation? 😅",
+    "What's the hardest part of this setup for you to execute live?"
+  ]
+};
+
+const dayAngles = {
+  day1: "Correlation and context matter more than one timeframe.",
+  day2: "Always trust your HTF bias as your compass.",
+  day3: "LTF is a microscope, don't let it override the HTF context.",
+  day4: "Alignment is everything before pulling the trigger.",
+  day5: "Set your targets logically based on liquidity, not hope.",
+  day6: "HTF bias + Mid TF correction + LTF entry = the holy trinity."
+};
+
+function generateSmartComments() {
+  const plat = document.getElementById('smart-platform').value;
+  const day = document.getElementById('smart-day').value;
+  const topic = document.getElementById('smart-topic').value;
+  const link = document.getElementById('smart-link').value;
+  
+  const out = document.getElementById('smart-output');
+  out.style.display = 'block';
+  
+  let linkStr = "";
+  if (link === "soft") linkStr = " (Link in bio if you want to use the free ICC journal).";
+  if (link === "ifasked") linkStr = " (I built a free tool for this, let me know if you want the link).";
+
+  let topicStr = topic ? ` Speaking of ${topic}, ` : " ";
+  let dayStr = day !== "none" ? ` ${dayAngles[day]}` : "";
+
+  function makeCard(text) {
+    let finalTxt = text + topicStr + dayStr + linkStr;
+    finalTxt = finalTxt.replace(/\s+/g, ' ').trim();
+    return `
+      <div class="smart-card">
+        <div class="smart-card-text">${finalTxt}</div>
+        <div class="smart-card-actions">
+          <button class="s-action" onclick="copySmart(this, \`${finalTxt.replace(/`/g, '\\`')}\`)">Copy</button>
+          <button class="s-action fav" onclick="saveSmartFavorite(\`${finalTxt.replace(/`/g, '\\`')}\`)">Save Fav</button>
+        </div>
+      </div>
+    `;
+  }
+
+  out.innerHTML = `
+    <div class="output-section">
+      <div class="output-title">A. Short Comments</div>
+      ${templates.short.map(t => makeCard(t)).join('')}
+    </div>
+    <div class="output-section">
+      <div class="output-title">B. Medium Comments</div>
+      ${templates.medium.map(t => makeCard(t)).join('')}
+    </div>
+    <div class="output-section">
+      <div class="output-title">C. Question Comments</div>
+      ${templates.question.map(t => makeCard(t)).join('')}
+    </div>
+    <div class="output-section">
+      <div class="output-title">D. Soft Mentions</div>
+      ${templates.soft.map(t => makeCard(t)).join('')}
+    </div>
+    <div class="output-section">
+      <div class="output-title">E. No-Link Comments</div>
+      ${templates.nolink.map(t => makeCard(t)).join('')}
+    </div>
+    <div class="output-section">
+      <div class="output-title">F. Replies</div>
+      ${templates.replies.map(t => makeCard(t)).join('')}
+    </div>
+  `;
+}
+
+function copyAllSmart() {
+  const cards = document.querySelectorAll('.smart-card-text');
+  let allTxt = "";
+  cards.forEach(c => allTxt += c.textContent + "\n\n");
+  navigator.clipboard.writeText(allTxt.trim()).then(() => alert("Copied all generated comments!"));
+}
 </script>
 </body>
 </html>
