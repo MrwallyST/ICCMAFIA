@@ -3,154 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Threads Comment Toolkit — ICCMAFIA AI</title>
+<title>Engagement Command Center - ICCMAFIA AI</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#08090e;--surface:#0f1015;--surface2:#16171f;--surface3:#1e1f2c;--border:#25263a;--accent:#7c6fcd;--accent2:#a78bfa;--green:#10b981;--text:#eeeef5;--muted:#94a3b8}
+:root{--bg:#08090e;--surface:#0f1015;--surface2:#16171f;--surface3:#1e1f2c;--border:#25263a;--accent:#7c6fcd;--accent2:#a78bfa;--green:#10b981;--red:#ef4444;--text:#eeeef5;--muted:#94a3b8}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 16px}
-.container{max-width:820px;margin:0 auto}
-.header{text-align:center;margin-bottom:40px}
+.container{max-width:880px;margin:0 auto}
+.header{text-align:center;margin-bottom:28px}
 .header h1{font-family:'Outfit',sans-serif;font-size:32px;font-weight:900;margin-bottom:8px}
-.header p{color:var(--muted);font-size:14px}
-.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;margin-bottom:28px;transition:.2s}
+.header p{color:var(--muted);font-size:14px;line-height:1.6;max-width:620px;margin:0 auto}
+.top-links{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:.2s}
 .back-btn:hover{color:var(--text);border-color:var(--accent)}
+.warning{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);border-radius:12px;color:#fecaca;font-size:13px;line-height:1.6;padding:14px 16px;margin:0 0 18px}
+.warning strong{color:#fff}
+.stat{display:inline-block;background:var(--surface3);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--muted);margin-bottom:20px}
+.stat strong{color:var(--accent2)}
 .filter-group-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
-.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
 .filter-btn{padding:7px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
 .filter-btn:hover,.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .comment-card{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px;transition:.2s}
 .comment-card:hover{border-color:var(--accent)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
 .card-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:5px;background:var(--surface3);color:var(--accent2);white-space:nowrap}
-.card-label{font-size:12px;color:var(--muted);font-weight:500}
+.card-label{font-size:12px;color:var(--muted);font-weight:500;margin-top:6px}
 .comment-text{font-size:14px;line-height:1.7;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;white-space:pre-wrap;word-break:break-word}
 .copy-btn{margin-top:12px;display:flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
 .copy-btn:hover{opacity:.88;transform:translateY(-1px)}
 .copy-btn.copied{background:var(--green)}
-.section-title{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.stat{display:inline-block;background:var(--surface3);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--muted);margin-bottom:20px}
-.stat strong{color:var(--accent2)}
+.disclaimer{background:rgba(245,158,11,.06);border-top:1px solid rgba(245,158,11,.2);padding:14px 24px;text-align:center;font-size:12px;color:#d6d080;line-height:1.6;margin:40px -16px -32px}
+.disclaimer strong:first-child{color:#f59e0b;margin-right:6px}
+@media(max-width:520px){body{padding:24px 12px}.header h1{font-size:28px}.comment-card{padding:16px}.filter-btn{flex:1 1 auto}.copy-btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
 <div class="container">
-  <div style="display: flex; gap: 12px; margin-bottom: 28px;">
-    <a href="index.html" class="back-btn" style="margin-bottom: 0;">&#8592; Back to Course</a>
-    <a href="podcast-assets.html" class="back-btn" style="margin-bottom: 0; color: var(--accent2);">🎙️ Substack / Reddit Generator</a>
+  <div class="top-links">
+    <a href="index.html" class="back-btn">&#8592; Back to Course</a>
+    <a href="podcast-assets.html" class="back-btn" style="color:var(--accent2);">Substack / Reddit Generator</a>
   </div>
+
   <div class="header">
-    <h1>&#128172; Social Comment Toolkit</h1>
+    <h1>&#128172; Engagement Command Center</h1>
     <p>Use these as comment starters. Personalize before posting. Add value first, promote rarely.</p>
   </div>
 
-  <div style="background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.3); color: #f43f5e; padding: 14px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 700; margin-bottom: 28px;">
-    ⚠️ Do not spam. Do not paste the same comment repeatedly. Personalize every reply.
-  </div>
+  <div class="warning"><strong>Do not spam.</strong> Do not paste the same comment repeatedly. Personalize every reply.</div>
 
-  <div class="stat">&#128200; Site: <strong>mrwallyst.github.io/ICCMAFIA</strong> &nbsp;|&nbsp; &#127919; Goal: Drive organic traffic from Threads</div>
+  <div class="stat">&#128200; Site: <strong>mrwallyst.github.io/ICCMAFIA</strong> &nbsp;|&nbsp; &#127919; Goal: Earn trust through useful replies</div>
 
-  <div class="filter-group-title">Engagement Categories</div>
-  <div class="filter-bar" style="margin-bottom: 32px;">
+  <div class="filter-group-title">Manual Engagement Categories</div>
+  <div class="filter-bar">
     <button class="filter-btn active" onclick="filter('all', this)">All</button>
     <button class="filter-btn" onclick="filter('value', this)">Value Comment</button>
     <button class="filter-btn" onclick="filter('question', this)">Question Comment</button>
     <button class="filter-btn" onclick="filter('beginner', this)">Beginner Help</button>
-    <button class="filter-btn" onclick="filter('journal', this)">Journaling Angle</button>
+    <button class="filter-btn" onclick="filter('journaling', this)">Journaling Angle</button>
     <button class="filter-btn" onclick="filter('risk', this)">Risk Management</button>
     <button class="filter-btn" onclick="filter('soft', this)">Soft ICCMAFIA Mention</button>
     <button class="filter-btn" onclick="filter('nolink', this)">No-Link Comment</button>
     <button class="filter-btn" onclick="filter('hate', this)">Reply to Hate</button>
-    <button class="filter-btn" onclick="filter('whatis', this)">Reply to "What is ICC?"</button>
+    <button class="filter-btn" onclick="filter('whaticc', this)">Reply to "What is ICC?"</button>
   </div>
 
   <div id="cards"></div>
 </div>
 
+<div class="disclaimer"><strong>&#9888; Disclaimer</strong>This site is for <strong>educational purposes only</strong>. Nothing here is financial advice. We are not financial advisors. Trading involves significant risk - always do your own research and consult a licensed professional before making any financial decisions.<br>ICCMAFIA-AI studies and organizes concepts from the TradesBySci ICC curriculum. Credit to TradesBySci for the original teaching framework.</div>
+
 <script>
 const comments = [
-  {
-    tag: "Value Comment",
-    cat: "value",
-    label: "Dropping knowledge on a general thread",
-    text: `most people complicate futures. 3 things changed my win rate:
-1. wait for the correction AFTER the structural break
-2. only trade off 1H/4H swing levels
-3. log every trade in a private journal
+  { tag:"Value Comment", cat:"value", label:"When someone posts a chart or setup breakdown", text:`Good breakdown. One thing I would add is context from the higher timeframe before judging the entry.
 
-if you're studying order flow, the ICC method is worth looking into. i built a free study site for it (link in bio) if anyone needs resources.`
-  },
-  {
-    tag: "Question Comment",
-    cat: "question",
-    label: "Engaging a creator's post",
-    text: `great breakdown. how do you handle the correction phase when the 15m structure looks messy? 
+For me the cleaner question is: did price actually show indication first, or are we just reacting to noise?` },
+  { tag:"Value Comment", cat:"value", label:"When a thread is talking about entries", text:`The entry is usually the least important part if the context is weak.
 
-i've been using the ICC framework to filter out the noise and waiting for clear 1H confluences, but curious how you approach it.`
-  },
-  {
-    tag: "Beginner Help",
-    cat: "beginner",
-    label: "Replying to a struggling newbie",
-    text: `don't stress, we've all blown accounts early on. the biggest fix for me was stopping the random breakouts and waiting for a clear indication -> correction -> continuation setup.
+I like to see:
+1. clear structure
+2. liquidity taken or a real displacement
+3. correction back into a logical area
+4. continuation confirmation
 
-i actually put together a free study companion for the ICC method with quizzes and flashcards if you want a structured way to learn it. no signups or anything, link in my bio.`
-  },
-  {
-    tag: "Journaling Angle",
-    cat: "journal",
-    label: "When people discuss trading psychology",
-    text: `if you aren't logging your emotional state before clicking buy/sell, you're missing half the data. 
+Otherwise it is too easy to chase.` },
+  { tag:"Question Comment", cat:"question", label:"Ask a useful question without promoting", text:`What would invalidate this idea for you?
 
-i got tired of paying for TradeZella so i just built a local, private trading journal into my free study site. it tracks psychology, mistakes, and ICC setups. link in bio if you want to use it.`
-  },
-  {
-    tag: "Risk Management",
-    cat: "risk",
-    label: "Under a post about blowing a funded account",
-    text: `man, prop firms are designed to make you fail if you don't have a hard daily stop loss. 
+Not asking to be negative. I just think the invalidation level is what separates a plan from a prediction.` },
+  { tag:"Question Comment", cat:"question", label:"Prompt deeper chart discussion", text:`Are you treating this as a continuation setup or a reversal attempt?
 
-you have to treat the max daily loss as a brick wall. we have a whole section on prop firm readiness and risk discipline on the ICCMAFIA-AI study site. it's free to read through, might help reframe your approach.`
-  },
-  {
-    tag: "Soft Mention",
-    cat: "soft",
-    label: "A subtle plug in a relevant conversation",
-    text: `agreed. liquidity traps are brutal. once i started mapping out the 1H/4H swings like physical barriers (the way ICC teaches it), my drawdowns basically vanished. 
+The answer changes where I would expect the correction to hold.` },
+  { tag:"Beginner Help", cat:"beginner", label:"When someone says they are new and overwhelmed", text:`If you are new, do not try to learn every acronym at once.
 
-been using a free study companion site to drill the concepts daily. highly recommend finding a system and sticking to it.`
-  },
-  {
-    tag: "No-Link Comment",
-    cat: "nolink",
-    label: "Pure value, zero promotion (algorithm friendly)",
-    text: `the market will literally pay you to be patient. 
+Start with this:
+1. mark the 1H/4H swing highs and lows
+2. wait for price to clearly break one
+3. study the pullback after the break
+4. only then look for continuation
 
-if you just wait for the high/low to break (indication), and then wait for the pullback (correction) to trap the early buyers/sellers... the continuation is the easiest trade you'll ever take. structure is everything.`
-  },
-  {
-    tag: "Reply to Hate",
-    cat: "hate",
-    label: "Defusing a troll or skeptic",
-    text: `hey man, everyone trades differently and that's totally fine. what works for me might not work for you. 
+That alone filters out a lot of random trades.` },
+  { tag:"Beginner Help", cat:"beginner", label:"When someone asks where to start", text:`Best beginner advice I can give: journal screenshots, not just P&L.
 
-the ICC framework just gave me the structure i needed to stop gambling. wishing you the best in the markets!`
-  },
-  {
-    tag: "Reply to What is ICC?",
-    cat: "whatis",
-    label: "Explaining the framework simply",
-    text: `ICC stands for Indication, Correction, Continuation.
+A losing trade that followed your rules is useful data. A winning trade you chased can still be a bad habit.` },
+  { tag:"Journaling Angle", cat:"journaling", label:"When someone talks about consistency", text:`Consistency usually shows up in the journal before it shows up in the account.
 
-1. Indication: Price breaks a major structure (showing intent).
-2. Correction: Price pulls back to grab liquidity (the trap).
-3. Continuation: Price moves in the true direction (the entry).
+Track the session, emotion, setup type, and whether you followed your rules. P&L alone does not tell the full story.` },
+  { tag:"Journaling Angle", cat:"journaling", label:"When someone complains they do not know what to fix", text:`If you do not know what to fix, your journal probably needs better tags.
 
-it's a mechanical way to trade order flow. i actually built a free study site called ICCMAFIA-AI that breaks it all down with quizzes and a journal if you want to learn it. link is in my bio.`
-  }
+Tag FOMO, revenge, late entry, no confirmation, and wrong session. After 20 trades the pattern gets loud.` },
+  { tag:"Risk Management", cat:"risk", label:"When someone posts about blowing an account", text:`The trade that blows the account is usually not the first mistake.
+
+It is the second or third trade after frustration kicks in. Having a daily loss limit matters more than finding another setup.` },
+  { tag:"Risk Management", cat:"risk", label:"When a thread is hyped about a fast move", text:`Fast moves are where discipline gets tested.
+
+If the stop has to be huge just to make the trade work, I would rather miss it than force bad risk.` },
+  { tag:"Soft ICCMAFIA Mention", cat:"soft", label:"Only use after adding real value first", text:`This is exactly why I like the ICC framework: Indication, Correction, Continuation.
+
+I have been organizing my notes around it in ICCMAFIA, but the key idea is simple - do not chase the initial break. Wait for the correction and prove continuation.` },
+  { tag:"Soft ICCMAFIA Mention", cat:"soft", label:"When someone asks for resources", text:`If you are studying ICC, I built ICCMAFIA as a free study hub and private journal for myself.
+
+No pressure to use it. The main thing is to study one model deeply and journal enough trades to see your own patterns.` },
+  { tag:"No-Link Comment", cat:"nolink", label:"Pure value, no mention, no link", text:`The best filter I have found is asking: am I entering because price confirmed my idea, or because I am afraid of missing the move?
+
+That one question has saved me from a lot of bad trades.` },
+  { tag:"No-Link Comment", cat:"nolink", label:"Use when the thread is already promo-heavy", text:`Simple rule that helped me: no trade during messy correction unless I can clearly define where continuation is confirmed.
+
+If I have to squint to see it, it is probably not my setup.` },
+  { tag:"Reply to Hate", cat:"hate", label:"When someone dismisses the method aggressively", text:`Fair to be skeptical. A framework is only useful if it creates repeatable decisions and controlled risk.
+
+For me, the value is not predicting every move. It is having a checklist that tells me when to stay out.` },
+  { tag:"Reply to Hate", cat:"hate", label:"When someone says all trading education is fake", text:`I get why people feel that way. There is a lot of noise.
+
+I still think a simple structure plus honest journaling can help. The problem is usually overtrading, no risk limit, and no review process.` },
+  { tag:"Reply to What is ICC?", cat:"whaticc", label:"Short answer", text:`ICC means Indication, Correction, Continuation.
+
+Indication: price shows intent by breaking/sweeping a meaningful level.
+Correction: price pulls back and tests traders who chased.
+Continuation: price confirms it wants to keep moving in the original direction.
+
+The biggest rule is not chasing the first move.` },
+  { tag:"Reply to What is ICC?", cat:"whaticc", label:"Beginner-friendly answer", text:`Think of ICC like a 3-step trade filter:
+
+1. Did price make a real move? That is indication.
+2. Did it pull back instead of letting everyone win instantly? That is correction.
+3. Did it prove the move is continuing? That is continuation.
+
+It keeps you from buying the breakout just because candles are moving fast.` }
 ];
 
-// Assign absolute IDs so filtering doesn't break the copy index
 comments.forEach((c, i) => c.id = i);
 
 function render(data) {
@@ -167,11 +167,11 @@ function render(data) {
         <div class="card-top">
           <div>
             <div class="card-tag">${c.tag}</div>
-            <div class="card-label" style="margin-top:6px">${c.label}</div>
+            <div class="card-label">${c.label}</div>
           </div>
         </div>
         <div class="comment-text" id="text-${i}">${escHtml(c.text)}</div>
-        <button class="copy-btn" id="btn-${i}" onclick="copyComment(${i})">&#128203; Copy Comment</button>
+        <button class="copy-btn" id="btn-${i}" onclick="copyComment(${i})">&#128203; Copy Starter</button>
       </div>`);
   });
 }
@@ -184,9 +184,9 @@ function copyComment(i) {
   const txt = comments[i].text;
   navigator.clipboard.writeText(txt).then(() => {
     const btn = document.getElementById('btn-' + i);
-    btn.textContent = '✅ Copied!';
+    btn.textContent = 'Copied - personalize it';
     btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = '📋 Copy Comment'; btn.classList.remove('copied'); }, 2000);
+    setTimeout(() => { btn.textContent = 'Copy Starter'; btn.classList.remove('copied'); }, 2200);
   });
 }
 
