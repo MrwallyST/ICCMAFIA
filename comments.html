@@ -259,6 +259,7 @@ body.smart-drawer-open{overflow:hidden}
 
     <div class="smart-btn-row">
       <button class="smart-btn btn-generate" onclick="generateSmartComments()">Generate Smart Comments</button>
+      <button class="smart-btn btn-secondary" onclick="generateCourseContentPack()">Course Pack</button>
       <button class="smart-btn btn-secondary" onclick="copyAllSmart()">Copy All</button>
       <button class="smart-btn btn-secondary" onclick="shuffleSmartComments()">Shuffle</button>
       <button class="smart-btn btn-quiet" onclick="resetSmartForm()">Reset</button>
@@ -586,6 +587,121 @@ const courseDayAngles = {
     short: 'Price action requires context, not just patterns.',
     sentence: 'Day 7 angle: Simple price action patterns like candlesticks and support/resistance zones only matter if the underlying market context supports them.',
     question: 'Are you trading the candlestick pattern in isolation, or does the market structure actually support it?'
+  }
+};
+
+const courseContentPacks = {
+  none: {
+    title: 'ICC Process Review',
+    topic: 'reviewing the full Indication, Correction, and Continuation sequence',
+    bullets: [
+      'Indication shows intent, but it is not the entry by itself',
+      'Correction is where patience and context get tested',
+      'Continuation should confirm before risk goes on'
+    ],
+    prompts: [
+      'Did I wait for confirmation after the correction?',
+      'Was my risk planned before the entry?',
+      'Did the trade follow the model or just feel obvious in the moment?'
+    ]
+  },
+  day1: {
+    title: 'Day 1: The Correlation Problem',
+    topic: 'why one timeframe can mislead your trading without context',
+    bullets: [
+      'One clean chart can still hide conflicting higher-timeframe context',
+      'Correlation and context keep a trade idea from becoming a one-chart opinion',
+      'The goal is to stop forcing confirmation from a single timeframe'
+    ],
+    prompts: [
+      'What higher-timeframe level mattered before the entry?',
+      'Did I check whether another timeframe disagreed?',
+      'Was I trading context or only reacting to one chart?'
+    ]
+  },
+  day2: {
+    title: 'Day 2: HTF Compass',
+    topic: 'using higher-timeframe bias as the directional compass',
+    bullets: [
+      'HTF bias should guide the idea before lower-timeframe timing matters',
+      'A lower timeframe entry is cleaner when it agrees with the bigger map',
+      'The compass prevents small-timeframe noise from taking over'
+    ],
+    prompts: [
+      'What was the HTF bias before I looked for entry?',
+      'Did the lower timeframe support that bias?',
+      'Where would the HTF idea be invalidated?'
+    ]
+  },
+  day3: {
+    title: 'Day 3: LTF Microscope',
+    topic: 'using the lower timeframe for precision without letting it override context',
+    bullets: [
+      'LTF helps refine execution, not rewrite the full bias',
+      'Small-timeframe noise can make weak ideas look urgent',
+      'Precision only matters after context is clear'
+    ],
+    prompts: [
+      'Was the LTF confirming the higher-timeframe idea?',
+      'Did I mistake noise for precision?',
+      'What lower-timeframe signal actually confirmed continuation?'
+    ]
+  },
+  day4: {
+    title: 'Day 4: Aligning for Entry',
+    topic: 'waiting for bias, correction, and confirmation to align before entry',
+    bullets: [
+      'Alignment means the entry is not carrying the whole trade idea',
+      'Correction should make the setup cleaner, not just tempting',
+      'Confirmation matters more than being early'
+    ],
+    prompts: [
+      'What pieces were aligned before entry?',
+      'Did I enter after confirmation or before it?',
+      'What would have told me to stay out?'
+    ]
+  },
+  day5: {
+    title: 'Day 5: Setting Your Target',
+    topic: 'planning targets, exits, and review before emotions take over',
+    bullets: [
+      'Targets should come from structure and liquidity, not hope',
+      'A planned exit is easier to review than an emotional exit',
+      'The trade plan should exist before the candle starts moving'
+    ],
+    prompts: [
+      'Where was my target before entry?',
+      'Was the target based on structure or emotion?',
+      'Did my exit follow the plan?'
+    ]
+  },
+  day6: {
+    title: 'Day 6: Three-Timeframe Alignment',
+    topic: 'HTF bias, mid-timeframe correction, and LTF entry timing',
+    bullets: [
+      'HTF gives the bias',
+      'The middle timeframe helps map the correction',
+      'LTF should only refine entry timing after the bigger idea is clear'
+    ],
+    prompts: [
+      'Did all three timeframes agree?',
+      'Where was the mid-timeframe correction?',
+      'What LTF signal confirmed the entry?'
+    ]
+  },
+  day7: {
+    title: 'Day 7: Simple Price Action',
+    topic: 'reading simple price action with structure instead of isolated patterns',
+    bullets: [
+      'Candlesticks matter more when market context supports them',
+      'Support and resistance should connect to structure, not random lines',
+      'Simple price action gets cleaner when it is tied to the ICC sequence'
+    ],
+    prompts: [
+      'Was I trading a pattern in isolation?',
+      'Did structure support the price action clue?',
+      'Where did the ICC sequence show up on the chart?'
+    ]
   }
 };
 
@@ -979,6 +1095,102 @@ function generateSmartComments() {
   smartGeneratedStore = {};
   smartLastGeneratedIds = [];
   out.innerHTML = smartOutputGroups.map((group) => renderSmartGroup(group, getSmartContext())).join('');
+  out.style.display = 'block';
+}
+
+function buildCourseContentPack() {
+  const dayKey = document.getElementById('smart-day').value;
+  const pack = courseContentPacks[dayKey] || courseContentPacks.none;
+  const topic = document.getElementById('smart-topic').value.trim() || pack.topic;
+  const linkMode = document.getElementById('smart-link').value;
+  const mention = linkMode === 'ifAsked'
+    ? 'If someone asks, I can point them to the free ICCMAFIA-AI notes or journal, but the post should lead with the process first.'
+    : linkMode === 'soft'
+      ? 'Soft mention only: I am tracking this in my own ICCMAFIA-AI review journal to keep the process honest.'
+      : 'No link. Keep this focused on the lesson and the review process.';
+  const bulletList = pack.bullets.map((item) => `- ${item}`).join('\n');
+  const promptList = pack.prompts.map((item) => `- ${item}`).join('\n');
+
+  return `# Podcast, Substack, and Social Content Pack
+
+## Course Angle
+${pack.title}
+
+## Podcast Title
+${pack.title}: ${topic}
+
+## Substack Title
+${topic}
+
+## Show Notes
+${bulletList}
+- What to journal after reviewing this lesson
+- Educational only, no signals, no financial advice
+
+## Substack Intro
+This lesson is about ${topic}. The main idea is simple: the trade should be reviewed by process, not just outcome. I am studying how the ICC sequence helps slow the chart down before entry decisions get emotional.
+
+## Full Substack Post
+The goal is not signals. The goal is building a repeatable review process.
+
+For this lesson, I am focusing on ${topic}. The mistake most traders make is jumping straight to the entry without asking whether the setup has the right context first.
+
+${bulletList}
+
+The useful review question is not just "did it win?" It is "did the trade follow the model?" A winning trade can still reinforce a bad habit if the entry broke the process. A losing trade can still be useful data if it followed the plan.
+
+${mention}
+
+## Reddit Discussion Post
+Title: ${pack.title} - ${topic}
+
+Body:
+I have been reviewing ${topic} through the Indication, Correction, Continuation framework. The biggest takeaway so far is that the entry should not be judged by the candle alone.
+
+${bulletList}
+
+For anyone else journaling this kind of setup, what do you track first: HTF bias, correction quality, entry confirmation, or risk planning?
+
+## X / Threads Mini-Thread
+1. ${pack.title}
+2. The entry is not the whole trade idea.
+3. ${pack.bullets[0]}
+4. ${pack.bullets[1]}
+5. Review question: did the trade follow the model, or did I react?
+
+## TikTok / IG Reels Caption
+${pack.title}: ${pack.bullets[0]} Process first, confirmation second, no hype.
+
+## Pinned Comment
+What part of this lesson do you struggle with most: context, correction, confirmation, or target planning?
+
+## Journal Prompts
+${promptList}
+
+---
+Educational only. Not financial advice. No signals. Trading involves risk.`;
+}
+
+function generateCourseContentPack() {
+  const out = document.getElementById('smart-output');
+  smartGeneratedStore = {};
+  smartLastGeneratedIds = [];
+  const text = buildCourseContentPack();
+  const id = 'smart-course-pack-0';
+  smartGeneratedStore[id] = text;
+  smartLastGeneratedIds.push(id);
+  out.innerHTML = `
+    <div class="output-section">
+      <div class="output-title"><span>Course Content Pack</span><span class="output-kicker">Podcast/Substack/social</span></div>
+      <div class="smart-card">
+        <div class="smart-card-text">${escHtml(text)}</div>
+        <div class="smart-card-actions">
+          <button class="s-action" data-smart-action="copy" data-smart-id="${id}" onclick="copySmartGenerated('${id}', this)">Copy</button>
+          <button class="s-action fav" data-smart-action="favorite" data-smart-id="${id}" onclick="saveGeneratedFavorite('${id}', this)">Save Favorite</button>
+        </div>
+      </div>
+    </div>
+  `;
   out.style.display = 'block';
 }
 
