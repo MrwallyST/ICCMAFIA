@@ -2029,13 +2029,23 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   // Fully handles: quoted fields, embedded commas, \r\n, empty cells
 
   function parseCSVText(text) {
+    text = text.trim();
     text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
-    // If text looks like an Excel/Sheets paste (contains tabs but usually no commas as delimiters), convert TSV to CSV
-    if (text.indexOf('\t') !== -1) {
-      // Very naive but effective TSV->CSV conversion for raw pastes
+    
+    // Auto-detect delimiter: if tabs exist, assume TSV. If more semicolons than commas, assume semicolon CSV.
+    let isTSV = text.indexOf('\t') !== -1;
+    let isSemicolon = !isTSV && (text.split(';').length > text.split(',').length);
+    
+    if (isTSV) {
       const lines = text.split('\n');
       text = lines.map(l => l.split('\t').map(c => `"${c.replace(/"/g, '""')}"`).join(',')).join('\n');
+    } else if (isSemicolon) {
+      // Basic semicolon to comma conversion (doesn't handle semicolons inside quotes well, but better than failing)
+      // A full parser for ; is better, but since we are doing character-by-character below, let's just change the delimiter we look for.
     }
+
+    const delimChar = isSemicolon ? ';' : ',';
+
     const rows = [];
     let cur = '', inQ = false;
     const cells = [];
@@ -2044,19 +2054,38 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       if (ch === '"') {
         if (inQ && text[i+1] === '"') { cur += '"'; i++; }
         else inQ = !inQ;
-      } else if ((ch === ',' && !inQ)) {
+      } else if (ch === delimChar && !inQ) {
         cells.push(cur); cur = '';
       } else if ((ch === '\n' || i === text.length) && !inQ) {
         cells.push(cur); cur = '';
         if (cells.some(c => c !== '')) rows.push([...cells]);
         cells.length = 0;
       } else {
-        cur += ch;
+        if (ch !== undefined) cur += ch;
       }
     }
     if (!rows.length) return [];
-    const headers = rows[0].map(h => h.trim());
-    return rows.slice(1).filter(r => r.some(c => c.trim())).map(r => {
+
+    let headers = rows[0].map(h => h.trim());
+    let dataRows = rows.slice(1);
+
+    // If the first row looks like data (e.g. contains numbers, dates, or Long/Short), we assume there are no headers
+    const firstRowStr = headers.join(' ').toLowerCase();
+    const looksLikeData = headers.some(h => /^\d{4}-\d{2}-\d{2}$|^\d{1,2}\/\d{1,2}\/\d{4}$/.test(h) || !isNaN(parseFloat(h.replace(/[^0-9.-]/g, '')))) || firstRowStr.includes('long') || firstRowStr.includes('short');
+    
+    if (looksLikeData && !firstRowStr.includes('date') && !firstRowStr.includes('pnl') && !firstRowStr.includes('profit')) {
+      // It's data, generate fake headers based on column content
+      headers = headers.map((val, idx) => {
+        val = val.toLowerCase();
+        if (val.includes('long') || val.includes('short') || val === 'buy' || val === 'sell') return 'direction';
+        if (/^\d{4}-\d{2}-\d{2}$|^\d{1,2}\/\d{1,2}\/\d{4}$/.test(val) || !isNaN(Date.parse(val))) return 'date';
+        if (!isNaN(parseFloat(val.replace(/[^0-9.-]/g, ''))) && val.includes('.')) return 'pnl';
+        return `col_${idx}`;
+      });
+      dataRows = rows; // include the first row in data
+    }
+
+    return dataRows.filter(r => r.some(c => c.trim())).map(r => {
       const obj = {};
       headers.forEach((h, i) => { obj[h] = (r[i] || '').trim(); });
       return obj;
@@ -2068,21 +2097,12 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     const h = rawHeader.trim().toLowerCase();
     // Exact matches first
     const exact = {
-      'date': 'date',
-      // TopStep: "Trade Date"
-      'trade date': 'date',
-      'pair': 'pair', 'pair/ticker': 'pair', 'ticker': 'pair', 'symbol': 'pair',
-      // TopStep: "Contract" as pair fallback
-      'contract': 'pair',
-      'direction': 'direction', 'side': 'direction',
-      // TopStep: "B/S" column
-      'b/s': 'direction', 'buy/sell': 'direction',
-      'result / p&l ($)': 'pnl', 'result/p&l ($)': 'pnl',
-      'result / pnl': 'pnl', 'p&l': 'pnl', 'pnl': 'pnl',
-      // TopStep: "Net P&L", "Realized P&L"
-      'net p&l': 'pnl', 'realized p&l': 'pnl',
-      'profit/loss': 'pnl', 'profit & loss': 'pnl', 'result ($)': 'pnl',
-      'tags (comma separated)': 'tags', 'tags': 'tags',
+      'date': 'date', 'trade date': 'date', 'time': 'date', 'opened': 'date',
+      'pair': 'pair', 'pair/ticker': 'pair', 'ticker': 'pair', 'symbol': 'pair', 'contract': 'pair', 'instrument': 'pair', 'asset': 'pair', 'market': 'pair',
+      'direction': 'direction', 'side': 'direction', 'b/s': 'direction', 'buy/sell': 'direction', 'action': 'direction', 'type': 'direction',
+      'result / p&l ($)': 'pnl', 'result/p&l ($)': 'pnl', 'result / pnl': 'pnl', 'p&l': 'pnl', 'pnl': 'pnl',
+      'net p&l': 'pnl', 'realized p&l': 'pnl', 'profit/loss': 'pnl', 'profit & loss': 'pnl', 'result ($)': 'pnl', 'profit': 'pnl', 'loss': 'pnl', 'net': 'pnl', 'return': 'pnl',
+      'tags (comma separated)': 'tags', 'tags': 'tags', 'tag': 'tags',
       'notes & analysis': 'notes', 'notes': 'notes', 'analysis': 'notes', 'comment': 'notes',
       'session': 'session', 'trading session': 'session',
       'icc setup': 'iccSetup', 'icc setup type': 'iccSetup', 'setup type': 'iccSetup',
@@ -2093,17 +2113,11 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       'rr': 'rr', 'r:r': 'rr', 'r:r ratio': 'rr', 'rr ratio': 'rr',
       'mfe': 'mfe', 'max favorable excursion ($)': 'mfe',
       'mae': 'mae', 'max adverse excursion ($)': 'mae',
-      // TopStep: "Commission" — ignore (net P&L already accounts for it)
-      'commission': null,
-      // TopStep: "Qty" / "Quantity" / "Size" — store as qty (don't break)
-      'qty': 'qty', 'quantity': 'qty', 'size': 'qty',
-      // TopStep: "Account" — ignore
-      'account': null,
-      // TopStep: "Fill Price" — ignore
-      'fill price': null,
+      'commission': null, 'account': null, 'fill price': null,
+      'qty': 'qty', 'quantity': 'qty', 'size': 'qty'
     };
     if (Object.prototype.hasOwnProperty.call(exact, h)) return exact[h];
-    // Substring fallback for messy headers from TradeZella, Tradervue, etc.
+    // Substring fallback for messy headers
     if (h.includes('date') || h.includes('time') || h.includes('opened') || h.includes('closed')) return 'date';
     if (h.includes('pair') || h.includes('ticker') || h.includes('symbol') || h.includes('asset') || h.includes('instrument') || h.includes('market')) return 'pair';
     if (h.includes('direction') || h.includes('side') || h.includes('type') || h.includes('action')) return 'direction';
@@ -2115,11 +2129,16 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 
   // Bulletproof P&L cleaner
   function cleanPnL(raw) {
-    let s = (raw || '').trim();
+    let s = String(raw || '').trim();
+    if (!s) return NaN;
     // Accounting format: (500.00) → -500.00
     if (s.startsWith('(') && s.endsWith(')')) s = '-' + s.slice(1, -1);
-    // Strip $  ,  "  '  whitespace — but preserve leading minus
-    s = s.replace(/["'$,\s]/g, '');
+    // Strip $  ,  "  ' letters whitespace — but preserve leading minus and decimal
+    s = s.replace(/[^\d.-]/g, '');
+    
+    // Handle multiple minus signs (e.g., from weird formatting)
+    if (s.indexOf('-') > 0) s = '-' + s.replace(/-/g, '');
+    
     return parseFloat(s);
   }
 
@@ -2179,14 +2198,18 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
       const mapped = {};
       Object.keys(row).forEach(col => {
         const key = resolveHeader(col);
-        if (key) mapped[key] = row[col];
+        // Only map if we haven't already mapped this key, or if the current mapped value is empty
+        if (key && (!mapped[key] || mapped[key].toString().trim() === '')) {
+          mapped[key] = row[col];
+        }
       });
-      const rowNum = idx + 2;
+      const rowNum = idx + 2; // +1 for 1-based, +1 for header row
 
       if (!mapped.date || !mapped.date.trim()) {
         warnings.push('Row ' + rowNum + ': Skipped \u2014 missing Date.');
         skipped++; return;
       }
+      
       const pnl = cleanPnL(mapped.pnl);
       if (isNaN(pnl)) {
         warnings.push('Row ' + rowNum + ': Skipped \u2014 invalid P&L ("' + (mapped.pnl || '') + '"). Expected: -284.00 or $1,256.00');
