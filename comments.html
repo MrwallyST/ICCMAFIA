@@ -95,7 +95,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="container">
   <div class="top-links">
     <a href="index.html" class="back-btn">&#8592; Back to Course</a>
-    <a href="podcast-assets.html" class="back-btn" style="color:var(--accent2);">Substack / Reddit Generator</a>
   </div>
 
   <div class="header">
@@ -163,6 +162,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     <div class="form-group">
       <label>Platform</label>
       <select class="smart-control" id="smart-platform">
+        <option value="podcast">Podcast / Substack Assets</option>
         <option value="yt-long">YouTube Long-form</option>
         <option value="yt-short">YouTube Shorts</option>
         <option value="tiktok">TikTok</option>
@@ -542,6 +542,16 @@ const dayAngles = {
   day6: "HTF bias + Mid TF correction + LTF entry = the holy trinity."
 };
 
+const dayPodcastData = {
+  day1: { title: "Day 1: The Correlation Problem", topic: "Why one chart can confuse your trading without higher-timeframe context.", bullets: "Why one timeframe can create confusion\nHow higher-timeframe context helps\nWhy correlation is not the same as confirmation" },
+  day2: { title: "Day 2: HTF Compass", topic: "Using the higher timeframe as the directional compass.", bullets: "Reviewing HTF Compass\nThe higher timeframe gives directional context\nJournaling questions for this setup" },
+  day3: { title: "Day 3: LTF Microscope", topic: "Using the lower timeframe for precision without letting it override higher-timeframe context.", bullets: "Reviewing LTF Microscope\nThe lower timeframe helps refine execution\nDon't let LTF override the big picture" },
+  day4: { title: "Day 4: Aligning for Entry", topic: "Waiting for the trading idea to align before taking an entry.", bullets: "Reviewing Aligning for Entry\nEntry should happen after alignment\nNot because of impatience" },
+  day5: { title: "Day 5: Setting Your Target", topic: "Understanding target selection, trade planning, and avoiding random exits.", bullets: "Reviewing Setting Your Target\nTargets should be planned with structure\nAvoiding emotional exits" },
+  day6: { title: "Day 6: How 3 Timeframes Fixed My Entries", topic: "HTF bias, mid-timeframe correction, and LTF entry timing.", bullets: "The Three-Tier Hierarchy\nThe Traffic Light System\nConfluence pointing to the same price level" }
+};
+
+
 function generateSmartComments() {
   const plat = document.getElementById('smart-platform').value;
   const day = document.getElementById('smart-day').value;
@@ -555,21 +565,81 @@ function generateSmartComments() {
   if (link === "soft") linkStr = " (Link in bio if you want to use the free ICC journal).";
   if (link === "ifasked") linkStr = " (I built a free tool for this, let me know if you want the link).";
 
-  let topicStr = topic ? ` Speaking of ${topic}, ` : " ";
   let dayStr = day !== "none" ? ` ${dayAngles[day]}` : "";
+
+  if (plat === 'podcast') {
+    let pTitle = "Trading Concepts";
+    let pTopic = topic || "Market structure and review.";
+    let pBullets = "- What to journal after reviewing a setup\n- Free tools at ICCMAFIA-AI";
+
+    if (day !== "none" && dayPodcastData[day]) {
+      pTitle = dayPodcastData[day].title;
+      pTopic = dayPodcastData[day].topic;
+      pBullets = dayPodcastData[day].bullets.split('\\n').map(b => '- ' + b).join('\\n');
+    }
+
+    const outTxt = \`# 🎙️ Podcast & Substack Pack
+
+## Podcast Title
+\${pTitle}
+
+## Substack Title
+\${pTopic}
+
+## Show Notes
+\${pBullets}
+- What to journal after reviewing a setup
+- Free tools at ICCMAFIA-AI
+
+## Substack Intro
+"This episode is all about \${pTopic}. This post breaks down how I'm studying these concepts inside the free ICCMAFIA-AI system."
+
+## Full Substack Post
+The goal is not signals, the goal is process. I'm studying how to wait for the Indication, Correction, and Continuation sequence to play out. Without a solid map, it's just noise.
+
+## Reddit Post (r/Daytrading / r/Forex)
+**Title:** \${pTitle} - \${pTopic}
+**Body:** 
+I've been journaling my progress using the Indication-Correction-Continuation framework. One of the biggest lessons so far: \${pTopic}.
+
+\${pBullets}
+
+I put together my full study notes and a podcast overview on this. Everything is totally free and ad-free. Anyone else mapping their timeframe alignment like this?
+
+## Journal Prompts
+- What timeframe was I focused on?
+- Did I check higher-timeframe context?
+- Was my bias based on structure or emotion?\`;
+
+    out.innerHTML = \`
+      <div class="output-section">
+        <div class="output-title">🎙️ Generated Podcast/Substack Assets</div>
+        <div class="smart-card">
+          <div class="smart-card-text">\${outTxt.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+          <div class="smart-card-actions">
+            <button class="s-action" onclick="copySmart(this, \\\`\${outTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Copy All</button>
+            <button class="s-action fav" onclick="saveSmartFavorite(\\\`\${outTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Save Fav</button>
+          </div>
+        </div>
+      </div>
+    \`;
+    return;
+  }
+
+  let topicStr = topic ? ` Speaking of ${topic}, ` : " ";
 
   function makeCard(text) {
     let finalTxt = text + topicStr + dayStr + linkStr;
-    finalTxt = finalTxt.replace(/\s+/g, ' ').trim();
-    return `
+    finalTxt = finalTxt.replace(/\\s+/g, ' ').trim();
+    return \`
       <div class="smart-card">
-        <div class="smart-card-text">${finalTxt}</div>
+        <div class="smart-card-text">\${finalTxt}</div>
         <div class="smart-card-actions">
-          <button class="s-action" onclick="copySmart(this, \`${finalTxt.replace(/`/g, '\\`')}\`)">Copy</button>
-          <button class="s-action fav" onclick="saveSmartFavorite(\`${finalTxt.replace(/`/g, '\\`')}\`)">Save Fav</button>
+          <button class="s-action" onclick="copySmart(this, \\\`\${finalTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Copy</button>
+          <button class="s-action fav" onclick="saveSmartFavorite(\\\`\${finalTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Save Fav</button>
         </div>
       </div>
-    `;
+    \`;
   }
 
   out.innerHTML = `
