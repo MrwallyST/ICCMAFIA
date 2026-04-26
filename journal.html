@@ -1655,6 +1655,22 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   function openAddModal() {
     // Only force checklist once per day
     const lastDone = localStorage.getItem('tbs_daily_checklist');
+    
+    // --- ENFORCE PREVIOUS WEEK REVIEW ---
+    // If it's a new week, and the previous week doesn't have a review, block trading
+    const prevWeek = getWeekRange(-1);
+    const prevWeekSaved = localStorage.getItem('tbs_weekly_review_' + prevWeek.start);
+    // Don't block if they literally have zero trades in the previous week
+    const prevWeekTrades = getActiveTrades().filter(t => { const d = normalizeDate(t.date); return d >= prevWeek.start && d <= prevWeek.end; });
+    
+    if (prevWeekTrades.length > 0 && !prevWeekSaved) {
+      alert("⚠️ You cannot log new trades until you complete last week's Weekly Review! Discipline equals freedom.");
+      currentReviewWeekOffset = -1;
+      openWeeklyReview(true); // pass true to indicate forced
+      return;
+    }
+    // ------------------------------------
+
     if (lastDone !== getLocalToday()) {
       // reset checklist state
       document.querySelectorAll('.cl-check').forEach(cb => { cb.checked = false; verifyChecklist(cb); });
@@ -2404,8 +2420,11 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   }
 
   // ── WEEKLY REVIEW ─────────────────────────────────
-  function getWeekRange() {
+  let currentReviewWeekOffset = 0;
+
+  function getWeekRange(offset = 0) {
     const now = new Date();
+    now.setDate(now.getDate() + (offset * 7));
     const day = now.getDay();
     const mon = new Date(now); mon.setDate(now.getDate() - (day === 0 ? 6 : day - 1));
     const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
@@ -2414,9 +2433,30 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     return { label: `${fmt(mon)} – ${fmt(sun)}`, start: toISO(mon), end: toISO(sun) };
   }
 
-  function openWeeklyReview() {
-    const { label, start, end } = getWeekRange();
-    document.getElementById('weekly-review-range').textContent = `Week of ${label}`;
+  function changeReviewWeek(delta) {
+    currentReviewWeekOffset += delta;
+    if (currentReviewWeekOffset > 0) currentReviewWeekOffset = 0; // cannot go into future
+    openWeeklyReview();
+  }
+
+  function openWeeklyReview(forced = false) {
+    if (!forced && !document.getElementById('weekly-review-modal').classList.contains('active')) {
+      // if opening manually, reset to current week
+      currentReviewWeekOffset = 0;
+    }
+    const { label, start, end } = getWeekRange(currentReviewWeekOffset);
+    
+    // Update navigation UI
+    const nextBtn = document.getElementById('wr-next-btn');
+    if (nextBtn) {
+      if (currentReviewWeekOffset === 0) {
+        nextBtn.style.opacity = '0.5'; nextBtn.style.pointerEvents = 'none';
+      } else {
+        nextBtn.style.opacity = '1'; nextBtn.style.pointerEvents = 'auto';
+      }
+    }
+
+    document.getElementById('weekly-review-range').textContent = `Week of ${label} ${currentReviewWeekOffset === 0 ? '(This Week)' : ''}`;
     const weekTrades = getActiveTrades().filter(t => { const d = normalizeDate(t.date); return d >= start && d <= end; });
     const pnl = weekTrades.reduce((s,t) => s + parseFloat(t.pnl||0), 0);
     const wins = weekTrades.filter(t => parseFloat(t.pnl||0) > 0).length;
@@ -2439,7 +2479,7 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   }
 
   function saveWeeklyReview() {
-    const { start } = getWeekRange();
+    const { start } = getWeekRange(currentReviewWeekOffset);
     const data = {
       wentWell: document.getElementById('wr-went-well').value,
       brokeRules: document.getElementById('wr-broke-rules').value,
@@ -2592,7 +2632,13 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
 <!-- Weekly Review Modal -->
 <div class="modal-overlay" id="weekly-review-modal" onclick="if(event.target===this)closeWeeklyReview()">
   <div class="modal-content" style="max-width:580px;">
-    <div class="modal-title">📝 Weekly Review</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+      <div class="modal-title" style="margin-bottom:0;">📝 Weekly Review</div>
+      <div class="calendar-nav" style="display:flex; gap:6px;">
+        <button onclick="changeReviewWeek(-1)" style="font-size:11px; width:28px; height:28px;">&lt;</button>
+        <button onclick="changeReviewWeek(1)" id="wr-next-btn" style="font-size:11px; width:28px; height:28px; opacity:0.5; pointer-events:none;">&gt;</button>
+      </div>
+    </div>
     <div style="color:var(--muted);font-size:13px;margin-bottom:20px;" id="weekly-review-range"></div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;" id="weekly-stats-grid"></div>
