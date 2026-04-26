@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engagement Command Center - ICCMAFIA AI</title>
+<link rel="icon" href="data:,">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#08090e;--surface:#0f1015;--surface2:#16171f;--surface3:#1e1f2c;--border:#25263a;--accent:#7c6fcd;--accent2:#a78bfa;--green:#10b981;--red:#ef4444;--text:#eeeef5;--muted:#94a3b8}
+:root{--bg:#08090e;--surface:#0f1015;--surface2:#16171f;--surface3:#1e1f2c;--border:#25263a;--accent:#7c6fcd;--accent2:#a78bfa;--gold:#f59e0b;--blue:#38bdf8;--green:#10b981;--red:#ef4444;--text:#eeeef5;--muted:#94a3b8}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 16px}
 .container{max-width:880px;margin:0 auto}
 .header{text-align:center;margin-bottom:28px}
@@ -41,54 +42,63 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 @media(max-width:520px){body{padding:24px 12px}.header h1{font-size:28px}.comment-card{padding:16px}.filter-btn{flex:1 1 auto}.copy-btn{width:100%;justify-content:center}}
 
 /* --- SMART COMMENTS STEALTH UI --- */
-#stealth-btn { position:fixed; bottom:20px; right:20px; width:40px; height:40px; background:rgba(124,111,205,0.1); border:1px solid rgba(124,111,205,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0.2; transition:all 0.3s ease; z-index:9998; font-size:16px; user-select:none; }
-#stealth-btn:hover { opacity:1; background:rgba(124,111,205,0.2); border-color:var(--accent2); box-shadow:0 0 15px rgba(167,139,250,0.4); transform:scale(1.05); }
+#stealth-btn{position:fixed;right:20px;bottom:20px;width:42px;height:42px;padding:0;border-radius:50%;border:1px solid rgba(56,189,248,.22);background:radial-gradient(circle at 35% 28%,rgba(245,158,11,.28),rgba(56,189,248,.12) 42%,rgba(15,16,21,.84) 72%);color:#fef3c7;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.28;box-shadow:0 0 0 1px rgba(245,158,11,.05),0 8px 22px rgba(0,0,0,.32);transition:opacity .22s ease,transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease;z-index:10000;user-select:none}
+#stealth-btn:hover,#stealth-btn:focus-visible,#stealth-btn[aria-expanded="true"]{opacity:1;transform:translateY(-1px) scale(1.04);border-color:rgba(245,158,11,.7);box-shadow:0 0 18px rgba(245,158,11,.22),0 0 24px rgba(56,189,248,.2),0 12px 28px rgba(0,0,0,.45);outline:none}
+body.smart-stealth-dot #stealth-btn{width:16px;height:16px;font-size:0;right:18px;bottom:18px;opacity:.26}
+body.smart-stealth-dot #stealth-btn::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px rgba(245,158,11,.8),0 0 12px rgba(56,189,248,.36)}
+body.smart-drawer-open{overflow:hidden}
 
-#smart-drawer { position:fixed; top:0; right:-100%; width:100%; max-width:480px; height:100vh; background:rgba(15,16,21,0.95); backdrop-filter:blur(12px); border-left:1px solid var(--border); box-shadow:-10px 0 30px rgba(0,0,0,0.5); z-index:9999; transition:right 0.3s cubic-bezier(0.2,0.8,0.2,1); display:flex; flex-direction:column; }
-#smart-drawer.open { right:0; }
-
-.drawer-header { padding:20px 24px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--surface2); }
-.drawer-title { font-family:'Outfit',sans-serif; font-size:18px; font-weight:700; color:#fff; display:flex; align-items:center; gap:8px; }
-.drawer-close { background:transparent; border:none; color:var(--muted); font-size:24px; cursor:pointer; transition:0.2s; line-height:1; }
-.drawer-close:hover { color:var(--red); }
-
-.drawer-body { padding:24px; overflow-y:auto; flex:1; }
-.drawer-body::-webkit-scrollbar { width:6px; }
-.drawer-body::-webkit-scrollbar-track { background:var(--bg); }
-.drawer-body::-webkit-scrollbar-thumb { background:var(--surface3); border-radius:3px; }
-
-.form-group { margin-bottom:16px; }
-.form-group label { display:block; font-size:12px; font-weight:600; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
-.smart-control { width:100%; padding:10px 12px; background:var(--surface); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:'Inter',sans-serif; font-size:14px; transition:0.2s; outline:none; }
-.smart-control:focus { border-color:var(--accent2); box-shadow:0 0 0 2px rgba(167,139,250,0.2); }
-
-.smart-btn-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:24px; margin-bottom:32px; }
-.smart-btn { padding:12px; border:none; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; transition:0.2s; text-align:center; }
-.btn-generate { background:var(--accent); color:#fff; grid-column:span 2; box-shadow:0 4px 12px rgba(124,111,205,0.3); }
-.btn-generate:hover { transform:translateY(-2px); opacity:0.9; }
-.btn-secondary { background:var(--surface3); color:var(--text); border:1px solid var(--border); }
-.btn-secondary:hover { border-color:var(--muted); }
-
-.daily-tracker { background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.2); border-radius:10px; padding:16px; margin-bottom:24px; }
-.tracker-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:12px; font-weight:700; color:var(--green); text-transform:uppercase; }
-.tracker-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:6px; margin-bottom:12px; }
-.tracker-btn { background:var(--surface); border:1px solid var(--border); color:var(--text); font-size:11px; padding:6px 0; border-radius:6px; cursor:pointer; font-weight:600; text-align:center; transition:0.2s; }
-.tracker-btn:hover { border-color:var(--green); color:var(--green); }
-.tracker-total { text-align:center; font-size:12px; color:var(--muted); }
-.tracker-warning { margin-top:10px; font-size:12px; font-weight:600; padding:8px; border-radius:6px; text-align:center; display:none; }
-
-.output-section { margin-bottom:24px; }
-.output-title { font-size:13px; font-weight:700; color:var(--accent2); margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; }
-.smart-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:12px; position:relative; }
-.smart-card:hover { border-color:var(--accent); }
-.smart-card-text { font-size:13px; line-height:1.6; color:var(--text); margin-bottom:12px; white-space:pre-wrap; }
-.smart-card-actions { display:flex; gap:8px; }
-.s-action { font-size:11px; padding:6px 12px; border-radius:6px; border:1px solid var(--border); background:var(--surface3); color:var(--muted); cursor:pointer; font-weight:600; transition:0.2s; }
-.s-action:hover { color:var(--text); border-color:var(--accent); }
-.s-action.fav { color:#f59e0b; }
-.s-action.fav:hover { background:rgba(245,158,11,0.1); border-color:#f59e0b; }
-
-.warning-banner { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:#f87171; font-size:11px; padding:10px; border-radius:8px; margin-bottom:20px; font-weight:600; line-height:1.5; }
+#smart-drawer{position:fixed;top:16px;right:16px;width:min(540px,calc(100vw - 32px));height:calc(100vh - 32px);height:calc(100dvh - 32px);background:linear-gradient(180deg,rgba(15,16,21,.97),rgba(8,9,14,.96));backdrop-filter:blur(18px);border:1px solid rgba(56,189,248,.16);border-radius:16px;box-shadow:-18px 18px 50px rgba(0,0,0,.58),0 0 34px rgba(56,189,248,.08);z-index:9999;transform:translateX(calc(100% + 40px));visibility:hidden;pointer-events:none;transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility 0s linear .32s;display:flex;flex-direction:column;overflow:hidden}
+#smart-drawer.open{transform:translateX(0);visibility:visible;pointer-events:auto;transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+.drawer-header{padding:18px 20px;border-bottom:1px solid rgba(56,189,248,.13);display:flex;justify-content:space-between;gap:14px;align-items:flex-start;background:linear-gradient(135deg,rgba(30,31,44,.96),rgba(15,16,21,.84))}
+.drawer-title{font-family:'Outfit',sans-serif;font-size:20px;font-weight:900;color:#fff;line-height:1.2}
+.drawer-subtitle{font-size:12px;color:var(--muted);line-height:1.5;margin-top:6px;max-width:410px}
+.drawer-close{background:rgba(22,23,31,.8);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:24px;width:34px;height:34px;cursor:pointer;transition:.2s;line-height:1;flex:0 0 auto}
+.drawer-close:hover,.drawer-close:focus-visible{color:#fff;border-color:var(--gold);box-shadow:0 0 14px rgba(245,158,11,.18);outline:none}
+.drawer-body{padding:20px;overflow-y:auto;flex:1}
+.drawer-body::-webkit-scrollbar{width:8px}.drawer-body::-webkit-scrollbar-track{background:var(--bg)}.drawer-body::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:4px}
+.warning-banner{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.28);color:#fde68a;font-size:12px;padding:12px 13px;border-radius:10px;margin-bottom:12px;font-weight:600;line-height:1.55}
+.copy-only-note{background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.18);border-radius:10px;color:#bae6fd;font-size:11px;line-height:1.5;padding:10px 12px;margin-bottom:18px}
+.daily-tracker{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.22);border-radius:12px;padding:14px;margin-bottom:18px}
+.tracker-header{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;font-size:12px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.4px}
+.tracker-total{font-size:12px;color:var(--muted);text-transform:none;letter-spacing:0}
+.tracker-counts{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}
+.tracker-pill{background:rgba(15,16,21,.7);border:1px solid var(--border);border-radius:8px;padding:7px 4px;text-align:center;font-size:10px;color:var(--muted);line-height:1.35}
+.tracker-pill strong{display:block;color:var(--text);font-size:14px;margin-top:2px}
+.tracker-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}
+.tracker-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:11px;padding:7px 4px;border-radius:7px;cursor:pointer;font-weight:700;text-align:center;transition:.2s}
+.tracker-btn:hover{border-color:var(--green);color:var(--green)}
+.tracker-reset{background:transparent;border:none;color:var(--muted);font-size:11px;cursor:pointer}
+.tracker-reset:hover{color:#fff}
+.tracker-warning{margin-top:10px;font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;display:none}
+.smart-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:0}
+.form-group.full{grid-column:1/-1}
+.form-group label{display:block;font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.6px}
+.smart-control{width:100%;padding:10px 12px;background:rgba(15,16,21,.9);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;transition:.2s;outline:none}
+.smart-control:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(56,189,248,.12)}
+.smart-btn-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:9px;margin-top:18px;margin-bottom:22px}
+.smart-btn{padding:11px 10px;border:none;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s;text-align:center}
+.btn-generate{background:linear-gradient(135deg,var(--accent),var(--blue));color:#fff;box-shadow:0 6px 16px rgba(56,189,248,.18)}
+.btn-generate:hover{transform:translateY(-1px);opacity:.94}
+.btn-secondary{background:var(--surface3);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--blue);color:#fff}
+.btn-quiet{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-quiet:hover{color:#fff;border-color:var(--gold)}
+.output-section{margin-bottom:24px}
+.output-title{font-size:13px;font-weight:900;color:#dbeafe;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.output-kicker{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.smart-card{background:rgba(22,23,31,.84);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;position:relative}
+.smart-card:hover{border-color:rgba(56,189,248,.42)}
+.smart-card-text{font-size:13px;line-height:1.62;color:var(--text);margin-bottom:12px;white-space:pre-wrap;word-break:break-word}
+.smart-card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.s-action{font-size:11px;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface3);color:var(--muted);cursor:pointer;font-weight:800;transition:.2s}
+.s-action:hover{color:var(--text);border-color:var(--blue)}
+.s-action.fav{color:#fbbf24}.s-action.fav:hover{background:rgba(245,158,11,.1);border-color:var(--gold)}
+.favorites-section{border-top:1px solid rgba(56,189,248,.13);margin-top:18px;padding-top:18px}
+.stealth-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(56,189,248,.1);margin-top:18px;padding-top:14px;color:var(--muted);font-size:12px}
+.stealth-setting input{accent-color:var(--gold)}
+@media(max-width:620px){#stealth-btn{right:14px;bottom:14px;width:40px;height:40px}#smart-drawer{top:10px;right:10px;width:calc(100vw - 20px);height:calc(100vh - 20px);height:calc(100dvh - 20px);border-radius:14px}.drawer-header{padding:16px}.drawer-title{font-size:18px}.drawer-body{padding:16px}.smart-form-grid{grid-template-columns:1fr}.smart-btn-row{grid-template-columns:1fr 1fr}.btn-generate{grid-column:1/-1}.tracker-counts,.tracker-grid{grid-template-columns:1fr 1fr}.tracker-pill:last-child,.tracker-btn:last-child{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -126,124 +136,133 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="disclaimer"><strong>&#9888; Disclaimer</strong>This site is for <strong>educational purposes only</strong>. Nothing here is financial advice. We are not financial advisors. Trading involves significant risk - always do your own research and consult a licensed professional before making any financial decisions.<br>Engagement tools and site built by ICCMAFIA-AI. ICC course curriculum by TradesBySci.</div>
 
 <!-- STEALTH BUTTON -->
-<div id="stealth-btn" onclick="toggleSmartPanel()" title="Tools">⚡</div>
+<button id="stealth-btn" type="button" onclick="toggleSmartPanel()" title="Tools" aria-label="Open tools panel" aria-controls="smart-drawer" aria-expanded="false">⚡</button>
 
 <!-- SMART COMMENTS COMMAND CENTER (HIDDEN DRAWER) -->
-<div id="smart-drawer">
+<div id="smart-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Smart Comments Command Center">
   <div class="drawer-header">
-    <div class="drawer-title">🧠 Smart Comments Center</div>
-    <button class="drawer-close" onclick="toggleSmartPanel()">&times;</button>
+    <div>
+      <div class="drawer-title">Smart Comments Command Center</div>
+      <div class="drawer-subtitle">Manual comment ideas for YouTube, TikTok, IG Reels, X/Threads, Reddit, and Facebook.</div>
+    </div>
+    <button class="drawer-close" onclick="toggleSmartPanel(false)" aria-label="Close Smart Comments Command Center">&times;</button>
   </div>
   <div class="drawer-body">
     <div class="warning-banner">
-      ⚠️ Manual use only. Do not spam. Personalize every comment. Add value first, no auto-posting.
+      Manual use only. Do not spam. Personalize every comment. Avoid repetitive comments, mass posting, and unnecessary links. Add value first.
     </div>
-
-    <div style="margin-bottom: 15px;">
-      <a href="podcast-assets.html" style="display:block; text-align:center; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 14px; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); transition: transform 0.2s;">
-        🎙️ Open Podcast & Substack Generator
-      </a>
-    </div>
+    <div class="copy-only-note">Copy-only utility. No auto-posting, no social APIs, no browser automation, no passwords, and no secrets.</div>
 
     <!-- Daily Tracker -->
     <div class="daily-tracker">
       <div class="tracker-header">
-        <span>📅 Today's Tracker</span>
+        <span>Today&rsquo;s Manual Comment Tracker</span>
         <span class="tracker-total" id="tracker-total">Total: 0</span>
       </div>
+      <div class="tracker-counts" aria-live="polite">
+        <div class="tracker-pill">YouTube<strong id="tracker-youtube">0</strong></div>
+        <div class="tracker-pill">TikTok<strong id="tracker-tiktok">0</strong></div>
+        <div class="tracker-pill">Instagram<strong id="tracker-instagram">0</strong></div>
+        <div class="tracker-pill">X/Threads<strong id="tracker-xthreads">0</strong></div>
+        <div class="tracker-pill">Reddit<strong id="tracker-reddit">0</strong></div>
+      </div>
       <div class="tracker-grid">
-        <button class="tracker-btn" onclick="addTrackCount('yt')">+ YT</button>
-        <button class="tracker-btn" onclick="addTrackCount('tt')">+ TT</button>
-        <button class="tracker-btn" onclick="addTrackCount('ig')">+ IG</button>
-        <button class="tracker-btn" onclick="addTrackCount('x')">+ X</button>
-        <button class="tracker-btn" onclick="addTrackCount('rd')">+ RD</button>
+        <button class="tracker-btn" onclick="addTrackCount('youtube')">+1 YouTube</button>
+        <button class="tracker-btn" onclick="addTrackCount('tiktok')">+1 TikTok</button>
+        <button class="tracker-btn" onclick="addTrackCount('instagram')">+1 Instagram</button>
+        <button class="tracker-btn" onclick="addTrackCount('xthreads')">+1 X/Threads</button>
+        <button class="tracker-btn" onclick="addTrackCount('reddit')">+1 Reddit</button>
       </div>
       <div style="display:flex; justify-content:flex-end;">
-        <button style="background:transparent; border:none; color:var(--muted); font-size:10px; cursor:pointer;" onclick="resetTracker()">Reset Today</button>
+        <button class="tracker-reset" onclick="resetTracker()">Reset Today</button>
       </div>
       <div class="tracker-warning" id="tracker-warning"></div>
     </div>
 
     <!-- Form Inputs -->
-    <div class="form-group">
-      <label>Platform</label>
-      <select class="smart-control" id="smart-platform">
-        <option value="podcast">Podcast / Substack Assets</option>
-        <option value="yt-long">YouTube Long-form</option>
-        <option value="yt-short">YouTube Shorts</option>
-        <option value="tiktok">TikTok</option>
-        <option value="ig">Instagram Reels</option>
-        <option value="x">X / Threads</option>
-        <option value="reddit">Reddit</option>
-        <option value="fb">Facebook</option>
-      </select>
-    </div>
+    <div class="smart-form-grid">
+      <div class="form-group">
+        <label for="smart-platform">Platform</label>
+        <select class="smart-control" id="smart-platform">
+          <option value="youtube-long">YouTube Long-form</option>
+          <option value="youtube-shorts">YouTube Shorts</option>
+          <option value="tiktok">TikTok</option>
+          <option value="instagram">Instagram Reels</option>
+          <option value="xthreads">X / Threads</option>
+          <option value="reddit">Reddit</option>
+          <option value="facebook">Facebook</option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <label>Category</label>
-      <select class="smart-control" id="smart-category">
-        <option value="icc">ICC / SMC / price action</option>
-        <option value="journal">Trading journal</option>
-        <option value="prop">Prop firm</option>
-        <option value="psych">Trading psychology</option>
-        <option value="risk">Risk management</option>
-        <option value="beginner">Beginner trading</option>
-        <option value="mtf">Multi-timeframe analysis</option>
-        <option value="entry">Entry confirmation</option>
-        <option value="target">Target setting</option>
-        <option value="edu">General trading education</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="smart-category">Content category</label>
+        <select class="smart-control" id="smart-category">
+          <option value="icc">ICC / SMC / price action</option>
+          <option value="journal">Trading journal</option>
+          <option value="prop">Prop firm</option>
+          <option value="psychology">Trading psychology</option>
+          <option value="risk">Risk management</option>
+          <option value="beginner">Beginner trading</option>
+          <option value="multiTimeframe">Multi-timeframe analysis</option>
+          <option value="entry">Entry confirmation</option>
+          <option value="target">Target setting</option>
+          <option value="education">General trading education</option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <label>Intent</label>
-      <select class="smart-control" id="smart-intent">
-        <option value="value">Value comment</option>
-        <option value="question">Question comment</option>
-        <option value="beginner">Beginner help</option>
-        <option value="journal_angle">Journaling angle</option>
-        <option value="risk_angle">Risk management angle</option>
-        <option value="psych_angle">Psychology angle</option>
-        <option value="soft_icc">Soft ICCMAFIA mention</option>
-        <option value="nolink">No-link version</option>
-        <option value="what_is_icc">Reply to "what is ICC?"</option>
-        <option value="criticism">Reply to criticism</option>
-        <option value="thanks">Thank-you comment</option>
-        <option value="discussion">Community discussion starter</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="smart-intent">Intent</label>
+        <select class="smart-control" id="smart-intent">
+          <option value="value">Value comment</option>
+          <option value="question">Question comment</option>
+          <option value="beginnerHelp">Beginner help</option>
+          <option value="journaling">Journaling angle</option>
+          <option value="riskAngle">Risk management angle</option>
+          <option value="psychologyAngle">Psychology angle</option>
+          <option value="softMention">Soft ICCMAFIA mention</option>
+          <option value="noLink">No-link version</option>
+          <option value="whatIsIcc">Reply to "what is ICC?"</option>
+          <option value="criticism">Reply to criticism</option>
+          <option value="thanks">Thank-you comment</option>
+          <option value="discussion">Community discussion starter</option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <label>Course Day Angle</label>
-      <select class="smart-control" id="smart-day">
-        <option value="none">None</option>
-        <option value="day1">Day 1: Correlation Problem</option>
-        <option value="day2">Day 2: HTF Compass</option>
-        <option value="day3">Day 3: LTF Microscope</option>
-        <option value="day4">Day 4: Aligning for Entry</option>
-        <option value="day5">Day 5: Setting Your Target</option>
-        <option value="day6">Day 6: 3 Timeframes</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="smart-day">Course Day Angle</label>
+        <select class="smart-control" id="smart-day">
+          <option value="none">None</option>
+          <option value="day1">Day 1: Correlation Problem</option>
+          <option value="day2">Day 2: HTF Compass</option>
+          <option value="day3">Day 3: LTF Microscope</option>
+          <option value="day4">Day 4: Aligning for Entry</option>
+          <option value="day5">Day 5: Setting Your Target</option>
+          <option value="day6">Day 6: 3 Timeframes</option>
+          <option value="day7">Day 7: Simple Price Action</option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <label>Optional Topic</label>
-      <input type="text" class="smart-control" id="smart-topic" placeholder="e.g. early entries, prop firm drawdown">
-    </div>
+      <div class="form-group full">
+        <label for="smart-topic">Optional topic</label>
+        <input type="text" class="smart-control" id="smart-topic" placeholder="e.g. early entries, 3 timeframes, journaling mistakes, prop firm drawdown">
+      </div>
 
-    <div class="form-group">
-      <label>Link Mode</label>
-      <select class="smart-control" id="smart-link">
-        <option value="nolink">No link</option>
-        <option value="soft">Soft mention only</option>
-        <option value="ifasked">Link only if asked</option>
-      </select>
+      <div class="form-group full">
+        <label for="smart-link">Link mode</label>
+        <select class="smart-control" id="smart-link">
+          <option value="none">No link</option>
+          <option value="soft">Soft mention only</option>
+          <option value="ifAsked">Link only if asked</option>
+        </select>
+      </div>
     </div>
 
     <div class="smart-btn-row">
       <button class="smart-btn btn-generate" onclick="generateSmartComments()">Generate Smart Comments</button>
       <button class="smart-btn btn-secondary" onclick="copyAllSmart()">Copy All</button>
-      <button class="smart-btn btn-secondary" onclick="document.getElementById('smart-topic').value='';">Reset</button>
+      <button class="smart-btn btn-secondary" onclick="shuffleSmartComments()">Shuffle</button>
+      <button class="smart-btn btn-quiet" onclick="resetSmartForm()">Reset</button>
+      <button class="smart-btn btn-quiet" onclick="toggleSmartPanel(false)">Close</button>
     </div>
 
     <!-- Output Sections -->
@@ -252,10 +271,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
 
     <!-- Saved Favorites -->
-    <div style="border-top:1px solid var(--border); margin-top:20px; padding-top:20px;">
-      <div class="output-title">⭐ Saved Favorites</div>
+    <div class="favorites-section">
+      <div class="output-title">Saved Favorites</div>
       <div id="smart-favorites"></div>
-      <button style="margin-top:10px; font-size:11px; background:transparent; border:none; color:var(--red); cursor:pointer;" onclick="clearAllFavorites()">Clear All Favorites</button>
+      <button class="s-action fav" style="margin-top:10px;" onclick="clearAllFavorites()">Clear all favorites</button>
+    </div>
+
+    <div class="stealth-setting">
+      <label for="smart-stealth-toggle">Stealth dot</label>
+      <input type="checkbox" id="smart-stealth-toggle" onchange="toggleStealthDot(this.checked)">
     </div>
   </div>
 </div>
@@ -369,11 +393,15 @@ function escHtml(s) {
 
 function copyComment(i) {
   const txt = comments[i].text;
-  navigator.clipboard.writeText(txt).then(() => {
+  return copyText(txt).then(() => {
     const btn = document.getElementById('btn-' + i);
     btn.textContent = 'Copied - personalize it';
     btn.classList.add('copied');
     setTimeout(() => { btn.textContent = 'Copy Starter'; btn.classList.remove('copied'); }, 2200);
+  }).catch(() => {
+    const btn = document.getElementById('btn-' + i);
+    btn.textContent = 'Copy failed';
+    setTimeout(() => { btn.textContent = 'Copy Starter'; }, 2200);
   });
 }
 
@@ -387,301 +415,627 @@ render(comments);
 
 /* --- SMART COMMENTS COMMAND CENTER LOGIC --- */
 
-// Toggle Drawer
-function toggleSmartPanel() {
-  document.getElementById('smart-drawer').classList.toggle('open');
+const SMART_FAVORITES_KEY = 'iccmafiaSmartCommentFavorites';
+const DAILY_TRACKER_KEY = 'iccmafiaSmartCommentDailyTracker';
+const STEALTH_DOT_KEY = 'iccmafiaSmartCommentStealthDot';
+const DAILY_TARGET = 5;
+const trackerPlatforms = ['youtube', 'tiktok', 'instagram', 'xthreads', 'reddit'];
+
+let smartFavorites = readStoredArray(SMART_FAVORITES_KEY);
+let dailyTracker = loadDailyTracker();
+let smartShuffleSeed = 0;
+let smartGeneratedStore = {};
+let smartLastGeneratedIds = [];
+
+const platformStyles = {
+  'youtube-long': {
+    name: 'YouTube Long-form',
+    platformFrame: 'On a longer breakdown, I would keep the comment process-focused.',
+    platformShort: 'Good long-form reminder: context first, entry second.',
+    platformQuestion: 'For a full video, I would ask what invalidates the setup before talking entries.'
+  },
+  'youtube-shorts': {
+    name: 'YouTube Shorts',
+    platformFrame: 'Shorts need the point fast, but it still has to add value.',
+    platformShort: 'Short version: no correction = no confirmation.',
+    platformQuestion: 'Quick question: where was the actual confirmation?'
+  },
+  tiktok: {
+    name: 'TikTok',
+    platformFrame: 'TikTok version should be short, punchy, and still disciplined.',
+    platformShort: 'No correction = no confirmation.',
+    platformQuestion: 'Was that confirmation or just a chase?'
+  },
+  instagram: {
+    name: 'Instagram Reels',
+    platformFrame: 'For Reels, I would keep it natural and avoid links.',
+    platformShort: 'Clean reminder: wait for confirmation, not emotion.',
+    platformQuestion: 'Did the lower timeframe confirm, or just make it look tempting?'
+  },
+  xthreads: {
+    name: 'X / Threads',
+    platformFrame: 'Mini-thought style works best here.',
+    platformShort: 'Mini thought: the pullback is not the entry by itself.',
+    platformQuestion: 'What would make this setup invalid?'
+  },
+  reddit: {
+    name: 'Reddit',
+    platformFrame: 'For Reddit, keep it discussion-first, no promo, and no links unless asked.',
+    platformShort: 'Process-wise, I would want confirmation before calling the pullback tradable.',
+    platformQuestion: 'How are you separating a valid correction from random lower-timeframe noise?'
+  },
+  facebook: {
+    name: 'Facebook',
+    platformFrame: 'Beginner-friendly and clear usually lands best here.',
+    platformShort: 'Simple rule: wait for the market to confirm before entering.',
+    platformQuestion: 'For beginners, what rule keeps you from entering too early?'
+  }
+};
+
+const contentCategoryAngles = {
+  icc: {
+    label: 'ICC / SMC / price action',
+    short: 'The ICC sequence matters more than one candle.',
+    core: 'The useful part is reading the sequence: Indication first, Correction next, Continuation only after confirmation.',
+    question: 'Where did the market show indication, correction, and continuation instead of just a fast candle?'
+  },
+  journal: {
+    label: 'Trading journal',
+    short: 'Journaling the entry reason is underrated.',
+    core: "This is why journaling the reason for entry matters. P&L alone doesn't show whether the trade actually followed the model.",
+    question: 'Are you tracking the reason for entry or only the final P&L?'
+  },
+  prop: {
+    label: 'Prop firm',
+    short: 'Prop firm mistakes repeat when they are not tracked.',
+    core: 'Most prop firm failures come from repeating the same untracked mistake. Journaling the entry reason is underrated.',
+    question: 'Which mistake shows up most before a prop firm drawdown: early entry, revenge, or oversized risk?'
+  },
+  psychology: {
+    label: 'Trading psychology',
+    short: 'The correction phase is where patience gets tested.',
+    core: "The correction phase is where patience gets tested. If there's no confirmation, the entry is usually just FOMO.",
+    question: 'How do you stop yourself from turning a correction into a forced entry?'
+  },
+  risk: {
+    label: 'Risk management',
+    short: 'A green trade can still be a bad trade if it broke the model.',
+    core: "A green trade can still be a bad trade if it broke the model. That's why review matters more than just the result.",
+    question: 'Was the risk planned before the entry, or adjusted after the candle started moving?'
+  },
+  beginner: {
+    label: 'Beginner trading',
+    short: 'Beginners need fewer rules, not more noise.',
+    core: 'For beginners, the cleanest filter is simple: mark the higher timeframe, wait for correction, then only enter after confirmation.',
+    question: 'If you are new, can you explain the setup without using ten different acronyms?'
+  },
+  multiTimeframe: {
+    label: 'Multi-timeframe analysis',
+    short: 'HTF gives the bias; LTF refines timing.',
+    core: 'HTF gives the bias, but LTF should only refine timing. A lot of traders flip that and let the small timeframe confuse the whole idea.',
+    question: 'Is the lower timeframe confirming the higher-timeframe idea, or fighting it?'
+  },
+  entry: {
+    label: 'Entry confirmation',
+    short: 'Every pullback is not an entry.',
+    core: 'The biggest mistake is treating every pullback like an entry. Correction still needs confirmation before continuation matters.',
+    question: 'What confirmed the entry beyond price simply pulling back?'
+  },
+  target: {
+    label: 'Target setting',
+    short: 'Targets should come from structure, not hope.',
+    core: 'A clean target should be planned around structure and liquidity before the trade starts, not invented while emotions are high.',
+    question: 'Was the target planned from structure before entry, or chosen after the trade was already moving?'
+  },
+  education: {
+    label: 'General trading education',
+    short: 'The lesson is process, not prediction.',
+    core: 'Good trading education should make decisions more repeatable. If it only creates excitement, it usually leads to chasing.',
+    question: 'What part of this idea turns into a repeatable rule?'
+  }
+};
+
+const intentAngles = {
+  value: 'The useful part is turning the idea into a rule you can review later.',
+  question: 'A good question here is what would invalidate the idea.',
+  beginnerHelp: 'For a beginner, the cleanest next step is slowing the setup down and naming each phase.',
+  journaling: 'The journal should show whether the setup followed the model, not just whether it made money.',
+  riskAngle: 'Risk has to be defined before the entry, otherwise the setup starts bending around emotion.',
+  psychologyAngle: 'The mental test is waiting through the messy part without forcing a trade.',
+  softMention: 'I have been tracking this in my own ICCMAFIA-AI journal because the review process exposes repeated mistakes.',
+  noLink: 'No link needed; the point is to track the process honestly.',
+  whatIsIcc: 'The way I am studying it, ICC is about reading the sequence: Indication, Correction, then Continuation. The key is not skipping the correction phase.',
+  criticism: 'Fair to be skeptical. A framework only matters if it creates repeatable decisions and controlled risk.',
+  thanks: 'Appreciate the breakdown. The process piece is what matters most here.',
+  discussion: 'This is a good discussion topic because most traders see the same chart but manage the correction differently.'
+};
+
+const courseDayAngles = {
+  none: { short: '', sentence: '', question: '' },
+  day1: {
+    short: 'One timeframe can be misleading without correlation and context.',
+    sentence: 'Day 1 angle: correlation and context matter because one timeframe can make a setup look cleaner than it really is.',
+    question: 'What higher-timeframe context would stop this from being a one-chart opinion?'
+  },
+  day2: {
+    short: 'HTF bias is the compass before the lower-timeframe entry.',
+    sentence: 'Day 2 angle: the higher timeframe should act like the compass before the lower timeframe gets a vote.',
+    question: 'What is the higher-timeframe bias saying before you look for an entry?'
+  },
+  day3: {
+    short: 'LTF precision should not override HTF context.',
+    sentence: 'Day 3 angle: the lower timeframe is for precision, but small-timeframe noise should not override the bigger map.',
+    question: 'Is the LTF refining the idea or creating noise against the higher-timeframe context?'
+  },
+  day4: {
+    short: 'Wait for alignment before entry.',
+    sentence: 'Day 4 angle: the setup gets cleaner when bias, correction, and entry confirmation align before execution.',
+    question: 'What would show real alignment before taking the entry?'
+  },
+  day5: {
+    short: 'Targets and exits should be planned before emotions get loud.',
+    sentence: 'Day 5 angle: targets should come from structure, liquidity, and planning rather than random exits mid-trade.',
+    question: 'Where was the target before the entry, and what structure supported it?'
+  },
+  day6: {
+    short: 'HTF bias, mid-timeframe correction, LTF entry timing.',
+    sentence: 'Day 6 angle: the cleanest read is HTF bias, mid-timeframe correction, then LTF entry timing.',
+    question: 'Did all three timeframes agree, or did the entry timeframe carry the whole idea?'
+  },
+  day7: {
+    short: 'Price action requires context, not just patterns.',
+    sentence: 'Day 7 angle: Simple price action patterns like candlesticks and support/resistance zones only matter if the underlying market context supports them.',
+    question: 'Are you trading the candlestick pattern in isolation, or does the market structure actually support it?'
+  }
+};
+
+const smartCommentTemplates = {
+  short: [
+    '{platformShort}',
+    '{categoryShort}',
+    '{dayShort}',
+    '{topicShort}The setup still needs confirmation before continuation matters.',
+    'No hype needed. {categoryShort}',
+    'Process over prediction. {categoryShort}',
+    'Clean reminder: if the model breaks, the result does not excuse it.',
+    'The pullback is information, not permission to enter.'
+  ],
+  medium: [
+    '{categoryCore} {intentSentence}',
+    '{platformFrame} {categoryCore}',
+    '{topicLead}{categoryCore} {daySentence}',
+    'The best filter is asking whether the trade followed the model or only felt obvious after price moved. {categoryCore}',
+    '{daySentence} {intentSentence}',
+    'A lot of traders judge the trade by the outcome only. The better review is whether the entry, risk, and target matched the plan.',
+    'The correction phase is where discipline gets tested. If confirmation never prints, the trade is usually just a reaction.',
+    'This is why a clean review matters. The same mistake will keep repeating until it has a name in the journal.'
+  ],
+  question: [
+    '{platformQuestion}',
+    '{categoryQuestion}',
+    '{dayQuestion}',
+    'What would invalidate this setup before it turns into a prediction?',
+    'Are you entering because price confirmed the idea, or because the move feels like it might leave without you?',
+    'Do you track whether the setup followed the model, or only whether it ended green or red?',
+    'Where is the correction in this sequence, and what confirms continuation after it?',
+    'What part of this trade would you want to see repeated over the next 20 examples?'
+  ],
+  soft: [
+    'This is the exact reason I started building a free ICC-style journal for myself - tracking whether the setup actually followed the process changed how I review trades.',
+    '{categoryCore} I have been tracking this inside ICCMAFIA-AI because the journal makes the repeated mistakes harder to ignore.',
+    'The ICC idea helped me slow this down: Indication, Correction, then Continuation. I built my own free journal around that process so I could review the model honestly.',
+    '{topicLead}This is the kind of thing I like tracking in ICCMAFIA-AI: did the trade follow the process, or did I react to the candle?',
+    '{daySentence} That is exactly the kind of note I would save in an ICC-style review journal.'
+  ],
+  nolink: [
+    'Tracking the reason for entry is underrated. It shows whether the trade followed the model or whether it was just a reaction.',
+    '{categoryCore}',
+    '{daySentence} No link needed; the useful part is whether the rule can be repeated.',
+    'The cleanest review question is simple: did I wait for confirmation, or did I enter because I wanted to be early?',
+    'If the entry needs a perfect outcome to make sense, the planning probably was not clean enough.'
+  ],
+  replies: [
+    'Agree with the process point. If there is no confirmation, there is no reason to force the trade.',
+    '{intentSentence} That is the part most traders skip when the candle starts moving fast.',
+    '{categoryCore} Good breakdown.',
+    'Fair point. I would still want to see where the correction ended before calling it continuation.',
+    'That is the exact area where journaling helps because it separates the setup from the emotion.'
+  ],
+  pinned: [
+    'Pinned thought: the goal is not to catch every move. It is to wait for indication, study the correction, and only act when continuation confirms. What part of that sequence do you struggle with most?',
+    'Pinned question: are you tracking why you entered, or only whether the trade won? Drop the part of the process you want to improve next.',
+    'Pinned reminder: a clean setup should have bias, correction, confirmation, risk, and target planned before the entry.'
+  ],
+  followup: [
+    'Follow-up question: what would you need to see before calling this a confirmed continuation?',
+    'Follow-up question: which timeframe gives the bias here, and which one is only refining entry?',
+    'Follow-up question: did the correction improve the setup, or did it just tempt an early entry?',
+    'Follow-up question: what would you write in the journal if this same setup appeared again tomorrow?'
+  ]
+};
+
+const smartOutputGroups = [
+  { key: 'short', title: 'A. Short comments', count: 5 },
+  { key: 'medium', title: 'B. Medium comments', count: 5 },
+  { key: 'question', title: 'C. Question comments', count: 5 },
+  { key: 'soft', title: 'D. Soft ICCMAFIA-AI mention comments', count: 3 },
+  { key: 'nolink', title: 'E. No-link comments', count: 3 },
+  { key: 'replies', title: 'F. Replies', count: 3 },
+  { key: 'pinned', title: 'G. Pinned comment for my own post', count: 1 },
+  { key: 'followup', title: 'H. Follow-up question', count: 1 }
+];
+
+function setSmartPanel(open) {
+  const drawer = document.getElementById('smart-drawer');
+  const button = document.getElementById('stealth-btn');
+  drawer.classList.toggle('open', open);
+  drawer.setAttribute('aria-hidden', String(!open));
+  button.setAttribute('aria-expanded', String(open));
+  document.body.classList.toggle('smart-drawer-open', open);
 }
 
-// Keyboard Shortcut & Hash Trigger
+function toggleSmartPanel(force) {
+  const drawer = document.getElementById('smart-drawer');
+  const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
+  setSmartPanel(open);
+}
+
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
     e.preventDefault();
     toggleSmartPanel();
+    return;
+  }
+  if (e.key === 'Escape' && document.getElementById('smart-drawer').classList.contains('open')) {
+    setSmartPanel(false);
   }
 });
-if (window.location.hash === '#smart') {
-  setTimeout(() => toggleSmartPanel(), 500);
+
+function readStoredArray(key) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key) || '[]');
+    return Array.isArray(value) ? value : [];
+  } catch (error) {
+    return [];
+  }
 }
 
-// Daily Tracker Logic
-let dailyTracker = JSON.parse(localStorage.getItem('iccmafiaSmartCommentDailyTracker')) || { date: '', count: 0 };
-function initTracker() {
-  const today = new Date().toLocaleDateString();
-  if (dailyTracker.date !== today) {
-    dailyTracker = { date: today, count: 0 };
-    saveTracker();
+function writeStoredArray(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getTodayKey() {
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${now.getFullYear()}-${month}-${day}`;
+}
+
+function freshTracker() {
+  return { date: getTodayKey(), counts: { youtube: 0, tiktok: 0, instagram: 0, xthreads: 0, reddit: 0 } };
+}
+
+function loadDailyTracker() {
+  let saved = null;
+  try {
+    saved = JSON.parse(localStorage.getItem(DAILY_TRACKER_KEY) || 'null');
+  } catch (error) {
+    saved = null;
   }
-  updateTrackerUI();
+  if (!saved || saved.date !== getTodayKey()) return freshTracker();
+  const tracker = freshTracker();
+  if (saved.counts && typeof saved.counts === 'object') {
+    trackerPlatforms.forEach((key) => {
+      tracker.counts[key] = Number(saved.counts[key]) || 0;
+    });
+  } else if (typeof saved.count === 'number') {
+    tracker.counts.youtube = saved.count;
+  }
+  return tracker;
 }
+
 function saveTracker() {
-  localStorage.setItem('iccmafiaSmartCommentDailyTracker', JSON.stringify(dailyTracker));
+  localStorage.setItem(DAILY_TRACKER_KEY, JSON.stringify(dailyTracker));
 }
-function addTrackCount(plat) {
-  dailyTracker.count++;
+
+function trackerTotal() {
+  return trackerPlatforms.reduce((sum, key) => sum + (Number(dailyTracker.counts[key]) || 0), 0);
+}
+
+function addTrackCount(platform) {
+  if (!trackerPlatforms.includes(platform)) return;
+  dailyTracker.counts[platform] += 1;
   saveTracker();
   updateTrackerUI();
 }
+
 function resetTracker() {
-  dailyTracker.count = 0;
+  dailyTracker = freshTracker();
   saveTracker();
   updateTrackerUI();
 }
+
 function updateTrackerUI() {
-  document.getElementById('tracker-total').textContent = `Total: ${dailyTracker.count}`;
+  const total = trackerTotal();
+  document.getElementById('tracker-total').textContent = `Total: ${total} / ${DAILY_TARGET}`;
+  trackerPlatforms.forEach((key) => {
+    const el = document.getElementById(`tracker-${key}`);
+    if (el) el.textContent = dailyTracker.counts[key];
+  });
   const warn = document.getElementById('tracker-warning');
-  if (dailyTracker.count >= 10) {
+  if (total >= 10) {
     warn.style.display = 'block';
-    warn.style.background = 'rgba(239,68,68,0.1)';
-    warn.style.color = '#f87171';
-    warn.textContent = 'Upper limit reached (10+). Stop mass-commenting today.';
-  } else if (dailyTracker.count >= 5) {
+    warn.style.background = 'rgba(239,68,68,0.12)';
+    warn.style.color = '#fecaca';
+    warn.textContent = 'Upper limit reached. Do not keep mass-commenting today.';
+  } else if (total >= DAILY_TARGET) {
     warn.style.display = 'block';
-    warn.style.background = 'rgba(245,158,11,0.1)';
-    warn.style.color = '#fbbf24';
-    warn.textContent = 'Daily target reached (5). Switch to replies or prep for tomorrow.';
+    warn.style.background = 'rgba(245,158,11,0.12)';
+    warn.style.color = '#fde68a';
+    warn.textContent = 'Daily target reached. Switch to replies, analytics, or tomorrow’s content prep.';
   } else {
     warn.style.display = 'none';
   }
 }
-initTracker();
 
-// Favorites Logic
-let smartFavorites = JSON.parse(localStorage.getItem('iccmafiaSmartCommentFavorites')) || [];
-function saveSmartFavorite(text) {
-  if (!smartFavorites.includes(text)) {
-    smartFavorites.push(text);
-    localStorage.setItem('iccmafiaSmartCommentFavorites', JSON.stringify(smartFavorites));
-    renderSmartFavorites();
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    const clipboardWrite = navigator.clipboard.writeText(text);
+    const timeout = new Promise((resolve, reject) => {
+      setTimeout(() => reject(new Error('Clipboard timeout')), 700);
+    });
+    return Promise.race([clipboardWrite, timeout]).catch(() => fallbackCopyText(text));
   }
+  return fallbackCopyText(text);
 }
-function removeSmartFavorite(index) {
-  smartFavorites.splice(index, 1);
-  localStorage.setItem('iccmafiaSmartCommentFavorites', JSON.stringify(smartFavorites));
-  renderSmartFavorites();
-}
-function clearAllFavorites() {
-  if(confirm("Clear all saved favorites?")) {
-    smartFavorites = [];
-    localStorage.setItem('iccmafiaSmartCommentFavorites', JSON.stringify(smartFavorites));
-    renderSmartFavorites();
-  }
-}
-function copySmart(btn, text) {
-  navigator.clipboard.writeText(text).then(() => {
-    const orig = btn.textContent;
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = orig, 2000);
+
+function fallbackCopyText(text) {
+  return new Promise((resolve, reject) => {
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.left = '-9999px';
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    area.setSelectionRange(0, area.value.length);
+    try {
+      document.execCommand('copy') ? resolve() : reject(new Error('Copy failed'));
+    } catch (error) {
+      reject(error);
+    } finally {
+      document.body.removeChild(area);
+    }
   });
 }
+
+function flashButton(btn, label) {
+  if (!btn) return;
+  const original = btn.textContent;
+  btn.textContent = label || 'Copied';
+  setTimeout(() => { btn.textContent = original; }, 1600);
+}
+
+function copySmartGenerated(id, btn) {
+  const text = smartGeneratedStore[id];
+  if (!text) return;
+  return copyText(text).then(() => flashButton(btn, 'Copied')).catch(() => flashButton(btn, 'Copy failed'));
+}
+
+function copySmartFavorite(index, btn) {
+  const text = smartFavorites[index];
+  if (!text) return;
+  return copyText(text).then(() => flashButton(btn, 'Copied')).catch(() => flashButton(btn, 'Copy failed'));
+}
+
+function saveGeneratedFavorite(id, btn) {
+  const text = smartGeneratedStore[id];
+  if (!text) return;
+  saveSmartFavorite(text);
+  flashButton(btn, 'Saved');
+}
+
+function saveSmartFavorite(text) {
+  if (!smartFavorites.includes(text)) {
+    smartFavorites.unshift(text);
+    writeStoredArray(SMART_FAVORITES_KEY, smartFavorites);
+    renderSmartFavorites();
+  }
+}
+
+function removeSmartFavorite(index) {
+  smartFavorites.splice(index, 1);
+  writeStoredArray(SMART_FAVORITES_KEY, smartFavorites);
+  renderSmartFavorites();
+}
+
+function clearAllFavorites() {
+  if (confirm('Clear all saved favorites?')) {
+    smartFavorites = [];
+    writeStoredArray(SMART_FAVORITES_KEY, smartFavorites);
+    renderSmartFavorites();
+  }
+}
+
 function renderSmartFavorites() {
   const container = document.getElementById('smart-favorites');
-  if (smartFavorites.length === 0) {
-    container.innerHTML = '<div style="font-size:12px; color:var(--muted);">No favorites saved yet.</div>';
+  if (!smartFavorites.length) {
+    container.innerHTML = '<div style="font-size:12px;color:var(--muted);">No favorites saved yet.</div>';
     return;
   }
   container.innerHTML = smartFavorites.map((fav, i) => `
     <div class="smart-card">
-      <div class="smart-card-text">${fav}</div>
+      <div class="smart-card-text">${escHtml(fav)}</div>
       <div class="smart-card-actions">
-        <button class="s-action" onclick="copySmart(this, \`${fav.replace(/`/g, '\\`')}\`)">Copy</button>
-        <button class="s-action fav" onclick="removeSmartFavorite(${i})">Remove</button>
+        <button class="s-action" onclick="copySmartFavorite(${i}, this)">Copy favorite</button>
+        <button class="s-action fav" onclick="removeSmartFavorite(${i})">Delete favorite</button>
       </div>
     </div>
   `).join('');
 }
-renderSmartFavorites();
 
-// Generation Logic
-const templates = {
-  short: [
-    "No correction = no confirmation. Process over P&L.",
-    "The biggest mistake is treating every pullback like an entry.",
-    "Tracking the reason for entry > tracking the dollar amount.",
-    "HTF gives the bias, LTF is just for timing.",
-    "A green trade can still be a bad trade if it broke the model."
-  ],
-  medium: [
-    "Most prop firm failures come from repeating the same untracked mistake. Journaling the entry reason is underrated.",
-    "HTF gives the bias, but LTF should only refine timing. A lot of traders flip that and let the small timeframe confuse the whole idea.",
-    "This is why journaling the reason for entry matters. P&L alone doesn't show whether the trade actually followed the model.",
-    "The correction phase is where patience gets tested. If there's no confirmation, the entry is usually just FOMO.",
-    "A green trade can still be a bad trade if it broke the model. That's why review matters more than just the result."
-  ],
-  question: [
-    "How do you handle the correction phase when the 15m structure looks messy?",
-    "Curious how you filter out LTF noise when your HTF bias is clear?",
-    "What's your biggest struggle right now: finding the Indication or waiting for the Correction?",
-    "Do you track your 'Grade A' setups separately from your impulsive trades?",
-    "How often do you review your past trades to spot repeating mistakes?"
-  ],
-  soft: [
-    "This is the exact reason I started building a free ICC-style journal for myself — tracking whether the setup actually followed the process changed how I review trades.",
-    "I was struggling with this until I built my own study system for the ICC method. Keeping the rules strict is the only way.",
-    "If you're studying order flow, the ICC method is worth looking into. I built a free study site for it to help myself stay disciplined."
-  ],
-  nolink: [
-    "Tracking the reason for entry is underrated. It shows whether the trade followed the model or whether it was just a reaction.",
-    "Patience during the correction phase is literally what separates gamblers from traders.",
-    "Reviewing your trades on the weekend is a cheat code. It exposes patterns you miss in the moment."
-  ],
-  replies: [
-    "Totally agree with this. If there's no confirmation, there's no edge.",
-    "This is exactly what I've been working on. Great breakdown.",
-    "The way I'm studying it, ICC is about reading the sequence: Indication, Correction, then Continuation. The key is not skipping the correction phase."
-  ],
-  pinned: [
-    "Drop your biggest takeaway from this breakdown below 👇 Did you spot the correction phase?",
-    "What's your #1 rule for staying disciplined during the Asian session? Let me know 👇"
-  ],
-  followup: [
-    "But honestly, how many of us actually wait for the clear continuation? 😅",
-    "What's the hardest part of this setup for you to execute live?"
-  ]
-};
+function getSmartContext() {
+  const platform = platformStyles[document.getElementById('smart-platform').value] || platformStyles['youtube-long'];
+  const category = contentCategoryAngles[document.getElementById('smart-category').value] || contentCategoryAngles.icc;
+  const intent = intentAngles[document.getElementById('smart-intent').value] || intentAngles.value;
+  const day = courseDayAngles[document.getElementById('smart-day').value] || courseDayAngles.none;
+  const topic = document.getElementById('smart-topic').value.trim();
+  const linkMode = document.getElementById('smart-link').value;
+  return {
+    platformShort: platform.platformShort,
+    platformFrame: platform.platformFrame,
+    platformQuestion: platform.platformQuestion,
+    categoryShort: category.short,
+    categoryCore: category.core,
+    categoryQuestion: category.question,
+    intentSentence: intent,
+    dayShort: day.short,
+    daySentence: day.sentence,
+    dayQuestion: day.question,
+    topicShort: topic ? `On ${topic}: ` : '',
+    topicLead: topic ? `Speaking of ${topic}, ` : '',
+    linkSentence: linkSentenceFor(linkMode)
+  };
+}
 
-const dayAngles = {
-  day1: "Correlation and context matter more than one timeframe.",
-  day2: "Always trust your HTF bias as your compass.",
-  day3: "LTF is a microscope, don't let it override the HTF context.",
-  day4: "Alignment is everything before pulling the trigger.",
-  day5: "Set your targets logically based on liquidity, not hope.",
-  day6: "HTF bias + Mid TF correction + LTF entry = the holy trinity."
-};
+function linkSentenceFor(mode) {
+  if (mode === 'soft') {
+    return 'I have been tracking this inside my own ICCMAFIA-AI journal, but the useful part is the review habit, not a link.';
+  }
+  if (mode === 'ifAsked') {
+    return 'If someone asks, I can share the free ICCMAFIA-AI notes or journal, but I would lead with the process first.';
+  }
+  return '';
+}
 
-const dayPodcastData = {
-  day1: { title: "Day 1: The Correlation Problem", topic: "Why one chart can confuse your trading without higher-timeframe context.", bullets: "Why one timeframe can create confusion\nHow higher-timeframe context helps\nWhy correlation is not the same as confirmation" },
-  day2: { title: "Day 2: HTF Compass", topic: "Using the higher timeframe as the directional compass.", bullets: "Reviewing HTF Compass\nThe higher timeframe gives directional context\nJournaling questions for this setup" },
-  day3: { title: "Day 3: LTF Microscope", topic: "Using the lower timeframe for precision without letting it override higher-timeframe context.", bullets: "Reviewing LTF Microscope\nThe lower timeframe helps refine execution\nDon't let LTF override the big picture" },
-  day4: { title: "Day 4: Aligning for Entry", topic: "Waiting for the trading idea to align before taking an entry.", bullets: "Reviewing Aligning for Entry\nEntry should happen after alignment\nNot because of impatience" },
-  day5: { title: "Day 5: Setting Your Target", topic: "Understanding target selection, trade planning, and avoiding random exits.", bullets: "Reviewing Setting Your Target\nTargets should be planned with structure\nAvoiding emotional exits" },
-  day6: { title: "Day 6: How 3 Timeframes Fixed My Entries", topic: "HTF bias, mid-timeframe correction, and LTF entry timing.", bullets: "The Three-Tier Hierarchy\nThe Traffic Light System\nConfluence pointing to the same price level" }
-};
+function contextForGroup(base, groupKey) {
+  const ctx = { ...base };
+  if (groupKey === 'nolink') ctx.linkSentence = '';
+  if (groupKey === 'soft' && !ctx.linkSentence) {
+    ctx.linkSentence = 'I have been tracking this inside my own ICCMAFIA-AI journal because it keeps the review focused on process.';
+  }
+  return ctx;
+}
 
+function fillSmartTemplate(template, ctx) {
+  return template.replace(/\{(\w+)\}/g, (match, key) => ctx[key] || '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,.?!])/g, '$1')
+    .replace(/(^|\. )([a-z])/g, (match) => match.toUpperCase())
+    .trim();
+}
 
-function generateSmartComments() {
-  const plat = document.getElementById('smart-platform').value;
-  const day = document.getElementById('smart-day').value;
-  const topic = document.getElementById('smart-topic').value;
-  const link = document.getElementById('smart-link').value;
-  
-  const out = document.getElementById('smart-output');
-  out.style.display = 'block';
-  
-  let linkStr = "";
-  if (link === "soft") linkStr = " (Link in bio if you want to use the free ICC journal).";
-  if (link === "ifasked") linkStr = " (I built a free tool for this, let me know if you want the link).";
+function rotateList(list, amount) {
+  if (!list.length) return [];
+  const offset = amount % list.length;
+  return list.slice(offset).concat(list.slice(0, offset));
+}
 
-  let dayStr = day !== "none" ? ` ${dayAngles[day]}` : "";
-
-  if (plat === 'podcast') {
-    let pTitle = "Trading Concepts";
-    let pTopic = topic || "Market structure and review.";
-    let pBullets = "- What to journal after reviewing a setup\n- Free tools at ICCMAFIA-AI";
-
-    if (day !== "none" && dayPodcastData[day]) {
-      pTitle = dayPodcastData[day].title;
-      pTopic = dayPodcastData[day].topic;
-      pBullets = dayPodcastData[day].bullets.split('\\n').map(b => '- ' + b).join('\\n');
+function buildSmartComments(group, baseContext) {
+  const templates = smartCommentTemplates[group.key] || [];
+  const rotated = rotateList(templates, smartShuffleSeed + group.key.length);
+  const ctx = contextForGroup(baseContext, group.key);
+  const commentsOut = [];
+  let index = 0;
+  while (commentsOut.length < group.count && index < rotated.length * 2) {
+    const template = rotated[index % rotated.length];
+    let text = fillSmartTemplate(template, ctx);
+    if (ctx.linkSentence && group.key !== 'nolink' && (group.key === 'soft' || index % 3 === 0)) {
+      text = `${text} ${ctx.linkSentence}`.replace(/\s+/g, ' ').trim();
     }
-
-    const outTxt = \`# 🎙️ Podcast & Substack Pack
-
-## Podcast Title
-\${pTitle}
-
-## Substack Title
-\${pTopic}
-
-## Show Notes
-\${pBullets}
-- What to journal after reviewing a setup
-- Free tools at ICCMAFIA-AI
-
-## Substack Intro
-"This episode is all about \${pTopic}. This post breaks down how I'm studying these concepts inside the free ICCMAFIA-AI system."
-
-## Full Substack Post
-The goal is not signals, the goal is process. I'm studying how to wait for the Indication, Correction, and Continuation sequence to play out. Without a solid map, it's just noise.
-
-## Reddit Post (r/Daytrading / r/Forex)
-**Title:** \${pTitle} - \${pTopic}
-**Body:** 
-I've been journaling my progress using the Indication-Correction-Continuation framework. One of the biggest lessons so far: \${pTopic}.
-
-\${pBullets}
-
-I put together my full study notes and a podcast overview on this. Everything is totally free and ad-free. Anyone else mapping their timeframe alignment like this?
-
-## Journal Prompts
-- What timeframe was I focused on?
-- Did I check higher-timeframe context?
-- Was my bias based on structure or emotion?\`;
-
-    out.innerHTML = \`
-      <div class="output-section">
-        <div class="output-title">🎙️ Generated Podcast/Substack Assets</div>
-        <div class="smart-card">
-          <div class="smart-card-text">\${outTxt.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
-          <div class="smart-card-actions">
-            <button class="s-action" onclick="copySmart(this, \\\`\${outTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Copy All</button>
-            <button class="s-action fav" onclick="saveSmartFavorite(\\\`\${outTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Save Fav</button>
-          </div>
-        </div>
-      </div>
-    \`;
-    return;
+    if (text && !commentsOut.includes(text)) commentsOut.push(text);
+    index++;
   }
+  return commentsOut;
+}
 
-  let topicStr = topic ? ` Speaking of ${topic}, ` : " ";
-
-  function makeCard(text) {
-    let finalTxt = text + topicStr + dayStr + linkStr;
-    finalTxt = finalTxt.replace(/\\s+/g, ' ').trim();
-    return \`
+function renderSmartGroup(group, baseContext) {
+  const generated = buildSmartComments(group, baseContext);
+  const cards = generated.map((text, i) => {
+    const id = `smart-${group.key}-${i}`;
+    smartGeneratedStore[id] = text;
+    smartLastGeneratedIds.push(id);
+    return `
       <div class="smart-card">
-        <div class="smart-card-text">\${finalTxt}</div>
+        <div class="smart-card-text">${escHtml(text)}</div>
         <div class="smart-card-actions">
-          <button class="s-action" onclick="copySmart(this, \\\`\${finalTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Copy</button>
-          <button class="s-action fav" onclick="saveSmartFavorite(\\\`\${finalTxt.replace(/\\\`/g, '\\\\\\\`')}\\\`)">Save Fav</button>
+          <button class="s-action" data-smart-action="copy" data-smart-id="${id}" onclick="copySmartGenerated('${id}', this)">Copy</button>
+          <button class="s-action fav" data-smart-action="favorite" data-smart-id="${id}" onclick="saveGeneratedFavorite('${id}', this)">Save Favorite</button>
         </div>
       </div>
-    \`;
-  }
-
-  out.innerHTML = `
+    `;
+  }).join('');
+  return `
     <div class="output-section">
-      <div class="output-title">A. Short Comments</div>
-      ${templates.short.map(t => makeCard(t)).join('')}
-    </div>
-    <div class="output-section">
-      <div class="output-title">B. Medium Comments</div>
-      ${templates.medium.map(t => makeCard(t)).join('')}
-    </div>
-    <div class="output-section">
-      <div class="output-title">C. Question Comments</div>
-      ${templates.question.map(t => makeCard(t)).join('')}
-    </div>
-    <div class="output-section">
-      <div class="output-title">D. Soft Mentions</div>
-      ${templates.soft.map(t => makeCard(t)).join('')}
-    </div>
-    <div class="output-section">
-      <div class="output-title">E. No-Link Comments</div>
-      ${templates.nolink.map(t => makeCard(t)).join('')}
-    </div>
-    <div class="output-section">
-      <div class="output-title">F. Replies</div>
-      ${templates.replies.map(t => makeCard(t)).join('')}
+      <div class="output-title"><span>${group.title}</span><span class="output-kicker">${generated.length} ideas</span></div>
+      ${cards}
     </div>
   `;
 }
 
-function copyAllSmart() {
-  const cards = document.querySelectorAll('.smart-card-text');
-  let allTxt = "";
-  cards.forEach(c => allTxt += c.textContent + "\n\n");
-  navigator.clipboard.writeText(allTxt.trim()).then(() => alert("Copied all generated comments!"));
+function generateSmartComments() {
+  const out = document.getElementById('smart-output');
+  smartGeneratedStore = {};
+  smartLastGeneratedIds = [];
+  out.innerHTML = smartOutputGroups.map((group) => renderSmartGroup(group, getSmartContext())).join('');
+  out.style.display = 'block';
 }
+
+function shuffleSmartComments() {
+  smartShuffleSeed += 1;
+  generateSmartComments();
+}
+
+function copyAllSmart() {
+  if (!smartLastGeneratedIds.length) generateSmartComments();
+  const allText = smartLastGeneratedIds.map((id) => smartGeneratedStore[id]).filter(Boolean).join('\n\n');
+  if (!allText) return;
+  return copyText(allText).then(() => {
+    const btn = Array.from(document.querySelectorAll('.smart-btn')).find((button) => button.textContent === 'Copy All');
+    flashButton(btn, 'Copied');
+  }).catch(() => {
+    const btn = Array.from(document.querySelectorAll('.smart-btn')).find((button) => button.textContent === 'Copy All');
+    flashButton(btn, 'Copy failed');
+  });
+}
+
+function resetSmartForm() {
+  document.getElementById('smart-platform').value = 'youtube-long';
+  document.getElementById('smart-category').value = 'icc';
+  document.getElementById('smart-intent').value = 'value';
+  document.getElementById('smart-day').value = 'none';
+  document.getElementById('smart-topic').value = '';
+  document.getElementById('smart-link').value = 'none';
+  document.getElementById('smart-output').style.display = 'none';
+  document.getElementById('smart-output').innerHTML = '';
+  smartGeneratedStore = {};
+  smartLastGeneratedIds = [];
+}
+
+function toggleStealthDot(enabled) {
+  localStorage.setItem(STEALTH_DOT_KEY, enabled ? '1' : '0');
+  document.body.classList.toggle('smart-stealth-dot', enabled);
+}
+
+function initStealthDot() {
+  const enabled = localStorage.getItem(STEALTH_DOT_KEY) === '1';
+  document.body.classList.toggle('smart-stealth-dot', enabled);
+  const toggle = document.getElementById('smart-stealth-toggle');
+  if (toggle) toggle.checked = enabled;
+}
+
+updateTrackerUI();
+renderSmartFavorites();
+initStealthDot();
+
+function openSmartHash() {
+  if (window.location.hash === '#smart') {
+    setTimeout(() => setSmartPanel(true), 80);
+  }
+}
+window.addEventListener('hashchange', openSmartHash);
+openSmartHash();
 </script>
 </body>
 </html>
