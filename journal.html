@@ -2515,6 +2515,29 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
   // ── PROP FIRM TRACKER ─────────────────────────────
   let propRules = { accountSize: 50000, dailyLoss: 1000, maxDD: 2000, profitTarget: 3000 };
 
+  function toggleMasterPropTracker(isEnabled) {
+    localStorage.setItem('tbs_prop_enabled', isEnabled ? '1' : '0');
+    const card = document.getElementById('prop-firm-card');
+    if (card) card.style.display = isEnabled ? 'block' : 'none';
+    
+    // Update switch UI
+    const knob = document.getElementById('prop-toggle-knob');
+    const track = knob ? knob.previousElementSibling : null;
+    if (knob && track) {
+      if (isEnabled) {
+        knob.style.transform = 'translateX(16px)';
+        knob.style.backgroundColor = '#fff';
+        track.style.backgroundColor = 'var(--gold)';
+        track.style.borderColor = 'var(--gold)';
+      } else {
+        knob.style.transform = 'translateX(0)';
+        knob.style.backgroundColor = 'var(--muted)';
+        track.style.backgroundColor = 'var(--surface3)';
+        track.style.borderColor = 'var(--border)';
+      }
+    }
+  }
+
   function loadPropRules() {
     const raw = localStorage.getItem('tbs_prop_rules');
     if (raw) { try { propRules = { ...propRules, ...JSON.parse(raw) }; } catch(e) {} }
@@ -2522,6 +2545,13 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     document.getElementById('prop-daily-loss').value = propRules.dailyLoss || '';
     document.getElementById('prop-max-dd').value = propRules.maxDD || '';
     document.getElementById('prop-profit-target').value = propRules.profitTarget || '';
+
+    // Restore Master Toggle state
+    const enabled = localStorage.getItem('tbs_prop_enabled') !== '0'; // default true
+    const cb = document.getElementById('toggle-prop-tracker');
+    if (cb) cb.checked = enabled;
+    toggleMasterPropTracker(enabled);
+
     // Restore collapsed state
     const collapsed = localStorage.getItem('tbs_prop_collapsed') === '1';
     if (collapsed) {
@@ -2675,6 +2705,16 @@ Date,Pair/Ticker,Direction,Result / P&amp;L ($),Tags (Comma separated),Notes &am
     <div class="modal-title">Manage Accounts</div>
     <div id="accounts-list" style="margin-bottom: 20px; display:flex; flex-direction:column; gap:10px;"></div>
     <hr class="section-divider">
+    
+    <div style="margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; background:var(--surface); padding:12px; border-radius:8px; border:1px solid var(--border);">
+      <span style="font-size:13px; font-weight:600; color:var(--text);">Show Prop Firm Tracker</span>
+      <label style="position:relative; display:inline-block; width:36px; height:20px; margin:0;">
+        <input type="checkbox" id="toggle-prop-tracker" onchange="toggleMasterPropTracker(this.checked)" style="opacity:0; width:0; height:0; position:absolute;">
+        <span style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:var(--surface3); transition:.3s; border-radius:34px; border:1px solid var(--border);"></span>
+        <span id="prop-toggle-knob" style="position:absolute; height:12px; width:12px; left:3px; bottom:3px; background-color:var(--muted); transition:.3s; border-radius:50%;"></span>
+      </label>
+    </div>
+
     <div class="form-group">
       <label>New Account Name</label>
       <input type="text" id="new-account-name" class="form-control" placeholder="e.g. Apex 50k Eval">
