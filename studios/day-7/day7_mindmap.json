@@ -1,0 +1,138 @@
+{
+  "name": "Trades by Sai: ICC Trading Course",
+  "children": [
+    {
+      "name": "Fundamentals of Price Action",
+      "children": [
+        {
+          "name": "Market Conditions",
+          "children": [
+            {
+              "name": "Uptrend (Higher Highs/Lows)"
+            },
+            {
+              "name": "Downtrend (Lower Highs/Lows)"
+            },
+            {
+              "name": "Consolidation (Sideways/No Rules)"
+            }
+          ]
+        },
+        {
+          "name": "Basic Concepts",
+          "children": [
+            {
+              "name": "Swing Highs and Lows"
+            },
+            {
+              "name": "Liquidity (Money Pools)"
+            },
+            {
+              "name": "Market Psychology (FOMO/Greed)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The ICC Strategy Steps",
+      "children": [
+        {
+          "name": "Indication (Step 1)",
+          "children": [
+            {
+              "name": "Definition: Break of Swing High/Low"
+            },
+            {
+              "name": "Purpose: Signal of New Trend"
+            },
+            {
+              "name": "View as Information, Not Entry"
+            }
+          ]
+        },
+        {
+          "name": "Correction (Step 2)",
+          "children": [
+            {
+              "name": "Definition: Post-Breakout Pullback"
+            },
+            {
+              "name": "Coke Bottle Analogy (Shakeup, Explosion, Mess)"
+            },
+            {
+              "name": "Purpose: Shakeout Emotional Traders"
+            },
+            {
+              "name": "Monitor on 15-Minute Chart"
+            }
+          ]
+        },
+        {
+          "name": "Continuation (Step 3)",
+          "children": [
+            {
+              "name": "Definition: Real Trend Resumption"
+            },
+            {
+              "name": "Entry: Flip of 15m/5m Structure"
+            },
+            {
+              "name": "Target: Initial Indication Levels"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Timeframe Correlation",
+      "children": [
+        {
+          "name": "Higher Timeframes (1H / 4H)",
+          "children": [
+            {
+              "name": "Big Picture Structure"
+            },
+            {
+              "name": "Stronger Support/Resistance"
+            },
+            {
+              "name": "Spotting the Indication"
+            }
+          ]
+        },
+        {
+          "name": "Lower Timeframes (15M / 5M)",
+          "children": [
+            {
+              "name": "Microscope View"
+            },
+            {
+              "name": "Entry Timing"
+            },
+            {
+              "name": "Confirming Correction End"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mindset and Risk",
+      "children": [
+        {
+          "name": "Patience Over Chasing"
+        },
+        {
+          "name": "Think Long-term Trends"
+        },
+        {
+          "name": "Stop Losses Below Structure"
+        },
+        {
+          "name": "Avoid Fake Volume (Out of Session)"
+        }
+      ]
+    }
+  ]
+}
