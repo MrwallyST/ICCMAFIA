@@ -1,0 +1,265 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What is the first step Sci takes when beginning to mark up a chart?",
+      "back": "Noticing the current price location."
+    },
+    {
+      "front": "After identifying current price, what are the next two markers to identify on the chart?",
+      "back": "The highest highs and the closest highs and lows relative to current price."
+    },
+    {
+      "front": "Which two timeframes does Sci primarily use for marking up market structure?",
+      "back": "The 1-hour and 4-hour timeframes."
+    },
+    {
+      "front": "In a sell trade, why is the origin of previous bullish momentum used as a target?",
+      "back": "It represents a significant level of support where buyers previously entered."
+    },
+    {
+      "front": "According to the source, which trading session plays a major role in the momentum of the GBP/USD (GU) pair?",
+      "back": "The London session."
+    },
+    {
+      "front": "A market is confirmed to be in an uptrend when it displays a sequence of _____ and _____.",
+      "back": "Higher highs and higher lows."
+    },
+    {
+      "front": "What market condition is confirmed when price breaks below a previous higher low?",
+      "back": "A switch from an uptrend to a downtrend."
+    },
+    {
+      "front": "What does a 'lower high' indicate about the relationship between previous and current price peaks?",
+      "back": "The current peak is lower than the previous high."
+    },
+    {
+      "front": "Which timeframes are considered more reliable for determining overall market structure compared to the 5-minute or 15-minute?",
+      "back": "The 1-hour, 4-hour, or Daily timeframes."
+    },
+    {
+      "front": "What do the 'yellow boxes' represent in Sci's chart markup process?",
+      "back": "Levels of support or resistance where price is expected to break out."
+    },
+    {
+      "front": "If price breaks above a resistance level (yellow box), what does this suggest about the presence of sellers?",
+      "back": "There are no sellers left at that level to hold price down."
+    },
+    {
+      "front": "If price breaks under a support level (yellow box), what does this suggest about the presence of buyers?",
+      "back": "There are no buyers left at that level to hold price up."
+    },
+    {
+      "front": "During a trading session, the initial move is called the 'indication' and the secondary move is the _____.",
+      "back": "Correction."
+    },
+    {
+      "front": "On which specific days of the week does Sci note that price often makes an 'indication' followed by a move 1-2 days later?",
+      "back": "Mondays, Tuesdays, and Fridays."
+    },
+    {
+      "front": "What is the structural implication when price fails to push all the way back to a previous level during a correction?",
+      "back": "Sellers are getting stronger and preventing price from rising."
+    },
+    {
+      "front": "For scalping entries, which timeframe should a trader scale down to after identifying structure on the 1-hour?",
+      "back": "The 5-minute timeframe."
+    },
+    {
+      "front": "Where should a stop-loss be placed when trading a continuation under a broken level?",
+      "back": "Above the previous resistance level."
+    },
+    {
+      "front": "What is the primary objective of reading levels on the 1-hour chart?",
+      "back": "Determining if buyers or sellers are currently in control."
+    },
+    {
+      "front": "According to Sci, what is the benefit of trading based on higher timeframe trends?",
+      "back": "The ability to catch and hold long-term trend moves."
+    },
+    {
+      "front": "If the 1-hour timeframe is bearish, what should the trader look for on the 5-minute timeframe?",
+      "back": "Bearish momentum and bearish structure."
+    },
+    {
+      "front": "What is the standard risk-to-reward ratio Sci typically aims for in trades?",
+      "back": "A $1:4$ ratio."
+    },
+    {
+      "front": "What is Sci's personal stance on trailing stop losses?",
+      "back": "He personally does not like trailing stop losses."
+    },
+    {
+      "front": "When using a 5-minute timeframe to manage an exit in a downtrend, what signal suggests closing the trade?",
+      "back": "When price breaks above a 5-minute lower high."
+    },
+    {
+      "front": "How is a 'new low' on the 1-hour timeframe identified after a bearish move?",
+      "back": "When buyers kick in and push price back up in the opposite direction."
+    },
+    {
+      "front": "According to the source, how can a trader best avoid liquidity problems and market 'noise'?",
+      "back": "By trading with the volume and sticking to the higher timeframes."
+    },
+    {
+      "front": "What characterizes trading during 'session opens' or high volume times?",
+      "back": "The market is very volatile and moves 'super heavy.'"
+    },
+    {
+      "front": "If a London session consolidates the entire time, how should the trader categorize it?",
+      "back": "As a loss or a non-trading day."
+    },
+    {
+      "front": "What must happen on a lower timeframe for a trader to enter a trade after the 1-hour chart shows a bearish indication?",
+      "back": "Price must turn from bullish to bearish on the 5-minute or 15-minute timeframe."
+    },
+    {
+      "front": "Term: Indication",
+      "back": "Definition: The initial push or signal move during a trading session indicating the day's likely direction."
+    },
+    {
+      "front": "Why is the 15-minute timeframe mentioned in relation to the 5-minute timeframe?",
+      "back": "It is used alongside the 5-minute to confirm structure changes for entry."
+    },
+    {
+      "front": "What is the safer alternative to entering early on a structure change?",
+      "back": "Waiting for price to break the major level of support or resistance."
+    },
+    {
+      "front": "What is the purpose of setting an alert at a target level (TP) instead of a hard take-profit?",
+      "back": "To monitor price action and potentially hold for further movement."
+    },
+    {
+      "front": "What does Sci call the behavior where price makes a low and then gives a push back to a previous support-turned-resistance?",
+      "back": "A correction."
+    },
+    {
+      "front": "In chart markup, what does the term 'swing high' help determine?",
+      "back": "The overall trend direction of the market."
+    },
+    {
+      "front": "What is the significance of price holding below a 'swing high' in a sell trade?",
+      "back": "It provides confidence to hold the trade longer as the bearish structure remains intact."
+    },
+    {
+      "front": "Concept: Higher Low (HL)",
+      "back": "Definition: A trough in price that is higher than the previous trough, indicating an uptrend."
+    },
+    {
+      "front": "Concept: Lower Low (LL)",
+      "back": "Definition: A trough in price that is lower than the previous trough, indicating a downtrend."
+    },
+    {
+      "front": "Why does Sci emphasize identifying where 'bullish momentum' started?",
+      "back": "Because those levels act as strong psychological barriers for buyers."
+    },
+    {
+      "front": "What defines a 'valid' trade according to the indication/correction model?",
+      "back": "The continuation of the trend after the correction phase occurs during volume hours."
+    },
+    {
+      "front": "Which timeframe is too low to be used for identifying the 'overall structure' of the market?",
+      "back": "The 5-minute or 15-minute timeframes."
+    },
+    {
+      "front": "How should a trader react if the London session is bullish while price is below a major 1-hour bearish level?",
+      "back": "Wait for price to turn bearish on lower timeframes before entering a sell."
+    },
+    {
+      "front": "If price makes a high and a support, but fails to make a new high or a lower support, what is the trading status?",
+      "back": "No trade, because price is trapped in a range between a high and a low."
+    },
+    {
+      "front": "What is the 'safest way' to enter a trade when a level of support is reached?",
+      "back": "Waiting for the actual break of that support level."
+    },
+    {
+      "front": "What provides the 'confirmation' that price is attempting to sell after being in an uptrend?",
+      "back": "Price breaking under established support levels."
+    },
+    {
+      "front": "Sci suggests that taking _____ is a good practice for beginners once a target is hit.",
+      "back": "Partial profits."
+    },
+    {
+      "front": "What does price 'breaking support' imply about long-term bias?",
+      "back": "It is unlikely to be bullish in the long term."
+    },
+    {
+      "front": "During a session, if an indication happens but no correction occurs that day, when might the move happen?",
+      "back": "The following day or even out of session."
+    },
+    {
+      "front": "What determines if a trader should 'swing' a trade versus scalp it?",
+      "back": "Whether they are following the structure of the higher timeframes like the 1-hour."
+    },
+    {
+      "front": "In a downtrend, what does price breaking above a 'lower high' signify?",
+      "back": "A potential change in trend or an exit signal for shorts."
+    },
+    {
+      "front": "Why is it important to use sessions like London for GU trading?",
+      "back": "Volume and momentum are highest during these times, leading to clearer moves."
+    },
+    {
+      "front": "According to the source, how long has Sci been trading?",
+      "back": "Four years."
+    },
+    {
+      "front": "What is the relationship between 'volume times' and 'liquidity problems'?",
+      "back": "Trading during volume times helps avoid liquidity issues by ensuring sufficient market participation."
+    },
+    {
+      "front": "If price is above a support level, what is its 'potential' according to Sci?",
+      "back": "It still has the potential to buy up."
+    },
+    {
+      "front": "What does it mean to 'read the buyers and sellers' on a chart?",
+      "back": "Observing price reactions at specific levels to determine which side is in control."
+    },
+    {
+      "front": "True or False: Price always returns to the previous level of a break during a correction.",
+      "back": "False."
+    },
+    {
+      "front": "What is the primary role of the 1-hour chart in the strategy's three-step process?",
+      "back": "To determine the trend and look for an indication."
+    },
+    {
+      "front": "What is the secondary role of the 5-minute chart in the strategy's three-step process?",
+      "back": "To identify the transition from correction to continuation for an entry."
+    },
+    {
+      "front": "A higher high followed by a failure to create a higher low often precedes a _____.",
+      "back": "Trend reversal."
+    },
+    {
+      "front": "When marking up, what does Sci use to highlight 'levels' of interest?",
+      "back": "Yellow boxes."
+    },
+    {
+      "front": "Which session move is usually 'tradable' by scaling down to the 5-minute timeframe?",
+      "back": "The continuation following a resistance level creation in London session."
+    },
+    {
+      "front": "Why is a $1:3$ reward-to-risk ratio mentioned before the $1:4$ target?",
+      "back": "It serves as the first target or a point to begin trailing stops/taking partials."
+    },
+    {
+      "front": "What 'noise' is Sci referring to in the context of session opens?",
+      "back": "Small, volatile price fluctuations that don't reflect the higher timeframe trend."
+    },
+    {
+      "front": "What is the consequence of trading 'inside the volume times' regarding risk?",
+      "back": "It is very risky because price moves heavily and rapidly."
+    },
+    {
+      "front": "In the context of the 1-hour chart, what is a 'swing level'?",
+      "back": "Major highs or lows that define the long-term trend direction."
+    },
+    {
+      "front": "What does price 'holding' a level during a session indicate?",
+      "back": "Strength in the current direction and validation of the level as support or resistance."
+    }
+  ]
+}
