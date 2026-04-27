@@ -1,11 +1,13 @@
-const CACHE_NAME = 'iccmafia-v3';
+const CACHE_NAME = 'iccmafia-v4';
 const CORE_PAGES = [
   '/ICCMAFIA/',
   '/ICCMAFIA/index.html',
   '/ICCMAFIA/journal.html',
   '/ICCMAFIA/cheat-sheet.html',
   '/ICCMAFIA/psychology.html',
-  '/ICCMAFIA/calendar.html'
+  '/ICCMAFIA/calendar.html',
+  '/ICCMAFIA/comments.html',
+  '/ICCMAFIA/podcast-assets.html'
 ];
 
 self.addEventListener('install', event => {
