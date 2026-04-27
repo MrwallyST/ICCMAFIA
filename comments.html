@@ -105,6 +105,7 @@ body.smart-drawer-open{overflow:hidden}
 <div class="container">
   <div class="top-links">
     <a href="index.html" class="back-btn">&#8592; Back to Course</a>
+    <a href="podcast-assets.html" class="back-btn" style="color:var(--accent2)">Podcast / Substack Generator</a>
   </div>
 
   <div class="header">
@@ -184,6 +185,7 @@ body.smart-drawer-open{overflow:hidden}
       <div class="form-group">
         <label for="smart-platform">Platform</label>
         <select class="smart-control" id="smart-platform">
+          <option value="podcast">Podcast / Substack Assets</option>
           <option value="youtube-long">YouTube Long-form</option>
           <option value="youtube-shorts">YouTube Shorts</option>
           <option value="tiktok">TikTok</option>
@@ -259,7 +261,7 @@ body.smart-drawer-open{overflow:hidden}
 
     <div class="smart-btn-row">
       <button class="smart-btn btn-generate" onclick="generateSmartComments()">Generate Smart Comments</button>
-      <button class="smart-btn btn-secondary" onclick="generateCourseContentPack()">Course Pack</button>
+      <button class="smart-btn btn-secondary" onclick="generateCourseContentPack()">Podcast Pack</button>
       <button class="smart-btn btn-secondary" onclick="copyAllSmart()">Copy All</button>
       <button class="smart-btn btn-secondary" onclick="shuffleSmartComments()">Shuffle</button>
       <button class="smart-btn btn-quiet" onclick="resetSmartForm()">Reset</button>
@@ -434,6 +436,12 @@ const platformStyles = {
     platformFrame: 'On a longer breakdown, I would keep the comment process-focused.',
     platformShort: 'Good long-form reminder: context first, entry second.',
     platformQuestion: 'For a full video, I would ask what invalidates the setup before talking entries.'
+  },
+  podcast: {
+    name: 'Podcast / Substack Assets',
+    platformFrame: 'For a longer course asset, I would turn the lesson into a process-first breakdown.',
+    platformShort: 'Good podcast angle: process first, outcome second.',
+    platformQuestion: 'What journal prompt would make this lesson easier to review later?'
   },
   'youtube-shorts': {
     name: 'YouTube Shorts',
@@ -1091,6 +1099,10 @@ function renderSmartGroup(group, baseContext) {
 }
 
 function generateSmartComments() {
+  if (document.getElementById('smart-platform').value === 'podcast') {
+    generateCourseContentPack();
+    return;
+  }
   const out = document.getElementById('smart-output');
   smartGeneratedStore = {};
   smartLastGeneratedIds = [];
@@ -1213,7 +1225,7 @@ function copyAllSmart() {
 }
 
 function resetSmartForm() {
-  document.getElementById('smart-platform').value = 'youtube-long';
+  document.getElementById('smart-platform').value = 'podcast';
   document.getElementById('smart-category').value = 'icc';
   document.getElementById('smart-intent').value = 'value';
   document.getElementById('smart-day').value = 'none';
