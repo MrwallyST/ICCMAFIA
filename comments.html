@@ -120,6 +120,7 @@ body.smart-drawer-open{overflow:hidden}
   <div class="filter-group-title">Manual Engagement Categories</div>
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filter('all', this)">All</button>
+    <button class="filter-btn" style="background:var(--accent); color:#fff; font-weight: 800; border: 1px solid var(--accent2);" onclick="toggleSmartPanel(); document.getElementById('smart-platform').value='podcast'; setTimeout(generateCourseContentPack, 100);">🎙️ Podcast Generator</button>
     <button class="filter-btn" onclick="filter('value', this)">Value Comment</button>
     <button class="filter-btn" onclick="filter('question', this)">Question Comment</button>
     <button class="filter-btn" onclick="filter('beginner', this)">Beginner Help</button>
