@@ -1,0 +1,317 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "What is the primary defining characteristic of an 'indication' within the ICC framework?",
+      "answerOptions": [
+        {
+          "text": "Price breaks above or below a significant swing high or swing low.",
+          "isCorrect": true,
+          "rationale": "An indication is specifically the moment price breaks out of consolidation or structural levels, signaling the start of a potential trend."
+        },
+        {
+          "text": "A specific candlestick pattern forms on the $15$-minute chart.",
+          "isCorrect": false,
+          "rationale": "While candlesticks are important, the ICC framework relies on structural breaks rather than isolated candle patterns for the indication phase."
+        },
+        {
+          "text": "The market enters a state of sideways consolidation.",
+          "isCorrect": false,
+          "rationale": "Consolidation is the phase that occurs before the indication, representing the accumulation of pressure like a shaken Coke bottle."
+        },
+        {
+          "text": "The $1$-hour and $4$-hour timeframes move in opposite directions.",
+          "isCorrect": false,
+          "rationale": "The indication is about price breaking a level on a single timeframe to show momentum, not necessarily a divergence between timeframes."
+        }
+      ],
+      "hint": "Consider what must happen to a structural 'pivot point' for the market to signal its intended direction."
+    },
+    {
+      "question": "In the 'Coke bottle analogy,' what does the 'mess' or the fizz represent in market terms?",
+      "answerOptions": [
+        {
+          "text": "The consolidation phase.",
+          "isCorrect": false,
+          "rationale": "Consolidation is compared to the act of shaking the bottle to build pressure, not the resulting mess."
+        },
+        {
+          "text": "The initial breakout move.",
+          "isCorrect": false,
+          "rationale": "The breakout is the explosion that happens when the cap is removed, which precedes the mess."
+        },
+        {
+          "text": "The market correction.",
+          "isCorrect": true,
+          "rationale": "The correction is the messy cleanup phase where the market pulls back to grab liquidity before the real trend continues."
+        },
+        {
+          "text": "The final take-profit target.",
+          "isCorrect": false,
+          "rationale": "The mess is a retracement that traders must navigate, whereas the target is the ultimate goal once the trend stabilizes."
+        }
+      ],
+      "hint": "Think about the phase that occurs immediately after a sudden explosion of price movement."
+    },
+    {
+      "question": "Why does the author recommend monitoring the correction on a $15$-minute timeframe if the indication was spotted on the $1$-hour chart?",
+      "answerOptions": [
+        {
+          "text": "To find a more precise entry by seeing the structural 'clean up' in high definition.",
+          "isCorrect": true,
+          "rationale": "Lower timeframes like the $15$-minute act as a microscope to see when the correction's counter-trend is actually failing."
+        },
+        {
+          "text": "Because the $1$-hour timeframe is too fast to see structural shifts.",
+          "isCorrect": false,
+          "rationale": "The $1$-hour is actually considered a higher, slower timeframe used for the 'big picture' satellite view."
+        },
+        {
+          "text": "To avoid the noise found on the $1$-hour and $4$-hour charts.",
+          "isCorrect": false,
+          "rationale": "The higher timeframes are usually used to avoid noise; the lower timeframe is used specifically for entry precision."
+        },
+        {
+          "text": "Because the $15$-minute chart is the only timeframe where liquidity is visible.",
+          "isCorrect": false,
+          "rationale": "Liquidity exists on all timeframes, but the lower timeframe allows for a more detailed view of its collection."
+        }
+      ],
+      "hint": "Consider the analogy of using a microscope versus a satellite view."
+    },
+    {
+      "question": "Which psychological trap is the 'correction' move specifically designed to exploit?",
+      "answerOptions": [
+        {
+          "text": "The Fear of Missing Out (FOMO).",
+          "isCorrect": true,
+          "rationale": "Corrections trap early breakout traders and late FOMO traders by reversing the initial explosive move to grab their stop-loss liquidity."
+        },
+        {
+          "text": "Analysis Paralysis.",
+          "isCorrect": false,
+          "rationale": "Corrections usually force impulsive action rather than inaction, catching those who act too quickly on a signal fire."
+        },
+        {
+          "text": "Confirmation Bias.",
+          "isCorrect": false,
+          "rationale": "While relevant, the source specifically highlights FOMO as the driver for the wave of emotional trades the market seeks to liquidate."
+        },
+        {
+          "text": "Gambler's Fallacy.",
+          "isCorrect": false,
+          "rationale": "This misconception involves expecting a reversal because of past events, whereas the correction is a structural liquidity grab."
+        }
+      ],
+      "hint": "Think about the powerful emotion triggered by seeing a price 'moon' or explode off a level."
+    },
+    {
+      "question": "When targeting the 'Final Boss' on Day $8$, what structural point is the trader looking for?",
+      "answerOptions": [
+        {
+          "text": "The previous day's closing price.",
+          "isCorrect": false,
+          "rationale": "The 'Final Boss' is a structural liquidity target, not a fixed time-based price like a daily close."
+        },
+        {
+          "text": "The very last area of buyers or sellers (the absolute swing high or low).",
+          "isCorrect": true,
+          "rationale": "The 'Final Boss' represents the ultimate liquidity pool where the market seeks to take out the final group of opposing participants."
+        },
+        {
+          "text": "The $50$% retracement level of the initial indication.",
+          "isCorrect": false,
+          "rationale": "This is a common Fibonacci concept, but the author defines the target based on structural swing levels."
+        },
+        {
+          "text": "The entry point of the correction move.",
+          "isCorrect": false,
+          "rationale": "The entry point of the correction is often where the 'mess' starts, whereas the target is the destination of the continuation."
+        }
+      ],
+      "hint": "Consider the ultimate destination the market aims for to fully clear the opposing side."
+    },
+    {
+      "question": "According to the Day $8$ capital reality check, what is the author's stance on trading with small accounts (e.g., $\\$50$) on volatile pairs like NASDAQ?",
+      "answerOptions": [
+        {
+          "text": "It is a low-probability 'tight space' that usually leads to losing capital due to lack of room.",
+          "isCorrect": true,
+          "rationale": "Small accounts lack the necessary cushion to survive the volatility and margin requirements of major pairs like NASDAQ."
+        },
+        {
+          "text": "It is the best way to master the ICC framework before scaling up.",
+          "isCorrect": false,
+          "rationale": "The author suggests using demo accounts for skill-building and saving capital for a more sustainable starting point."
+        },
+        {
+          "text": "It is highly recommended if you utilize a high-leverage broker.",
+          "isCorrect": false,
+          "rationale": "The author warns that trying to turn small amounts into thousands is a high-risk gamble rather than a consistent system."
+        },
+        {
+          "text": "It is efficient as long as you only take one trade per week.",
+          "isCorrect": false,
+          "rationale": "The issue is the lack of capital room relative to the pair's movement, regardless of trade frequency."
+        }
+      ],
+      "hint": "Reflect on the author's advice regarding 'tight spaces' and the likelihood of successful account flipping."
+    },
+    {
+      "question": "What does the author mean by the advice to 'stop trying to be a genie'?",
+      "answerOptions": [
+        {
+          "text": "Traders should stop using complex technical indicators.",
+          "isCorrect": false,
+          "rationale": "While the author doesn't use indicators, 'being a genie' specifically refers to the mindset of predicting rather than reacting."
+        },
+        {
+          "text": "Traders should follow the market's revealed plan rather than trying to predict the future.",
+          "isCorrect": true,
+          "rationale": "The author emphasizes reacting to the structure the market provides (the hand it shows) instead of guessing where it might go."
+        },
+        {
+          "text": "Traders should limit themselves to only three trades per month.",
+          "isCorrect": false,
+          "rationale": "The author does take fewer trades, but the 'genie' comment focuses on the analytical mindset, not the volume of trades."
+        },
+        {
+          "text": "Traders should avoid using Artificial Intelligence to find setups.",
+          "isCorrect": false,
+          "rationale": "The term 'genie' in this context is a metaphor for a crystal ball or psychic prediction, not a technology reference."
+        }
+      ],
+      "hint": "Consider the difference between having a 'crystal ball' and reading the 'cards' the market has already played."
+    },
+    {
+      "question": "In the timeframe correlation hierarchy, if the $1$-hour timeframe goes bullish, how should the $15$-minute timeframe behave before an entry is considered?",
+      "answerOptions": [
+        {
+          "text": "It should also align with a bullish structure (breaking lower highs).",
+          "isCorrect": true,
+          "rationale": "For a valid entry, the lower timeframe must confirm the higher timeframe's direction by flipping its own internal trend."
+        },
+        {
+          "text": "It must remain in a downtrend to provide a cheaper price.",
+          "isCorrect": false,
+          "rationale": "Entering during a downtrend on the $15$-minute without a flip is catching a falling knife, which the continuation model avoids."
+        },
+        {
+          "text": "It should consolidate for at least $4$ hours.",
+          "isCorrect": false,
+          "rationale": "While consolidation builds pressure, the entry signal is the structural shift, not a fixed time duration."
+        },
+        {
+          "text": "It should show a new low to grab final liquidity.",
+          "isCorrect": false,
+          "rationale": "The liquidity grab (new low) is part of the correction; the entry requires price to then move back above key levels."
+        }
+      ],
+      "hint": "Think about the concept of 'alignment' between the satellite view and the microscope view."
+    },
+    {
+      "question": "The author states that an indication is 'information, not an entry signal.' Why should a trader avoid entering immediately on a breakout?",
+      "answerOptions": [
+        {
+          "text": "Because the breakout candle is usually too large for a proper stop-loss.",
+          "isCorrect": false,
+          "rationale": "While true for risk management, the primary reason provided is structural: the inevitable liquidity grab (correction) that follows."
+        },
+        {
+          "text": "Because the market needs to 'shake out' emotional traders and grab liquidity first.",
+          "isCorrect": true,
+          "rationale": "The initial breakout attracts FOMO traders; the market then pulls back to liquidate them before the sustainable move occurs."
+        },
+        {
+          "text": "Because the indication is often a 'fake' move that reverses permanently.",
+          "isCorrect": false,
+          "rationale": "The indication is seen as the market 'showing its hand,' meaning it is a real plan, but one that requires a pullback first."
+        },
+        {
+          "text": "Because higher timeframes do not support immediate entries.",
+          "isCorrect": false,
+          "rationale": "The higher timeframe provides the indication; the issue is the lack of structural confirmation and risk/reward safety."
+        }
+      ],
+      "hint": "Remember the purpose of the 'mess' in the Coke bottle analogy."
+    },
+    {
+      "question": "When reacting to structure on Day $8$, why might a trader change their bias from buys to sells even if they 'wanted' buys?",
+      "answerOptions": [
+        {
+          "text": "Because a level of support was broken and price created a lower high.",
+          "isCorrect": true,
+          "rationale": "The trader follows the market's logic; if price breaks support and changes structure, the bearish evidence overrides personal desire."
+        },
+        {
+          "text": "Because they reached their maximum daily loss limit.",
+          "isCorrect": false,
+          "rationale": "Risk management is crucial, but changing bias is an analytical decision based on price action, not just balance."
+        },
+        {
+          "text": "Because the news cycle changed unexpectedly.",
+          "isCorrect": false,
+          "rationale": "While news affects price, the author emphasizes following the technical 'reactions' and structure over guessing news impacts."
+        },
+        {
+          "text": "Because the $5$-minute timeframe is always more accurate than the $4$-hour bias.",
+          "isCorrect": false,
+          "rationale": "The author prioritizes the higher timeframe; a bias change occurs when the higher timeframe levels themselves are violated."
+        }
+      ],
+      "hint": "Focus on the phrase 'follow the reactions, do not tell the market what to do'."
+    },
+    {
+      "question": "What is the consequence of trading pairs with low volatility, such as AUD/NZD, according to the author's Day $8$ discussion?",
+      "answerOptions": [
+        {
+          "text": "The ICC framework fails because these pairs do not respect swing highs.",
+          "isCorrect": false,
+          "rationale": "The framework works, but the lack of movement makes the time investment and risk/reward less attractive for many."
+        },
+        {
+          "text": "It results in slow-moving setups that don't provide the necessary volume for significant gains.",
+          "isCorrect": true,
+          "rationale": "The author suggests trading volatile instruments like Gold or NASDAQ because they 'move' and provide clear, profitable trends."
+        },
+        {
+          "text": "These pairs are too manipulated by central banks for price action to work.",
+          "isCorrect": false,
+          "rationale": "The author attributes the issue to lack of movement and volume rather than specific institutional manipulation."
+        },
+        {
+          "text": "They require the use of indicators that ICC does not provide.",
+          "isCorrect": false,
+          "rationale": "ICC is designed to be indicator-free; the pair choice is about finding movement, not changing the toolset."
+        }
+      ],
+      "hint": "Think about why a trader might prefer 'NASDAQ' and 'Gold' over obscure currency pairs."
+    },
+    {
+      "question": "In the market structure perspective, what does a 'swing high' represent to the author?",
+      "answerOptions": [
+        {
+          "text": "A 'brick wall' where sellers are sitting, trying to push price down.",
+          "isCorrect": true,
+          "rationale": "Swing highs are seen as concentration points for sellers; breaking them signals that buyers have taken control."
+        },
+        {
+          "text": "A random point where price happened to turn.",
+          "isCorrect": false,
+          "rationale": "The author views these levels as calculated price points that 'cost money' to break, rather than random occurrences."
+        },
+        {
+          "text": "The entry point for a risky counter-trend trade.",
+          "isCorrect": false,
+          "rationale": "The author advises against risky counter-trend buying/selling at these levels until a structural break occurs."
+        },
+        {
+          "text": "A level that should always be traded as a 'sell' on first touch.",
+          "isCorrect": false,
+          "rationale": "The author warns against blind selling at resistance, preferring to wait for an 'indication' of the trend's strength."
+        }
+      ],
+      "hint": "Consider the analogy used for these levels on Day $5$ and Day $8$ regarding control."
+    }
+  ]
+}

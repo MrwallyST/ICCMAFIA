@@ -1,0 +1,305 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What are the three components of the 'ICC' trading framework?",
+      "back": "Indication, Correction, and Continuation."
+    },
+    {
+      "front": "In the ICC framework, what does 'Indication' represent?",
+      "back": "The starting point of a trend where price breaks a swing high or low."
+    },
+    {
+      "front": "What is the primary purpose of a 'Correction' in market movement?",
+      "back": "To grab liquidity by shaking out emotional and FOMO-driven traders."
+    },
+    {
+      "front": "Which phase of ICC is described as the 'mess' in the Coke bottle analogy?",
+      "back": "The Correction phase."
+    },
+    {
+      "front": "What represents the 'explosion' or the 'cap flying off' in the Coke bottle analogy?",
+      "back": "The Indication (breakout)."
+    },
+    {
+      "front": "In the ICC strategy, where are the entry, stop-loss, and take-profit levels typically determined?",
+      "back": "During the Continuation phase."
+    },
+    {
+      "front": "According to Trades by Sci, what is the 'Final Boss' in a trade setup?",
+      "back": "The last major area of buyers or sellers (the final swing level) to be targeted."
+    },
+    {
+      "front": "What mindset shift is required to stop 'chasing' and start 'profiting' according to Day 8?",
+      "back": "Stop trying to be a 'genie' (predicting) and start following what price is doing."
+    },
+    {
+      "front": "Why is the Indication considered 'information' rather than an 'entry signal'?",
+      "back": "It only shows the trend's potential direction; the market still needs to grab liquidity before the real move."
+    },
+    {
+      "front": "What is the recommended timeframe for spotting the Indication?",
+      "back": "The 1-hour or 4-hour timeframe."
+    },
+    {
+      "front": "Which timeframe is referred to as the 'microscope' for monitoring a Correction?",
+      "back": "The 15-minute timeframe."
+    },
+    {
+      "front": "What defines a 'Downtrend' in basic price action?",
+      "back": "A series of lower lows (LL) and lower highs (LH)."
+    },
+    {
+      "front": "What defines an 'Uptrend' in basic price action?",
+      "back": "A series of higher highs (HH) and higher lows (HL)."
+    },
+    {
+      "front": "Why does Trades by Sci advise against trading during 'Consolidation'?",
+      "back": "It is a market state where rules are being broken and there is no clear direction."
+    },
+    {
+      "front": "What is the 'Shakeup' step in the three-step Coke bottle analogy?",
+      "back": "Consolidation where the market builds up pressure before a move."
+    },
+    {
+      "front": "Concept: Swing High",
+      "back": "Definition: A point where price goes up to a certain level, rejects, and heads in the opposite direction."
+    },
+    {
+      "front": "How does Day 8 define the 'tight space' for a trading account?",
+      "back": "Any capital amount under $5,000 to $10,000."
+    },
+    {
+      "front": "In market structure, what is physically sitting at a Swing High level?",
+      "back": "Sellers who are pushing price down."
+    },
+    {
+      "front": "In market structure, what is physically sitting at a Swing Low level?",
+      "back": "Buyers who are driving price up."
+    },
+    {
+      "front": "Anything above a swing low is considered to have _____ potential.",
+      "back": "Bullish"
+    },
+    {
+      "front": "Anything below a swing high is considered to have _____ potential.",
+      "back": "Bearish"
+    },
+    {
+      "front": "The 'Chanel bag' analogy is used to explain which market concept?",
+      "back": "Liquidity (the market needing to 'make money' to afford the next move)."
+    },
+    {
+      "front": "What is the primary psychological driver for 'Late FOMO' traders?",
+      "back": "The fear of missing the move of a lifetime, causing them to buy at the top."
+    },
+    {
+      "front": "Why are stop-losses of breakout traders described as a 'pool of money'?",
+      "back": "They represent liquidity that the market needs to fuel a sustainable trend."
+    },
+    {
+      "front": "What is 'Revenge Trading' in the context of the ICC framework?",
+      "back": "Trading based on losses from a failed breakout, often occurring during the correction phase."
+    },
+    {
+      "front": "According to the Day 8 'capital reality check,' why do small accounts ($50-$100) usually fail?",
+      "back": "Lack of skills combined with excessive risk to reach large targets."
+    },
+    {
+      "front": "When a price 'liquidates' a level, what is it actually doing?",
+      "back": "Taking out stop-losses to collect money from traders."
+    },
+    {
+      "front": "What is 'Timeframe Correlation' in the ICC strategy?",
+      "back": "Ensuring the structure on lower timeframes (15m, 5m) aligns with the higher timeframes (4H, 1H)."
+    },
+    {
+      "front": "Why should a trader wait for the 'second time around' price action before entering?",
+      "back": "To avoid being caught in the initial liquidity grab (fakeout) of the Indication."
+    },
+    {
+      "front": "If price is in an uptrend, it should not break its _____ levels unless it is reversing.",
+      "back": "Support (Higher Low)"
+    },
+    {
+      "front": "What is the 'Final Boss' target in the Day 8 Gold trade example?",
+      "back": "The final swing low where buyers initially entered the market."
+    },
+    {
+      "front": "How does a trader know a Correction is officially over?",
+      "back": "When price switches structure on a lower timeframe (e.g., 15m) to match the higher timeframe trend."
+    },
+    {
+      "front": "What is the significance of the 9:30 AM and 8:00 AM times mentioned in the course?",
+      "back": "These are key times for NASDAQ session volume and volatility."
+    },
+    {
+      "front": "Why does Trades by Sci recommend trading Gold or NASDAQ over AUD/NZD?",
+      "back": "High volatility and movement are necessary for the ICC strategy to work effectively."
+    },
+    {
+      "front": "What is a 'Lower High' in a downtrend?",
+      "back": "A peak that is lower than the previous peak."
+    },
+    {
+      "front": "In a bearish continuation, where is the safest entry point?",
+      "back": "Under the 1-hour level that caused the initial new low."
+    },
+    {
+      "front": "What does 'Scaling Out' of a position mean?",
+      "back": "Taking partial profits at set targets while letting the rest of the trade run."
+    },
+    {
+      "front": "In the Gold trade breakdown, why did the trader look for sells despite wanting buys?",
+      "back": "Price broke a 4-hour support level and the lower timeframes aligned bearishly."
+    },
+    {
+      "front": "The 'Brick Wall' analogy refers to what market phenomenon?",
+      "back": "Strong buyer or seller control at specific price levels that prevents further movement."
+    },
+    {
+      "front": "What should a trader do when price is in 'fake volume' (out of session)?",
+      "back": "Stay away from the markets to avoid being faked out by choppy movement."
+    },
+    {
+      "front": "Term: Candlesticks",
+      "back": "Definition: Visual representations of price fluctuations over a specific period."
+    },
+    {
+      "front": "How many trades per month does Trades by Sci typically take?",
+      "back": "Approximately six to seven high-quality trades."
+    },
+    {
+      "front": "Why is it important to trade 'contracts' with the opposite side?",
+      "back": "Every buyer needs a seller to swap contracts with to complete the transaction."
+    },
+    {
+      "front": "What is the main goal of using a 4-hour timeframe in markup?",
+      "back": "To see the big picture and long-term structure without the 'noise' of lower timeframes."
+    },
+    {
+      "front": "Step 5 of the ICC Game Plan is to simply _____.",
+      "back": "Wait (for the correction to finish)."
+    },
+    {
+      "front": "What is 'Equal Highs' (EH) a signal of in market structure?",
+      "back": "A lack of momentum, indicating price is not yet ready to go higher."
+    },
+    {
+      "front": "How far back should you look at price action to find swing levels?",
+      "back": "Approximately three to five days of current price action."
+    },
+    {
+      "front": "If the 4-hour is bullish, what must the 1-hour do before you scale to the 15-minute?",
+      "back": "The 1-hour must also go back to being bullish after its correction."
+    },
+    {
+      "front": "The prompt 'This is information not an entry signal' refers to which event?",
+      "back": "The Indication (explosion)."
+    },
+    {
+      "front": "What happens to the Fizz in the Coke analogy after the explosion?",
+      "back": "It goes everywhere, representing the messy cleanup of the Correction."
+    },
+    {
+      "front": "Why are swing levels on higher timeframes (1H, 4H) 'stronger'?",
+      "back": "It costs more money for the market to break these levels, making them more significant."
+    },
+    {
+      "front": "In Day 8, what is the 'finalboss' in the context of taking profits?",
+      "back": "The ultimate target where the market is looking to take out the last area of liquidity."
+    },
+    {
+      "front": "What is the 'street-level view' timeframe in ICC?",
+      "back": "The 15-minute timeframe."
+    },
+    {
+      "front": "What determines if a trend is 'reversing' rather than 'correcting'?",
+      "back": "The breaking of major support/resistance levels on the higher timeframe."
+    },
+    {
+      "front": "What tool is used to monitor 'buying and selling pressure' during markups?",
+      "back": "1-hour or 4-hour swing levels."
+    },
+    {
+      "front": "According to Trades by Sci, trading and _____ mirror each other.",
+      "back": "Life"
+    },
+    {
+      "front": "What is the suggested capital path for a beginner?",
+      "back": "Save capital from a job while studying, then build from $1,000 to $5,000 and $10,000."
+    },
+    {
+      "front": "In the ICC strategy, what indicates that 'buyers have lost strength'?",
+      "back": "Price breaking a previously established level of support."
+    },
+    {
+      "front": "Term: Liquidity",
+      "back": "Definition: The money (stop-losses and orders) sitting in the market that fuels price movement."
+    },
+    {
+      "front": "How should a trader treat an Indication conceptually?",
+      "back": "As a blueprint or a map for where the entry and exit will be."
+    },
+    {
+      "front": "What does a lower high followed by a break of support on a 5-minute chart signal?",
+      "back": "A bearish shift in structure suitable for an entry."
+    },
+    {
+      "front": "Why does the course emphasize 'patience' in Step 5?",
+      "back": "Because the only thing standing between the trader and profit after seeing the plan is their own patience."
+    },
+    {
+      "front": "In the London session markup, why was the yellow box used?",
+      "back": "To mark the range between a higher low and higher high while waiting for a breakout."
+    },
+    {
+      "front": "What is the 'iPhone 16' analogy used to describe?",
+      "back": "Swapping contracts (selling to someone who wants to buy; buying from someone who wants to sell)."
+    },
+    {
+      "front": "If price makes a 'New High,' what should a trader immediately prepare for?",
+      "back": "A correction or movement designed to shake traders out."
+    },
+    {
+      "front": "Concept: Technical Analysis Rules",
+      "back": "Definition: The logical and strategic reasons (like market structure) why price moves, distinguishing trading from gambling."
+    },
+    {
+      "front": "What is the 'Satellite View' timeframe?",
+      "back": "The 1-hour or 4-hour timeframe."
+    },
+    {
+      "front": "Why is the 1-hour timeframe preferred for day trades over the 5-minute?",
+      "back": "It provides more clarity and reduces the 'noise' that causes overtrading."
+    },
+    {
+      "front": "In Day 8, what does 'following the reactions' mean?",
+      "back": "Reacting to what the market does at swing levels rather than trying to force a prediction."
+    },
+    {
+      "front": "What was the humble lesson Trades by Sci learned after losing $900 in five minutes?",
+      "back": "That capital without skills is a recipe for total loss."
+    },
+    {
+      "front": "What represents 'sellers taking control' on a 15-minute chart?",
+      "back": "Price failing to make a higher high and subsequently breaking a lower high."
+    },
+    {
+      "front": "How does the market 'shake up' like a Coke bottle?",
+      "back": "By consolidating and building up pressure/orders."
+    },
+    {
+      "front": "What is the significance of the 1-hour support level during a correction?",
+      "back": "It serves as the boundary that price should not cross if the trend is to remain intact."
+    },
+    {
+      "front": "In ICC, 'Continuation' is defined as price _____.",
+      "back": "Returning to the original trend direction after a correction."
+    },
+    {
+      "front": "What is the ultimate 'Bottom Line' regarding market corrections?",
+      "back": "They are not trend failures, but calculated moves to grab liquidity."
+    }
+  ]
+}

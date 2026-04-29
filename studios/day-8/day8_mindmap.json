@@ -1,0 +1,130 @@
+{
+  "name": "Trades by Sai ICC Course",
+  "children": [
+    {
+      "name": "The ICC Strategy",
+      "children": [
+        {
+          "name": "Step 1: Indication",
+          "children": [
+            {
+              "name": "Definition: Break of swing high or low"
+            },
+            {
+              "name": "Signal of momentum and starting trend"
+            },
+            {
+              "name": "Higher Time Frame (1H or 4H)"
+            }
+          ]
+        },
+        {
+          "name": "Step 2: Correction",
+          "children": [
+            {
+              "name": "Market trap grabbing liquidity/FOMO"
+            },
+            {
+              "name": "Coke Bottle Analogy: The Mess"
+            },
+            {
+              "name": "Monitored on 15-minute timeframe"
+            }
+          ]
+        },
+        {
+          "name": "Step 3: Continuation",
+          "children": [
+            {
+              "name": "The actual entry and profit phase"
+            },
+            {
+              "name": "Entry: Price flips back to trend"
+            },
+            {
+              "name": "Target: Previous indication high/low"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Core Fundamentals",
+      "children": [
+        {
+          "name": "Trend Identification",
+          "children": [
+            {
+              "name": "Uptrend: Higher highs and higher lows"
+            },
+            {
+              "name": "Downtrend: Lower lows and lower highs"
+            },
+            {
+              "name": "Consolidation: Sideways/breaking rules"
+            }
+          ]
+        },
+        {
+          "name": "Market Structure",
+          "children": [
+            {
+              "name": "Swing Highs: Seller control levels"
+            },
+            {
+              "name": "Swing Lows: Buyer control levels"
+            },
+            {
+              "name": "Liquidity: Stop-loss pools/money grabs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Timeframe Correlation",
+      "children": [
+        {
+          "name": "4-Hour: Long-term big picture"
+        },
+        {
+          "name": "1-Hour: Level marking and day trades"
+        },
+        {
+          "name": "15-Minute/5-Minute: Precision and entries"
+        }
+      ]
+    },
+    {
+      "name": "Trader Mindset",
+      "children": [
+        {
+          "name": "Avoid FOMO and Greed"
+        },
+        {
+          "name": "Patience for confirmed moves"
+        },
+        {
+          "name": "Long-term thinking vs. scalping"
+        },
+        {
+          "name": "Risk management and capital building"
+        }
+      ]
+    },
+    {
+      "name": "Practical Application",
+      "children": [
+        {
+          "name": "Assets: Volatile (NASDAQ, Gold, US30)"
+        },
+        {
+          "name": "Tools: TradingView, Brokers, Crypto"
+        },
+        {
+          "name": "Process: Mark levels, wait, scale down, enter"
+        }
+      ]
+    }
+  ]
+}
