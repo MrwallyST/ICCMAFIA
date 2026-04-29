@@ -1,81 +1,84 @@
 {
-  "name": "Trades by Sai ICC Course",
+  "name": "Trades by Sai: ICC Trading Course",
   "children": [
     {
-      "name": "The ICC Strategy",
+      "name": "Market Fundamentals",
       "children": [
         {
-          "name": "Step 1: Indication",
+          "name": "Trends",
           "children": [
             {
-              "name": "Definition: Break of swing high or low"
+              "name": "Uptrend (Higher Highs/Lows)"
             },
             {
-              "name": "Signal of momentum and starting trend"
+              "name": "Downtrend (Lower Highs/Lows)"
             },
             {
-              "name": "Higher Time Frame (1H or 4H)"
+              "name": "Consolidation (Breaking Rules)"
             }
           ]
         },
         {
-          "name": "Step 2: Correction",
+          "name": "Market Mechanics",
           "children": [
             {
-              "name": "Market trap grabbing liquidity/FOMO"
+              "name": "Candlesticks"
             },
             {
-              "name": "Coke Bottle Analogy: The Mess"
+              "name": "Support and Resistance"
             },
             {
-              "name": "Monitored on 15-minute timeframe"
-            }
-          ]
-        },
-        {
-          "name": "Step 3: Continuation",
-          "children": [
-            {
-              "name": "The actual entry and profit phase"
-            },
-            {
-              "name": "Entry: Price flips back to trend"
-            },
-            {
-              "name": "Target: Previous indication high/low"
+              "name": "Buying and Selling Pressure"
             }
           ]
         }
       ]
     },
     {
-      "name": "Core Fundamentals",
+      "name": "ICC Strategy (3-Step Process)",
       "children": [
         {
-          "name": "Trend Identification",
+          "name": "1. Indication",
           "children": [
             {
-              "name": "Uptrend: Higher highs and higher lows"
+              "name": "Breakout of Swing High/Low"
             },
             {
-              "name": "Downtrend: Lower lows and lower highs"
+              "name": "Momentum Signal"
             },
             {
-              "name": "Consolidation: Sideways/breaking rules"
+              "name": "Information Not Entry"
             }
           ]
         },
         {
-          "name": "Market Structure",
+          "name": "2. Correction",
           "children": [
             {
-              "name": "Swing Highs: Seller control levels"
+              "name": "Calculated Pause"
             },
             {
-              "name": "Swing Lows: Buyer control levels"
+              "name": "Liquidity Grab (Shakeout)"
             },
             {
-              "name": "Liquidity: Stop-loss pools/money grabs"
+              "name": "Coke Bottle Analogy"
+            },
+            {
+              "name": "Psychology of FOMO Trap"
+            }
+          ]
+        },
+        {
+          "name": "3. Continuation",
+          "children": [
+            {
+              "name": "Real Confirmed Move"
+            },
+            {
+              "name": "Trend Reversal Alignment"
+            },
+            {
+              "name": "Entry Point Execution"
             }
           ]
         }
@@ -85,44 +88,65 @@
       "name": "Timeframe Correlation",
       "children": [
         {
-          "name": "4-Hour: Long-term big picture"
+          "name": "Higher Timeframes (1H / 4H)",
+          "children": [
+            {
+              "name": "Satellite View"
+            },
+            {
+              "name": "Identify Structure"
+            },
+            {
+              "name": "Spot Indications"
+            }
+          ]
         },
         {
-          "name": "1-Hour: Level marking and day trades"
-        },
-        {
-          "name": "15-Minute/5-Minute: Precision and entries"
+          "name": "Lower Timeframes (5m / 15m)",
+          "children": [
+            {
+              "name": "Microscope View"
+            },
+            {
+              "name": "Monitor Correction"
+            },
+            {
+              "name": "Precise Entry Timing"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Trader Mindset",
+      "name": "Execution & Risk",
       "children": [
         {
-          "name": "Avoid FOMO and Greed"
+          "name": "Trade Management",
+          "children": [
+            {
+              "name": "Stop Loss Placement"
+            },
+            {
+              "name": "Targeting Previous Levels (TP)"
+            },
+            {
+              "name": "Scaling and Partial Profits"
+            }
+          ]
         },
         {
-          "name": "Patience for confirmed moves"
-        },
-        {
-          "name": "Long-term thinking vs. scalping"
-        },
-        {
-          "name": "Risk management and capital building"
-        }
-      ]
-    },
-    {
-      "name": "Practical Application",
-      "children": [
-        {
-          "name": "Assets: Volatile (NASDAQ, Gold, US30)"
-        },
-        {
-          "name": "Tools: TradingView, Brokers, Crypto"
-        },
-        {
-          "name": "Process: Mark levels, wait, scale down, enter"
+          "name": "Psychology",
+          "children": [
+            {
+              "name": "Patience Over Greed"
+            },
+            {
+              "name": "Avoiding Fake Volume"
+            },
+            {
+              "name": "Long-term Thinking"
+            }
+          ]
         }
       ]
     }
