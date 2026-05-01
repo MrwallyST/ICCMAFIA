@@ -1,0 +1,59 @@
+{
+  "name": "Identifying Trend Reversals",
+  "children": [
+    {
+      "name": "Market Structure Analysis",
+      "children": [
+        { "name": "Fundamental Structure", "children": [
+          { "name": "Lower Highs (Downtrend)" },
+          { "name": "Higher Lows (Uptrend)" }
+        ]},
+        { "name": "Signs of Change", "children": [
+          { "name": "Breaking Structure" },
+          { "name": "Breaking Lower Highs" },
+          { "name": "Failing to break lows" }
+        ]},
+        { "name": "Bullish Sentiment", "children": [
+          { "name": "Correction after push" },
+          { "name": "Respecting Support" },
+          { "name": "Maintaining Higher Lows" }
+        ]}
+      ]
+    },
+    {
+      "name": "Trade Setup Strategy",
+      "children": [
+        { "name": "Time Frames", "children": [
+          { "name": "1 Hour (Indication/Trend)" },
+          { "name": "15 Minute (Entries/Sessions)" },
+          { "name": "5 Minute (Confluence)" }
+        ]},
+        { "name": "Market Sessions", "children": [
+          { "name": "London Session (Setup)" },
+          { "name": "New York Session (Volume/Entry)" },
+          { "name": "9:30 AM Bell Opening" }
+        ]},
+        { "name": "Confirmation", "children": [
+          { "name": "Liquidity Grabs" },
+          { "name": "Downside Rejections" },
+          { "name": "Break and Retest" }
+        ]}
+      ]
+    },
+    {
+      "name": "Execution & Management",
+      "children": [
+        { "name": "Targets", "children": [
+          { "name": "Target Swing Highs" },
+          { "name": "Soft TPs (TP1/TP2)" },
+          { "name": "Risk-free in profit" }
+        ]},
+        { "name": "Mindset", "children": [
+          { "name": "Be open-minded" },
+          { "name": "Simplicity over complexity" },
+          { "name": "Catching the trend" }
+        ]}
+      ]
+    }
+  ]
+}
