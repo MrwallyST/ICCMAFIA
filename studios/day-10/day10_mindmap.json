@@ -1,0 +1,48 @@
+{
+  "name": "How to Mark Up Charts",
+  "children": [
+    {
+      "name": "Chart Preparation",
+      "children": [
+        { "name": "Clear the Chart", "children": [
+          { "name": "Remove old noise" },
+          { "name": "Stop marking daily/4H lines everywhere" }
+        ]},
+        { "name": "1 to 3 Session Rule", "children": [
+          { "name": "Focus on recent price action only" },
+          { "name": "Look back maximum 3 sessions" }
+        ]}
+      ]
+    },
+    {
+      "name": "Identifying Levels",
+      "children": [
+        { "name": "Swing Highs & Lows", "children": [
+          { "name": "Look for abrupt stops in price" },
+          { "name": "Where did buyers/sellers step in?" },
+          { "name": "Use 'Pivot Points High/Low' tool to test yourself" }
+        ]},
+        { "name": "The No Trade Zone", "children": [
+          { "name": "The area between valid High and Low" },
+          { "name": "No indication = No trade" },
+          { "name": "Sit on your hands" }
+        ]}
+      ]
+    },
+    {
+      "name": "Execution Strategy",
+      "children": [
+        { "name": "The Indication", "children": [
+          { "name": "Price breaks Swing High or Low" },
+          { "name": "Information only, NOT an entry" },
+          { "name": "Do not trade the breakout" }
+        ]},
+        { "name": "Session Volume Confirmation", "children": [
+          { "name": "Wait for major sessions (London/NY)" },
+          { "name": "Need a candle close above/below level" },
+          { "name": "Enter on the continuation with volume" }
+        ]}
+      ]
+    }
+  ]
+}

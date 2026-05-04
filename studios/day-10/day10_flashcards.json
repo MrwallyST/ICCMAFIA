@@ -1,0 +1,22 @@
+[
+  {
+    "front": "What is the biggest mistake traders make when marking up charts?",
+    "back": "Marking every single level on the Daily, 4H, and 1H timeframes, creating a messy chart with too much noise."
+  },
+  {
+    "front": "What is the '1 to 3 Session Rule'?",
+    "back": "You only need to look back at the price action of the most recent 1 to 3 trading sessions to find your valid swing highs and swing lows."
+  },
+  {
+    "front": "What constitutes a 'No Trade Zone'?",
+    "back": "The area between your identified swing high and swing low where there is no indication. You never place a trade inside this zone."
+  },
+  {
+    "front": "What is an 'Indication' according to Day 10?",
+    "back": "An indication occurs when price breaks a swing high or a swing low. It provides evidence that price can move further, but it is NOT an entry trigger."
+  },
+  {
+    "front": "Why is trading the breakout (the Indication) a bad idea?",
+    "back": "Trading the initial breakout often leads to getting trapped in a liquidity sweep. You must wait for a correction and volume confirmation from a major session (like London or NY)."
+  }
+]
