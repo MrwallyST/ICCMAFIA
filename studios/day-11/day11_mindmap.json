@@ -1,0 +1,88 @@
+{
+  "name": "Trades by Sai: ICC Trading Course",
+  "children": [
+    {
+      "name": "Core Concepts",
+      "children": [
+        {
+          "name": "Indication",
+          "children": [
+            { "name": "Price breaks swing high/low" },
+            { "name": "Signals trend starting point" },
+            { "name": "Information, not an entry" }
+          ]
+        },
+        {
+          "name": "Correction",
+          "children": [
+            { "name": "Calculated move to grab liquidity" },
+            { "name": "Shakes out FOMO/emotional traders" },
+            { "name": "Monitored on 15m/5m charts" },
+            { "name": "Coke bottle analogy: the mess" }
+          ]
+        },
+        {
+          "name": "Continuation",
+          "children": [
+            { "name": "Confirmed move after correction" },
+            { "name": "Entry model for trades" },
+            { "name": "Targets previous swing levels" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Market Fundamentals",
+      "children": [
+        {
+          "name": "Market Structure",
+          "children": [
+            { "name": "Uptrends: higher highs/lows" },
+            { "name": "Downtrends: lower highs/lows" },
+            { "name": "Consolidation: no-trade zone" }
+          ]
+        },
+        {
+          "name": "Liquidity",
+          "children": [
+            { "name": "Stop-loss pools" },
+            { "name": "Fuel for sustainable trends" },
+            { "name": "Market traps" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Strategy & Execution",
+      "children": [
+        {
+          "name": "Timeframe Correlation",
+          "children": [
+            { "name": "Higher TF (1H/4H) for structure" },
+            { "name": "Lower TF (15m/5m) for entries" },
+            { "name": "Alignment across all TFs" }
+          ]
+        },
+        {
+          "name": "Chart Markup",
+          "children": [
+            { "name": "Identify current price" },
+            { "name": "Mark closest swing highs/lows" },
+            { "name": "Identify session volume (NY/London)" },
+            { "name": "Keep charts clean/simple" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trader Mindset",
+      "children": [
+        { "name": "Patience over chasing breakouts" },
+        { "name": "Shift from FOMO to strategy" },
+        { "name": "Trust higher timeframes" },
+        { "name": "Live market experience vs backtesting" },
+        { "name": "Independence from signal providers" }
+      ]
+    }
+  ]
+}

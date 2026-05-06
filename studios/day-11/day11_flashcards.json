@@ -1,0 +1,253 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "In the context of the ICC course, how is 'trading' defined at a fundamental level?",
+      "back": "Buying or selling at a price point where profit is made if price moves in the predicted direction."
+    },
+    {
+      "front": "What market condition is characterized by price breaking rules and moving sideways without clear direction?",
+      "back": "Consolidation."
+    },
+    {
+      "front": "An uptrend is structurally defined by the consistent creation of _____ and _____.",
+      "back": "higher highs; higher lows"
+    },
+    {
+      "front": "A downtrend is structurally defined by the consistent creation of _____ and _____.",
+      "back": "lower lows; lower highs"
+    },
+    {
+      "front": "What is a 'swing high'?",
+      "back": "A price point where upward momentum pivots and begins to decline."
+    },
+    {
+      "front": "What is a 'swing low'?",
+      "back": "A price point where downward momentum pivots and begins to increase."
+    },
+    {
+      "front": "What are the three steps of the ICC trading strategy?",
+      "back": "Indication, Correction, and Continuation."
+    },
+    {
+      "front": "According to the ICC model, what is an 'Indication'?",
+      "back": "When price breaks above or below a previous swing high or swing low."
+    },
+    {
+      "front": "Why does the ICC strategy advise against trading the 'Indication' itself?",
+      "back": "It is often a breakout trap designed to liquidate emotional traders before the real move."
+    },
+    {
+      "front": "In the ICC strategy, the 'Indication' provides information about _____ and _____.",
+      "back": "the potential trend direction; the entry and exit levels"
+    },
+    {
+      "front": "What is the definition of a 'Correction' in the ICC strategy?",
+      "back": "A calculated pause or reversal after a big breakout used to grab liquidity."
+    },
+    {
+      "front": "In the 'Coke bottle' analogy, which phase of a trade corresponds to the 'mess' made by the fizz?",
+      "back": "The Correction."
+    },
+    {
+      "front": "What is the primary psychological driver that the market exploits during a Correction?",
+      "back": "FOMO (Fear Of Missing Out)."
+    },
+    {
+      "front": "The market views stop-losses from early breakout traders as a source of _____, which it needs to fuel a sustainable trend.",
+      "back": "liquidity"
+    },
+    {
+      "front": "Which timeframe is recommended for marking up major swing highs and swing lows?",
+      "back": "The 1-hour or 4-hour timeframe."
+    },
+    {
+      "front": "According to the course, which timeframe serves as the 'microscope' for monitoring the cleanup of a Correction?",
+      "back": "The 15-minute timeframe."
+    },
+    {
+      "front": "What is a 'No Trade Zone'?",
+      "back": "An area where price is trapped between a high and a low without a confirmed indication."
+    },
+    {
+      "front": "In the ICC model, what is 'Continuation'?",
+      "back": "The phase where price flips back to the original trend direction after a correction is finished."
+    },
+    {
+      "front": "What is the recommended number of previous sessions to look back at when marking up a fresh chart?",
+      "back": "One to three sessions."
+    },
+    {
+      "front": "According to Trades by Sci, what replaces 'support and resistance' in their terminology to avoid typical retail mindsets?",
+      "back": "Reaction levels."
+    },
+    {
+      "front": "Where should a stop-loss generally be placed in a confirmed ICC buy setup?",
+      "back": "Below the previous level of support created by the correction."
+    },
+    {
+      "front": "What is the 'soft TP' concept mentioned in the ICC course?",
+      "back": "Targeting the swing high or low made by the initial indication on the 1-hour chart."
+    },
+    {
+      "front": "How does Trades by Sci describe 'Liquidity' in simple terms?",
+      "back": "Grabbing money from the market by triggering the stop-losses of emotional traders."
+    },
+    {
+      "front": "Concept: Timeframe Correlation",
+      "back": "Definition: Ensuring the trend on the 15-minute or 5-minute chart aligns with the structure of the 1-hour or 4-hour chart."
+    },
+    {
+      "front": "In an uptrend, price should not break its _____ levels unless it is intended to reverse.",
+      "back": "support (higher low)"
+    },
+    {
+      "front": "What specific sessions does the source suggest for trading Gold due to high volume?",
+      "back": "London and New York sessions."
+    },
+    {
+      "front": "Why does the course author prefer live market practice over backtesting?",
+      "back": "Live markets involve real-time emotional reactions and current economic data that old data cannot replicate."
+    },
+    {
+      "front": "What does a 'Lower High' signify in the context of a potential trend reversal?",
+      "back": "It indicates that sellers are gaining control and buyers lack the strength to push price higher."
+    },
+    {
+      "front": "How does the author define an 'Independent Trader'?",
+      "back": "Someone who can identify their own setups without relying on external signals or 'gurus'."
+    },
+    {
+      "front": "When price breaks a level where sellers were previously in control, what does it usually become for the next move?",
+      "back": "A level of support for buyers."
+    },
+    {
+      "front": "What is 'Scaling Out' of a trade?",
+      "back": "Closing partial positions at a target while holding the remainder to maximize profits from a continuing trend."
+    },
+    {
+      "front": "If price is in a downtrend and breaks above a 'Lower High', what does this signal about the trend?",
+      "back": "The trend is likely reversing or becoming bullish."
+    },
+    {
+      "front": "Term: FOMO Traders",
+      "back": "Definition: Late-entry traders who jump in at the top of a move out of fear of being left behind."
+    },
+    {
+      "front": "According to the ICC strategy, where are sellers naturally sitting in the market structure?",
+      "back": "At the swing highs."
+    },
+    {
+      "front": "According to the ICC strategy, where are buyers naturally sitting in the market structure?",
+      "back": "At the swing lows."
+    },
+    {
+      "front": "What is the purpose of the 'Shakeup' phase in the Coke bottle analogy?",
+      "back": "Consolidation where the market builds up pressure and capital."
+    },
+    {
+      "front": "Which timeframe provides the strongest 'clues' that a trend is respecting itself?",
+      "back": "The higher timeframes (4-hour or Daily)."
+    },
+    {
+      "front": "True or False: The fundamentals of market structure change depending on the timeframe you are viewing.",
+      "back": "False."
+    },
+    {
+      "front": "What is the 'starting point' of any sustainable trend in the ICC strategy?",
+      "back": "The Indication."
+    },
+    {
+      "front": "A situation where price fails to make a new high and instead breaks a support level on a lower timeframe indicates a _____.",
+      "back": "reversal (or start of a Correction)"
+    },
+    {
+      "front": "What risk is associated with trading based solely on 'Breakouts'?",
+      "back": "The high probability of being liquidated by a market correction."
+    },
+    {
+      "front": "Why is 'Revenge Trading' common during market corrections?",
+      "back": "Traders lose money on the initial breakout trap and try to 'make it back' by immediately flipping positions."
+    },
+    {
+      "front": "In timeframe correlation, the 1-hour trend should be aligned with the _____ timeframe trend.",
+      "back": "4-hour"
+    },
+    {
+      "front": "In timeframe correlation, the 15-minute entry should align with the _____ timeframe trend.",
+      "back": "1-hour"
+    },
+    {
+      "front": "What tool does Trades by Sci recommend for automating the detection of key price levels while away from the computer?",
+      "back": "Price alerts."
+    },
+    {
+      "front": "What is the author's primary rule for choosing which assets to trade?",
+      "back": "Choose assets with high volatility and volume (e.g., Gold, NASDAQ, BTC)."
+    },
+    {
+      "front": "According to the source, why is simplicity considered 'the holy grail' of trading?",
+      "back": "It avoids overthinking and helps a trader follow what price is actually doing rather than predicting it."
+    },
+    {
+      "front": "When a Correction happens, price often returns to the _____ to clear out early traders.",
+      "back": "initial breakout level (or previous range)"
+    },
+    {
+      "front": "How does the author characterize the emotional state of a trader entering at 'Day Trade Swings'?",
+      "back": "Patient and strategic, waiting for the real confirmed move after the 'mess' is cleaned."
+    },
+    {
+      "front": "The 'Indication' is essentially a market signal fire that triggers a predictable wave of _____.",
+      "back": "FOMO-driven trades"
+    },
+    {
+      "front": "What are the three essential tools needed to start trading according to the course?",
+      "back": "A Forex broker, Trading View, and Wi-Fi."
+    },
+    {
+      "front": "In the ICC strategy, what indicates that a Correction is finally over?",
+      "back": "The price action shifts structure back to the original trend direction on a lower timeframe (e.g., 15-min)."
+    },
+    {
+      "front": "If you are in a sell position, you are effectively swapping contracts with someone who is currently a _____.",
+      "back": "buyer"
+    },
+    {
+      "front": "What is 'Fake Volume' in the context of market sessions?",
+      "back": "Price movement that happens out of session (e.g., Asian session for Gold) which may not be sustainable."
+    },
+    {
+      "front": "To avoid noise, the author suggests that swing levels for structure should never be built using which timeframes?",
+      "back": "The 5-minute or 15-minute timeframes."
+    },
+    {
+      "front": "What does a breakout above a level of sellers signify?",
+      "back": "The sellers at that level have been swept out by new buyers."
+    },
+    {
+      "front": "The ICC model suggests that the 'Mess' (Correction) is an inevitable cleanup following the _____.",
+      "back": "Explosion (Indication)"
+    },
+    {
+      "front": "According to the source, what is the best way for a beginner to learn how to trade?",
+      "back": "By observing and participating in live markets daily to adapt to real-time emotions."
+    },
+    {
+      "front": "A 'Higher Low' that appears when you were expecting a 'Lower Low' is a strong clue that the market is _____.",
+      "back": "turning bullish"
+    },
+    {
+      "front": "Why is 'Patience' cited as the only thing standing between a trader and profit after seeing a plan?",
+      "back": "Traders often fail by entering during the messy correction instead of waiting for the continuation."
+    },
+    {
+      "front": "Term: Candlesticks",
+      "back": "Definition: Visual representations of price fluctuations over a specific period of time."
+    },
+    {
+      "front": "The goal of shifting a mindset from 'chasing breakouts' to 'waiting for confirmations' is to achieve _____.",
+      "back": "consistency"
+    }
+  ]
+}
