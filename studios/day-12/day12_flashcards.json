@@ -1,77 +1,65 @@
-[
-  {
-    "id": 1,
-    "front": "What is the #1 rule when timeframes contradict each other?",
-    "back": "The higher timeframe ALWAYS overpowers the lower one. 4-hour beats 1-hour. 1-hour beats 15-minute. Never fight the higher timeframe."
-  },
-  {
-    "id": 2,
-    "front": "Why does TradesbySci mark body closes instead of wicks?",
-    "back": "Body closes are 'closed deals' — price accepted and held that level. Wicks mean price visited the area but was rejected. Body closes = confirmed structure."
-  },
-  {
-    "id": 3,
-    "front": "What are the Golden Rules of Swings?",
-    "back": "To BUY: price must break ABOVE a swing high. To SELL: price must break BELOW a swing low. No exceptions — wait for the break."
-  },
-  {
-    "id": 4,
-    "front": "What is the 'Previous Push' rule?",
-    "back": "When marking a swing high, look left to find WHERE that bullish momentum originated. If price closes below that origin level — bullish momentum is officially dead."
-  },
-  {
-    "id": 5,
-    "front": "Explain the Open Highway analogy for price momentum.",
-    "back": "When buyers break above the last seller level, there's nothing in the way. They 'punch the gas' like an empty highway. Price flies until it hits the next cluster of sellers (traffic)."
-  },
-  {
-    "id": 6,
-    "front": "What is the Lamborghini Effect in trading?",
-    "back": "If sellers see buyers coming in at FULL strength (like a Lamborghini on the highway), sellers move out of the way. The trend continues until buyers run out of gas."
-  },
-  {
-    "id": 7,
-    "front": "Why does TradesbySci NOT trade Forex pairs?",
-    "back": "Forex currencies are stable and move mainly off economic news. They don't have the constant daily investment liquidity that NASDAQ, Gold, and Crypto have. No investment = no volatility = no edge."
-  },
-  {
-    "id": 8,
-    "front": "Which assets does TradesbySci recommend and why?",
-    "back": "NASDAQ, S&P 500, Dow Jones, Gold, and Crypto. These are investments — people pour liquid cash into them every single day, creating massive volatility and opportunity."
-  },
-  {
-    "id": 9,
-    "front": "What session does TradesbySci trade USD assets and why?",
-    "back": "New York Session — 9:30 AM EST. That's when the NYSE opens and banks pour maximum liquidity into the market. Volume is the gas pedal for price action."
-  },
-  {
-    "id": 10,
-    "front": "What is the Clothing Drop analogy for all-time highs?",
-    "back": "Limited jeans drop = high demand = price up. More drops + fakes flood market = everyone has it = value dies. In trading: all-time high hype dies when price breaks below its previous low."
-  },
-  {
-    "id": 11,
-    "front": "Why is buying at all-time highs risky?",
-    "back": "Investors who made 30%+ in 3 days may liquidate at any moment. You don't know when they'll cash out. Random violent spikes and crashes are far more likely at all-time highs."
-  },
-  {
-    "id": 12,
-    "front": "How does BTC relate to altcoins like Solana?",
-    "back": "BTC is the leader of crypto — like how S&P 500 leads NASDAQ. If BTC has no new incentive (no new high to chase), Solana and other alts will HALT too."
-  },
-  {
-    "id": 13,
-    "front": "What does 'price needs a new incentive' mean?",
-    "back": "Markets always chase a new high or new low. Without a new target, price stalls. If there's no new high available, the probability of a bullish continuation drops significantly."
-  },
-  {
-    "id": 14,
-    "front": "S&P 500 is dropping but NASDAQ looks bullish. What do you do?",
-    "back": "Take it with a grain of salt. Sit on your hands. Let the market make a clear decision. Contradicting correlation between leading and following assets = stay out."
-  },
-  {
-    "id": 15,
-    "front": "Is it okay to miss a trade to get more confirmation?",
-    "back": "100% yes. It's okay to miss the first higher high. The market will always give you another opportunity. Missing one trade to catch the rest of the trend is a professional mindset."
-  }
-]
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What is the #1 rule when timeframes contradict each other?",
+      "back": "The higher timeframe ALWAYS overpowers the lower one. 4-hour beats 1-hour. 1-hour beats 15-minute. Never fight the higher timeframe."
+    },
+    {
+      "front": "Why does TradesbySci mark body closes instead of wicks?",
+      "back": "Body closes are 'closed deals' — price accepted and held that level. Wicks mean price visited the area but was rejected. Body closes = confirmed structure."
+    },
+    {
+      "front": "What are the Golden Rules of Swings?",
+      "back": "To BUY: price must break ABOVE a swing high. To SELL: price must break BELOW a swing low. No exceptions — wait for the break."
+    },
+    {
+      "front": "What is the 'Previous Push' rule?",
+      "back": "When marking a swing high, look left to find WHERE that bullish momentum originated. If price closes below that origin level — bullish momentum is officially dead."
+    },
+    {
+      "front": "Explain the Open Highway analogy for price momentum.",
+      "back": "When buyers break above the last seller level, there's nothing in the way. They 'punch the gas' like an empty highway. Price flies until it hits the next cluster of sellers (traffic)."
+    },
+    {
+      "front": "What is the Lamborghini Effect in trading?",
+      "back": "If sellers see buyers coming in at FULL strength (like a Lamborghini on the highway), sellers move out of the way. The trend continues until buyers run out of gas."
+    },
+    {
+      "front": "Why does TradesbySci NOT trade Forex pairs?",
+      "back": "Forex currencies are stable and move mainly off economic news. They don't have the constant daily investment liquidity that NASDAQ, Gold, and Crypto have. No investment = no volatility = no edge."
+    },
+    {
+      "front": "Which assets does TradesbySci recommend and why?",
+      "back": "NASDAQ, S&P 500, Dow Jones, Gold, and Crypto. These are investments — people pour liquid cash into them every single day, creating massive volatility and opportunity."
+    },
+    {
+      "front": "What session does TradesbySci trade USD assets and why?",
+      "back": "New York Session — 9:30 AM EST. That's when the NYSE opens and banks pour maximum liquidity into the market. Volume is the gas pedal for price action."
+    },
+    {
+      "front": "What is the Clothing Drop analogy for all-time highs?",
+      "back": "Limited jeans drop = high demand = price up. More drops + fakes flood market = everyone has it = value dies. In trading: all-time high hype dies when price breaks below its previous low."
+    },
+    {
+      "front": "Why is buying at all-time highs risky?",
+      "back": "Investors who made 30%+ in 3 days may liquidate at any moment. You don't know when they'll cash out. Random violent spikes and crashes are far more likely at all-time highs."
+    },
+    {
+      "front": "How does BTC relate to altcoins like Solana?",
+      "back": "BTC is the leader of crypto — like how S&P 500 leads NASDAQ. If BTC has no new incentive (no new high to chase), Solana and other alts will HALT too."
+    },
+    {
+      "front": "What does 'price needs a new incentive' mean?",
+      "back": "Markets always chase a new high or new low. Without a new target, price stalls. If there's no new high available, the probability of a bullish continuation drops significantly."
+    },
+    {
+      "front": "S&P 500 is dropping but NASDAQ looks bullish. What do you do?",
+      "back": "Take it with a grain of salt. Sit on your hands. Let the market make a clear decision. Contradicting correlation between leading and following assets = stay out."
+    },
+    {
+      "front": "Is it okay to miss a trade to get more confirmation?",
+      "back": "100% yes. It's okay to miss the first higher high. The market will always give you another opportunity. Missing one trade to catch the rest of the trend is a professional mindset."
+    }
+  ]
+}
