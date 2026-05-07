@@ -1,6 +1,2 @@
-Phase,Action,Structural Shift,Psychological Goal
-Indication,Wait,Price breaks a lower high,Acknowledge the trend is changing and stop predicting
-Correction,Monitor,Price pulls back to retest the broken level,Wait patiently; avoid FOMO and let the market clean up liquidity
-Continuation,Execute,Price pushes from the retest with volume,Trade the confirmed new trend with confidence
-Session Timing,Confluence,London sets up the high; NY (9:30 AM) retests,Align with institutional volume
-Take Profit,Targeting,Target the 'Final Boss' swing high/low,Let the trade run to its maximum structural potential
+﻿Date (Inferred),Session,Timeframe,Trade Setup Type,Indication Signal,Correction/Retracement Detail,Entry Level,Stop Loss Level,Take Profit/Target,Source
+October 2nd,New York,"4H, 1H, 15M, 5M",Trend Reversal Identification (ICC),"Breakout above the 1-hour swing high level of 3,278 (set during London/Asian sessions) and previous resistance.","Price pushed back down to retest the previous breakout level, grabbing liquidity and rejecting lower levels on the 5-minute chart.",Price back above the 1-hour resistance/support level during New York session volume (approx. 09:30–10:00).,Below the newly formed 15-minute higher low/support level.,"Soft targets at the previous 1-hour swing high ( 3,296 ) and looking for a new higher high.",[1]
