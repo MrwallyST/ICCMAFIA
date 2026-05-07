@@ -1,0 +1,57 @@
+{
+  "title": "Day 12: Decision Making & Trading Psychology",
+  "description": "Mental framework for market decisions — timeframe authority, momentum physics, asset selection, and all-time high traps",
+  "nodes": [
+    {
+      "id": "root",
+      "label": "Day 12: Decision Making & Trading Psychology",
+      "children": ["timeframes", "structure", "momentum", "assets", "athhigh", "correlation"]
+    },
+    {
+      "id": "timeframes",
+      "label": "Timeframe Authority",
+      "children": ["tf1", "tf2", "tf3"]
+    },
+    { "id": "tf1", "label": "Higher TF Always Wins", "detail": "4H > 1H > 30M > 15M > 5M" },
+    { "id": "tf2", "label": "Lower TF Builds Into Higher", "detail": "15M can build bullish structure to shift 1H" },
+    { "id": "tf3", "label": "Miss One = Catch The Rest", "detail": "Skip for confirmation, market gives more chances" },
+    {
+      "id": "structure",
+      "label": "Core Structure Rules",
+      "children": ["s1", "s2", "s3"]
+    },
+    { "id": "s1", "label": "Body Closes > Wicks", "detail": "Closed deal vs. visit and reject" },
+    { "id": "s2", "label": "Golden Swing Rules", "detail": "Buy above swing high | Sell below swing low" },
+    { "id": "s3", "label": "Previous Push Rule", "detail": "Break below origin = bullish momentum dead" },
+    {
+      "id": "momentum",
+      "label": "Momentum Physics",
+      "children": ["m1", "m2"]
+    },
+    { "id": "m1", "label": "Open Highway Analogy", "detail": "No sellers above = punch the gas freely" },
+    { "id": "m2", "label": "Lamborghini Effect", "detail": "Strong buyers force sellers to move out of the way" },
+    {
+      "id": "assets",
+      "label": "Asset Selection",
+      "children": ["a1", "a2", "a3"]
+    },
+    { "id": "a1", "label": "Forex is Stable — Avoid", "detail": "Currencies rely on economic news, not investment flow" },
+    { "id": "a2", "label": "Trade Investments", "detail": "NASDAQ, Gold, Crypto, S&P 500, Dow Jones" },
+    { "id": "a3", "label": "New York Session 9:30 AM EST", "detail": "NYSE opens = banks pour max liquidity = volume = movement" },
+    {
+      "id": "athhigh",
+      "label": "All-Time High Trap",
+      "children": ["ath1", "ath2"]
+    },
+    { "id": "ath1", "label": "Clothing Drop Analogy", "detail": "Hype builds, floods market, value tanks when everyone has it" },
+    { "id": "ath2", "label": "The Sign", "detail": "Price breaks below previous low = hype dead = selling pressure" },
+    {
+      "id": "correlation",
+      "label": "Asset Correlation & Incentives",
+      "children": ["c1", "c2", "c3"]
+    },
+    { "id": "c1", "label": "BTC leads Crypto | S&P leads Indices", "detail": "500 stocks > 100 stocks > 30 stocks in influence" },
+    { "id": "c2", "label": "New Incentive Required", "detail": "No new high/low = no chase = lower probability" },
+    { "id": "c3", "label": "Contradicting Leaders = Sit Out", "detail": "S&P down + NASDAQ up = take with grain of salt, wait" }
+  ]
+}
