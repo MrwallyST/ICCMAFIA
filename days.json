@@ -118,8 +118,7 @@
       "Two live trade setups showing the full entry model in action"
     ],
     "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
-  }
-,
+  },
   {
     "day": 5,
     "title": "Day 5: The 1 Secret 90% of Traders Don't Know",
@@ -147,6 +146,34 @@
       "Swing Levels Rule: Above a low = bullish potential. Below a high = bearish potential.",
       "Liquidity Demystified: The market grabs your stop-loss money to fuel the next move",
       "The 3 Traps: FOMO, Greed, and Revenge Trading - how the market eats 90% of traders"
+    ],
+    "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
+  },
+  {
+    "day": 13,
+    "title": "Day 13: Positioning & Psychology",
+    "description": "AI-decoded Trades by Sci lesson.",
+    "youtubeId": "13DAY13VIDEO",
+    "reelUrl": "",
+    "audioUrl": "./studios/day-13/day13_en.mp3",
+    "infographicUrl": "./studios/day-13/day13_infographic.png",
+    "quizFile": "./studios/day-13/day13_quiz.json",
+    "studyGuideUrl": "",
+    "flashcardsUrl": "./studios/day-13/day13_flashcards.json",
+    "mindMapUrl": "./studios/day-13/day13_mindmap.json",
+    "slideDeckUrl": "",
+    "dataTableUrl": "",
+    "blogPostUrl": "",
+    "youtubeScriptUrl": "",
+    "twitterThreadUrl": "",
+    "newsletterUrl": "",
+    "linkedinUrl": "",
+    "faqUrl": "",
+    "keyTakeaways": [
+      "Core Strategy & Concepts from Day 13",
+      "High-Probability Institutional Trading Setups",
+      "Market Structure & Liquidity Mapping",
+      "Actionable Rule-Based Execution Plan"
     ],
     "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
   }

@@ -1,0 +1,105 @@
+{
+  "name": "Trading Course: Positioning & Psychology",
+  "children": [
+    {
+      "name": "Mindset & Psychology",
+      "children": [
+        {
+          "name": "Simplicity",
+          "children": [
+            { "name": "Avoid overthinking" },
+            { "name": "Stick to basics" },
+            { "name": "Ignore fake gurus" }
+          ]
+        },
+        {
+          "name": "Discipline",
+          "children": [
+            { "name": "Eliminate greed" },
+            { "name": "No revenge trading" },
+            { "name": "Open mind, open heart" }
+          ]
+        },
+        {
+          "name": "Personal Growth",
+          "children": [
+            { "name": "Push limits" },
+            { "name": "Build character" },
+            { "name": "Trading builds life skills" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Financial Strategy",
+      "children": [
+        {
+          "name": "Capital Management",
+          "children": [
+            { "name": "Save capital first" },
+            { "name": "Keep a 9-to-5 job" },
+            { "name": "Minimum $2k-$3k USD" }
+          ]
+        },
+        {
+          "name": "Preparation",
+          "children": [
+            { "name": "Practice on demo accounts" },
+            { "name": "Set realistic goals" },
+            { "name": "Track win rates" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Technical Execution",
+      "children": [
+        {
+          "name": "Positioning",
+          "children": [
+            { "name": "High probability setups" },
+            { "name": "Strategic entry levels" },
+            { "name": "Scalability mindset" }
+          ]
+        },
+        {
+          "name": "Market Structure",
+          "children": [
+            { "name": "Identify buyers and sellers" },
+            { "name": "Swing highs and lows" },
+            { "name": "Trend identification" }
+          ]
+        },
+        {
+          "name": "Price Action",
+          "children": [
+            { "name": "Indication vs. Correction" },
+            { "name": "Break and retest" },
+            { "name": "Candle closes" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Risk Management",
+      "children": [
+        {
+          "name": "Protective Measures",
+          "children": [
+            { "name": "Stop-loss placement" },
+            { "name": "Invalidation points" },
+            { "name": "Risking 5-10% max" }
+          ]
+        },
+        {
+          "name": "Profitability",
+          "children": [
+            { "name": "1:3 Risk-to-Reward ratio" },
+            { "name": "Quality over quantity" },
+            { "name": "Two solid trades per week" }
+          ]
+        }
+      ]
+    }
+  ]
+}

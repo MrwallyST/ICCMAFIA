@@ -1,0 +1,265 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "According to the source material, what is the most sustainable way to build trading capital for beginners?",
+      "answerOptions": [
+        {
+          "text": "Using a $9-to-5$ job or freelance work to save up specific capital on the side.",
+          "isCorrect": true,
+          "rationale": "Working a job provides active income and a safety net, allowing a trader to save a substantial amount without the pressure of needing to trade for survival."
+        },
+        {
+          "text": "Depositing $100$ to $500$ weekly and attempting to flip it into a large sum quickly.",
+          "isCorrect": false,
+          "rationale": "This approach is described as unsustainable because most beginners lack the skill for the required risk management and scalability."
+        },
+        {
+          "text": "Borrowing high-interest loans to ensure the trading account has at least $10,000$.",
+          "isCorrect": false,
+          "rationale": "The speaker emphasizes using saved income rather than creating debt, which would add immense psychological pressure."
+        },
+        {
+          "text": "Quitting a full-time job immediately to focus entirely on learning the markets.",
+          "isCorrect": false,
+          "rationale": "The speaker explicitly calls quitting a job before being established one of the 'dumbest' things, as the financial stress hinders clear decision-making."
+        }
+      ],
+      "hint": "Consider the speaker's advice on maintaining a stable source of income while building your account."
+    },
+    {
+      "question": "What criteria should a trader meet before transitioning from a demo account to a live trading account?",
+      "answerOptions": [
+        {
+          "text": "Turning a $100,000$ demo account into $1,000,000$ within one week.",
+          "isCorrect": false,
+          "rationale": "Extreme short-term gains on a demo account are often the result of luck rather than a sustainable, repeatable process."
+        },
+        {
+          "text": "Consistently showing growth, a good win rate, and a solid risk-to-reward ratio over weeks or months.",
+          "isCorrect": true,
+          "rationale": "Demonstrating statistical consistency ensures that the trader has developed a skill set that can translate to live market conditions."
+        },
+        {
+          "text": "Successfully predicting a major news event like a market drop before it happens.",
+          "isCorrect": false,
+          "rationale": "Predicting a single event does not prove a trader's long-term sustainability or risk management capabilities."
+        },
+        {
+          "text": "Completing exactly $100$ trades regardless of the financial outcome.",
+          "isCorrect": false,
+          "rationale": "The focus should be on the quality of stats and growth rather than hitting a specific, arbitrary number of trades."
+        }
+      ],
+      "hint": "Think about the importance of statistical growth over a period of time rather than a single large win."
+    },
+    {
+      "question": "How does the speaker differentiate 'positioning' from simply 'taking a trade'?",
+      "answerOptions": [
+        {
+          "text": "Positioning involves entering at the exact millisecond a news event is announced.",
+          "isCorrect": false,
+          "rationale": "This focuses on timing and reaction rather than the strategic placement and flexibility emphasized by the speaker."
+        },
+        {
+          "text": "Positioning is the act of putting yourself in a high-probability spot that offers options, such as scaling out.",
+          "isCorrect": true,
+          "rationale": "A good position allows the trader to make strategic decisions, like taking partial profits, because price has moved significantly away from the entry."
+        },
+        {
+          "text": "Positioning refers to the specific lot size used based on the account's leverage.",
+          "isCorrect": false,
+          "rationale": "While size is part of risk management, positioning in this context refers to the strategic location on the chart relative to the trend."
+        },
+        {
+          "text": "Positioning means entering multiple trades at once to cover all possible market directions.",
+          "isCorrect": false,
+          "rationale": "Entering all directions is a form of hedging, whereas the speaker focuses on choosing one high-probability direction."
+        }
+      ],
+      "hint": "Reflect on the analogy of a war game where the goal is to be in the most advantageous spot."
+    },
+    {
+      "question": "Where should a trader place their stop-loss to ensure their trade idea is truly invalidated?",
+      "answerOptions": [
+        {
+          "text": "Exactly $5$ pips away from the entry to minimize any potential financial loss.",
+          "isCorrect": false,
+          "rationale": "A fixed small pip count often results in getting stopped out by normal market volatility even if the overall direction is correct."
+        },
+        {
+          "text": "At a level where, if hit, it proves the trend or market structure has changed.",
+          "isCorrect": true,
+          "rationale": "Placing a stop-loss at a point of invalidation ensures that the loss only occurs when the original reason for the trade no longer exists."
+        },
+        {
+          "text": "At the same price level as the take-profit target to maintain a $1:1$ ratio.",
+          "isCorrect": false,
+          "rationale": "The speaker advocates for higher reward ratios, and the stop-loss must be based on chart structure, not just a mathematical mirror of the target."
+        },
+        {
+          "text": "Beneath the current candle's low, regardless of where the previous swing high was.",
+          "isCorrect": false,
+          "rationale": "This neglects the broader market structure and the 'visual cues' provided by higher lows or lower highs."
+        }
+      ],
+      "hint": "The stop-loss should be placed where the 'positioning' is proven wrong."
+    },
+    {
+      "question": "In the context of the course, what defines a 'swing high' or 'swing low'?",
+      "answerOptions": [
+        {
+          "text": "A specific sequence of three green candles followed by two red candles.",
+          "isCorrect": false,
+          "rationale": "The speaker notes that it is not about a rigid candle formation but rather a visual reaction in the market."
+        },
+        {
+          "text": "A visual cue where price reaches a peak or trough and then makes a drastic change in direction.",
+          "isCorrect": true,
+          "rationale": "These levels represent points where buyers or sellers took control, causing the market to shift its momentum visibly."
+        },
+        {
+          "text": "Any point where an automated technical indicator like an RSI crosses the $70$ level.",
+          "isCorrect": false,
+          "rationale": "The source material emphasizes letting price action show the levels rather than relying on external indicators."
+        },
+        {
+          "text": "The price level where the daily market opens and closes.",
+          "isCorrect": false,
+          "rationale": "While open and close levels are important, swing points are defined by the actual highs and lows created by trend movements."
+        }
+      ],
+      "hint": "Think about the 'spotlight' analogy used to describe how buyers and sellers are discovered at certain points."
+    },
+    {
+      "question": "Why does the speaker advocate for a $1:3$ or $1:4$ risk-to-reward ratio?",
+      "answerOptions": [
+        {
+          "text": "It allows a trader to be profitable while only needing two solid trades per week.",
+          "isCorrect": true,
+          "rationale": "High reward-to-risk ratios mean that a few successful trades can easily cover losses and match the income of a standard paycheck."
+        },
+        {
+          "text": "It guarantees that the win rate will stay above $90\\%$.",
+          "isCorrect": false,
+          "rationale": "Higher reward ratios often come with lower win rates, but the math ensures profitability even with fewer wins."
+        },
+        {
+          "text": "It is a requirement set by most institutional trading platforms to allow execution.",
+          "isCorrect": false,
+          "rationale": "Risk-to-reward is a personal management strategy, not a platform-enforced rule."
+        },
+        {
+          "text": "It ensures that the trader never experiences a losing streak longer than three trades.",
+          "isCorrect": false,
+          "rationale": "No ratio can prevent a losing streak; it only manages the financial impact when wins eventually occur."
+        }
+      ],
+      "hint": "Consider the math behind how many trades are needed to replace a daily job's income."
+    },
+    {
+      "question": "When price breaks below a level where buyers were previously strong, what does this indicate about the market structure?",
+      "answerOptions": [
+        {
+          "text": "The market is entering a 'correction' and will immediately bounce back to its original high.",
+          "isCorrect": false,
+          "rationale": "A break below a strong buyer level usually signals a shift in control rather than a simple temporary pullback."
+        },
+        {
+          "text": "The buyers have become weak at that level and sellers have taken control of the momentum.",
+          "isCorrect": true,
+          "rationale": "Breaking a structural floor indicates that the demand at that price has been exhausted and supply is now pushing price lower."
+        },
+        {
+          "text": "The market is in a 'neutral' state and all trading should be avoided for $24$ hours.",
+          "isCorrect": false,
+          "rationale": "Such a break is actually an active signal for a bearish trend, not a signal to remain neutral."
+        },
+        {
+          "text": "The buyers are 'trapping' the sellers and will likely push price to a new all-time high.",
+          "isCorrect": false,
+          "rationale": "While traps exist, the standard structural interpretation of a break is that the preceding level of support is no longer holding."
+        }
+      ],
+      "hint": "Recall the explanation of how buyers and sellers 'exchange' or switch roles when a level is bypassed."
+    },
+    {
+      "question": "What is the recommended approach for entering a trade during a correction in a bearish trend?",
+      "answerOptions": [
+        {
+          "text": "Enter a buy trade as soon as the correction starts to capture the upward movement.",
+          "isCorrect": false,
+          "rationale": "The speaker advises against fighting the main trend and suggests waiting for signs that the correction is ending."
+        },
+        {
+          "text": "Wait for price to return below the level that originally indicated the bearish breakout.",
+          "isCorrect": true,
+          "rationale": "Entering when price goes back under the initial breakdown level confirms that the bearish momentum has resumed after the correction."
+        },
+        {
+          "text": "Place a sell order at the very top of the correction without waiting for a confirmation.",
+          "isCorrect": false,
+          "rationale": "This is risky as the correction could continue higher; waiting for structural confirmation is the 'simpler' and safer approach."
+        },
+        {
+          "text": "Wait for the correction to reach a Fibonacci $61.8\\%$ retracement level exactly.",
+          "isCorrect": false,
+          "rationale": "The source material focuses on structural levels and price action rather than specific Fibonacci tools."
+        }
+      ],
+      "hint": "The strategy involves waiting for the 'buyers' fighting back to lose their momentum at a specific key level."
+    },
+    {
+      "question": "According to the speaker, what is the 'true' role of psychology in trading?",
+      "answerOptions": [
+        {
+          "text": "It is secondary to technical analysis and only matters during large market crashes.",
+          "isCorrect": false,
+          "rationale": "The speaker argues that psychology is actually more important than the charts themselves."
+        },
+        {
+          "text": "It helps eliminate greed, false hope, and the habit of 'marrying' a specific trade idea.",
+          "isCorrect": true,
+          "rationale": "Trading challenges a person's mindset, forcing them to let go of emotional attachments and destructive habits like revenge trading."
+        },
+        {
+          "text": "It is a tool used to manipulate other traders into making mistakes.",
+          "isCorrect": false,
+          "rationale": "The psychology discussed is internal and personal, aimed at self-improvement rather than the manipulation of others."
+        },
+        {
+          "text": "It allows a trader to predict human behavior by looking at candle patterns.",
+          "isCorrect": false,
+          "rationale": "While patterns reflect behavior, the focus here is on the trader's own mental discipline and emotional control."
+        }
+      ],
+      "hint": "Think about the personal transformation the speaker mentions regarding his own character."
+    },
+    {
+      "question": "If you have $1,000$ to trade, what does the speaker suggest as a personal risk threshold to calculate account longevity?",
+      "answerOptions": [
+        {
+          "text": "Risking $50\\%$ per trade to reach a $10,000$ goal in two trades.",
+          "isCorrect": false,
+          "rationale": "High risk per trade is the fastest way to blow an account and lacks the scalability mentioned in the video."
+        },
+        {
+          "text": "Risking between $5\\%$ and $10\\%$ while calculating how many losses it would take to blow the account.",
+          "isCorrect": true,
+          "rationale": "This approach focuses on survival and the ability to stay in the game long enough for the high reward-to-risk trades to play out."
+        },
+        {
+          "text": "Risking a fixed $1\\%$ per trade regardless of the setup's probability.",
+          "isCorrect": false,
+          "rationale": "While common advice, the speaker specifically mentions a slightly higher $5-10\\%$ range as his personal way of calculating trade impact."
+        },
+        {
+          "text": "Risking only the profits from the previous day's trades.",
+          "isCorrect": false,
+          "rationale": "This is a compounding strategy that doesn't address the initial risk management required for the first trade of the account."
+        }
+      ],
+      "hint": "Look for the specific percentage range mentioned by the speaker as his personal method."
+    }
+  ]
+}

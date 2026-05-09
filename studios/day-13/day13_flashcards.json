@@ -1,0 +1,205 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "How does the speaker describe the difficulty of trading compared to popular perception?",
+      "back": "It is easier than most people or 'gurus' make it seem."
+    },
+    {
+      "front": "What fundamental area do many traders often overlook in their rush to trade?",
+      "back": "The basics of trading."
+    },
+    {
+      "front": "Why does the speaker discourage entering the market with small amounts like $100 or $500?",
+      "back": "It is not sustainable without extreme skill in risk management and scalability."
+    },
+    {
+      "front": "What is the recommended minimum capital to save before starting to trade seriously?",
+      "back": "At least $2,000 to $3,000 USD."
+    },
+    {
+      "front": "What role does a 9-to-5 job play in a beginner trader's strategy?",
+      "back": "It provides the active income needed to save up trading capital."
+    },
+    {
+      "front": "What is the danger of attempting to 'trade your way out' of a job in the first week?",
+      "back": "It leads to depositing money with a desperate mindset of trying to flip it immediately."
+    },
+    {
+      "front": "What requirement must be met on a demo account before transitioning to live trading?",
+      "back": "Seeing consistent growth, good win rates, and solid risk-to-reward ratios."
+    },
+    {
+      "front": "Definition: Trading",
+      "back": "Speculating on market direction and putting money behind one's analysis and thought process."
+    },
+    {
+      "front": "What separates the psychological approach of a beginner from an elevated trader?",
+      "back": "Beginners think about 'fast money' and trade count, while elevated traders think about 'positioning'."
+    },
+    {
+      "front": "In the context of the speaker's strategy, what does 'positioning' provide a trader?",
+      "back": "It provides options, such as scaling out or making decisions from a point of safety."
+    },
+    {
+      "front": "How should a trader's stop-loss levels be determined regarding market structure?",
+      "back": "They should be placed at points where the trade idea or trend is invalidated if hit."
+    },
+    {
+      "front": "What is the risk of a stop-loss that is placed too tight without regard for structure?",
+      "back": "It may be hit without the overall trend or trade idea actually being proven wrong."
+    },
+    {
+      "front": "What psychological trap involves being unable to let go of a failing trade?",
+      "back": "Being 'married' to a trade."
+    },
+    {
+      "front": "The speaker suggests aiming for what specific risk-to-reward ratio?",
+      "back": "A ratio of $1:3$."
+    },
+    {
+      "front": "How many 'solid' trades per week are typically necessary to match a standard paycheck?",
+      "back": "Two solid trades."
+    },
+    {
+      "front": "What tool did the speaker use to manage trades while working two jobs?",
+      "back": "TradingView alerts synced to an Apple Watch."
+    },
+    {
+      "front": "Beyond financial gain, what is one way trading improves a person's character?",
+      "back": "It helps eliminate greed and teaches one to think properly and push personal limits."
+    },
+    {
+      "front": "What visual indicator defines a 'swing high'?",
+      "back": "Price reaching a peak and then moving in the completely opposite direction due to a reaction."
+    },
+    {
+      "front": "How should a trader view market levels to simplify analysis?",
+      "back": "As a battle between the mindsets of buyers and sellers."
+    },
+    {
+      "front": "What does a 'break of structure' signify about the participants in the market?",
+      "back": "It indicates that the side previously in control (e.g., buyers) has lost strength or 'switched' to the other side."
+    },
+    {
+      "front": "In the speaker's terminology, what is the 'indication' phase of a move?",
+      "back": "The initial breakout that shows the market's intended direction."
+    },
+    {
+      "front": "How is the 'correction' phase defined following an indication?",
+      "back": "A period where the opposite side of the market fights back, creating a temporary pullback."
+    },
+    {
+      "front": "To confirm the end of a correction, where is the safest place to re-enter a trade?",
+      "back": "Back under (or over) the level that provided the initial indication."
+    },
+    {
+      "front": "Where is the correct placement for a stop-loss in a sell position?",
+      "back": "Above the most recent lower high (the reaction point)."
+    },
+    {
+      "front": "Where is the correct placement for a stop-loss in a buy position?",
+      "back": "Under the most recent higher low."
+    },
+    {
+      "front": "Why is 'candle closing' emphasized as a critical factor in technical analysis?",
+      "back": "It confirms that a move or 'deal' is finalized rather than being a temporary wick."
+    },
+    {
+      "front": "What happens to a buyer zone once price breaks and sustains below it?",
+      "back": "The buyers become weak or switch to becoming sellers."
+    },
+    {
+      "front": "When looking at a chart, what does a 'lower high' suggest about market sentiment?",
+      "back": "It suggests the market is becoming bearish as it fails to reach the previous peak."
+    },
+    {
+      "front": "What is the primary benefit of scaling out of a position?",
+      "back": "It allows a trader to secure profits while leaving room for further potential gains."
+    },
+    {
+      "front": "According to the speaker, what percentage of capital should a beginner risk per trade?",
+      "back": "$5-10\\%$."
+    },
+    {
+      "front": "What is the psychological consequence of 'revenge trading'?",
+      "back": "It leads to poor decision-making based on emotion rather than structure."
+    },
+    {
+      "front": "Why does the speaker advocate for 'simple' charts over indicators?",
+      "back": "To let price action and reactions show where the actual levels are rather than predicting them."
+    },
+    {
+      "front": "How does the speaker describe a 'swing low' in terms of buyer/seller exchange?",
+      "back": "A point where sellers run out and buyers become strong enough to shift the direction."
+    },
+    {
+      "front": "What mindset shift is required when a trader moves to 'high numbers' of capital?",
+      "back": "The mindset of scalability and not being afraid of larger figures."
+    },
+    {
+      "front": "What does a failed attempt to break a high followed by a push down indicate?",
+      "back": "A shift toward bearish momentum and a potential sell opportunity."
+    },
+    {
+      "front": "What is the purpose of 'setting notes' on price alerts?",
+      "back": "To remind the trader of their pre-planned analysis when the alert triggers during a busy schedule."
+    },
+    {
+      "front": "How should a trader interpret a price rejection at a previous support level?",
+      "back": "As a sign that buyers are still active at that specific price point."
+    },
+    {
+      "front": "Why is 'market structure' considered more important than specific news events like elections?",
+      "back": "Structure often shows bearish or bullish tendencies before the volume from news confirms them."
+    },
+    {
+      "front": "What is the speaker's definition of an 'imaginary zone' on a chart?",
+      "back": "A level where buyers or sellers might be sitting that hasn't been revealed by price action yet."
+    },
+    {
+      "front": "What differentiates 'swing trading' from regular trading in the speaker's view?",
+      "back": "It is viewed more as a long-term investment idea rather than a short-term trade."
+    },
+    {
+      "front": "The speaker suggests that if you have money, nothing in the world is _____.",
+      "back": "Impossible"
+    },
+    {
+      "front": "In the 'Person A vs. Person B' analogy, what makes Person B's position better?",
+      "back": "They delayed gratification to ensure they had a financial cushion after spending."
+    },
+    {
+      "front": "How does 'following the trend' specifically assist in making profit decisions?",
+      "back": "It places price far from the entry, allowing the trader to take partials or hold for more with less stress."
+    },
+    {
+      "front": "What does a 'higher low' indicate in an uptrend?",
+      "back": "That buyers are entering the market at a higher price than before, maintaining bullish control."
+    },
+    {
+      "front": "Concept: Trend Invalidation",
+      "back": "Definition: A point on a chart where the current trend (up or down) is proven to have ended by a break in structure."
+    },
+    {
+      "front": "Why is 'simplicity' emphasized for the trader's brain?",
+      "back": "To prevent overthinking and make decision-making under pressure easier."
+    },
+    {
+      "front": "How does the speaker view 'guru' advice regarding quitting a 9-to-5 job?",
+      "back": "He views it as 'dumb' and encourages keeping the job until capital is sufficient."
+    },
+    {
+      "front": "What is the 'spotlight' analogy in market buyers/sellers?",
+      "back": "When price hits a zone where buyers have been waiting, they finally take advantage of the market's attention."
+    },
+    {
+      "front": "According to the text, what is the '1-minute' task for a busy trader?",
+      "back": "Executing a pre-planned trade, setting a stop-loss, and closing the phone once an alert hits."
+    },
+    {
+      "front": "What psychological trait is eliminated by following a set trading plan and structure?",
+      "back": "Greed"
+    }
+  ]
+}

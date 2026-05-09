@@ -1,0 +1,390 @@
+#!/usr/bin/env python3
+"""
+TradesBySci — Add Day Pipeline (V4 Full Suite)
+=====================================
+Uses your MASTER NotebookLM notebook and adds each new day as a source.
+Generates 8 English artifacts + 1 Spanish audio concurrently.
+Downloads them locally, updates days.json, rebuilds index.html, and pushes to GitHub.
+
+Usage:
+  python add_day.py --day 2 --youtube "https://www.youtube.com/watch?v=VIDEO_ID"
+                   --title "Your Day 2 Title"
+                   --desc "English description"
+
+After running, the website inline HTML data auto-updates.
+"""
+
+import os, sys, json, time, subprocess, re, argparse
+from pathlib import Path
+
+# Force UTF-8 output on Windows (avoids cp1252 UnicodeEncodeError)
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+# ── Config ──────────────────────────────────────────────────────────────────
+SCRIPT_DIR      = Path(__file__).parent
+DAYS_JSON       = SCRIPT_DIR / "days.json"
+STUDIOS_DIR     = SCRIPT_DIR / "studios"
+PYTHON          = sys.executable
+SCRIPTS_PATH    = r"C:\Users\cesar\AppData\Local\Python\pythoncore-3.14-64\Scripts"
+
+# YOUR MASTER NOTEBOOK
+MASTER_NOTEBOOK = "8be24334-4293-41e0-a87d-cd20e67349ae"
+
+ENV = {
+    **os.environ,
+    "PYTHONIOENCODING": "utf-8",
+    "PATH": SCRIPTS_PATH + ";" + os.environ.get("PATH", "")
+}
+
+# ── Helpers ──────────────────────────────────────────────────────────────────
+def nlm(args: list, timeout=600) -> str:
+    """Run a notebooklm CLI command and return combined stdout+stderr as utf-8."""
+    cmd = [PYTHON, "-m", "notebooklm"] + args
+    result = subprocess.run(
+        cmd, capture_output=True, env=ENV, timeout=timeout,
+        encoding="utf-8", errors="replace"
+    )
+    return ((result.stdout or "") + (result.stderr or "")).strip()
+
+def extract_id(text):
+    matches = re.findall(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", text)
+    return matches[0] if matches else None
+
+def step(n, total, msg):
+    print(f"\n[{n}/{total}] {msg}", flush=True)
+
+def wait_for_all(artifact_ids, max_wait=900):
+    """Poll artifact list until all given IDs show as complete."""
+    pending = set(artifact_ids)
+    print(f"   Waiting for {len(pending)} artifacts to complete...", flush=True)
+    for i in range(max_wait // 15):
+        if not pending:
+            return True
+        out = nlm(["artifact", "list", "-n", MASTER_NOTEBOOK], timeout=60)
+        lines = out.splitlines()
+        
+        still_pending = set()
+        for a_id in pending:
+            # Look for this artifact in the list output
+            relevant = [l for l in lines if a_id[:8] in l]
+            if any("complete" in l.lower() or "ready" in l.lower() for l in relevant):
+                print(f"\n   ✓ Artifact {a_id[:8]} completed!")
+            elif any("fail" in l.lower() or "error" in l.lower() for l in relevant):
+                print(f"\n   ✗ Artifact {a_id[:8]} failed!")
+            else:
+                still_pending.add(a_id)
+        
+        pending = still_pending
+        if pending:
+            print(".", end="", flush=True)
+            time.sleep(15)
+            
+    print("\n   Timed out waiting for some artifacts.")
+    return False
+
+def rebuild_html():
+    """Embed the latest days.json data directly into index.html so it works on file://"""
+    html_path = SCRIPT_DIR / "index.html"
+    if not html_path.exists() or not DAYS_JSON.exists():
+        return
+    days = json.loads(DAYS_JSON.read_text(encoding="utf-8"))
+    days_json_str = json.dumps(days, ensure_ascii=False, separators=(',', ':'))
+    html = html_path.read_text(encoding="utf-8")
+    import re as _re
+    new_line = f'  const DAYS_DATA = {days_json_str};'
+    html = _re.sub(r'  const DAYS_DATA = \[.*?\];', new_line, html, flags=_re.DOTALL)
+    html_path.write_text(html, encoding="utf-8")
+    print(f"   index.html updated with {len(days)} day(s) of data")
+
+def _clean_mind_map(file_path):
+    """Strip NotebookLM metadata prefix and clean invalid control characters from mind map JSON."""
+    try:
+        raw = open(file_path, 'rb').read().decode('utf-8-sig', errors='replace')
+        raw = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', ' ', raw)
+        idx = raw.find('{')
+        if idx >= 0:
+            data = json.loads(raw[idx:], strict=False)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            print(f"   Mind map cleaned: {data.get('name', 'unknown')}")
+    except Exception as e:
+        print(f"   Mind map cleanup warning: {e}")
+
+# ── Main pipeline ─────────────────────────────────────────────────────────────
+def run_pipeline(
+    day_num: int,
+    youtube_url: str,
+    title_en: str,
+    desc_en: str,
+    takeaways_en: list,
+):
+    TOTAL = 8
+    day_dir = STUDIOS_DIR / f"day-{day_num}"
+    day_dir.mkdir(parents=True, exist_ok=True)
+    youtube_id = youtube_url.split("v=")[-1].split("&")[0] if "v=" in youtube_url else youtube_url.split("/")[-1].split("?")[0]
+
+    # 1. Active context
+    step(1, TOTAL, "Setting master notebook as active context...")
+    out = nlm(["use", MASTER_NOTEBOOK])
+    
+    # 2. Add source to the master notebook
+    # step(2, TOTAL, f"Adding Day {day_num} YouTube video as source...")
+    # out = nlm(["source", "add", youtube_url, "-n", MASTER_NOTEBOOK], timeout=60)
+    # print("   Source requested. Waiting 20s for indexing...")
+    # time.sleep(20)
+
+    # 3. Fire parallel generations using the Master Notebook (with strict day scoping)
+    step(3, TOTAL, f"Requesting full learning suite for Day {day_num}...")
+    
+    tasks = {}
+
+    print("   -> Audio Overview (Skipping, already downloaded)")
+    # audio_prompt = ...
+    # out = nlm(["generate", "audio", audio_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    # tasks['audio'] = extract_id(out)
+
+    print("   -> Study Guide")
+    study_prompt = f"IGNORE ALL PREVIOUS DAYS. Focus STRICTLY on Day {day_num}: {title_en}. Only cover concepts explicitly mentioned in the Day {day_num} video. Keep it concise — max 2 pages."
+    out = nlm(["generate", "report", study_prompt, "--format", "study-guide", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['study'] = extract_id(out)
+
+    print("   -> Flashcards (Skipping, already downloaded)")
+    # out = nlm(["generate", "flashcards", f"IGNORE PREVIOUS LESSONS. Focus EXCLUSIVELY on Day {day_num}: {title_en}.", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    # tasks['flash'] = extract_id(out)
+
+    print("   -> Mind Map (Skipping, already downloaded)")
+    # out = nlm(["generate", "mind-map", f"Create a mind map STRICTLY for Day {day_num}: {title_en}. Do NOT include Day 1 concepts.", "-n", MASTER_NOTEBOOK], timeout=120)
+    # mind_note_id = extract_id(out)
+    # tasks['mind'] = mind_note_id
+
+    print("   -> Quiz (Skipping, already downloaded)")
+    # out = nlm(["generate", "quiz", f"Create 8 questions EXCLUSIVELY about Day {day_num}: {title_en}. Do NOT test on Day 1 or previous material.", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    # tasks['quiz'] = extract_id(out)
+
+    print("   -> Infographic (Skipping, already downloaded)")
+    # info_prompt = ...
+    # out = nlm(["generate", "infographic", info_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    # tasks['info'] = extract_id(out)
+
+    print("   -> Slide Deck")
+    slide_prompt = f"Lesson slides for Day {day_num}: {title_en}. Cover only the essential concepts with bullet points. One key idea per slide."
+    out = nlm(["generate", "slide-deck", slide_prompt, "--length", "short", "--format", "presenter", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['slides'] = extract_id(out)
+
+    print("   -> Data Table")
+    out = nlm(["generate", "data-table", f"Organize key concepts, definitions, and examples from Day {day_num}: {title_en} into a structured reference table.", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['table'] = extract_id(out)
+
+    print("   -> Blog Post")
+    blog_prompt = f"Write a concise, SEO-optimized blog post for Day {day_num}: {title_en}. Keep it under 800 words. Focus on actionable takeaways, not fluff. Credit Trades by Sci. End with a CTA to visit mrwallyst.github.io/ICCMAFIA for free study materials."
+    out = nlm(["generate", "report", "--format", "blog-post", blog_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['blog'] = extract_id(out)
+
+    print("   -> YouTube Script")
+    yt_prompt = (
+        "Write an engaging, cinematic YouTube video script (video overview) covering these concepts. "
+        f"INTRO: The host MUST open by saying: 'Welcome to ICCMAFIA-AI, today we are summarizing Day {day_num} of the TradesbySci ICC course! We will be doing all of the course videos...' "
+        "CORE: Break down all key trading concepts from the lesson clearly like teaching a complete beginner. "
+        "BONUS: WEBSITE CTA: The script MUST enthusiastically instruct viewers to click the link in the description (mrwallyst.github.io/ICCMAFIA) to access their free Interactive Study Guide, Quiz, Mind Map, Flashcards, and Audio Podcast. "
+        "OUTRO: End with a strong, cinematic Call to Action reminding viewers to like, comment, and subscribe to ICCMAFIA-AI. "
+        "CREDIT: Give explicit credit to TradesbySci as the original course creator."
+    )
+    out = nlm(["generate", "report", "--format", "custom", "--append", yt_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['ytscript'] = extract_id(out)
+
+    print("   -> Twitter Thread")
+    thread_prompt = f"Write a viral 10-post Thread (optimized for X/Instagram Threads) summarizing Day {day_num} concepts. CRITICAL: Each individual post MUST be strictly under 400 characters so I can easily copy and paste them. Number each post (1/10, 2/10, etc.), include a punchy BOLD topic header for each post (e.g. 1/10 🚨 **TRADING VS. GAMBLING**), and make sure the first post explicitly states 'Day {day_num} of the TradesbySci ICC Course'."
+    out = nlm(["generate", "report", "--format", "custom", "--append", thread_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['twitter'] = extract_id(out)
+
+    print("   -> Newsletter")
+    news_prompt = "Write a short, punchy email newsletter summarizing this lesson in under 400 words. Include a subject line, 3 key bullet points, and a CTA linking to mrwallyst.github.io/ICCMAFIA for free resources."
+    out = nlm(["generate", "report", "--format", "custom", "--append", news_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['newsletter'] = extract_id(out)
+
+    print("   -> LinkedIn Carousel")
+    li_prompt = "Write the text copy for a 5-slide LinkedIn carousel post. Each slide must be under 150 words. Slide 1 = hook, Slides 2-4 = key concepts, Slide 5 = CTA to mrwallyst.github.io/ICCMAFIA. Credit Trades by Sci."
+    out = nlm(["generate", "report", "--format", "custom", "--append", li_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['linkedin'] = extract_id(out)
+
+    print("   -> FAQ Document")
+    faq_prompt = "Write a Frequently Asked Questions (FAQ) document with exactly 8 Q&A pairs answering the most common beginner queries about this lesson. Keep answers under 3 sentences each."
+    out = nlm(["generate", "report", "--format", "custom", "--append", faq_prompt, f"Day {day_num}: {title_en}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    tasks['faq'] = extract_id(out)
+
+    # Clean None values in case of failure
+    active_tasks = {k: v for k, v in tasks.items() if v}
+    print(f"   Successfully launched {len(active_tasks)} parallel generations.")
+
+    # 4. Wait for all
+    step(4, TOTAL, "Waiting for all NotebookLM artifacts to finish generating...")
+    wait_for_all(list(active_tasks.values()), max_wait=900)
+
+    # 5. Download all
+    step(5, TOTAL, "Downloading completed resources...")
+    paths = {
+        'audio':  day_dir / f"day{day_num}_en.mp3",
+        'study':  day_dir / f"day{day_num}_study.md",
+        'flash':  day_dir / f"day{day_num}_flashcards.json",
+        'mind':   day_dir / f"day{day_num}_mindmap.json",
+        'quiz':   day_dir / f"day{day_num}_quiz.md",
+        'info':   day_dir / f"day{day_num}_infographic.png",
+        'slides': day_dir / f"day{day_num}_slides.pdf",
+        'table':  day_dir / f"day{day_num}_datatable.md",
+        'blog':   day_dir / f"day{day_num}_blog.md",
+        'ytscript': day_dir / f"day{day_num}_ytscript.md",
+        'twitter': day_dir / f"day{day_num}_twitter.md",
+        'newsletter': day_dir / f"day{day_num}_newsletter.md",
+        'linkedin': day_dir / f"day{day_num}_linkedin.md",
+        'faq':    day_dir / f"day{day_num}_faq.md",
+    }
+    
+    if 'audio' in active_tasks:
+        print(f"   - Audio -> {paths['audio'].name}")
+        nlm(["download", "audio", str(paths['audio']), "-a", active_tasks['audio'], "--force"])
+    if 'study' in active_tasks:
+        print(f"   - Study Guide -> {paths['study'].name}")
+        # Note: --format markdown doesn't apply when picking with -a usually, but we use positional download report
+        nlm(["download", "report", str(paths['study']), "-a", active_tasks['study'], "--force"])
+    if 'flash' in active_tasks:
+        print(f"   - Flashcards -> {paths['flash'].name}")
+        nlm(["download", "flashcards", str(paths['flash']), "-a", active_tasks['flash'], "--force"])
+    if 'mind' in active_tasks:
+        print(f"   - Mind Map -> {paths['mind'].name}")
+        nlm(["note", "get", active_tasks['mind'], "-n", MASTER_NOTEBOOK], timeout=60)
+        # mind-map is done synchronously, save it via note get
+        mm_out = nlm(["note", "get", active_tasks['mind'], "-n", MASTER_NOTEBOOK], timeout=60)
+        with open(paths['mind'], 'w', encoding='utf-8') as f:
+            f.write(mm_out)
+        # Clean the JSON: strip metadata prefix
+        _clean_mind_map(paths['mind'])
+    if 'quiz' in active_tasks:
+        print(f"   - Quiz -> {paths['quiz'].name}")
+        nlm(["download", "quiz", str(paths['quiz']), "-a", active_tasks['quiz'], "--force"])
+    if 'info' in active_tasks:
+        print(f"   - Infographic -> {paths['info'].name}")
+        nlm(["download", "infographic", str(paths['info']), "-a", active_tasks['info'], "--force"])
+    if 'slides' in active_tasks:
+        print(f"   - Slide Deck -> {paths['slides'].name}")
+        nlm(["download", "slide-deck", str(paths['slides']), "-a", active_tasks['slides'], "--force"])
+    if 'table' in active_tasks:
+        print(f"   - Data Table -> {paths['table'].name}")
+        nlm(["download", "data-table", str(paths['table']), "-a", active_tasks['table'], "--force"])
+    if 'blog' in active_tasks:
+        print(f"   - Blog Post -> {paths['blog'].name}")
+        nlm(["download", "report", str(paths['blog']), "-a", active_tasks['blog'], "--force"])
+    if 'ytscript' in active_tasks:
+        print(f"   - YouTube Script -> {paths['ytscript'].name}")
+        nlm(["download", "report", str(paths['ytscript']), "-a", active_tasks['ytscript'], "--force"])
+    if 'twitter' in active_tasks:
+        print(f"   - Twitter Thread -> {paths['twitter'].name}")
+        nlm(["download", "report", str(paths['twitter']), "-a", active_tasks['twitter'], "--force"])
+    if 'newsletter' in active_tasks:
+        print(f"   - Newsletter -> {paths['newsletter'].name}")
+        nlm(["download", "report", str(paths['newsletter']), "-a", active_tasks['newsletter'], "--force"])
+    if 'linkedin' in active_tasks:
+        print(f"   - LinkedIn Carousel -> {paths['linkedin'].name}")
+        nlm(["download", "report", str(paths['linkedin']), "-a", active_tasks['linkedin'], "--force"])
+    if 'faq' in active_tasks:
+        print(f"   - FAQ Document -> {paths['faq'].name}")
+        nlm(["download", "report", str(paths['faq']), "-a", active_tasks['faq'], "--force"])
+
+    # 6. Update JSON
+    step(6, TOTAL, "Updating website data...")
+    if DAYS_JSON.exists():
+        days = json.loads(DAYS_JSON.read_text(encoding="utf-8"))
+    else:
+        days = []
+
+    days = [d for d in days if d.get("day") != day_num]
+
+    new_day = {
+        "day": day_num,
+        "title": title_en,
+        "description": desc_en,
+        "youtubeId": youtube_id,
+        "reelUrl": "",
+        "audioUrl": f"./studios/day-{day_num}/day{day_num}_en.mp3",
+        "infographicUrl": f"./studios/day-{day_num}/day{day_num}_infographic.png",
+        "quizFile":       f"./studios/day-{day_num}/day{day_num}_quiz.json",
+        "studyGuideUrl":  f"./studios/day-{day_num}/{paths['study'].name}" if paths['study'].exists() else "",
+        "flashcardsUrl":  f"./studios/day-{day_num}/day{day_num}_flashcards.json",
+        "mindMapUrl":     f"./studios/day-{day_num}/day{day_num}_mindmap.json",
+        "slideDeckUrl":   f"./studios/day-{day_num}/{paths['slides'].name}" if paths['slides'].exists() else "",
+        "dataTableUrl":   f"./studios/day-{day_num}/{paths['table'].name}" if paths['table'].exists() else "",
+        "blogPostUrl":       f"./studios/day-{day_num}/{paths['blog'].name}" if paths['blog'].exists() else "",
+        "youtubeScriptUrl":  f"./studios/day-{day_num}/{paths['ytscript'].name}" if paths['ytscript'].exists() else "",
+        "twitterThreadUrl":  f"./studios/day-{day_num}/{paths['twitter'].name}" if paths['twitter'].exists() else "",
+        "newsletterUrl":     f"./studios/day-{day_num}/{paths['newsletter'].name}" if paths['newsletter'].exists() else "",
+        "linkedinUrl":       f"./studios/day-{day_num}/{paths['linkedin'].name}" if paths['linkedin'].exists() else "",
+        "faqUrl":            f"./studios/day-{day_num}/{paths['faq'].name}" if paths['faq'].exists() else "",
+        "keyTakeaways":   takeaways_en,
+        "notebookId":     MASTER_NOTEBOOK
+    }
+
+    days.append(new_day)
+    days.sort(key=lambda d: d["day"])
+    DAYS_JSON.write_text(json.dumps(days, indent=2, ensure_ascii=False), encoding="utf-8")
+    rebuild_html()
+
+    # 8. Git push
+    step(8, TOTAL, "Pushing to GitHub Pages...")
+    try:
+        subprocess.run(["git", "add", "-A"], cwd=str(SCRIPT_DIR), env=ENV, timeout=30)
+        subprocess.run(["git", "commit", "-m", f"Day {day_num}: {title_en} — full learning suite"], cwd=str(SCRIPT_DIR), env=ENV, timeout=30)
+        subprocess.run(["git", "push"], cwd=str(SCRIPT_DIR), env=ENV, timeout=60)
+        print("   Pushed to GitHub! Site will update in ~60 seconds.")
+    except Exception as e:
+        print(f"   Git push failed: {e}. Push manually with: git add -A && git commit -m 'Day {day_num}' && git push")
+
+    print("\n" + "="*60)
+    print(f"🎉 Day {day_num} COMPLETE — Full Learning Suite")
+    print(f"  🎧 Audio     : {'✅' if paths['audio'].exists() else '❌'}")
+    print(f"  📖 Study     : {'✅' if paths['study'].exists() else '❌'}")
+    print(f"  📇 Flashcards: {'✅' if paths['flash'].exists() else '❌'}")
+    print(f"  🗺️  Mind Map  : {'✅' if paths['mind'].exists() else '❌'}")
+    print(f"  ✅ Quiz      : {'✅' if paths['quiz'].exists() else '❌'}")
+    print(f"  🖼️  Infograph : {'✅' if paths['info'].exists() else '❌'}")
+    print(f"  🎞️  Slides    : {'✅' if paths['slides'].exists() else '❌'}")
+    print(f"  📊 Data Table: {'✅' if paths['table'].exists() else '❌'}")
+    print(f"  📝 Blog Post : {'✅' if paths['blog'].exists() else '❌'}")
+    print(f"  🎬 YT Script : {'✅' if paths['ytscript'].exists() else '❌'}")
+    print(f"  🐦 Twitter   : {'✅' if paths['twitter'].exists() else '❌'}")
+    print(f"  📧 Newsletter: {'✅' if paths['newsletter'].exists() else '❌'}")
+    print(f"  📱 LinkedIn  : {'✅' if paths['linkedin'].exists() else '❌'}")
+    print(f"  ❓ FAQ Doc   : {'✅' if paths['faq'].exists() else '❌'}")
+    print(f"  🌐 Live at   : https://mrwallyst.github.io/ICCMAFIA/")
+    print("="*60)
+
+# ── CLI ───────────────────────────────────────────────────────────────────────
+def main():
+    p = argparse.ArgumentParser(description="Add a TradesBySci day + full learning suite")
+    p.add_argument("--day",       type=int,  required=True)
+    p.add_argument("--youtube",   default="")
+    p.add_argument("--title",     default="")
+    p.add_argument("--desc",      default="")
+    args = p.parse_args()
+
+    if not args.youtube:
+        print("Error: --youtube is required")
+        sys.exit(1)
+
+    takeaways_en = [
+        f"Core Strategy & Concepts from Day {args.day}",
+        "High-Probability Institutional Trading Setups",
+        "Market Structure & Liquidity Mapping",
+        "Actionable Rule-Based Execution Plan"
+    ]
+
+    run_pipeline(
+        day_num    = args.day,
+        youtube_url= args.youtube,
+        title_en   = args.title  or f"TradesBySci Day {args.day}",
+        desc_en    = args.desc   or "AI-decoded Trades by Sci lesson.",
+        takeaways_en = takeaways_en
+    )
+
+if __name__ == "__main__":
+    main()
