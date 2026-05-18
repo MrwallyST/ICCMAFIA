@@ -1,0 +1,45 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "Concept: Swing Points",
+      "back": "Obvious visual peaks or valleys where price hits a barrier of strong buyers or sellers and undergoes a drastic reversal."
+    },
+    {
+      "front": "Concept: Higher Time Frame (HTF) Authority",
+      "back": "The principle that larger timeframe structures consistently overpower smaller timeframe noise because creating them requires significantly more money and volume."
+    },
+    {
+      "front": "Concept: Timeframe Alignment Rules",
+      "back": "A systematic three-step process requiring traders to identify the 4-hour trend, wait for 1-hour structure, and verify 15-minute alignment before execution."
+    },
+    {
+      "front": "Concept: 15-Minute Structural Bias",
+      "back": "A non-negotiable requirement that the entry timeframe must build structure in the exact same direction as the overarching 1-hour and 4-hour trends."
+    },
+    {
+      "front": "Concept: Market Momentum (Lamborghini Analogy)",
+      "back": "The rapid acceleration of price that occurs after breaking resistance when no historical sellers are present to block the movement."
+    },
+    {
+      "front": "Concept: Market Traffic",
+      "back": "Established zones of historical buyers or sellers that act as obstacles, causing high-speed price momentum to stall or reverse."
+    },
+    {
+      "front": "Concept: Professional Positioning",
+      "back": "A disciplined mindset focused on waiting for high-probability setups with perfect multi-timeframe alignment rather than forcing trades out of FOMO."
+    },
+    {
+      "front": "Concept: Mandatory Uptrend Structure",
+      "back": "The technical requirement in an ascending market that a higher high ($HH$) must be followed by a higher low ($HL$)."
+    },
+    {
+      "front": "Concept: Mandatory Downtrend Structure",
+      "back": "The technical requirement in a descending market that a lower high ($LH$) must be followed by a lower low ($LL$)."
+    },
+    {
+      "front": "Concept: Swing Point Identification Window",
+      "back": "The practice of clearing chart noise by visually pinpointing structural pivots based exclusively on the last 1 to 3 trading sessions."
+    }
+  ]
+}

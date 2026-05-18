@@ -1,0 +1,265 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "According to the Day 14 material, what is the most important step to 'clear out the chaos' when identifying swing points?",
+      "answerOptions": [
+        {
+          "text": "Stripping away all messy indicators and looking only at recent price action.",
+          "isCorrect": true,
+          "rationale": "The source emphasizes that to see real market structure, one must remove indicators and visually pinpoint peaks and valleys where price reversed."
+        },
+        {
+          "text": "Marking every level of support and resistance on the daily and weekly charts.",
+          "isCorrect": false,
+          "rationale": "This approach is criticized as creating an 'unreadable mess' that obscures the true market direction."
+        },
+        {
+          "text": "Waiting for a complex five-candle pattern to confirm a visual reversal.",
+          "isCorrect": false,
+          "rationale": "The transcript explicitly states that finding a swing point isn't about memorizing complex candle patterns but rather spotting obvious visual shifts."
+        },
+        {
+          "text": "Using a pivot point indicator to automatically generate the last three sessions' levels.",
+          "isCorrect": false,
+          "rationale": "While pivot points are mentioned in other contexts, the primary rule for Day 14 is to trust one's own eyes to spot drastic shifts without indicator noise."
+        }
+      ],
+      "hint": "The text suggests simplifying the chart by removing everything except the raw movement of the last 1 to 3 days."
+    },
+    {
+      "question": "When analyzing timeframe alignment, which chart is described as the 'ultimate authority' that overpowers smaller fluctuations?",
+      "answerOptions": [
+        {
+          "text": "The 15-minute chart",
+          "isCorrect": false,
+          "rationale": "This timeframe is used for execution and verification, but it is considered the weakest in terms of structural authority."
+        },
+        {
+          "text": "The 4-hour chart",
+          "isCorrect": true,
+          "rationale": "The 4-hour chart is identified as the driving force because it requires significantly more money and volume to create its structure compared to lower timeframes."
+        },
+        {
+          "text": "The 1-hour chart",
+          "isCorrect": false,
+          "rationale": "While stronger than the 15-minute, the 1-hour is still secondary to the 4-hour when conflicting signals occur."
+        },
+        {
+          "text": "The 5-minute chart",
+          "isCorrect": false,
+          "rationale": "The system recommends avoiding the 5-minute chart for marking structure as it contains too much 'noise' and 'lost respect'."
+        }
+      ],
+      "hint": "Consider which timeframe requires the most significant amount of capital and volume to form."
+    },
+    {
+      "question": "What is the specific sequence required to safely enter a trade according to the 'Timeframe Alignment Rules'?",
+      "answerOptions": [
+        {
+          "text": "15-minute verification $\\rightarrow$ 1-hour structure $\\rightarrow$ 4-hour trend.",
+          "isCorrect": false,
+          "rationale": "This sequence incorrectly starts with the lower timeframe rather than establishing the macro trend first."
+        },
+        {
+          "text": "4-hour overarching trend $\\rightarrow$ 1-hour structure $\\rightarrow$ 15-minute verification.",
+          "isCorrect": true,
+          "rationale": "The process is a systematic step-down: identifying the macro trend on the 4H, waiting for the 1H to align, and executing on the 15M."
+        },
+        {
+          "text": "1-hour structure $\\rightarrow$ 4-hour trend $\\rightarrow$ 5-minute entry.",
+          "isCorrect": false,
+          "rationale": "The 15-minute chart, not the 5-minute, is the specified timeframe for final execution verification in the Day 14 playbook."
+        },
+        {
+          "text": "Daily trend $\\rightarrow$ 4-hour reversal $\\rightarrow$ 1-hour entry.",
+          "isCorrect": false,
+          "rationale": "While the daily chart is mentioned as strong, the 'strict non-negotiable' three-step alignment focuses on the 4H, 1H, and 15M."
+        }
+      ],
+      "hint": "The process moves systematically from the highest timeframe authority down to the lowest execution level."
+    },
+    {
+      "question": "In the 'Lamborghini' analogy, what specifically causes the market to stall or reverse after a high-momentum move?",
+      "answerOptions": [
+        {
+          "text": "Running out of volume during the Asian session.",
+          "isCorrect": false,
+          "rationale": "While sessions matter, the specific structural reason for a reversal in this analogy is the presence of an opposing zone of orders."
+        },
+        {
+          "text": "Running into 'traffic,' defined as the next established zone of sellers or buyers.",
+          "isCorrect": true,
+          "rationale": "Momentum accelerates on an 'empty highway' until it hits a historical zone where strong opposing players are waiting to enter."
+        },
+        {
+          "text": "A technical glitch in the trading platform (OBS error).",
+          "isCorrect": false,
+          "rationale": "This refers to a recording issue mentioned in the video intro, not a structural principle of market momentum."
+        },
+        {
+          "text": "When price breaks a lower timeframe support level by accident.",
+          "isCorrect": false,
+          "rationale": "Higher timeframe momentum is not stopped by accident; it requires an established zone of the 'ultimate authority' structure."
+        }
+      ],
+      "hint": "This obstacle is the point where price 'hits a brick wall' because historical orders are sitting at that level."
+    },
+    {
+      "question": "Why does the ICC playbook describe missing a trade to wait for higher timeframe confirmation as a 'superpower'?",
+      "answerOptions": [
+        {
+          "text": "Because real trends will keep making higher highs and higher lows, providing multiple catch-up opportunities.",
+          "isCorrect": true,
+          "rationale": "If a true trend is forming, the market will offer more chances to enter; the goal is to favor high probability over impulsive speed."
+        },
+        {
+          "text": "Because it allows the trader to avoid paying commission fees for the day.",
+          "isCorrect": false,
+          "rationale": "The focus is on the psychological and structural discipline of the trader, not on the cost of trade execution."
+        },
+        {
+          "text": "Because the first move after an indication is always a fakeout.",
+          "isCorrect": false,
+          "rationale": "The first move isn't *always* a fakeout, but waiting for alignment reduces the risk of being crushed by lower timeframe noise."
+        },
+        {
+          "text": "Because it guarantees that the next trade will have a $100\\%$ win rate.",
+          "isCorrect": false,
+          "rationale": "No strategy guarantees a $100\\%$ win rate; the 'superpower' is the mental discipline to follow a system."
+        }
+      ],
+      "hint": "Think about whether a true market trend disappears after only one single move."
+    },
+    {
+      "question": "According to the Day 14 syllabus, what is the psychological benefit of following logical rules rather than impulsive emotion?",
+      "answerOptions": [
+        {
+          "text": "It eliminates the need for any technical analysis on the 4-hour chart.",
+          "isCorrect": false,
+          "rationale": "Rules actually increase the necessity of technical analysis to ensure timeframe alignment."
+        },
+        {
+          "text": "It helps eliminate greed, revenge trading, and false hope.",
+          "isCorrect": true,
+          "rationale": "Relying on a system like waiting for 15M alignment with the 4H forces logical behavior, which fundamentally builds a disciplined mindset."
+        },
+        {
+          "text": "It allows a trader to use higher leverage with lower risk-to-reward ratios.",
+          "isCorrect": false,
+          "rationale": "The system focuses on positioning and probability rather than encouraging higher risk through increased leverage."
+        },
+        {
+          "text": "It makes back-testing irrelevant because live market structure is different.",
+          "isCorrect": false,
+          "rationale": "While Sci emphasizes live fighting, the psychological rules are meant to supplement, not invalidate, the logic of market patterns."
+        }
+      ],
+      "hint": "The text mentions three specific negative trading habits that this system helps to destroy."
+    },
+    {
+      "question": "How does the ICC system define a 'No Trade Zone'?",
+      "answerOptions": [
+        {
+          "text": "The period between the London and New York sessions.",
+          "isCorrect": false,
+          "rationale": "While timing is important, the 'No Trade Zone' is defined by price structure (highs and lows) rather than just time."
+        },
+        {
+          "text": "The area between a swing high and a swing low where no indication has occurred.",
+          "isCorrect": true,
+          "rationale": "A 'No Trade Zone' exists when price is trapped between established levels without breaking (indicating) a direction."
+        },
+        {
+          "text": "Any timeframe lower than the 15-minute chart.",
+          "isCorrect": false,
+          "rationale": "While Sci advises against trading lower timeframes for structure, the specific term refers to a horizontal range on the chart."
+        },
+        {
+          "text": "The 1 to 3 hour period following a major news release.",
+          "isCorrect": false,
+          "rationale": "News causes volatility, but the 'No Trade Zone' is a structural concept where price lacks clear evidence of trend continuation."
+        }
+      ],
+      "hint": "It describes a situation where price has established boundaries but has not yet broken them to provide evidence."
+    },
+    {
+      "question": "In the context of 'Mandatory' vs. 'Lost Respect,' what happens to structure on the lower timeframes (like the 15M) during a 4-hour pullback?",
+      "answerOptions": [
+        {
+          "text": "The lower timeframe remains perfectly bullish to match the 4-hour macro trend.",
+          "isCorrect": false,
+          "rationale": "During a pullback, the lower timeframe will actually look bearish, which is why it 'loses respect' compared to the 4H."
+        },
+        {
+          "text": "The lower timeframe will build a counter-trend, even if the 4-hour chart is healthy.",
+          "isCorrect": true,
+          "rationale": "The 1H or 15M may look like a trend reversal, but the 4H 'highly respects' its own structure, viewing the move as a normal pullback."
+        },
+        {
+          "text": "The lower timeframe is completely ignored by institutional buyers.",
+          "isCorrect": false,
+          "rationale": "While it has less authority, the lower timeframe is still where execution happens; it simply shouldn't be used to determine the bias."
+        },
+        {
+          "text": "The lower timeframe becomes the most respected chart for identifying reversals.",
+          "isCorrect": false,
+          "rationale": "The source explicitly states that the higher timeframe is the ultimate authority over the lower timeframes."
+        }
+      ],
+      "hint": "Think about why a trader might panic on a 1-hour chart while a 4-hour chart looks 'healthy.'"
+    },
+    {
+      "question": "What does Sci mean when he says 'the market structure is still the same' across different timeframes?",
+      "answerOptions": [
+        {
+          "text": "That the price will hit the same exact dollar amount targets on every chart.",
+          "isCorrect": false,
+          "rationale": "Targets are relative to the timeframe's scale; the statement refers to the fundamental behavior of price."
+        },
+        {
+          "text": "The fundamental rules of higher highs and higher lows do not change regardless of the timeframe.",
+          "isCorrect": true,
+          "rationale": "Whether on the 1H or 15M, the mechanics of trends (structure) remain consistent even if the noise level differs."
+        },
+        {
+          "text": "That traders should place entries on the 4-hour chart only.",
+          "isCorrect": false,
+          "rationale": "The system uses the 15-minute chart for entries; the 'same' refers to the rules of structure, not the utility of the chart."
+        },
+        {
+          "text": "That indicators work identically on the 1-minute and 1-day charts.",
+          "isCorrect": false,
+          "rationale": "Sci advises against indicators entirely, emphasizing that market structure (price action) is what remains constant."
+        }
+      ],
+      "hint": "This principle suggests that the 'language' of the market is consistent, even if the 'volume' or speed changes."
+    },
+    {
+      "question": "According to the final thoughts in the Day 14 explainer, what is the ultimate goal of following the ICC system?",
+      "answerOptions": [
+        {
+          "text": "To master the use of pivot points and session indicators.",
+          "isCorrect": false,
+          "rationale": "The goal is to strip indicators away and rely on raw market structure and timeframe alignment."
+        },
+        {
+          "text": "To build an incredibly strong, disciplined community that weeds out fake gurus.",
+          "isCorrect": true,
+          "rationale": "The explainer highlights that the knowledge is meant to spread solid, logical trading habits and foster a disciplined mindset."
+        },
+        {
+          "text": "To ensure every trade results in a catch of the very first microscopic move.",
+          "isCorrect": false,
+          "rationale": "The text says you *don't* have to catch the first move and that waiting for confirmation is a superpower."
+        },
+        {
+          "text": "To trade every single session across all global markets.",
+          "isCorrect": false,
+          "rationale": "The system emphasizes 'sitting on your hands' and waiting for perfect alignment, which often means not trading every session."
+        }
+      ],
+      "hint": "Look for the mission statement mentioned at the beginning and end of the explainer regarding the 'Mafia' community."
+    }
+  ]
+}
