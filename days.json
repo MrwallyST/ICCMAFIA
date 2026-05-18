@@ -165,6 +165,8 @@
     "dataTableUrl": "./studios/day-13/day13_datatable.md",
     "blogPostUrl": "./studios/day-13/day13_blog.md",
     "youtubeScriptUrl": "./studios/day-13/day13_ytscript.md",
+    "igCaptionUrl": "./studios/day-13/day13_ig.md",
+    "tiktokUrl": "./studios/day-13/day13_tiktok.md",
     "twitterThreadUrl": "./studios/day-13/day13_twitter.md",
     "newsletterUrl": "./studios/day-13/day13_newsletter.md",
     "linkedinUrl": "./studios/day-13/day13_linkedin.md",
@@ -174,6 +176,36 @@
       "High-Probability Institutional Trading Setups",
       "Market Structure & Liquidity Mapping",
       "Actionable Rule-Based Execution Plan"
+    ],
+    "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
+  },
+  {
+    "day": 14,
+    "title": "Day 14: The Complete ICC Playbook - Putting It All Together",
+    "description": "AI-decoded Trades by Sci lesson.",
+    "youtubeId": "9ZGnRJxt0hY",
+    "reelUrl": "",
+    "audioUrl": "./studios/day-14/day14_en.mp3",
+    "infographicUrl": "./studios/day-14/day14_infographic.png",
+    "quizFile": "./studios/day-14/day14_quiz.md",
+    "studyGuideUrl": "./studios/day-14/day14_study.md",
+    "flashcardsUrl": "./studios/day-14/day14_flashcards.json",
+    "mindMapUrl": "./studios/day-14/day14_mindmap.json",
+    "slideDeckUrl": "./studios/day-14/day14_slides.pdf",
+    "dataTableUrl": "./studios/day-14/day14_datatable.md",
+    "blogPostUrl": "./studios/day-14/day14_blog.md",
+    "youtubeScriptUrl": "./studios/day-14/day14_ytscript.md",
+    "igCaptionUrl": "./studios/day-14/day14_ig.md",
+    "tiktokUrl": "./studios/day-14/day14_tiktok.md",
+    "twitterThreadUrl": "./studios/day-14/day14_twitter.md",
+    "newsletterUrl": "./studios/day-14/day14_newsletter.md",
+    "linkedinUrl": "./studios/day-14/day14_linkedin.md",
+    "faqUrl": "./studios/day-14/day14_faq.md",
+    "keyTakeaways": [
+      "Full ICC playbook applied from start to finish on a live chart",
+      "How to combine Indications, Corrections & Continuations in real trades",
+      "Multi-timeframe confluence: 1H/4H setup + 5M/15M precision entry",
+      "Mindset, risk management & the trader's checklist for every session"
     ],
     "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
   }
