@@ -133,73 +133,115 @@ def main():
     # 3. Launch generations — ALL scoped to the FULL curriculum
     step(3, TOTAL, "Launching master synthesis artifacts (all 14 days)...")
     tasks = {}
-    SCOPE = "Draw from ALL 14 lessons in this notebook (Days 1-14 of the TradesBySci ICC course)."
+    SCOPE = (
+        "Draw from ALL 14 lessons in this notebook (Days 1-14 of the TradesBySci ICC course). "
+        "IMPORTANT: You must heavily emphasize that the entire ICC trading framework (Indication -> Correction -> Continuation) "
+        "is ultimately a mechanical safeguard designed to conquer human trading psychology pitfalls—specifically FOMO, greed, impatience, and fear. "
+        "Stress that technical mastery is completely useless without disciplined emotional control and risk management; everything in trading "
+        "ultimately comes back to psychology and self-regulation."
+    )
 
     print("   -> Audio Overview (Master Podcast)")
-    audio_prompt = f"Create a comprehensive, podcast-style Audio Overview that synthesizes ALL 14 lessons of the TradesBySci ICC course into one masterclass. {SCOPE} This should feel like a complete trading education in one listen."
+    audio_prompt = (
+        f"Create a comprehensive, podcast-style Audio Overview that synthesizes ALL 14 lessons of the TradesBySci ICC course. {SCOPE} "
+        "Weave the narrative around the core theme: how each mechanical rule of ICC directly serves to protect a trader's psychology. "
+        "This should feel like a complete, mind-shifting trading education in one listen."
+    )
     out = nlm(["generate", "audio", audio_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['audio'] = extract_id(out)
 
     print("   -> Master Study Guide")
-    study_prompt = f"Create the ULTIMATE study guide synthesizing all 14 lessons of the TradesBySci ICC course. {SCOPE} Organize by topic: Market Structure, ICC Framework, Entries, Exits, Risk Management, Psychology. Max 4 pages."
+    study_prompt = (
+        f"Create the ULTIMATE study guide synthesizing all 14 lessons of the TradesBySci ICC course. {SCOPE} "
+        "Organize by topic: Market Structure, ICC Framework, Entries, Exits, Risk Management, and Psychology. "
+        "Showcase how every single step of the framework maps back to managing a trader's emotional state. Max 4 pages."
+    )
     out = nlm(["generate", "report", study_prompt, "--format", "study-guide", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['study'] = extract_id(out)
 
     print("   -> Master Flashcards")
-    out = nlm(["generate", "flashcards", f"Create 20 flashcards covering the most important concepts across ALL 14 lessons. {SCOPE}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "flashcards", f"Create 20 flashcards covering the most important concepts and psychological guardrails across ALL 14 lessons. {SCOPE}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['flash'] = extract_id(out)
 
     print("   -> Master Quiz")
-    quiz_prompt = f"Create a 15-question comprehensive quiz covering ALL 14 lessons of the TradesBySci ICC course. {SCOPE} Test the most critical concepts."
+    quiz_prompt = (
+        f"Create a 15-question comprehensive quiz covering ALL 14 lessons of the TradesBySci ICC course. {SCOPE} "
+        "Include questions that test the mechanics of ICC and how those mechanics protect against emotional errors like chasing, FOMO, and overtrading."
+    )
     out = nlm(["generate", "quiz", quiz_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['quiz'] = extract_id(out)
 
     print("   -> Master Infographic")
-    info_prompt = f"Create the ultimate visual cheat-sheet infographic summarizing the complete ICC trading system. {SCOPE} Include: the 3-phase framework, entry rules, risk management, and psychology checklist."
+    info_prompt = (
+        f"Create the ultimate visual cheat-sheet infographic summarizing the complete ICC trading system. {SCOPE} "
+        "Include: the 3-phase framework, entry rules, risk management, and a detailed psychology checklist showing how the mechanics prevent emotional mistakes."
+    )
     out = nlm(["generate", "infographic", info_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['info'] = extract_id(out)
 
     print("   -> Master Slide Deck")
-    slide_prompt = f"Create a comprehensive slide deck presenting the complete ICC trading system from all 14 lessons. {SCOPE}"
+    slide_prompt = (
+        f"Create a comprehensive slide deck presenting the complete ICC trading system from all 14 lessons. {SCOPE} "
+        "Dedicate slides to explaining the relationship between technical mechanics and trader psychology, proving why success is 90% psychological."
+    )
     out = nlm(["generate", "slide-deck", slide_prompt, "--format", "presenter", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['slides'] = extract_id(out)
 
     print("   -> Master Data Table")
-    out = nlm(["generate", "data-table", f"Create a comprehensive reference table of ALL key concepts, rules, and setups from the complete 14-lesson ICC course. {SCOPE}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
+    out = nlm(["generate", "data-table", f"Create a comprehensive reference table of ALL key concepts, rules, setups, and emotional triggers from the complete 14-lesson ICC course. {SCOPE}", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['table'] = extract_id(out)
 
     print("   -> Master Blog Post")
-    blog_prompt = f"Write a comprehensive SEO blog post titled 'The Complete ICC Trading Masterclass: Everything You Need to Know'. {SCOPE} Under 1200 words. CTA: mrwallyst.github.io/ICCMAFIA for free tools. Credit TradesBySci."
+    blog_prompt = (
+        "Write a comprehensive SEO blog post titled 'The Complete ICC Trading Masterclass: Mechanics Meet Psychology'. "
+        f"{SCOPE} Under 1200 words. Weave in the core message: trading is 90% psychology, and ICC is the mechanical framework designed to conquer the psychological traps of greed and fear. "
+        "CTA: mrwallyst.github.io/ICCMAFIA for free tools. Credit TradesBySci."
+    )
     out = nlm(["generate", "report", "--format", "blog-post", blog_prompt, "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['blog'] = extract_id(out)
 
     print("   -> Master YouTube Script")
     yt_prompt = (
         "Write an epic YouTube video script for a master compilation video. "
-        f"Open with: 'Welcome to ICCMAFIA-AI! Today we break down the ENTIRE TradesBySci ICC course — all 14 lessons — in one video!' "
-        f"{SCOPE} Structure: Introduction → Market Structure → ICC Framework → Entries → Risk Management → Psychology → CTA. "
+        f"Open with: 'Welcome to ICCMAFIA-AI! Today we break down the ENTIRE TradesBySci ICC course — all 14 lessons — in one video, and show why it all comes down back to psychology!' "
+        f"{SCOPE} Structure: Introduction -> Market Structure -> ICC Framework -> Entries -> Risk Management -> Psychology (showing how mechanics serve mindset) -> CTA. "
         "CTA: mrwallyst.github.io/ICCMAFIA for ALL free study materials. Credit TradesBySci."
     )
     out = nlm(["generate", "report", "--format", "custom", "--append", yt_prompt, "All For One Masterclass", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['ytscript'] = extract_id(out)
 
     print("   -> Master Twitter Thread")
-    thread_prompt = f"Write a viral 15-post X/Thread: 'The COMPLETE ICC Trading System — 14 lessons distilled into 15 tweets.' {SCOPE} Each post under 400 chars. Number 1/15 to 15/15. Post 1 must hook with the masterclass theme."
+    thread_prompt = (
+        "Write a viral 15-post X/Thread: 'The COMPLETE ICC Trading System — 14 lessons distilled into 15 tweets.' "
+        f"{SCOPE} Make sure to emphasize how technical rules are actually psychological rules in disguise. "
+        "Each post under 400 chars. Number 1/15 to 15/15. Post 1 must hook with the masterclass theme."
+    )
     out = nlm(["generate", "report", "--format", "custom", "--append", thread_prompt, "All For One", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['twitter'] = extract_id(out)
 
     print("   -> Master Newsletter")
-    news_prompt = f"Write a special email newsletter: 'The ICC Masterclass is Complete — Here's Everything You Learned.' {SCOPE} Under 500 words. Subject line, key highlights from all 14 days, CTA to mrwallyst.github.io/ICCMAFIA."
+    news_prompt = (
+        "Write a special email newsletter: 'The ICC Masterclass is Complete — Here's Why It All Comes Down to Psychology.' "
+        f"{SCOPE} Under 500 words. Explain why technical mastery fails without the right psychology, and how the ICC framework helps automate discipline. "
+        "Subject line, key highlights from all 14 days, CTA to mrwallyst.github.io/ICCMAFIA."
+    )
     out = nlm(["generate", "report", "--format", "custom", "--append", news_prompt, "All For One", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['newsletter'] = extract_id(out)
 
     print("   -> Master LinkedIn Carousel")
-    li_prompt = f"Write a 7-slide LinkedIn carousel: 'I studied 14 trading lessons. Here's the complete ICC system.' {SCOPE} Slide 1=hook, 2-6=key pillars, 7=CTA to mrwallyst.github.io/ICCMAFIA."
+    li_prompt = (
+        "Write a 7-slide LinkedIn carousel: 'I studied 14 trading lessons. Here's the complete ICC system.' "
+        f"{SCOPE} Focus on the transition from mechanics to mindset, showing why psychology is the ultimate foundation of success. "
+        "Slide 1=hook, 2-6=key pillars (mechanics & psychology), 7=CTA to mrwallyst.github.io/ICCMAFIA."
+    )
     out = nlm(["generate", "report", "--format", "custom", "--append", li_prompt, "All For One", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['linkedin'] = extract_id(out)
 
     print("   -> Master FAQ Document")
-    faq_prompt = f"Write a comprehensive FAQ with 12 Q&A pairs covering the most common questions about the entire ICC trading system. {SCOPE} Answers under 4 sentences each."
+    faq_prompt = (
+        f"Write a comprehensive FAQ with 12 Q&A pairs covering the most common questions about the entire ICC trading system. {SCOPE} "
+        "Include several questions on trading psychology, emotional control, and how the ICC framework supports mental discipline. Answers under 4 sentences each."
+    )
     out = nlm(["generate", "report", "--format", "custom", "--append", faq_prompt, "All For One", "-n", MASTER_NOTEBOOK, "--no-wait"], timeout=60)
     tasks['faq'] = extract_id(out)
 
@@ -249,11 +291,14 @@ def main():
     ]:
         if key in active_tasks:
             print(f"   - {key} -> {p[path_key].name}")
-            nlm(["download", kind, str(p[path_key]), "-a", active_tasks[key], "--force"])
+            if kind == "flashcards":
+                nlm(["download", kind, str(p[path_key]), "-a", active_tasks[key]])
+            else:
+                nlm(["download", kind, str(p[path_key]), "-a", active_tasks[key], "--force"])
 
     if 'quiz' in active_tasks:
         print(f"   - quiz -> {p['quiz_raw'].name}")
-        nlm(["download", "quiz", str(p['quiz_raw']), "-a", active_tasks['quiz'], "--force"])
+        nlm(["download", "quiz", str(p['quiz_raw']), "-a", active_tasks['quiz']])
         if p['quiz_raw'].exists():
             quiz_json_to_md(p['quiz_raw'], p['quiz'])
 
@@ -262,7 +307,7 @@ def main():
     ig_content = f"""## 📸 IG Reel Caption — ALL FOR ONE Masterclass
 
 **Hook Line:**
-14 trading lessons. One system. Zero cost. Here's everything you need. 👇
+14 trading lessons. One system. Zero cost. But the real battle is in your mind. 👇
 
 **Body:**
 The ICC method is the simplest trading system you'll ever learn.
@@ -275,7 +320,11 @@ Three steps. That's it.
 
 ▶️ CONTINUATION — Lower timeframe structure breaks in your direction. You enter with edge.
 
-This isn't theory. This is the exact system professional futures traders use on NQ, Gold, and Crypto every single morning.
+🧠 But here's the absolute truth: the mechanics are only 10% of the game. The other 90%? Psychology.
+The entire ICC framework is designed as a mechanical safeguard to protect you from YOURSELF. 
+
+It eliminates FOMO. It stops you from chasing wicks. It forces you to wait for the pullback.
+If you can't manage your emotions, no technical system in the world will save your account.
 
 Days 1 through 14. Free. Interactive quizzes, flashcards, mind maps, audio and more.
 
@@ -285,33 +334,33 @@ Full free masterclass in bio — zero cost, zero email required. Link 👆
 ---
 
 **Hashtags:**
-#DayTrading #FuturesTrading #ICCMethod #SmartMoney #TradingEducation #TradesBySci #PropFirm #TopstepTrader #LearnToTrade #FuturesTrader #ICCFramework #TradingMasterclass #NQFutures #GoldTrading #OrderFlow
+#DayTrading #FuturesTrading #TradingPsychology #ICCMethod #SmartMoney #TradingEducation #TradesBySci #PropFirm #TopstepTrader #LearnToTrade #FuturesTrader #ICCFramework #TradingMasterclass #NQFutures #GoldTrading #OrderFlow #Mindset
 """
 
     tiktok_content = f"""## 🎵 TikTok Script — ALL FOR ONE Masterclass
 
 **[0:00–0:03] HOOK:**
-"14 lessons. One trading system. I'll teach it to you in 30 seconds. Free."
+"14 lessons. One trading system. But if you don't control your mind, you'll still fail."
 
 **[0:03–0:08] THE SYSTEM:**
-"It's called the ICC method. Three steps. Indication, Correction, Continuation."
+"This is the ICC method. Indication, Correction, Continuation. But it's actually a psychology cheat code."
 
 **[0:08–0:15] STEP BY STEP:**
-"Step 1 — Wait for price to break a key swing level with a full candle body close. Not a wick. The body. That's your Indication."
+"Step 1: Indication. Price breaks a swing level. Do you chase? No. That's FOMO. You wait."
 
 **[0:15–0:21] STEP 2:**
-"Step 2 — Price pulls back. This is where beginners get wrecked going FOMO. Smart money waits at the key level."
+"Step 2: Correction. Price pulls back. This is where the impatient get trapped. Smart money waits for the level."
 
 **[0:21–0:27] STEP 3:**
-"Step 3 — Lower timeframe structure breaks in your direction. Change of Character. That's your entry."
+"Step 3: Continuation. Change of Character on the LTF. You enter. The rules do the thinking, so your emotions don't have to."
 
 **[0:27–0:30] CTA:**
-"14 lessons, all free, quizzes and flashcards included. Link in bio. Drop a 🔥"
+"The entire 14-day masterclass is free. Quizzes, flashcards, mind maps, all focused on psychology and mechanics. Link in bio."
 
 ---
 
 **TikTok Caption:**
-The complete ICC trading system — 14 lessons in 30 seconds. All free 👇 #DayTrading #ICCMethod #FuturesTrader #SmartMoneyTrading #LearnToTrade #TradesBySci #TradingMasterclass
+Trading is 90% psychology. Here is how the ICC method keeps you disciplined 👇 #DayTrading #TradingPsychology #ICCMethod #FuturesTrader #SmartMoneyTrading #LearnToTrade #TradesBySci #TradingMasterclass
 """
 
     p['ig'].write_text(ig_content, encoding="utf-8")

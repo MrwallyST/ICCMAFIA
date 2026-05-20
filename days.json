@@ -208,5 +208,35 @@
       "Mindset, risk management & the trader's checklist for every session"
     ],
     "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
+  },
+  {
+    "day": 99,
+    "title": "🎯 ALL FOR ONE — The Complete ICC Trading Masterclass",
+    "description": "The ultimate synthesis of all 14 TradesBySci lessons. Every concept, every rule, every edge — in one place.",
+    "youtubeId": "",
+    "reelUrl": "",
+    "audioUrl": "./studios/day-99/day99_en.mp3",
+    "infographicUrl": "./studios/day-99/day99_infographic.png",
+    "quizFile": "./studios/day-99/day99_quiz.md",
+    "studyGuideUrl": "./studios/day-99/day99_study.md",
+    "flashcardsUrl": "./studios/day-99/day99_flashcards.json",
+    "mindMapUrl": "./studios/day-99/day99_mindmap.json",
+    "slideDeckUrl": "./studios/day-99/day99_slides.pdf",
+    "dataTableUrl": "./studios/day-99/day99_datatable.md",
+    "blogPostUrl": "./studios/day-99/day99_blog.md",
+    "youtubeScriptUrl": "./studios/day-99/day99_ytscript.md",
+    "igCaptionUrl": "./studios/day-99/day99_ig.md",
+    "tiktokUrl": "./studios/day-99/day99_tiktok.md",
+    "twitterThreadUrl": "./studios/day-99/day99_twitter.md",
+    "newsletterUrl": "./studios/day-99/day99_newsletter.md",
+    "linkedinUrl": "./studios/day-99/day99_linkedin.md",
+    "faqUrl": "./studios/day-99/day99_faq.md",
+    "keyTakeaways": [
+      "Complete ICC Framework: Indications → Corrections → Continuations mastered",
+      "Every lesson from Days 1–14 synthesized into one actionable playbook",
+      "Full risk management system: position sizing, stop placement & R:R ratios",
+      "The trader's mindset, psychology & daily routine for consistent profitability"
+    ],
+    "notebookId": "8be24334-4293-41e0-a87d-cd20e67349ae"
   }
 ]
