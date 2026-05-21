@@ -1,0 +1,85 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary psychological purpose of the ICC (Indication-Correction-Continuation) framework?",
+      "back": "It serves as a mechanical safeguard to prevent emotional trading pitfalls like FOMO, greed, and impatience."
+    },
+    {
+      "front": "In the ICC blueprint, what does the 'Indication' represent for a disciplined trader?",
+      "back": "It is a piece of information showing market intent, not a signal to immediately execute a trade."
+    },
+    {
+      "front": "Why is jumping on an initial breakout (the Indication) considered a 'trap' for beginners?",
+      "back": "Breakouts often lead to immediate corrections designed to grab liquidity from emotional and late-entry traders."
+    },
+    {
+      "front": "The 'Coke Bottle' analogy describes the 'messy cleanup' phase following an explosion as the _____.",
+      "back": "Correction"
+    },
+    {
+      "front": "What is the market doing psychologically during a 'Correction' phase?",
+      "back": "It is shaking out breakout traders and grabbing liquidity to fuel the real, sustainable trend move."
+    },
+    {
+      "front": "According to the 'Surgeon's Approach,' where do you look for a pinpoint entry into a major trend?",
+      "back": "Inside the correction of a higher timeframe trend by finding a miniature ICC pattern on a lower timeframe."
+    },
+    {
+      "front": "The ICC principle states: 'The indication asks the question, but the _____ gives you the answer.'",
+      "back": "Correction"
+    },
+    {
+      "front": "What is the 'Golden Rule' for confirming a Continuation entry on a lower timeframe like the 15-minute chart?",
+      "back": "You must wait for a second push in the trend direction to confirm the market is actually ready to move."
+    },
+    {
+      "front": "What defines a 'No Trade Zone' in the TradesBySci method?",
+      "back": "The sideways area between a swing high and a swing low where no clear breakout or indication has occurred."
+    },
+    {
+      "front": "How does the 'Positioning' mindset differ from the 'Trading' mindset?",
+      "back": "Positioning focuses on waiting for high-probability structural alignment rather than impulsively chasing every price movement."
+    },
+    {
+      "front": "In market structure hierarchy, why must a trader always defer to the 4-hour timeframe over the 1-hour?",
+      "back": "The 4-hour chart represents the macro strength and consistently overpowers lower timeframe fluctuations and noise."
+    },
+    {
+      "front": "What is the non-negotiable rule for 'Timeframe Alignment' before executing a trade?",
+      "back": "The 15-minute execution bias must directly match the structural direction of the 1-hour and 4-hour charts."
+    },
+    {
+      "front": "According to Sci, why is 'missing a trade' to wait for confirmation actually a 'superpower'?",
+      "back": "It proves the trader has the discipline to prioritize logical rules over greed and the fear of missing out."
+    },
+    {
+      "front": "What 'brick wall' analogy defines a bearish bias in the TradesBySci blueprint?",
+      "back": "Anything trapped below a major swing high is considered bearish territory controlled by sellers."
+    },
+    {
+      "front": "The market needs 'fuel' to smash through key levels, which Sci identifies as _____.",
+      "back": "Liquidity (money from the stop-losses of emotional or FOMO traders)"
+    },
+    {
+      "front": "What visual cue defines a true 'Swing Point' on a chart?",
+      "back": "An undeniable peak or valley where price hit a level of strong orders and drastically changed direction."
+    },
+    {
+      "front": "In the 'Lamborghini' analogy, what allows price to accelerate rapidly after a breakout?",
+      "back": "The lack of 'traffic,' meaning there are no historical sellers or resistance levels blocking the path."
+    },
+    {
+      "front": "What is the psychological benefit of using a strict five-step checklist for trade execution?",
+      "back": "It removes emotional impulsivity and forces the trader to act like a disciplined machine."
+    },
+    {
+      "front": "Why does Sci emphasize marking body closes rather than candle wicks when identifying structure?",
+      "back": "Body closes represent 'closed deals' and confirmed levels, whereas wicks only show where price failed to stay."
+    },
+    {
+      "front": "What is the ultimate goal of mastering the ICC framework beyond technical analysis?",
+      "back": "To build a disciplined mindset that eliminates greed, revenge trading, and false hope through logical rules."
+    }
+  ]
+}

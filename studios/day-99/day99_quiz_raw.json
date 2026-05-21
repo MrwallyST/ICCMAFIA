@@ -1,0 +1,395 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "In the TradesBySci ICC framework, what is the primary structural signature of a healthy uptrend that a trader should be 'obsessed' with spotting?",
+      "answerOptions": [
+        {
+          "text": "Higher Highs and Higher Lows",
+          "isCorrect": true,
+          "rationale": "An uptrend is visually defined as a staircase-like pattern where price consistently creates new peaks and valleys that are higher than the previous ones."
+        },
+        {
+          "text": "Increasing volume on every green candle",
+          "isCorrect": false,
+          "rationale": "While volume is important, the core fundamental of market structure as taught in the course is based on the visual pattern of swing points."
+        },
+        {
+          "text": "Lower Highs and Lower Lows",
+          "isCorrect": false,
+          "rationale": "This pattern actually describes a downtrend, representing a market that is losing value over time."
+        },
+        {
+          "text": "Price remaining above a 50-day moving average",
+          "isCorrect": false,
+          "rationale": "The course specifically advocates for 'stripping away messy indicators' and focusing purely on price action and swing points."
+        }
+      ],
+      "hint": "Think of a staircase going up, where each step up and each landing is higher than the last."
+    },
+    {
+      "question": "What does an 'Indication' represent in the ICC framework, and how should a professional trader react to seeing one?",
+      "answerOptions": [
+        {
+          "text": "It is a piece of information, not an entry signal, requiring the trader to wait.",
+          "isCorrect": true,
+          "rationale": "An indication is the market 'tapping you on the shoulder' to show potential direction, but jumping in immediately is a trap for emotional traders."
+        },
+        {
+          "text": "It is a 'green light' breakout signal to enter the trade immediately to avoid missing the move.",
+          "isCorrect": false,
+          "rationale": "This reaction is categorized as FOMO; the source material states that jumping on the initial breakout is a one-way ticket to blowing up an account."
+        },
+        {
+          "text": "It indicates a period of consolidation where no trading should occur until rules are broken.",
+          "isCorrect": false,
+          "rationale": "Indication is actually the moment consolidation ends via a breakout, marking the start of a potential new trend."
+        },
+        {
+          "text": "It is the final step of the trade where the user takes profits.",
+          "isCorrect": false,
+          "rationale": "Indication is the very first step of the three-step ICC process, not the conclusion."
+        }
+      ],
+      "hint": "Remember the saying: the indication asks the question, it doesn't give the final answer."
+    },
+    {
+      "question": "According to the source material, what is the psychological purpose of the 'Correction' move that follows a breakout?",
+      "answerOptions": [
+        {
+          "text": "To shake out emotional traders and grab liquidity from those who FOMOed into the breakout.",
+          "isCorrect": true,
+          "rationale": "The correction is a 'liquidity grab' designed to hunt the stop-losses of impatient traders before the market continues in its actual direction."
+        },
+        {
+          "text": "To signal that the original trend has failed and a reversal is imminent.",
+          "isCorrect": false,
+          "rationale": "A correction is not a trend failure; it is a calculated pause or 'messy cleanup' that is part of a healthy trend's expansion."
+        },
+        {
+          "text": "To allow late traders a chance to enter at a 'better' price without any risk.",
+          "isCorrect": false,
+          "rationale": "The correction actually increases perceived risk for the emotional trader, often causing them to panic and hit their stop-losses."
+        },
+        {
+          "text": "To provide a clear period of consolidation where price remains perfectly sideways.",
+          "isCorrect": false,
+          "rationale": "Corrections are often described as 'messy' and 'choppy' moves in the opposite direction of the breakout, rather than simple sideways movement."
+        }
+      ],
+      "hint": "Think of the market as a predator looking for 'easy money' from those who acted on impulsive emotions."
+    },
+    {
+      "question": "The 'Golden Rule' of entry in the surgeon's approach (Day 4) requires waiting for which specific confirmation before executing a trade?",
+      "answerOptions": [
+        {
+          "text": "A confirmed second push in the direction of the trend.",
+          "isCorrect": true,
+          "rationale": "The first break is often a fake-out to grab liquidity; the second push proves the market is ready to move for real."
+        },
+        {
+          "text": "The price reaching the original $1$ hour swing high immediately.",
+          "isCorrect": false,
+          "rationale": "The trader must wait for internal structure on lower timeframes to shift back toward the trend before aiming for higher timeframe targets."
+        },
+        {
+          "text": "A specific candlestick pattern like a hammer or engulfing bar.",
+          "isCorrect": false,
+          "rationale": "The ICC method relies on market structure (HH/HL/LL/LH) rather than memorizing complex candle patterns."
+        },
+        {
+          "text": "The $15$-minute chart entering a consolidation zone.",
+          "isCorrect": false,
+          "rationale": "Consolidation is 'public enemy number one' and should be avoided, not used as a signal for entry."
+        }
+      ],
+      "hint": "One move is a signal, but two moves in that same direction act as the confirmation."
+    },
+    {
+      "question": "What is the 'Ultimate Authority' when a trader sees conflicting signals between the $4$-hour chart and the $1$-hour chart?",
+      "answerOptions": [
+        {
+          "text": "The $4$-hour chart",
+          "isCorrect": true,
+          "rationale": "Higher timeframes require significantly more money and volume to create structure, making them more respected and powerful than lower timeframe noise."
+        },
+        {
+          "text": "The $1$-hour chart",
+          "isCorrect": false,
+          "rationale": "While the $1$-hour provides detail, it is frequently subject to temporary fluctuations that do not change the overarching $4$-hour trend."
+        },
+        {
+          "text": "The $15$-minute chart",
+          "isCorrect": false,
+          "rationale": "The $15$-minute chart is used for execution and is considered 'lower timeframe noise' compared to the macro strength of the $4$-hour."
+        },
+        {
+          "text": "The session volume indicator",
+          "isCorrect": false,
+          "rationale": "Market structure on higher timeframes always overpowers individual indicators or short-term volume spikes."
+        }
+      ],
+      "hint": "The timeframe that represents 'macro strength' and 'more money' is the one that drives the vehicle."
+    },
+    {
+      "question": "In the 'Coke Bottle' analogy for market liquidity, what phase does the 'messy fizz' spilling everywhere represent?",
+      "answerOptions": [
+        {
+          "text": "The Correction",
+          "isCorrect": true,
+          "rationale": "After the explosion (indication), the fizz is the inevitable messy cleanup or pullback that occurs before the market settles into a trend."
+        },
+        {
+          "text": "The Indication",
+          "isCorrect": false,
+          "rationale": "The indication is represented by the 'explosion' or the cap flying off, not the messy spill that follows."
+        },
+        {
+          "text": "Consolidation",
+          "isCorrect": false,
+          "rationale": "Consolidation is represented by the shaking of the bottle, where pressure and money are accumulating."
+        },
+        {
+          "text": "The Continuation",
+          "isCorrect": false,
+          "rationale": "Continuation is the phase after the mess has been cleaned up and the market moves toward its target."
+        }
+      ],
+      "hint": "It\u2019s the part of the process that occurs right after the big exciting breakout."
+    },
+    {
+      "question": "How does following a strict three-timeframe alignment rule ($4$H $\\rightarrow$ $1$H $\\rightarrow$ $15$m) fundamentally change a trader's discipline?",
+      "answerOptions": [
+        {
+          "text": "It forces the trader to rely on logical rules rather than impulsive emotions like greed and revenge.",
+          "isCorrect": true,
+          "rationale": "By mandating that all timeframes match, the system prevents 'clicking buttons' just to feel involved, building a more disciplined person."
+        },
+        {
+          "text": "It guarantees a $100\\%$ win rate by eliminating all market risk.",
+          "isCorrect": false,
+          "rationale": "No system can guarantee a $100\\%$ win rate; the source explicitly states the creator is not always right."
+        },
+        {
+          "text": "It allows the trader to take more frequent trades throughout the day.",
+          "isCorrect": false,
+          "rationale": "Strict alignment often results in fewer trades, as the professional is taught to 'sit on their hands' until the market provides a clear setup."
+        },
+        {
+          "text": "It simplifies the process so much that psychological control is no longer necessary.",
+          "isCorrect": false,
+          "rationale": "Technical mastery is useless without self-regulation; the system is a tool for psychology, not a replacement for it."
+        }
+      ],
+      "hint": "Consider how having 'non-negotiable' steps affects a person's tendency to act on a whim."
+    },
+    {
+      "question": "If a trader sees price breaking above a 'Seller's Brick Wall' (Swing High) but there is no 'Traffic' ahead, what is the expected market behavior according to the 'Lamborghini' analogy?",
+      "answerOptions": [
+        {
+          "text": "Price will accelerate incredibly fast until it hits the next established zone of sellers.",
+          "isCorrect": true,
+          "rationale": "With no historical sellers blocking the way, buyers 'punch the gas' because there is nothing to stop the market's momentum."
+        },
+        {
+          "text": "Price will immediately reverse to grab liquidity before moving further.",
+          "isCorrect": false,
+          "rationale": "While liquidity grabs happen, the specific analogy of an empty highway refers to the speed and ease of movement when resistance is cleared."
+        },
+        {
+          "text": "Price will enter a period of consolidation to wait for more buyers.",
+          "isCorrect": false,
+          "rationale": "Consolidation is the result of 'traffic' or a fight between buyers and sellers, not an empty road."
+        },
+        {
+          "text": "The trader should stand in front of the move to catch the reversal.",
+          "isCorrect": false,
+          "rationale": "The source warns you 'absolutely cannot stand in front of massive aligned higher timeframe momentum.'"
+        }
+      ],
+      "hint": "Think about what happens to a speeding car when there are no other vehicles or obstacles on the road."
+    },
+    {
+      "question": "Why does TradesBySci recommend that beginners continue working a $9$-to-$5$ job while learning to trade?",
+      "answerOptions": [
+        {
+          "text": "To ensure they have 'saved income' and do not feel pressured to 'trade their way out of a job' every week.",
+          "isCorrect": true,
+          "rationale": "Trading under the pressure of needing money to pay rent leads to poor, emotion-based decisions and a lack of sustainability."
+        },
+        {
+          "text": "Because trading only takes one minute a day and requires very little focus.",
+          "isCorrect": false,
+          "rationale": "While the execution might be fast, learning the skill requires 'working twice as hard' and putting in significant pressure to study."
+        },
+        {
+          "text": "To provide enough capital to revenge trade until they eventually win.",
+          "isCorrect": false,
+          "rationale": "Revenge trading is a toxic habit that the course aims to eliminate through discipline and logical rules."
+        },
+        {
+          "text": "Because trading is a 'casino' and you need a steady job to cover the inevitable losses.",
+          "isCorrect": false,
+          "rationale": "The course argues that trading is a skill built on logic and strategy, not a lottery or a casino."
+        }
+      ],
+      "hint": "Consider the difference in mindset between trading with 'spare' capital versus 'rent' money."
+    },
+    {
+      "question": "In the context of Day $12$, why is 'missing a trade' considered a 'superpower' rather than a failure?",
+      "answerOptions": [
+        {
+          "text": "It demonstrates the discipline to wait for extra confirmation and high-probability setups.",
+          "isCorrect": true,
+          "rationale": "A professional is comfortable missing one move to ensure the trend is real; they know the market isn't going anywhere and more opportunities will follow."
+        },
+        {
+          "text": "It proves that the trader does not actually understand market structure.",
+          "isCorrect": false,
+          "rationale": "Missing a trade because it didn't meet all criteria is a sign of *deep* understanding of the rules, not a lack of it."
+        },
+        {
+          "text": "It is a way to avoid all losses, as not trading equals a $100\\%$ safety rate.",
+          "isCorrect": false,
+          "rationale": "While not trading avoids losses, the goal of calling it a 'superpower' is to reframe the psychological pain of 'missing out' into a win for discipline."
+        },
+        {
+          "text": "It allows the trader to focus on lower timeframes where more trades occur.",
+          "isCorrect": false,
+          "rationale": "The course emphasizes staying on higher timeframes and avoiding the 'noise' of lower timeframes."
+        }
+      ],
+      "hint": "Think about how self-regulation helps a trader overcome the 'Fear of Missing Out' (FOMO)."
+    },
+    {
+      "question": "What 'Golden Rule' regarding swing points acts as a trader's compass for navigating market bias?",
+      "answerOptions": [
+        {
+          "text": "Anything above a major swing low is bullish; anything below a major swing high is bearish.",
+          "isCorrect": true,
+          "rationale": "This simple framework identifies whose 'territory' the price is in\u2014the buyers' wall or the sellers' ceiling."
+        },
+        {
+          "text": "Always buy at a swing low and always sell at a swing high.",
+          "isCorrect": false,
+          "rationale": "This is a common misconception; the course teaches that you wait for a break (indication) of these levels to see where momentum wants to go."
+        },
+        {
+          "text": "A swing low is only valid if it is followed by a $200$-point explosion.",
+          "isCorrect": false,
+          "rationale": "A swing point is simply an 'undeniable obvious visual point' where price reversed, regardless of the subsequent move's size."
+        },
+        {
+          "text": "The market will always break a swing point on the third attempt.",
+          "isCorrect": false,
+          "rationale": "There is no 'fixed number' rule for breaks; the market breaks levels when it has accumulated enough liquidity/money."
+        }
+      ],
+      "hint": "Think of swing points as 'Brick Walls' and consider which side of the wall the price is currently on."
+    },
+    {
+      "question": "Where should a trader place their stop-loss when executing a 'Continuation' trade according to the ICC entry model?",
+      "answerOptions": [
+        {
+          "text": "Just above/below the most recent internal swing point (lower high or higher low).",
+          "isCorrect": true,
+          "rationale": "The stop-loss acts as a 'safety net' at a point where, if hit, the trade's structural logic is invalidated."
+        },
+        {
+          "text": "Exactly $10$ points away from the entry to minimize dollar risk.",
+          "isCorrect": false,
+          "rationale": "The source material warns against 'super small stop losses' that don't respect the actual market structure."
+        },
+        {
+          "text": "At the original $1$-hour target level to allow for maximum breathing room.",
+          "isCorrect": false,
+          "rationale": "The $1$-hour level is usually the 'Take Profit' target, not the stop-loss level."
+        },
+        {
+          "text": "In the middle of the 'No Trade Zone' to catch any reversals.",
+          "isCorrect": false,
+          "rationale": "Trading in the 'No Trade Zone' is identified as a lack of discipline; stop-losses should protect your position based on clear structure."
+        }
+      ],
+      "hint": "If the trend is moving down, your safety net should be placed where price 'failed' to go higher."
+    },
+    {
+      "question": "According to Day $10$, what is the most effective way to 'clear the chaos' when marking up a chart?",
+      "answerOptions": [
+        {
+          "text": "Turn off all indicators and focus only on the visual swing points from the last $1$-$3$ sessions.",
+          "isCorrect": true,
+          "rationale": "Simplifying the chart to recent, undeniable visual peaks and valleys removes the 'unreadable mess' created by too many levels and indicators."
+        },
+        {
+          "text": "Mark every single swing point on the Daily, $4$-hour, $1$-hour, and $15$-minute charts.",
+          "isCorrect": false,
+          "rationale": "This approach is criticized for making the chart an 'unreadable mess'; you only need recent, relevant levels."
+        },
+        {
+          "text": "Use an indicator like 'Pivot Points' as the sole source for finding levels.",
+          "isCorrect": false,
+          "rationale": "While Pivot Points can 'guide' you, the source emphasizes trusting your own eyes and not 'solely depending' on indicators."
+        },
+        {
+          "text": "Focus on finding complex candlestick patterns that have formed over the last $30$ days.",
+          "isCorrect": false,
+          "rationale": "The course specifically says 'you don't have to go $30$ years back' and that swing points are not about 'memorizing complex candle patterns.'"
+        }
+      ],
+      "hint": "The goal is a 'fresh start' and a 'clean' chart that isn't cluttered with unnecessary information."
+    },
+    {
+      "question": "What is the primary risk of trading 'The Indication' (the initial breakout) rather than waiting for the full ICC process?",
+      "answerOptions": [
+        {
+          "text": "You are likely to be 'liquidity' for the market's hunt and get stopped out by a correction.",
+          "isCorrect": true,
+          "rationale": "Retail traders FOMO into breakouts, providing the 'fuel' (stop-losses) the market needs for its eventual real move."
+        },
+        {
+          "text": "The trend will move so fast that your computer will be unable to execute the trade.",
+          "isCorrect": false,
+          "rationale": "While the market moves fast, the 'risk' is not technical latency but structural 'traps' and psychological errors."
+        },
+        {
+          "text": "You will make too much money and become too greedy for future sessions.",
+          "isCorrect": false,
+          "rationale": "The source identifies this move as a 'one-way ticket to blowing up your account,' not a path to excessive profit."
+        },
+        {
+          "text": "There is no risk; the indication is the most reliable entry point in trading.",
+          "isCorrect": false,
+          "rationale": "The source explicitly states that trading the indication is 'retarded' and leads to getting 'fucked' and losing money."
+        }
+      ],
+      "hint": "Recall the 'giant flag' analogy and who that flag is designed to attract."
+    },
+    {
+      "question": "Ultimately, what does TradesBySci argue is the relationship between technical mastery and emotional regulation in trading?",
+      "answerOptions": [
+        {
+          "text": "Technical mastery is useless without disciplined emotional control and risk management.",
+          "isCorrect": true,
+          "rationale": "The entire system\u2014rules, timeframes, and structure\u2014is built fundamentally to help the trader become a more disciplined person."
+        },
+        {
+          "text": "Technical mastery is the most important factor, as a good enough strategy will overcome poor psychology.",
+          "isCorrect": false,
+          "rationale": "The creator emphasizes that 'psychology... is more important than what I'm going to show you now [on the charts].'"
+        },
+        {
+          "text": "Emotional regulation is only necessary for beginners until they learn the 'secret' indicators.",
+          "isCorrect": false,
+          "rationale": "The course is 'no indicators'; discipline is a lifelong 'superpower' in trading that never becomes obsolete."
+        },
+        {
+          "text": "Risk management and psychology are separate from 'market structure' and should be studied at different times.",
+          "isCorrect": false,
+          "rationale": "The source material argues that 'market structure alone can save you from a lot of market decisions,' integrating psychology and technicals into one logic."
+        }
+      ],
+      "hint": "Consider why the course emphasizes 'eliminating greed' and 'weeding out gurus' through a logical system."
+    }
+  ]
+}

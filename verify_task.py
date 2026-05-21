@@ -4,6 +4,10 @@ import json
 import subprocess
 from pathlib import Path
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 def check_day_99_assets():
     base_dir = Path(r"C:\Users\cesar\Documents\New folder\TradesBySci")
     days_json_path = base_dir / "days.json"
