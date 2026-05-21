@@ -369,18 +369,18 @@ Trading is 90% psychology. Here is how the ICC method keeps you disciplined 👇
 
     # 7. Mind map
     step(7, TOTAL, "Generating Master Mind Map...")
-    mm_out = nlm(["generate", "mind-map", f"Create a comprehensive mind map for the COMPLETE ICC Trading System from all 14 lessons. Show how all concepts connect.", "-n", MASTER_NOTEBOOK], timeout=240)
-    mm_id = extract_id(mm_out)
-    if mm_id:
-        raw = nlm(["note", "get", mm_id, "-n", MASTER_NOTEBOOK], timeout=60)
-        idx = raw.find('{')
-        if idx >= 0:
-            try:
-                data = json.loads(raw[idx:])
-                p['mind'].write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-                print("   Mind Map ✓")
-            except:
-                p['mind'].write_text(raw, encoding="utf-8")
+    mm_out = nlm(["generate", "mind-map", "-n", MASTER_NOTEBOOK, "--json"], timeout=240)
+    idx = mm_out.find('{')
+    if idx >= 0:
+        try:
+            data = json.loads(mm_out[idx:])
+            p['mind'].write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+            print("   Mind Map ✓")
+        except Exception as e:
+            print(f"   Mind Map JSON Parse Error: {e}")
+            p['mind'].write_text(mm_out, encoding="utf-8")
+    else:
+        print("   Mind Map Empty/Invalid output")
 
     # 8. Update days.json
     step(8, TOTAL, "Updating days.json with ALL FOR ONE entry...")

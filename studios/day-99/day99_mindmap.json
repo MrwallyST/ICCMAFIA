@@ -1,0 +1,184 @@
+{
+  "mind_map": {
+    "name": "Trades by Sai ICC Course",
+    "children": [
+      {
+        "name": "Market Fundamentals",
+        "children": [
+          {
+            "name": "Uptrend",
+            "children": [
+              {
+                "name": "Higher Highs (HH)"
+              },
+              {
+                "name": "Higher Lows (HL)"
+              }
+            ]
+          },
+          {
+            "name": "Downtrend",
+            "children": [
+              {
+                "name": "Lower Highs (LH)"
+              },
+              {
+                "name": "Lower Lows (LL)"
+              }
+            ]
+          },
+          {
+            "name": "Consolidation",
+            "children": [
+              {
+                "name": "No-Trade Zone"
+              },
+              {
+                "name": "Choppy Sideways Mess"
+              },
+              {
+                "name": "Rule Breaker"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "The ICC Strategy (3-Step Process)",
+        "children": [
+          {
+            "name": "1. Indication",
+            "children": [
+              {
+                "name": "Breakout of Swing Levels"
+              },
+              {
+                "name": "Starting Point of Trend"
+              },
+              {
+                "name": "Signal Fire/Flag"
+              }
+            ]
+          },
+          {
+            "name": "2. Correction",
+            "children": [
+              {
+                "name": "Liquidity Grab"
+              },
+              {
+                "name": "Shake Out Emotional Traders"
+              },
+              {
+                "name": "The Trap/Fizz After Explosion"
+              }
+            ]
+          },
+          {
+            "name": "3. Continuation",
+            "children": [
+              {
+                "name": "Wait for Second Push"
+              },
+              {
+                "name": "Reversal Confirmation"
+              },
+              {
+                "name": "The Entry Model"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Technical Execution",
+        "children": [
+          {
+            "name": "Swing Points",
+            "children": [
+              {
+                "name": "Visual Peaks and Valleys"
+              },
+              {
+                "name": "Buyer/Seller Brick Walls"
+              }
+            ]
+          },
+          {
+            "name": "Timeframe Correlation",
+            "children": [
+              {
+                "name": "Higher Timeframe Authority (4H/1H)"
+              },
+              {
+                "name": "Lower Timeframe Precision (15M/5M)"
+              },
+              {
+                "name": "Alignment Rules"
+              }
+            ]
+          },
+          {
+            "name": "Risk Management",
+            "children": [
+              {
+                "name": "Invalidation Stop-Loss"
+              },
+              {
+                "name": "1:3 Risk-to-Reward Ratio"
+              },
+              {
+                "name": "Scale In/Out Options"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Trading Psychology",
+        "children": [
+          {
+            "name": "Patience",
+            "children": [
+              {
+                "name": "Wait for Setup"
+              },
+              {
+                "name": "Avoid FOMO and Greed"
+              }
+            ]
+          },
+          {
+            "name": "Positioning",
+            "children": [
+              {
+                "name": "Trading vs Gambling"
+              },
+              {
+                "name": "Options equal Power"
+              },
+              {
+                "name": "Low Stress Capital"
+              }
+            ]
+          },
+          {
+            "name": "Discipline",
+            "children": [
+              {
+                "name": "Follow Logical Rules"
+              },
+              {
+                "name": "Eliminate Revenge Trading"
+              },
+              {
+                "name": "Live Market Experience"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "note_id": "0cbdcd6b-570a-4f9f-a8b3-3f803c2bfbfc"
+}
