@@ -1,0 +1,122 @@
+{
+  "name": "Day Trading Breakdown",
+  "children": [
+    {
+      "name": "Community and Mindset",
+      "children": [
+        {
+          "name": "ICC Mafia Family"
+        },
+        {
+          "name": "Global Events"
+        },
+        {
+          "name": "Entrepreneurial Spirit"
+        },
+        {
+          "name": "Collaboration over Competition"
+        }
+      ]
+    },
+    {
+      "name": "Trading Philosophy",
+      "children": [
+        {
+          "name": "Quality over Quantity"
+        },
+        {
+          "name": "One Move Per Week"
+        },
+        {
+          "name": "High Probability Low Risk"
+        },
+        {
+          "name": "Respond to Market Communication"
+        },
+        {
+          "name": "Detach from Ego and Fear"
+        }
+      ]
+    },
+    {
+      "name": "Technical Analysis Strategy",
+      "children": [
+        {
+          "name": "Timeframe Correlation",
+          "children": [
+            {
+              "name": "Daily Chart"
+            },
+            {
+              "name": "4 Hour Chart"
+            },
+            {
+              "name": "1 Hour Chart"
+            }
+          ]
+        },
+        {
+          "name": "Market Structure",
+          "children": [
+            {
+              "name": "Identify Highs and Lows"
+            },
+            {
+              "name": "Lower Highs and Lower Lows"
+            },
+            {
+              "name": "Breakage Levels"
+            },
+            {
+              "name": "Liquidity Grabs"
+            }
+          ]
+        },
+        {
+          "name": "Asset Focus",
+          "children": [
+            {
+              "name": "Gold as Bread and Butter"
+            },
+            {
+              "name": "Avoid Chasing NASDAQ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trade Management",
+      "children": [
+        {
+          "name": "Entry and Exit",
+          "children": [
+            {
+              "name": "Level Correlation"
+            },
+            {
+              "name": "Take Profit Targets"
+            },
+            {
+              "name": "Holding Higher Timeframe Moves"
+            }
+          ]
+        },
+        {
+          "name": "Invalidation",
+          "children": [
+            {
+              "name": "Stop-Loss Placement"
+            },
+            {
+              "name": "Break of Structure"
+            },
+            {
+              "name": "Seller Pressure Failure"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

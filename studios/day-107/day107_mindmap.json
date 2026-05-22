@@ -1,0 +1,133 @@
+{
+  "name": "Day Trading Crash Course",
+  "children": [
+    {
+      "name": "Market Structure (Trends)",
+      "children": [
+        {
+          "name": "Uptrend",
+          "children": [
+            {
+              "name": "Higher Highs (HH)"
+            },
+            {
+              "name": "Higher Lows (HL)"
+            },
+            {
+              "name": "Buying at Higher Lows"
+            }
+          ]
+        },
+        {
+          "name": "Downtrend",
+          "children": [
+            {
+              "name": "Lower Highs (LH)"
+            },
+            {
+              "name": "Lower Lows (LL)"
+            },
+            {
+              "name": "Selling at Lower Highs"
+            }
+          ]
+        },
+        {
+          "name": "Higher Time Frames (HTF)",
+          "children": [
+            {
+              "name": "Daily Time Frame"
+            },
+            {
+              "name": "4-Hour Time Frame"
+            },
+            {
+              "name": "1-Hour Time Frame"
+            },
+            {
+              "name": "Strongest Structure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ICC Strategy",
+      "children": [
+        {
+          "name": "Indication (New High/Low)"
+        },
+        {
+          "name": "Correction (Pullback)"
+        },
+        {
+          "name": "Continuation (Trend Resumption)"
+        }
+      ]
+    },
+    {
+      "name": "Trading Rules",
+      "children": [
+        {
+          "name": "Don't buy at Higher Highs"
+        },
+        {
+          "name": "Don't sell at Lower Lows"
+        },
+        {
+          "name": "Time Frame Alignment (Matching Trends)"
+        },
+        {
+          "name": "Trade with Volume and Value"
+        }
+      ]
+    },
+    {
+      "name": "Entry & Risk Management",
+      "children": [
+        {
+          "name": "Entry Criteria",
+          "children": [
+            {
+              "name": "Indication Level Breakout"
+            },
+            {
+              "name": "Wait for Correction End"
+            },
+            {
+              "name": "Trade in Session (New York/London)"
+            }
+          ]
+        },
+        {
+          "name": "Stop Loss Placement",
+          "children": [
+            {
+              "name": "Above previous Lower High (Sales)"
+            },
+            {
+              "name": "Below previous Higher Low (Buys)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Psychology & Mindset",
+      "children": [
+        {
+          "name": "Patience (1-2 trades/week)"
+        },
+        {
+          "name": "Respond to Market Communication"
+        },
+        {
+          "name": "Eliminate Fear and Ego"
+        },
+        {
+          "name": "Community and Family Focus"
+        }
+      ]
+    }
+  ]
+}

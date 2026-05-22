@@ -1,0 +1,217 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "According to the course, what are the only two directions price can move?",
+      "back": "Uptrend and downtrend."
+    },
+    {
+      "front": "What concept is identified as the fundamental starting point of market structure?",
+      "back": "Trends."
+    },
+    {
+      "front": "Which two specific structural markers define an uptrend?",
+      "back": "Higher highs and higher lows."
+    },
+    {
+      "front": "Which two specific structural markers define a downtrend?",
+      "back": "Lower highs and lower lows."
+    },
+    {
+      "front": "What is the abbreviation used for a 'Higher High'?",
+      "back": "HH"
+    },
+    {
+      "front": "What is the abbreviation used for a 'Higher Low'?",
+      "back": "HL"
+    },
+    {
+      "front": "What is the abbreviation used for a 'Lower High'?",
+      "back": "LH"
+    },
+    {
+      "front": "What is the abbreviation used for a 'Lower Low'?",
+      "back": "LL"
+    },
+    {
+      "front": "Why is market structure on higher time frames considered a 'cheat code'?",
+      "back": "It does not break as fast as it does on lower time frames."
+    },
+    {
+      "front": "List the three specific higher time frames recommended for analyzing market structure.",
+      "back": "1 hour, 4 hour, and 1 day."
+    },
+    {
+      "front": "What must occur for a price level to be officially considered a 'Higher High'?",
+      "back": "Price must be seen trading above the previous high."
+    },
+    {
+      "front": "Why can structural points like HH or LL not be identified when price is in a range?",
+      "back": "There is no movement outside previous boundaries to compare price against."
+    },
+    {
+      "front": "In a buying scenario, from which structural point should a trader look for an entry?",
+      "back": "Higher Low (HL)."
+    },
+    {
+      "front": "In a selling scenario, from which structural point should a trader look for an entry?",
+      "back": "Lower High (LH)."
+    },
+    {
+      "front": "According to the trend rule, if price makes a Higher Low (HL), what is it expected to make next?",
+      "back": "A Higher High (HH)."
+    },
+    {
+      "front": "According to the trend rule, if price makes a Higher High (HH), what is it expected to make next?",
+      "back": "A Higher Low (HL)."
+    },
+    {
+      "front": "According to the trend rule, if price makes a Lower High (LH), what is it expected to make next?",
+      "back": "A Lower Low (LL)."
+    },
+    {
+      "front": "According to the trend rule, if price makes a Lower Low (LL), what is it expected to make next?",
+      "back": "A Lower High (LH)."
+    },
+    {
+      "front": "How does the reliability of market structure rules change as the time frame increases?",
+      "back": "The rules become stronger and more reliable."
+    },
+    {
+      "front": "How do smaller time frames typically interact with the standard rules of market structure?",
+      "back": "They often do not respect the rules."
+    },
+    {
+      "front": "What is the 'first mission' for a trader when first looking at a price chart?",
+      "back": "Identifying the current High (H) and Low (L)."
+    },
+    {
+      "front": "Which indicator is suggested to help beginners automatically identify highs and lows?",
+      "back": "Pivot Point High and Low."
+    },
+    {
+      "front": "What specific setting should be adjusted on the Pivot Point indicator to find more granular structural points?",
+      "back": "The value should be set to 5."
+    },
+    {
+      "front": "Term: Uptrend",
+      "back": "Definition: A market condition where price consistently creates higher peaks and higher troughs."
+    },
+    {
+      "front": "Term: Downtrend",
+      "back": "Definition: A market condition where price consistently creates lower peaks and lower troughs."
+    },
+    {
+      "front": "What must price do before a trader can consider taking a trade based on structure?",
+      "back": "Break out of the current established range (High or Low)."
+    },
+    {
+      "front": "Visual Cue: What often indicates the formation of a 'High' before a price drop?",
+      "back": "A series of green candles followed by a shift to red candles."
+    },
+    {
+      "front": "Visual Cue: What often indicates the formation of a 'Low' before a price increase?",
+      "back": "A series of red candles followed by a strong buying movement."
+    },
+    {
+      "front": "Why is training the eye for structure better than relying solely on automated indicators?",
+      "back": "Indicators can fail to mark every valid structural high and low."
+    },
+    {
+      "front": "Cloze: Trends are _____.",
+      "back": "Market structure."
+    },
+    {
+      "front": "Cloze: If price makes a _____, it is looking to make a lower low.",
+      "back": "Lower high (LH)."
+    },
+    {
+      "front": "Cloze: The _____ the time frame, the stronger the market structure rule becomes.",
+      "back": "Higher."
+    },
+    {
+      "front": "What makes a High (H) a 'Lower High' (LH)?",
+      "back": "It is a peak that is lower than the previous peak in the sequence."
+    },
+    {
+      "front": "What makes a Low (L) a 'Lower Low' (LL)?",
+      "back": "Price breaks and closes below the level of the previous low."
+    },
+    {
+      "front": "What is the relationship between HH and HL in a trending environment?",
+      "back": "They repeat in a pattern as long as the trend continues."
+    },
+    {
+      "front": "Why does the instructor recommend breaking trading lessons into smaller pieces?",
+      "back": "To prevent students from getting lost in overly long, complex videos."
+    },
+    {
+      "front": "How does price action validate that a 'High' has been established?",
+      "back": "By rejecting heavily and starting a move in the opposite direction."
+    },
+    {
+      "front": "According to the lesson, how many days of focused study are realistically needed to become ready to trade?",
+      "back": "15 days."
+    },
+    {
+      "front": "What determines whether you can label a point as a Higher Low (HL)?",
+      "back": "Receiving a 'breakout' or move back up after the low is established."
+    },
+    {
+      "front": "Concept: Market Structure",
+      "back": "The framework of highs and lows used as a 'cheat code' to find trade entries."
+    },
+    {
+      "front": "If price is currently pulling up but has not yet broken the previous high, what structural point is potentially forming?",
+      "back": "A Lower High (LH)."
+    },
+    {
+      "front": "If price is pulling back in an uptrend but stays above the previous low, what structural point is forming?",
+      "back": "A Higher Low (HL)."
+    },
+    {
+      "front": "What is the primary rule regarding entry for sell trades in a downtrend?",
+      "back": "Entries should be taken from Lower Highs (LH)."
+    },
+    {
+      "front": "What is the primary rule regarding entry for buy trades in an uptrend?",
+      "back": "Entries should be taken from Higher Lows (HL)."
+    },
+    {
+      "front": "According to the instructor, why is market structure often 'gatekept'?",
+      "back": "Because people want to charge high fees for simple, effective knowledge."
+    },
+    {
+      "front": "In the context of the lesson, what does a 'break' in a yellow line on a chart represent?",
+      "back": "A breach of a previous structural level (High or Low)."
+    },
+    {
+      "front": "How does a trader distinguish between a simple 'High' and a 'Higher High'?",
+      "back": "A 'High' is the first peak; a 'Higher High' is any subsequent peak that exceeds it."
+    },
+    {
+      "front": "If price successfully breaks the previous low, which rule dictates the next expected structural point?",
+      "back": "If price makes an LL, it is going to make an LH."
+    },
+    {
+      "front": "If price successfully breaks the previous high, which rule dictates the next expected structural point?",
+      "back": "If price makes an HH, it is going to make an HL."
+    },
+    {
+      "front": "True or False: Market structure is equally reliable on the 1-minute and the 1-day time frames.",
+      "back": "False (Higher time frames are much stronger)."
+    },
+    {
+      "front": "What defines the end of a 'High' formation and the beginning of a move down?",
+      "back": "A rejection or shift in momentum away from the peak."
+    },
+    {
+      "front": "What is the 'bread and butter' of the strategy taught in this course?",
+      "back": "Identifying and trading with trends/market structure."
+    },
+    {
+      "front": "Why is it necessary to wait for a 'low to be built' before taking a trade in a potential reversal?",
+      "back": "To establish a comparison point for valid structure."
+    }
+  ]
+}

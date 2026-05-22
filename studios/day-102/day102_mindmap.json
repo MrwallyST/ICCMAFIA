@@ -1,0 +1,133 @@
+{
+  "name": "Market Structure Rules",
+  "children": [
+    {
+      "name": "Core Trading Rules",
+      "children": [
+        {
+          "name": "Avoid Higher High Buys",
+          "children": [
+            {
+              "name": "Expect higher low correction"
+            }
+          ]
+        },
+        {
+          "name": "Avoid Lower Low Sells",
+          "children": [
+            {
+              "name": "Expect lower high pullback"
+            }
+          ]
+        },
+        {
+          "name": "Buy at Higher Lows"
+        },
+        {
+          "name": "Sell at Lower Highs"
+        }
+      ]
+    },
+    {
+      "name": "Multi-Timeframe Alignment",
+      "children": [
+        {
+          "name": "The Team Concept",
+          "children": [
+            {
+              "name": "Multiple timeframes must match"
+            },
+            {
+              "name": "Price does not move solo"
+            }
+          ]
+        },
+        {
+          "name": "Recommended Combinations",
+          "children": [
+            {
+              "name": "4-Hour and 1-Hour alignment"
+            },
+            {
+              "name": "Optional 30-Minute inclusion"
+            },
+            {
+              "name": "Daily timeframe for big moves"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Market Mechanics",
+      "children": [
+        {
+          "name": "Resistance and Sellers",
+          "children": [
+            {
+              "name": "Price buys into sell orders"
+            },
+            {
+              "name": "Order swapping and liquidity"
+            }
+          ]
+        },
+        {
+          "name": "Support and Buyers",
+          "children": [
+            {
+              "name": "Keeping price afloat"
+            },
+            {
+              "name": "Business investment analogy"
+            }
+          ]
+        },
+        {
+          "name": "Value and Volume",
+          "children": [
+            {
+              "name": "Value brings volume"
+            },
+            {
+              "name": "Volume brings money"
+            },
+            {
+              "name": "Trade items people find valuable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Psychology and Strategy",
+      "children": [
+        {
+          "name": "Patience",
+          "children": [
+            {
+              "name": "Do not rush trades"
+            },
+            {
+              "name": "Market moves forever"
+            },
+            {
+              "name": "Wait for the correction"
+            }
+          ]
+        },
+        {
+          "name": "Trade Frequency",
+          "children": [
+            {
+              "name": "One to two trades per week"
+            },
+            {
+              "name": "Focus on quality over quantity"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

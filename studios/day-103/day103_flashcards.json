@@ -1,0 +1,253 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What does the acronym ICC stand for in the context of this trading crash course?",
+      "back": "Indication, Correction, and Continuation."
+    },
+    {
+      "front": "In the ICC strategy, what is the definition of an 'Indication'?",
+      "back": "The creation of a new high or a new low in the market."
+    },
+    {
+      "front": "In the ICC strategy, what is the definition of a 'Correction'?",
+      "back": "A price pullback that forms a higher low or a lower high."
+    },
+    {
+      "front": "In the ICC strategy, what is the definition of a 'Continuation'?",
+      "back": "The phase where price finishes what it started by reaching a new higher high or lower low."
+    },
+    {
+      "front": "Which two specific market structure elements are found exclusively in an uptrend?",
+      "back": "Higher highs and higher lows."
+    },
+    {
+      "front": "Which two specific market structure elements are found exclusively in a downtrend?",
+      "back": "Lower lows and lower highs."
+    },
+    {
+      "front": "According to the source material, what does an 'Indication' show a trader without requiring complex brain work?",
+      "back": "Exactly where the price is trying to go."
+    },
+    {
+      "front": "In terms of trade execution, where is a trader's entry level generally located in the ICC strategy?",
+      "back": "At the indication level."
+    },
+    {
+      "front": "What is the primary purpose of a 'Correction' within the ICC framework?",
+      "back": "To regain momentum or composure before continuing the trend."
+    },
+    {
+      "front": "When price breaks above a previous swing high, what does this indicate about the market sentiment?",
+      "back": "The market is bullish."
+    },
+    {
+      "front": "What market structure change must occur to suggest a shift from a sell-off to a bullish buildup?",
+      "back": "Price must break above the previous lower highs."
+    },
+    {
+      "front": "According to the author, why is it hard to get 'faked out' when trading the ICC strategy?",
+      "back": "It requires a second push around the indication level to provide confidence and momentum."
+    },
+    {
+      "front": "In the BTC example, what specific price level break is cited as a confluence for price being bullish?",
+      "back": "$71,300$."
+    },
+    {
+      "front": "The abbreviation 'HH' stands for _____.",
+      "back": "Higher High"
+    },
+    {
+      "front": "The abbreviation 'HL' stands for _____.",
+      "back": "Higher Low"
+    },
+    {
+      "front": "The abbreviation 'LL' stands for _____.",
+      "back": "Lower Low"
+    },
+    {
+      "front": "The abbreviation 'LH' stands for _____.",
+      "back": "Lower High"
+    },
+    {
+      "front": "Why does the author suggest moving from a 4-hour time frame to a 1-hour time frame?",
+      "back": "To get more detailed information about price action and alignment."
+    },
+    {
+      "front": "According to the author, what is the 'rinse and repeat' cycle that swing traders use?",
+      "back": "The constant repetition of Indication, Correction, and Continuation."
+    },
+    {
+      "front": "What does a 'higher low' signify in a potential uptrend?",
+      "back": "Price is picking up and failing to go lower than the previous low."
+    },
+    {
+      "front": "If price makes a higher low but then produces a 'lower high,' what should the trader do?",
+      "back": "Wait, as there is no valid trade setup yet."
+    },
+    {
+      "front": "What are indications typically considered in relation to the lifespan of a trend?",
+      "back": "The start and the continuing points of the trend."
+    },
+    {
+      "front": "The author argues that price action indications replace the need for which two common technical tools?",
+      "back": "Psychological numbers and Fibonacci."
+    },
+    {
+      "front": "In an uptrend, what is the relationship between a new 'higher low' and the 'lowest point' of the previous move?",
+      "back": "The higher low must remain above the previous lowest point."
+    },
+    {
+      "front": "What constitutes a 'new high' in the market during a bullish phase?",
+      "back": "Price breaking and closing above the previous swing high."
+    },
+    {
+      "front": "In the BTC example, what was the 'answer' provided by the indication at $69,000$?",
+      "back": "That the price was going to $73,000$."
+    },
+    {
+      "front": "How does a trader confirm that a trend is continuing after a correction?",
+      "back": "Price moves back above the indication level."
+    },
+    {
+      "front": "If price breaks below the levels of the previous higher lows on a 4-hour chart, what does this imply?",
+      "back": "The bullish structure is potentially invalidated."
+    },
+    {
+      "front": "What is the result of price 'regaining itself' after a pullback?",
+      "back": "The continuation of the trend."
+    },
+    {
+      "front": "Term: Swing Low",
+      "back": "Definition: The lowest point price reaches before swinging back to the upside."
+    },
+    {
+      "front": "Term: Swing High",
+      "back": "Definition: The highest point price reaches before swinging back to the downside."
+    },
+    {
+      "front": "According to the course, when is the only time an uptrend is considered 'okay' during a correction?",
+      "back": "As long as price does not break below the previous higher low levels."
+    },
+    {
+      "front": "What is the significance of price being 'above the gray area' or 'blue line' in the author's examples?",
+      "back": "It marks the zone where price is considered bullish and ready for entry."
+    },
+    {
+      "front": "Concept: Time Frame Alignment",
+      "back": "Definition: Ensuring that the structure on the lower time frame (e.g., 1-hour) matches the direction of the higher time frame (e.g., 4-hour)."
+    },
+    {
+      "front": "What does a 'lower high' signify in a potential downtrend?",
+      "back": "Price is failing to reach the previous high and is beginning to sell off."
+    },
+    {
+      "front": "In the ICC model, what happens immediately after the 'Indication' phase?",
+      "back": "The Correction phase."
+    },
+    {
+      "front": "In the ICC model, what happens immediately after the 'Correction' phase?",
+      "back": "The Continuation phase."
+    },
+    {
+      "front": "What is 'drawdown' in the context of the author's BTC trade?",
+      "back": "The temporary negative value of an open position ($19,000$ in the example)."
+    },
+    {
+      "front": "How does the author identify highs and lows on a chart?",
+      "back": "Instantly, as a habit built over four or five years of practice."
+    },
+    {
+      "front": "What is the specific target of a 'Continuation' in an uptrend?",
+      "back": "The previous high or a new higher high."
+    },
+    {
+      "front": "In a bearish scenario, an indication would be a new _____.",
+      "back": "Lower Low"
+    },
+    {
+      "front": "In a bullish scenario, an indication would be a new _____.",
+      "back": "Higher High"
+    },
+    {
+      "front": "According to the author, where should a trader look for buy opportunities after an indication and correction?",
+      "back": "Back above the level of the previous indication."
+    },
+    {
+      "front": "What does the author mean by 'mitigating' a previous high level?",
+      "back": "Treating nearly identical price levels as the same area of interest."
+    },
+    {
+      "front": "True or False: The ICC strategy is primarily designed for scalping on 1-minute charts.",
+      "back": "False (The author emphasizes its utility for swing traders on 1-hour and 4-hour charts)."
+    },
+    {
+      "front": "What does the 4-hour time frame primarily provide the trader in this system?",
+      "back": "The overall market structure and broad indications."
+    },
+    {
+      "front": "What does the 1-hour time frame provide that the 4-hour chart might lack?",
+      "back": "Finer details on where sellers are pushing and where momentum is picking up."
+    },
+    {
+      "front": "What is the defining characteristic of an uptrend 'Higher Low'?",
+      "back": "It is a low that is higher than the preceding low."
+    },
+    {
+      "front": "What is the defining characteristic of a downtrend 'Lower High'?",
+      "back": "It is a high that is lower than the preceding high."
+    },
+    {
+      "front": "If price is making lower highs and lower lows, what is the market trend?",
+      "back": "Downtrend."
+    },
+    {
+      "front": "If price is making higher highs and higher lows, what is the market trend?",
+      "back": "Uptrend."
+    },
+    {
+      "front": "What action defines the transition from 'Indication' to 'Correction'?",
+      "back": "Price pulling back from a new high or low."
+    },
+    {
+      "front": "In the ICC strategy, what 'confirmation' is needed before entering after a correction?",
+      "back": "Price pushing back above the indication level."
+    },
+    {
+      "front": "According to the author, what tells you where price is going 'without doing too much work'?",
+      "back": "Indications."
+    },
+    {
+      "front": "Why is 'composure' above a certain price area important for the ICC strategy?",
+      "back": "It shows price is holding its bullish or bearish structure."
+    },
+    {
+      "front": "How does the author describe the nature of a trend in terms of the ICC model?",
+      "back": "A constant repeat of Indication, Correction, and Continuation."
+    },
+    {
+      "front": "What specific session does the author mention being 'late' for in the opening of the video?",
+      "back": "London session."
+    },
+    {
+      "front": "If price makes a higher low but fails to break the previous high, what is the resulting structure called?",
+      "back": "A lower high."
+    },
+    {
+      "front": "What is the 'finish' of a trend sequence in the ICC model?",
+      "back": "The Continuation phase."
+    },
+    {
+      "front": "What does a break above a 'swing high' signify for BTC according to the transcript?",
+      "back": "That the price can take off to a new high."
+    },
+    {
+      "front": "In the ICC strategy, the 'Indication' level is synonymous with the _____ level.",
+      "back": "Entry"
+    },
+    {
+      "front": "Does the author believe traders need to use psychological numbers to find targets?",
+      "back": "No."
+    }
+  ]
+}

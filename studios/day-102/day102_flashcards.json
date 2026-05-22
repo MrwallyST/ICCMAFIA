@@ -1,0 +1,205 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary rule regarding buying at a 'higher high'?",
+      "back": "Never buy at a higher high."
+    },
+    {
+      "front": "What is the primary rule regarding selling at a 'lower low'?",
+      "back": "Never sell at a lower low."
+    },
+    {
+      "front": "After a 'higher high' is formed, what is the market expected to try to make next?",
+      "back": "A higher low."
+    },
+    {
+      "front": "After a 'lower low' is formed, what is the market expected to try to make next?",
+      "back": "A lower high."
+    },
+    {
+      "front": "In an uptrend, which structure point should a trader look for as a potential buy opportunity?",
+      "back": "The higher low."
+    },
+    {
+      "front": "In a downtrend, which structure point should a trader look for as a potential sell opportunity?",
+      "back": "The lower high."
+    },
+    {
+      "front": "Why is buying at a 'higher high' considered a bad idea?",
+      "back": "The price is likely to pull back to create a higher low."
+    },
+    {
+      "front": "According to the 'market structure rules', what is the purpose of a higher high in relation to ICC?",
+      "back": "It serves as an indication."
+    },
+    {
+      "front": "Why shouldn't a trader buy on a 'higher high' even if it is a large candle?",
+      "back": "It is an indication of a move, not the entry point."
+    },
+    {
+      "front": "What condition must be met regarding different time frames before placing a trade?",
+      "back": "All time frames must align or match with each other."
+    },
+    {
+      "front": "Price movement is described as needing a 'team' rather than moving _____.",
+      "back": "solo"
+    },
+    {
+      "front": "What determines the strength of a trend in terms of time frame correlation?",
+      "back": "The more time frames that match the trend, the stronger it will be."
+    },
+    {
+      "front": "Which time frame is described as 'trickier' because it lags behind the others?",
+      "back": "The daily time frame."
+    },
+    {
+      "front": "Which two time frames are primarily recommended for identifying matching trends?",
+      "back": "The 4-hour and 1-hour time frames."
+    },
+    {
+      "front": "When using the 4-hour and 1-hour time frames, which additional time frame can be added for alignment?",
+      "back": "The 30-minute time frame."
+    },
+    {
+      "front": "If the 4-hour time frame is downtrending, what should the 1-hour time frame be building?",
+      "back": "Lower highs and lower lows."
+    },
+    {
+      "front": "In market terminology, what does 'resistance' represent?",
+      "back": "A level where sellers are located."
+    },
+    {
+      "front": "In market terminology, what does 'support' represent?",
+      "back": "A level where buyers are located."
+    },
+    {
+      "front": "How is 'trading' fundamentally defined in the source material?",
+      "back": "Giving something to someone else for something else."
+    },
+    {
+      "front": "Why does price react and sell off when hitting a resistance level?",
+      "back": "Buyers lack enough orders to satisfy the sellers at that point."
+    },
+    {
+      "front": "What is the primary function of a 'higher low' in a trend?",
+      "back": "It allows buyers to go back and collect more orders/money."
+    },
+    {
+      "front": "What happens when buyers collect enough orders after a pullback to a higher low?",
+      "back": "They gain the strength to push past the previous level of resistance."
+    },
+    {
+      "front": "Concept: Trend Corrections.",
+      "back": "Definition: Price pulling back to 'test the water' and gather necessary funds to level up."
+    },
+    {
+      "front": "According to the source, everything in the market inherently wants to go _____.",
+      "back": "up"
+    },
+    {
+      "front": "What determines if an asset's price will actually move up despite the market's desire?",
+      "back": "Whether the economy/participants see value in it."
+    },
+    {
+      "front": "In the context of sales and downtrends, what analogy is used for price 'bleeding'?",
+      "back": "Price pushing down without enough support to hold it up."
+    },
+    {
+      "front": "Who acts as the 'doctor' or the force that keeps a business/price afloat at support?",
+      "back": "The buyers."
+    },
+    {
+      "front": "If buyers do not believe a company or asset is worth the investment at a support level, what happens?",
+      "back": "Price continues to push down."
+    },
+    {
+      "front": "Relationship: Value $\\rightarrow$ Volume $\\rightarrow$ _____.",
+      "back": "Money"
+    },
+    {
+      "front": "What is the result of trading assets that people find value in?",
+      "back": "It brings volume, which leads to profit."
+    },
+    {
+      "front": "If an asset's price is going down, what does that indicate about market perception?",
+      "back": "People do not see much value in it at that time."
+    },
+    {
+      "front": "Which time frame combination is suggested for catching one to two trades per week?",
+      "back": "The 4-hour and 1-hour time frames."
+    },
+    {
+      "front": "Why is it risky to sell gold at a 'lower low' on the daily time frame?",
+      "back": "The daily hasn't had a correction yet, risking a sudden move upward."
+    },
+    {
+      "front": "What should a trader be 'on their P's and Q's' for once an indication is made?",
+      "back": "Waiting for the correction to finish before entering."
+    },
+    {
+      "front": "What is the recommended mindset regarding the speed of financial success for beginners?",
+      "back": "Take your time and be very patient, as it won't happen in a week."
+    },
+    {
+      "front": "What is the consequence of trying to 'rush' the market?",
+      "back": "The market will 'fuck you up'."
+    },
+    {
+      "front": "Why is there 'no point in rushing' according to the source?",
+      "back": "The markets will forever move and someone is always trading."
+    },
+    {
+      "front": "What is the benefit of having 'market structure rules' in the back of your head?",
+      "back": "They give an idea of what could be happening next so the trader isn't lost."
+    },
+    {
+      "front": "When a buyer is short on 'orders' at a resistance level, what do they do?",
+      "back": "Make a correction/pullback to 'grab more cash'."
+    },
+    {
+      "front": "According to the source, what is the 'bread and butter' of trading?",
+      "back": "Trading things that have value and high volume."
+    },
+    {
+      "front": "When price breaks a level of support, what does it create as a signal for the downside?",
+      "back": "An indication."
+    },
+    {
+      "front": "If a trader misses a sell-off, why is it acceptable to wait for the next setup?",
+      "back": "Because the market will eventually correct and provide a new entry."
+    },
+    {
+      "front": "What happens if a buyer pays the 'bill' at support but the business doesn't manage it properly?",
+      "back": "Price creates a lower high and then falls through."
+    },
+    {
+      "front": "Which time frame is best for 'monitoring' a correction after a daily low is made?",
+      "back": "The 4-hour time frame."
+    },
+    {
+      "front": "What phrase does the speaker use to describe a trade where all levels align?",
+      "back": "A team."
+    },
+    {
+      "front": "At a 'lower low', the trader should stop looking for sells and start looking for a(n) _____.",
+      "back": "correction (lower high)"
+    },
+    {
+      "front": "At a 'higher high', the trader should stop looking for buys and start looking for a(n) _____.",
+      "back": "pullback (higher low)"
+    },
+    {
+      "front": "Why is a 'higher low' described as keeping 'everything afloat'?",
+      "back": "It represents the influx of new buy orders to sustain the trend."
+    },
+    {
+      "front": "How does the source characterize the relationship between value and volume?",
+      "back": "Value brings volume."
+    },
+    {
+      "front": "What does a lower high building up signify to a trader?",
+      "back": "That a lower low is likely to be made next."
+    }
+  ]
+}

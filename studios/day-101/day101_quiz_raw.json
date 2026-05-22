@@ -1,0 +1,213 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "According to the crash course, which two components are necessary to define a confirmed uptrend?",
+      "answerOptions": [
+        {
+          "text": "Higher Highs ($HH$) and Higher Lows ($HL$)",
+          "isCorrect": true,
+          "rationale": "An uptrend is established when the market consistently sets peaks and troughs that are higher than the preceding ones."
+        },
+        {
+          "text": "Higher Highs ($HH$) and Lower Lows ($LL$)",
+          "isCorrect": false,
+          "rationale": "While higher highs suggest upward momentum, lower lows would indicate a lack of consistent structural support, often seen in a range or volatile market."
+        },
+        {
+          "text": "Lower Highs ($LH$) and Lower Lows ($LL$)",
+          "isCorrect": false,
+          "rationale": "This structure defines a downtrend, where both the peaks and the troughs are descending."
+        },
+        {
+          "text": "Lower Highs ($LH$) and Higher Lows ($HL$)",
+          "isCorrect": false,
+          "rationale": "This pattern typically describes a tightening range or a pennant formation rather than a clear uptrend."
+        }
+      ],
+      "hint": "Focus on the direction of both the peaks and the pullbacks in a rising market."
+    },
+    {
+      "question": "Which time frames does the instructor identify as the 'Higher Time Frames' that should be used to find reliable market structure?",
+      "answerOptions": [
+        {
+          "text": "$1$ Hour, $4$ Hour, and Daily",
+          "isCorrect": true,
+          "rationale": "The instructor emphasizes these three time frames because market structure does not break as quickly on them compared to lower time frames."
+        },
+        {
+          "text": "$5$ Minute, $15$ Minute, and $1$ Hour",
+          "isCorrect": false,
+          "rationale": "The instructor explicitly warns that smaller time frames often do not respect the structural rules as consistently as higher ones."
+        },
+        {
+          "text": "Daily, Weekly, and Monthly",
+          "isCorrect": false,
+          "rationale": "While these are higher time frames, the instructor specifically listed the $1$ hour, $4$ hour, and daily as his preferred set."
+        },
+        {
+          "text": "$15$ Minute, $1$ Hour, and $4$ Hour",
+          "isCorrect": false,
+          "rationale": "The $15$ minute time frame is not included in the primary list of 'cheat code' higher time frames mentioned in the lesson."
+        }
+      ],
+      "hint": "Look for the specific trio of time frames the instructor keeps on his chart for structure."
+    },
+    {
+      "question": "Why is it impossible to identify a Higher High ($HH$) or Higher Low ($HL$) while price is sitting inside a range?",
+      "answerOptions": [
+        {
+          "text": "There is no previous point outside the range to compare the movement to",
+          "isCorrect": true,
+          "rationale": "Structure requires price to break above or below existing levels to establish a new relative high or low."
+        },
+        {
+          "text": "Ranges only occur on the $1$ minute time frame",
+          "isCorrect": false,
+          "rationale": "Ranges can occur on any time frame, but they represent a lack of trend rather than a specific structural failure of time."
+        },
+        {
+          "text": "The Pivot Point indicator does not function in sideways markets",
+          "isCorrect": false,
+          "rationale": "Indicators may still plot points, but the instructor notes that structural labels are only valid once price moves beyond a previous high or low."
+        },
+        {
+          "text": "Higher time frames do not acknowledge range-bound price action",
+          "isCorrect": false,
+          "rationale": "Higher time frames show ranges clearly; the issue is the lack of sequential highs and lows required for a trend definition."
+        }
+      ],
+      "hint": "Consider the requirement for a price to be 'higher' or 'lower' than a previous benchmark."
+    },
+    {
+      "question": "According to the 'Main Rule' presented in the video, if price makes a Lower High ($LH$), what is it looking to make next?",
+      "answerOptions": [
+        {
+          "text": "A Lower Low ($LL$)",
+          "isCorrect": true,
+          "rationale": "The rule states that in a trending market, a lower high is the precursor to a continuation of the downward move toward a new lower low."
+        },
+        {
+          "text": "A Higher High ($HH$)",
+          "isCorrect": false,
+          "rationale": "Making a higher high after a lower high would signify a break in market structure rather than a continuation of the trend rule."
+        },
+        {
+          "text": "A Pivot Point High",
+          "isCorrect": false,
+          "rationale": "A Pivot Point High is an indicator-based label, whereas the structural rule focuses on the sequential relationship between highs and lows."
+        },
+        {
+          "text": "An entry for a buy trade",
+          "isCorrect": false,
+          "rationale": "Lower highs are associated with selling pressure and downtrends, not the criteria for buying."
+        }
+      ],
+      "hint": "Think about the repeating sequence of points that forms a consistent downtrend."
+    },
+    {
+      "question": "From which specific structural point should a trader look for buy entries when following an uptrend?",
+      "answerOptions": [
+        {
+          "text": "Higher Lows ($HL$)",
+          "isCorrect": true,
+          "rationale": "Buying at the higher low allows a trader to enter during a pullback before the market resumes its upward trajectory to a new high."
+        },
+        {
+          "text": "Higher Highs ($HH$)",
+          "isCorrect": false,
+          "rationale": "While price is at a higher high, it is often overextended and due for a pullback, making it a risky entry point for buys."
+        },
+        {
+          "text": "Lower Highs ($LH$)",
+          "isCorrect": false,
+          "rationale": "Lower highs are points where price fails to exceed a previous peak, which is a signal used for sell trades, not buys."
+        },
+        {
+          "text": "The break of a range",
+          "isCorrect": false,
+          "rationale": "While a range break is significant, the instructor specifically identifies the $HL$ as the source of buying entries within established structure."
+        }
+      ],
+      "hint": "Identify the point where price has pulled back but remains higher than the previous trough."
+    },
+    {
+      "question": "In a downtrend, what makes a point on the chart a 'Lower High' ($LH$)?",
+      "answerOptions": [
+        {
+          "text": "It is a peak that fails to rise above the previous High ($H$)",
+          "isCorrect": true,
+          "rationale": "A lower high is defined by its inability to exceed the previous high, confirming that sellers are entering the market at lower price levels."
+        },
+        {
+          "text": "It is the lowest point reached before price starts to buy again",
+          "isCorrect": false,
+          "rationale": "This description refers to a 'Low' or a 'Lower Low' rather than a high."
+        },
+        {
+          "text": "It is a point that breaks through a previous support level",
+          "isCorrect": false,
+          "rationale": "Breaking support typically creates a lower low; a high is a peak, not the act of breaking a floor."
+        },
+        {
+          "text": "It is only valid if marked by the Pivot Point indicator",
+          "isCorrect": false,
+          "rationale": "Indicators are tools to help the eye, but structure is defined by price action regardless of whether an indicator is used."
+        }
+      ],
+      "hint": "Contrast this peak with the peak that came immediately before it."
+    },
+    {
+      "question": "What does the instructor suggest is the 'first mission' for a trader when opening a chart?",
+      "answerOptions": [
+        {
+          "text": "Identify the current High ($H$) and Low ($L$)",
+          "isCorrect": true,
+          "rationale": "Locating the most recent high and low provides the baseline necessary to determine if the next movements are higher or lower."
+        },
+        {
+          "text": "Set the Pivot Point indicator to a value of $5$",
+          "isCorrect": false,
+          "rationale": "The indicator is a helpful tool, but the primary mission is to understand the market structure manually first."
+        },
+        {
+          "text": "Execute a trade as soon as a green candle appears",
+          "isCorrect": false,
+          "rationale": "The instructor advises waiting for structure to break or establish itself before taking any trades."
+        },
+        {
+          "text": "Check the news for any market-moving events",
+          "isCorrect": false,
+          "rationale": "The video focuses purely on price action and market structure as the 'cheat code' for trading."
+        }
+      ],
+      "hint": "Think about the very first step mentioned for analyzing market structure from scratch."
+    },
+    {
+      "question": "How does the strength of market structure rules change as the time frame decreases?",
+      "answerOptions": [
+        {
+          "text": "The rules are respected less frequently on smaller time frames",
+          "isCorrect": true,
+          "rationale": "The instructor states that smaller time frames are more 'noisy' and do not respect structural rules as consistently as higher ones."
+        },
+        {
+          "text": "The rules become $100\\%$ accurate on the $1$ minute chart",
+          "isCorrect": false,
+          "rationale": "Lower time frames are generally more volatile and prone to breaking structural rules."
+        },
+        {
+          "text": "The rules stay exactly the same regardless of the time frame",
+          "isCorrect": false,
+          "rationale": "While the definitions remain the same, the 'strength' and reliability of those rules vary significantly across time frames."
+        },
+        {
+          "text": "Market structure only exists on the Daily time frame",
+          "isCorrect": false,
+          "rationale": "Structure exists on all time frames, but the higher ones are preferred for their reliability."
+        }
+      ],
+      "hint": "Recall the instructor's comparison between 'higher' and 'smaller' time frame reliability."
+    }
+  ]
+}

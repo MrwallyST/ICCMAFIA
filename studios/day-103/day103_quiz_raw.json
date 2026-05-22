@@ -1,0 +1,213 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "What does the ICC model stand for in the context of the day trading strategy described?",
+      "answerOptions": [
+        {
+          "text": "Indication, Correction, and Continuation",
+          "isCorrect": true,
+          "rationale": "This represents the sequence where a new market level is identified, followed by a pullback, and finally the completion of the trend move."
+        },
+        {
+          "text": "Identification, Consolidation, and Confirmation",
+          "isCorrect": false,
+          "rationale": "While consolidation often occurs in markets, the source specifically defines the phases as the start, the pullback, and the finish of a move."
+        },
+        {
+          "text": "Impulse, Compression, and Culmination",
+          "isCorrect": false,
+          "rationale": "The speaker focuses on the logic of market structure changes rather than volume or compression-based terminology."
+        },
+        {
+          "text": "Index, Correlation, and Change",
+          "isCorrect": false,
+          "rationale": "This terminology refers to broad market analysis rather than the specific structural price action cycle taught in the crash course."
+        }
+      ],
+      "hint": "The sequence starts with showing where price wants to go and ends with finishing the trend."
+    },
+    {
+      "question": "According to the source, what specifically constitutes an 'Indication'?",
+      "answerOptions": [
+        {
+          "text": "The creation of a new high or a new low in the market",
+          "isCorrect": true,
+          "rationale": "An indication is essentially price making something 'new,' which sets the direction for the rest of the ICC cycle."
+        },
+        {
+          "text": "Price crossing a specific psychological number",
+          "isCorrect": false,
+          "rationale": "The speaker mentions that you do not need psychological numbers because price action itself provides the indication."
+        },
+        {
+          "text": "A crossover of two moving average lines",
+          "isCorrect": false,
+          "rationale": "The strategy is based on market structure (highs and lows) rather than technical indicators like moving averages."
+        },
+        {
+          "text": "A sudden increase in trading volume",
+          "isCorrect": false,
+          "rationale": "While volume is a common trading tool, the speaker defines indication strictly through the lens of price highs and lows."
+        }
+      ],
+      "hint": "It involves the market breaking its previous structure to establish a new peak or trough."
+    },
+    {
+      "question": "Which set of structural markers are required to identify an uptrend?",
+      "answerOptions": [
+        {
+          "text": "Higher highs ($HH$) and higher lows ($HL$)",
+          "isCorrect": true,
+          "rationale": "An uptrend is characterized by price consistently reaching higher peaks and maintaining higher support levels."
+        },
+        {
+          "text": "Lower lows ($LL$) and lower highs ($LH$)",
+          "isCorrect": false,
+          "rationale": "This sequence defines a downtrend, where price is consistently losing value and failing to break previous highs."
+        },
+        {
+          "text": "Higher highs ($HH$) and lower highs ($LH$)",
+          "isCorrect": false,
+          "rationale": "While $HH$ is bullish, a $LH$ indicates a potential loss of momentum or a shift in trend."
+        },
+        {
+          "text": "Lower lows ($LL$) and higher lows ($HL$)",
+          "isCorrect": false,
+          "rationale": "This combination is contradictory and usually represents a consolidating or ranging market rather than a clear uptrend."
+        }
+      ],
+      "hint": "In an uptrend, both the peaks and the troughs must be moving in an upward trajectory."
+    },
+    {
+      "question": "Where is the ideal entry level located when trading the ICC sequence?",
+      "answerOptions": [
+        {
+          "text": "At the indication level",
+          "isCorrect": true,
+          "rationale": "The speaker notes that once price corrects and returns back above/below the original indication level, that is the entry point."
+        },
+        {
+          "text": "At the very bottom of the correction phase",
+          "isCorrect": false,
+          "rationale": "Trying to enter at the bottom of a pullback is risky because the trend has not yet regained its momentum."
+        },
+        {
+          "text": "Exactly halfway through the Fibonacci retracement",
+          "isCorrect": false,
+          "rationale": "The speaker specifically argues against the need for tools like Fibonacci, preferring price action levels."
+        },
+        {
+          "text": "Only after price makes a second new high",
+          "isCorrect": false,
+          "rationale": "Waiting for a second new high would result in a late entry, missing the bulk of the 'continuation' phase."
+        }
+      ],
+      "hint": "The entry occurs when price returns to the point that first signaled the directional intent."
+    },
+    {
+      "question": "What is the primary function of the 'Correction' phase in the ICC model?",
+      "answerOptions": [
+        {
+          "text": "To create a higher low or a lower high that doesn't break the previous structure",
+          "isCorrect": true,
+          "rationale": "The correction is a necessary pullback that sets the stage for continuation without invalidating the initial indication."
+        },
+        {
+          "text": "To reverse the market trend entirely",
+          "isCorrect": false,
+          "rationale": "A correction is a temporary retracement; if the trend reversed, it would no longer be a 'correction' within the ICC model."
+        },
+        {
+          "text": "To clear out all buyers from the market before a sell-off",
+          "isCorrect": false,
+          "rationale": "In a bullish ICC setup, the correction is used to build composure for a push higher, not to signal a total market exit."
+        },
+        {
+          "text": "To allow price to sit in a range for several days",
+          "isCorrect": false,
+          "rationale": "While corrections can take time, their structural purpose is to establish a higher low/lower high, not just to move sideways."
+        }
+      ],
+      "hint": "It is a temporary move against the main trend that stays within established structural limits."
+    },
+    {
+      "question": "Why does the speaker suggest that traders don't need to use Fibonacci or psychological numbers?",
+      "answerOptions": [
+        {
+          "text": "Because price structure already indicates where the market is going",
+          "isCorrect": true,
+          "rationale": "The speaker believes that indications provide the 'answer' for targets and direction without needing extra 'brain work' or complex tools."
+        },
+        {
+          "text": "Because those tools are only designed for stock trading",
+          "isCorrect": false,
+          "rationale": "While some traders prefer specific tools for certain assets, the speaker's point is about the self-sufficiency of price action across any chart."
+        },
+        {
+          "text": "Because institutional traders don't use those levels",
+          "isCorrect": false,
+          "rationale": "The speaker focuses on the clarity of price highs and lows rather than the habits of institutional players."
+        },
+        {
+          "text": "Because those numbers are intentionally manipulated by brokers",
+          "isCorrect": false,
+          "rationale": "The source material doesn't claim manipulation; it simply emphasizes that price structure is a more direct indicator of direction."
+        }
+      ],
+      "hint": "The answer is already present on the chart if you look at the relationship between highs and lows."
+    },
+    {
+      "question": "How does the trader use multiple timeframes, such as the 1-hour and 4-hour, in this strategy?",
+      "answerOptions": [
+        {
+          "text": "To ensure that both timeframes are showing aligned bullish or bearish structures",
+          "isCorrect": true,
+          "rationale": "Confirming that the 1-hour is picking up within a 4-hour correction provides higher confidence and momentum for the trade."
+        },
+        {
+          "text": "To find a different trend direction on each timeframe to hedge bets",
+          "isCorrect": false,
+          "rationale": "Successful trading in this context requires alignment between timeframes, not conflicting signals."
+        },
+        {
+          "text": "To trade only the 1-hour while ignoring the 4-hour high and low points",
+          "isCorrect": false,
+          "rationale": "The speaker explicitly checks the 4-hour for the 'big picture' indication before refining the entry on the 1-hour."
+        },
+        {
+          "text": "To use the 1-hour for entry and the 4-hour for calculating the spread",
+          "isCorrect": false,
+          "rationale": "Timeframes are used for structural analysis and trend confirmation, not for technical execution costs like spreads."
+        }
+      ],
+      "hint": "It involves seeking consistency between the short-term and medium-term price movements."
+    },
+    {
+      "question": "At what point would a bullish BTC setup be considered invalidated based on the 4-hour structure?",
+      "answerOptions": [
+        {
+          "text": "If price breaks below the level of the previous higher low",
+          "isCorrect": true,
+          "rationale": "The bullish structure remains intact as long as price stays above the support level established by the most recent higher low."
+        },
+        {
+          "text": "As soon as the market enters a small amount of drawdown",
+          "isCorrect": false,
+          "rationale": "Drawdown is a normal part of trading; the speaker mentions being in $\\$19k$ of drawdown while still maintaining a bullish outlook."
+        },
+        {
+          "text": "If the price stays above the 'blue' indication level for too long",
+          "isCorrect": false,
+          "rationale": "Staying above the indication level is a sign of strength and bullish composure, not invalidation."
+        },
+        {
+          "text": "If a lower high is made during the correction phase",
+          "isCorrect": false,
+          "rationale": "A lower high often occurs during a correction; it only becomes a problem if it leads to a lower low."
+        }
+      ],
+      "hint": "Consider the specific floor that price must maintain to keep its upward momentum."
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What is the primary goal of the lesson regarding market corrections?",
+      "back": "Understanding how to identify when a correction is going to be over."
+    },
+    {
+      "front": "According to the source, what is the predictability of a correction's starting point?",
+      "back": "There is no way to tell when a correction is going to start."
+    },
+    {
+      "front": "What action is required to understand when a market correction has ended?",
+      "back": "Switching time frames to ensure everything is aligning."
+    },
+    {
+      "front": "What is the specific function of the $4$-hour time frame in this trading strategy?",
+      "back": "To identify the overall trend of the market."
+    },
+    {
+      "front": "The $1$-hour time frame is used to keep tabs on structure and see the _____.",
+      "back": "Flow state"
+    },
+    {
+      "front": "What is the primary role of the $15$-minute time frame in analyzing corrections?",
+      "back": "To find the small details that make up the larger structure."
+    },
+    {
+      "front": "Concept: Indications",
+      "back": "Definition: Market movements that establish direction, specifically a higher high ($HH$) or a lower low ($LL$)."
+    },
+    {
+      "front": "Concept: Corrections",
+      "back": "Definition: Market movements characterized by lower highs ($LH$) or higher lows ($HL$) within an established trend."
+    },
+    {
+      "front": "In an uptrend, the two primary structures a trader is concerned with are higher highs and _____.",
+      "back": "Higher lows"
+    },
+    {
+      "front": "What defines the start of a correction on the $1$-hour time frame after the $4$-hour makes a new high?",
+      "back": "The $1$-hour price action begins to downtrend against the higher time frame."
+    },
+    {
+      "front": "Why should a trader avoid disregarding the higher time frame when the $1$-hour is downtrending?",
+      "back": "Because the higher time frame ($4$-hour) has already established the dominant bullish or bearish indication."
+    },
+    {
+      "front": "What is the only reason a trader should switch to a smaller time frame during a correction?",
+      "back": "To see when the correction is officially over."
+    },
+    {
+      "front": "The process of ensuring the $4$-hour, $1$-hour, and $15$-minute time frames all reflect the same direction is called _____.",
+      "back": "Alignment"
+    },
+    {
+      "front": "What is a 'no trade zone' on the $15$-minute time frame?",
+      "back": "The area between two levels where price is stagnant and deciding its next direction."
+    },
+    {
+      "front": "What indicates that a $1$-hour downtrend (correction) is losing its downward momentum?",
+      "back": "When price makes a low and a lower high but fails to make a new lower low."
+    },
+    {
+      "front": "On the $15$-minute time frame, what confirms price is becoming bullish again during a correction?",
+      "back": "Price breaking above established high levels and respecting the higher time frame uptrend."
+    },
+    {
+      "front": "When a trader enters a buy, they are entering based on the $15$-minute time frame respecting a _____.",
+      "back": "$4$-hour higher low"
+    },
+    {
+      "front": "How long do trends on higher time frames typically last?",
+      "back": "Trends on higher time frames can last for a couple of days or even a couple of weeks."
+    },
+    {
+      "front": "To find a target for a buy trade, which market levels should a trader identify?",
+      "back": "The next level of sellers, which are represented by previous highs."
+    },
+    {
+      "front": "Term: Lows",
+      "back": "Definition: Price levels in market structure that represent where buyers are located."
+    },
+    {
+      "front": "Term: Highs",
+      "back": "Definition: Price levels in market structure that represent where sellers are located."
+    },
+    {
+      "front": "What is the requirement for a correction to NOT be considered a structural break?",
+      "back": "It must maintain the overall trend without breaking the higher time frame's key structure."
+    },
+    {
+      "front": "Why is trading on the higher time frame described as a 'cheat code'?",
+      "back": "Because higher time frames have the strongest and most reliable trends."
+    },
+    {
+      "front": "In the gold trade example, what session provided the full push and volume for the buy?",
+      "back": "The London session."
+    },
+    {
+      "front": "At what time during the New York session was another buy opportunity identified at a broken level?",
+      "back": "$9:30$."
+    },
+    {
+      "front": "What is the consequence of looking for a bullish $15$-minute setup while the $4$-hour is bearish?",
+      "back": "The time frames are not aligned, which violates the core strategy."
+    },
+    {
+      "front": "If the $1$-hour time frame is correcting and bearish, what is the trader looking for on the $15$-minute time frame?",
+      "back": "A change of direction back to bullish to align with a bullish $4$-hour trend."
+    },
+    {
+      "front": "What defines a 'higher high' in market structure?",
+      "back": "An indication that the price has exceeded its previous peak in an uptrend."
+    },
+    {
+      "front": "What defines a 'lower low' in market structure?",
+      "back": "An indication that the price has dropped below its previous trough in a downtrend."
+    },
+    {
+      "front": "When monitorng the $15$-minute time frame for the end of a correction, what should a trader keep marked?",
+      "back": "The $1$-hour high levels."
+    },
+    {
+      "front": "The source suggests that spotting the price move back into an uptrend after a correction is equivalent to a _____ level of difficulty.",
+      "back": "Kindergarten"
+    },
+    {
+      "front": "Where should a trade be placed in relation to the $1$-hour indication levels?",
+      "back": "Once price comes back above the higher time frame level where the indication showed bullishness."
+    },
+    {
+      "front": "If a trader is buying, they want the price to move into a level of _____.",
+      "back": "Sellers"
+    },
+    {
+      "front": "What is the relationship between the $1$-hour and $15$-minute candles during a correction?",
+      "back": "The $15$-minute provides the internal structure (the candles up and down) that forms a single $1$-hour candle."
+    },
+    {
+      "front": "Why does the trader hold trades until the next level of sellers is reached?",
+      "back": "To capitalize on the strength and duration of the higher time frame trend."
+    },
+    {
+      "front": "How does price behavior at a level of support assist in identifying the end of a correction?",
+      "back": "It provides a stagnant area where a shift to bullish structure can be monitored on smaller time frames."
+    },
+    {
+      "front": "What was the specific entry level mentioned for the gold buy in the example?",
+      "back": "$4,534$."
+    },
+    {
+      "front": "What are the only two ways a correction can be made?",
+      "back": "Lower highs or higher lows."
+    },
+    {
+      "front": "A _____ is an indication, whereas a higher low is a correction.",
+      "back": "Higher high"
+    },
+    {
+      "front": "A _____ is an indication, whereas a lower high is a correction.",
+      "back": "Lower low"
+    },
+    {
+      "front": "When the $4$-hour, $1$-hour, and $15$-minute are all bullish, the trade is in _____.",
+      "back": "Alignment"
+    },
+    {
+      "front": "What does a wick out at a support level on the $15$-minute time frame often precede?",
+      "back": "A push back above the level, signaling bullish intent."
+    },
+    {
+      "front": "In the provided example, what was the total floating profit mentioned by the trader?",
+      "back": "$\\$2.2$ million."
+    },
+    {
+      "front": "How should a trader progress through levels of sellers when setting targets?",
+      "back": "By moving target levels to the next sequential high as price breaks out of current levels."
+    },
+    {
+      "front": "What is the outcome of a $1$-hour time frame staying stagnant on a support level during a correction?",
+      "back": "It creates a decision point where the $15$-minute trend determines the next $1$-hour move."
+    },
+    {
+      "front": "What does the trader suggest joining for free updates on market thoughts and trade references?",
+      "back": "The Telegram channel."
+    },
+    {
+      "front": "Why is it important to see the $15$-minute time frame go bullish before entering a long trade?",
+      "back": "It aligns the smallest details with the higher time frame's bullish bias."
+    },
+    {
+      "front": "In the sequence of analysis, which time frame provides the 'identification' of the trend?",
+      "back": "The $4$-hour time frame."
+    },
+    {
+      "front": "In the sequence of analysis, which time frame provides the 'flow' of the structure?",
+      "back": "The $1$-hour time frame."
+    },
+    {
+      "front": "In the sequence of analysis, which time frame provides the 'details' for entry?",
+      "back": "The $15$-minute time frame."
+    },
+    {
+      "front": "Concept: Trend Duration",
+      "back": "Fact: Higher time frame trends are stronger and last longer (days to weeks) than lower time frame trends."
+    },
+    {
+      "front": "What is the primary indicator of a bearish correction in an uptrend on the $1$-hour chart?",
+      "back": "The formation of lower lows and lower highs."
+    },
+    {
+      "front": "If the $4$-hour is bullish and the $1$-hour is bearish, what market phase is occurring?",
+      "back": "A correction."
+    },
+    {
+      "front": "What occurs when price fails to go lower on the $15$-minute time frame during a $1$-hour correction?",
+      "back": "It signals a potential end to the correction and a return to the main trend."
+    },
+    {
+      "front": "According to the trader, what is 'the best way to spot out' and take advantage of corrections?",
+      "back": "Keeping everything cordial and aligned with each other across time frames."
+    },
+    {
+      "front": "True or False: A correction should break the overall market structure of the higher time frame.",
+      "back": "False."
+    },
+    {
+      "front": "When price breaks back above a $1$-hour high after a correction, it confirms the _____ time frame is following the trend.",
+      "back": "$4$-hour"
+    },
+    {
+      "front": "What specific market action does the trader wait for on the $15$-minute chart before entering a trade?",
+      "back": "A push up that builds bullish structure above established levels."
+    },
+    {
+      "front": "By identifying a higher low on the $4$-hour chart, what is a trader essentially spotting?",
+      "back": "The bottom of a correction."
+    },
+    {
+      "front": "What defines the relationship between 'highs' and 'sellers'?",
+      "back": "Highs are levels where selling pressure typically enters the market."
+    }
+  ]
+}

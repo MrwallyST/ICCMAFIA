@@ -1,0 +1,213 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "According to the speaker, what is a necessary requirement for price to meet before considering a sell entry on the daily timeframe?",
+      "answerOptions": [
+        {
+          "text": "Price must break a swing low.",
+          "isCorrect": true,
+          "rationale": "Breaking a swing low provides the bearish indication that momentum has shifted and sellers are bypassing previous buyer-supported levels."
+        },
+        {
+          "text": "Price must create a new swing high.",
+          "isCorrect": false,
+          "rationale": "Creating a new swing high would suggest bullish momentum, which contradicts the goal of finding a sell entry."
+        },
+        {
+          "text": "Price must touch a daily resistance level three times.",
+          "isCorrect": false,
+          "rationale": "While resistance is relevant, the source specifically emphasizes the break of a swing low as the primary requirement for sales."
+        },
+        {
+          "text": "Price must close above the previous day's open.",
+          "isCorrect": false,
+          "rationale": "Closing above the previous day's open is often seen as a bullish sign and does not satisfy the requirement for a bearish indication."
+        }
+      ],
+      "hint": "Think about what must happen to the levels where buyers previously stepped into the market."
+    },
+    {
+      "question": "In the 'ICC' (Indication, Correction, Continuation) model described, what does a bearish 'indication' represent?",
+      "answerOptions": [
+        {
+          "text": "A breakout under a swing low.",
+          "isCorrect": true,
+          "rationale": "An indication signifies that price is breaking out of a level, such as a swing low, showing that buyers at that level were not respected."
+        },
+        {
+          "text": "A period of horizontal consolidation.",
+          "isCorrect": false,
+          "rationale": "Consolidation represents a lack of clear direction, whereas an indication requires a breakout from a specific level."
+        },
+        {
+          "text": "A retest of a previous high.",
+          "isCorrect": false,
+          "rationale": "Retesting a high is part of the price action but does not represent the initial breakout that defines an indication."
+        },
+        {
+          "text": "A sudden decrease in trading volume.",
+          "isCorrect": false,
+          "rationale": "The speaker focuses on price action and structural breaks rather than volume levels to define the indication phase."
+        }
+      ],
+      "hint": "Consider what happens when price fails to respect the support level set by buyers."
+    },
+    {
+      "question": "When looking for a sell continuation, how should the 'correction' phase appear on a smaller timeframe?",
+      "answerOptions": [
+        {
+          "text": "As a bullish uptrend.",
+          "isCorrect": true,
+          "rationale": "For a sell continuation to occur, the correction must move against the bearish indication by forming a temporary bullish structure."
+        },
+        {
+          "text": "As a rapid downward spike.",
+          "isCorrect": false,
+          "rationale": "A downward spike would be a continuation of the indication rather than the counter-trend correction phase."
+        },
+        {
+          "text": "As an exhausted, sideways market.",
+          "isCorrect": false,
+          "rationale": "The source specifically describes the correction as a phase that builds higher highs and higher lows before reversing."
+        },
+        {
+          "text": "As a series of equal highs and lows.",
+          "isCorrect": false,
+          "rationale": "While equal levels can occur, the correction is defined by its temporary counter-trend movement, which is bullish in a sell scenario."
+        }
+      ],
+      "hint": "Think about the direction price moves when it is 'correcting' a bearish move."
+    },
+    {
+      "question": "What does the speaker suggest doing if the $4$-hour timeframe does not provide enough clear information for a trade setup?",
+      "answerOptions": [
+        {
+          "text": "Scale down to the $1$-hour timeframe.",
+          "isCorrect": true,
+          "rationale": "The speaker notes that if information is lacking on the $4$-hour, dropping down to the $1$-hour can reveal more detailed structural behavior."
+        },
+        {
+          "text": "Switch to a different currency pair.",
+          "isCorrect": false,
+          "rationale": "The strategy involves analyzing the same asset across multiple timeframes rather than abandoning the pair entirely."
+        },
+        {
+          "text": "Scale up to the Weekly timeframe.",
+          "isCorrect": false,
+          "rationale": "Scaling up provides a broader view but less detail, which is the opposite of what is needed when seeking specific entry information."
+        },
+        {
+          "text": "Wait for the current Daily candle to close.",
+          "isCorrect": false,
+          "rationale": "While waiting is a part of trading, the specific advice given for more clarity is to investigate lower timeframes."
+        }
+      ],
+      "hint": "Consider the hierarchical relationship between the timeframes mentioned in the daily and $4$-hour combo."
+    },
+    {
+      "question": "According to the 'creator' concept mentioned, what is a sign that a price trend is reversing?",
+      "answerOptions": [
+        {
+          "text": "Price breaks lower than the original creator of a high.",
+          "isCorrect": true,
+          "rationale": "The creator is the low that caused a new high; if price falls below it, the structure that supported the uptrend has been invalidated."
+        },
+        {
+          "text": "Price touches the creator level and bounces back.",
+          "isCorrect": false,
+          "rationale": "A bounce off the creator level would confirm that the support is holding rather than signaling a reversal."
+        },
+        {
+          "text": "Price makes a new high above the creator.",
+          "isCorrect": false,
+          "rationale": "Making a new high would be a continuation of the existing trend rather than a sign of reversal."
+        },
+        {
+          "text": "Price stays above the creator for more than four hours.",
+          "isCorrect": false,
+          "rationale": "Staying above the creator suggests the trend is maintaining its integrity rather than reversing."
+        }
+      ],
+      "hint": "Think about what happens to the origin point of a move when a trend fails."
+    },
+    {
+      "question": "Where does the speaker place the stop loss when entering a short position based on lower highs?",
+      "answerOptions": [
+        {
+          "text": "Above the previous lower high.",
+          "isCorrect": true,
+          "rationale": "Placing the stop loss above the previous lower high ensures the trade is closed if the bearish structure is broken."
+        },
+        {
+          "text": "Below the most recent swing low.",
+          "isCorrect": false,
+          "rationale": "Placing a stop loss below a low when selling would result in being stopped out almost immediately as the trade moves into profit."
+        },
+        {
+          "text": "Exactly at the daily support level.",
+          "isCorrect": false,
+          "rationale": "The daily support level is usually the target (take profit) rather than the risk management point (stop loss)."
+        },
+        {
+          "text": "Ten pips above the entry point.",
+          "isCorrect": false,
+          "rationale": "The speaker uses structural levels like previous highs for stop loss placement rather than a fixed pip amount."
+        }
+      ],
+      "hint": "Consider which structural point would invalidate the idea that the market is in a downtrend."
+    },
+    {
+      "question": "Why does the speaker emphasize trading during the New York or London sessions?",
+      "answerOptions": [
+        {
+          "text": "Market volume is at its maximum.",
+          "isCorrect": true,
+          "rationale": "Session timing is crucial because high volume provides the momentum needed for price to reach targets efficiently."
+        },
+        {
+          "text": "The daily timeframe only updates during these times.",
+          "isCorrect": false,
+          "rationale": "The daily timeframe reflects price action over $24$ hours regardless of the specific active session."
+        },
+        {
+          "text": "Swing lows only form during these sessions.",
+          "isCorrect": false,
+          "rationale": "Swing lows can form at any time, but session volume helps price break through or react to those pre-existing levels."
+        },
+        {
+          "text": "It is easier to identify the 'creator' of a move.",
+          "isCorrect": false,
+          "rationale": "While true that moves start in sessions, the 'creator' is identified by price structure, not by the clock."
+        }
+      ],
+      "hint": "Think about the main advantage of having more participants in the market at once."
+    },
+    {
+      "question": "In the example trade provided, what was the Risk-to-Reward ratio for the swing trade targeting the daily level?",
+      "answerOptions": [
+        {
+          "text": "$1:7$",
+          "isCorrect": true,
+          "rationale": "The speaker explicitly mentions targeting a $1$ to $7$ ratio while waiting as a swing trader for price to reach the daily target."
+        },
+        {
+          "text": "$1:2$",
+          "isCorrect": false,
+          "rationale": "While a $1:2$ ratio is common, it is lower than the specific high-reward target mentioned in this swing trading example."
+        },
+        {
+          "text": "$1:5$",
+          "isCorrect": false,
+          "rationale": "This ratio is plausible for swing trading but does not match the specific $1:7$ figure cited by the speaker."
+        },
+        {
+          "text": "$1:10$",
+          "isCorrect": false,
+          "rationale": "A $1:10$ ratio is very high and, while possible, exceeds the specific target discussed in the breakdown."
+        }
+      ],
+      "hint": "The ratio was mentioned toward the end of the video during the trade breakdown."
+    }
+  ]
+}

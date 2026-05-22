@@ -1,0 +1,165 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "What sequence of price points characterizes an uptrend in market structure?",
+      "back": "An uptrend consists of price making higher highs and higher lows."
+    },
+    {
+      "front": "What sequence of price points defines a downtrend in market structure?",
+      "back": "A downtrend consists of price making lower highs and lower lows."
+    },
+    {
+      "front": "According to the course, which three specific higher time frames are the most essential for day trading?",
+      "back": "The essential higher time frames are the 1 hour, 4 hour, and 1 day."
+    },
+    {
+      "front": "In order to identify a higher high or higher low, what must price first establish for comparison?",
+      "back": "Price must have a previous high and low to compare against to confirm a trend."
+    },
+    {
+      "front": "What is the status of market structure when price is stuck inside a specific range?",
+      "back": "Price has no higher high, higher low, lower low, or lower high when in a range."
+    },
+    {
+      "front": "From which specific market structure point should a trader look to enter buy trades?",
+      "back": "Buy entries should come from higher lows in an uptrend."
+    },
+    {
+      "front": "From which specific market structure point should a trader look to enter sell trades?",
+      "back": "Sell entries should come from lower highs in a downtrend."
+    },
+    {
+      "front": "What is the mechanical rule regarding buying at a higher high?",
+      "back": "Traders should not buy at a higher high because price is likely to look for a higher low next."
+    },
+    {
+      "front": "What is the mechanical rule regarding selling at a lower low?",
+      "back": "Traders should not sell at a lower low because price is likely to look for a lower high next."
+    },
+    {
+      "front": "Why is market structure on higher time frames considered a 'cheat code'?",
+      "back": "Structure on higher time frames does not break as fast as it does on lower time frames."
+    },
+    {
+      "front": "What condition must be met across different time frames before placing a trade?",
+      "back": "All time frames must align and match sentiments to form a strong trend 'team'."
+    },
+    {
+      "front": "What market participants are represented by a 'resistance' level?",
+      "back": "Resistance levels represent the location where sellers are concentrated."
+    },
+    {
+      "front": "What market participants are represented by a 'support' level?",
+      "back": "Support levels represent the location where buyers are concentrated."
+    },
+    {
+      "front": "In the context of the course, what is the definition of trading?",
+      "back": "Trading is the act of giving something to someone else for something else in return."
+    },
+    {
+      "front": "What is the primary objective of a price 'correction' or pullback in a trend?",
+      "back": "A correction allows buyers or sellers to go back and collect more orders before continuing."
+    },
+    {
+      "front": "What does the acronym ICC stand for in the context of this trading strategy?",
+      "back": "ICC stands for Indication, Correction, and Continuation."
+    },
+    {
+      "front": "In the ICC method, what constitutes an 'Indication'?",
+      "back": "An indication occurs when price creates a new high or a new low in the market."
+    },
+    {
+      "front": "In the ICC method, what is the 'Correction' phase?",
+      "back": "The correction phase is a pullback that creates a higher low or a lower high."
+    },
+    {
+      "front": "In the ICC method, how is the 'Continuation' phase defined?",
+      "back": "Continuation is the phase where price finishes out its move by creating a new higher high or lower low."
+    },
+    {
+      "front": "At what specific level should a trader typically look to enter a trade using the ICC method?",
+      "back": "The entry is typically placed at the indication level once price returns to it."
+    },
+    {
+      "front": "How does the 4-hour time frame function within the course's structural workflow?",
+      "back": "The 4-hour time frame is used to identify the overall trend."
+    },
+    {
+      "front": "What is the purpose of using the 1-hour time frame in the structural workflow?",
+      "back": "The 1-hour time frame is used to keep track of the flow and sentiment of structure."
+    },
+    {
+      "front": "What is the role of the 15-minute time frame for a day trader?",
+      "back": "The 15-minute time frame is used to find the small details and specific entry points."
+    },
+    {
+      "front": "How does a trader determine that a correction on a higher time frame is ending?",
+      "back": "The correction is over when the smaller time frame aligns and switches direction to match the higher time frame."
+    },
+    {
+      "front": "What specific structural event must occur to confirm a sell entry on the daily time frame?",
+      "back": "A sell entry requires price to break below a swing low to bypass the previous buyers."
+    },
+    {
+      "front": "Where should a stop loss be placed when taking a sell trade based on market structure?",
+      "back": "The stop loss should be placed above the previous lower high, also known as the creator."
+    },
+    {
+      "front": "Why is it important to trade during specific market sessions like New York or London?",
+      "back": "Trading during sessions ensures the maximum amount of market volume is available."
+    },
+    {
+      "front": "What is the relationship between market value and market volume?",
+      "back": "Assets that people find valuable attract higher volume and more profitable movements."
+    },
+    {
+      "front": "How many high-probability setups should a swing trader expect per week on the 4-hour or 1-hour time frames?",
+      "back": "A trader should expect roughly one to two high-probability trades per week."
+    },
+    {
+      "front": "What happens to a sell plan if price breaks back above the most recent lower high?",
+      "back": "The sell plan becomes invalid because the sellers' plan to keep price lower has failed."
+    },
+    {
+      "front": "When using the 'Daily and 4-hour combo,' what is the primary indicator of a bearish reversal?",
+      "back": "A reversal is signaled when price breaks under the original 'creator' low of the previous move."
+    },
+    {
+      "front": "What is the core psychology behind price 'bleeding' during a sell-off?",
+      "back": "Price bleeds when customers and investors lose value in an asset and stop providing support."
+    },
+    {
+      "front": "Why does the course suggest that everything in the market naturally 'wants' to go up?",
+      "back": "Everything wants to have value, but price only goes up if the economy sees and supports that value."
+    },
+    {
+      "front": "What is the 'creator' in the context of market structure stops?",
+      "back": "The creator is the specific low or high that caused a significant movement or breakout to happen."
+    },
+    {
+      "front": "How should a trader respond to market consolidation to avoid psyching themselves out?",
+      "back": "A trader should wait for the market to communicate its direction and then respond when it breaks out."
+    },
+    {
+      "front": "What defines a 'swing low' in the daily time frame analysis?",
+      "back": "A swing low is a point where buyers stepped into the market and pushed price upward."
+    },
+    {
+      "front": "According to the course, what is the risk of trading solely based on the daily time frame?",
+      "back": "Trading the daily time frame alone often causes a trader to wait much longer for entries."
+    },
+    {
+      "front": "What occurs when buyers do not have enough orders to satisfy the available sell orders at resistance?",
+      "back": "Price reacts by selling off until buyers can collect more orders to push higher."
+    },
+    {
+      "front": "What is the primary indicator that a trend is continuing rather than ending?",
+      "back": "A trend continues when price creates a new indication (HH or LL) after a correction."
+    },
+    {
+      "front": "What is the recommended average monthly trade frequency for a patient trader following these rules?",
+      "back": "A patient trader typically places about four to five high-quality trades per month."
+    }
+  ]
+}

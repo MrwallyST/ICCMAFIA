@@ -1,0 +1,113 @@
+{
+  "name": "Day Trading: ICC Strategy",
+  "children": [
+    {
+      "name": "ICC Framework",
+      "children": [
+        {
+          "name": "Indication",
+          "children": [
+            {
+              "name": "New High or Low"
+            },
+            {
+              "name": "Structure Change"
+            },
+            {
+              "name": "Trend Start/Continue"
+            }
+          ]
+        },
+        {
+          "name": "Correction",
+          "children": [
+            {
+              "name": "Pullback"
+            },
+            {
+              "name": "Higher Low (Uptrend)"
+            },
+            {
+              "name": "Lower High (Downtrend)"
+            }
+          ]
+        },
+        {
+          "name": "Continuation",
+          "children": [
+            {
+              "name": "Price Momentum"
+            },
+            {
+              "name": "New Higher High"
+            },
+            {
+              "name": "New Lower Low"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Market Structure",
+      "children": [
+        {
+          "name": "Uptrend",
+          "children": [
+            {
+              "name": "Higher Highs (HH)"
+            },
+            {
+              "name": "Higher Lows (HL)"
+            }
+          ]
+        },
+        {
+          "name": "Downtrend",
+          "children": [
+            {
+              "name": "Lower Highs (LH)"
+            },
+            {
+              "name": "Lower Lows (LL)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trade Execution",
+      "children": [
+        {
+          "name": "Entry: Indication Level"
+        },
+        {
+          "name": "Confluence: Break Above Swing High"
+        },
+        {
+          "name": "Validation: Multiple Higher Lows"
+        },
+        {
+          "name": "Timeframe Alignment: 4H and 1H"
+        }
+      ]
+    },
+    {
+      "name": "Key Concepts",
+      "children": [
+        {
+          "name": "Rinse and Repeat Process"
+        },
+        {
+          "name": "Avoiding Psychological Numbers"
+        },
+        {
+          "name": "Ignoring Complex Indicators"
+        },
+        {
+          "name": "Price Action Mastery"
+        }
+      ]
+    }
+  ]
+}

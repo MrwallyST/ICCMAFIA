@@ -1,0 +1,225 @@
+{
+  "title": "Trading Flashcards",
+  "cards": [
+    {
+      "front": "On which two primary timeframes does the 'Daily & 4H Combo' strategy base its analysis?",
+      "back": "The daily timeframe and the 4-hour timeframe."
+    },
+    {
+      "front": "What type of trader is the speaker primarily identified as?",
+      "back": "A swing trader."
+    },
+    {
+      "front": "What market occurrence defines a 'swing low' on the daily timeframe?",
+      "back": "A point where buyers step in and push price back up after bearish momentum."
+    },
+    {
+      "front": "What structural event must occur before considering a sell entry?",
+      "back": "Price must break a swing low."
+    },
+    {
+      "front": "What does the 'I' in the ICC entry model stand for?",
+      "back": "Indication."
+    },
+    {
+      "front": "What does the first 'C' in the ICC entry model stand for?",
+      "back": "Correction."
+    },
+    {
+      "front": "In the ICC model, what is the specific definition of an 'indication'?",
+      "back": "A breakout under swing lows or above swing highs."
+    },
+    {
+      "front": "During a bearish setup, what is the directional movement of the 'correction' phase?",
+      "back": "The correction phase is bullish or an uptrend."
+    },
+    {
+      "front": "Under what condition is a market correction considered 'over'?",
+      "back": "When price stops making the counter-trend structure (e.g., stops making an uptrend)."
+    },
+    {
+      "front": "What is the primary purpose of scaling down to the 4-hour timeframe from the daily?",
+      "back": "To see more detail and prepare for the daily break of structure."
+    },
+    {
+      "front": "Term: Original Creator",
+      "back": "Definition: The specific price point or low/high that originated a significant move in the market."
+    },
+    {
+      "front": "According to market structure rules, what is the price not supposed to do relative to the 'original creator' in a healthy trend?",
+      "back": "Price is not supposed to break or go beyond the level where the original creation came from."
+    },
+    {
+      "front": "What does a break of the 'original creator' level signify to a trader?",
+      "back": "It is a sign that the price is reversing."
+    },
+    {
+      "front": "How should a trader handle the choice between using candle wicks or candle body closes for marking levels?",
+      "back": "Either one works as long as the structural break is identified consistently."
+    },
+    {
+      "front": "What constitutes a 'bearish indication' on the 4-hour or 1-hour timeframe?",
+      "back": "A breakout and close below a previous swing low."
+    },
+    {
+      "front": "Why might a trader scale down to a 1-hour timeframe while using the Daily/4H combo?",
+      "back": "To gain more information if the 4-hour timeframe does not provide enough detail."
+    },
+    {
+      "front": "What is the key to identifying a high-probability entry when looking across multiple timeframes?",
+      "back": "Ensuring the ICC (Indication, Correction, Continuation) aligns across all timeframes."
+    },
+    {
+      "front": "During which market session is volume typically at its maximum for reliable trades?",
+      "back": "The New York session."
+    },
+    {
+      "front": "What is the primary goal of the 'continuation' phase in the ICC model?",
+      "back": "For price to resume the original trend identified by the indication."
+    },
+    {
+      "front": "If price breaks a swing low and stays below it for two hours, what does this indicate about market control?",
+      "back": "It indicates that sellers have established complete control under that level."
+    },
+    {
+      "front": "Concept: Trend Reversal Sign",
+      "back": "A reversal is identified when price goes from making higher highs and higher lows to breaking the previous low and making a lower low."
+    },
+    {
+      "front": "What is price 'always trying to take out' in terms of historical structure?",
+      "back": "Price is always trying to take out old lows or old highs, specifically the 'creators' of previous moves."
+    },
+    {
+      "front": "Why did price reject and fight back at the daily support level in the example provided?",
+      "back": "Because buyers are traditionally very strong at that specific daily creator level."
+    },
+    {
+      "front": "How is a downtrend visually identified on a smaller timeframe like the 15-minute?",
+      "back": "By a consistent series of lower lows and lower highs."
+    },
+    {
+      "front": "What must occur for price to be considered as wanting to head higher in terms of structure?",
+      "back": "It must break to the upside, create an indication, and build higher highs and higher lows."
+    },
+    {
+      "front": "What is the significance of seeing multiple lower highs (e.g., six) before a session starts?",
+      "back": "It indicates the market is building up momentum to break down to the downside."
+    },
+    {
+      "front": "Where should a stop loss be placed when entering a short position?",
+      "back": "Above the previous lower high."
+    },
+    {
+      "front": "What was the risk-to-reward ratio achieved in the speaker's highlighted trade?",
+      "back": "A ratio of $1:7$."
+    },
+    {
+      "front": "When should a trader stop focusing on past historical data and look at current structure?",
+      "back": "When identifying the immediate trend (new lows/new highs) currently being built by price."
+    },
+    {
+      "front": "What is the definition of a 'bearish indication' in price action?",
+      "back": "A breakout under a swing low, showing that buyers at that level were not respected."
+    },
+    {
+      "front": "How does the 'Daily' timeframe dictate the overall bias in the Daily & 4H Combo?",
+      "back": "The daily provides the indication of momentum and the ultimate target level."
+    },
+    {
+      "front": "The process of waiting for price to return to a bearish state after a counter-trend move is called waiting for the _____.",
+      "back": "Correction to be over"
+    },
+    {
+      "front": "Why is the 'Original Creator' level considered the ultimate target for a trend?",
+      "back": "Because price seeks to take out the cause of the previous opposing movement."
+    },
+    {
+      "front": "If price wanted to buy instead of sell, what would happen to the bearish momentum?",
+      "back": "The bearish momentum would not exist, and bulls would push price up without resistance from sellers."
+    },
+    {
+      "front": "What timeframe is used to confirm the downtrend if the 1-hour chart shows lower lows and lower highs?",
+      "back": "The 15-minute timeframe can be used to see the alignment of the trend."
+    },
+    {
+      "front": "The requirement that price 'needs to break a swing low' applies to entries for _____.",
+      "back": "Sells"
+    },
+    {
+      "front": "What provides the volume necessary for price to break significant daily levels?",
+      "back": "Major trading sessions like London or New York."
+    },
+    {
+      "front": "What determines the specific level where a swing trader's profit target is set?",
+      "back": "The daily level or the 'creator' of the previous opposing move."
+    },
+    {
+      "front": "How does the 1-hour chart assist in the ICC strategy when price is at a daily level?",
+      "back": "It shows the transition from a correction (uptrend) back into the main trend (downtrend)."
+    },
+    {
+      "front": "In a downtrend, every time price tries to 'retest' and fails, it typically creates a _____.",
+      "back": "Lower high"
+    },
+    {
+      "front": "What does a 'wick out' at a support level suggest before a potential breakout?",
+      "back": "That buyers are present but sellers are starting to put up a fight."
+    },
+    {
+      "front": "To identify a reversal from bullish to bearish, a trader looks for the break of the _____.",
+      "back": "Previous swing low"
+    },
+    {
+      "front": "What is the primary goal of aligning multiple timeframes before an entry?",
+      "back": "To ensure that the structure of all timeframes matches the intended trade direction."
+    },
+    {
+      "front": "Why is it important to identify the 'creator' of a move when setting a stop loss?",
+      "back": "Because the creator level should not be breached if the current trend is to remain valid."
+    },
+    {
+      "front": "Concept: ICC (Indication, Correction, Continuation)",
+      "back": "Definition: A three-step price action sequence used to identify breakouts, pullbacks, and trend resumptions."
+    },
+    {
+      "front": "What is the structural implication of a 'long period of time' spent below a support level?",
+      "back": "It confirms that the support has failed and sellers are in control."
+    },
+    {
+      "front": "When the daily timeframe is at a support level, what is the first sign that it might break for a sell?",
+      "back": "Smaller timeframes (4H/1H) beginning to form bearish indications and lower highs."
+    },
+    {
+      "front": "What role does the 'correction' play in providing an entry opportunity?",
+      "back": "It allows price to reach a more favorable (higher) level before the trend continues downward."
+    },
+    {
+      "front": "How should a trader react if price breaks the 'original creator' of a sell-off?",
+      "back": "The trader should exit the short bias as the trend has likely reversed."
+    },
+    {
+      "front": "The high volume seen during the New York session is described by the speaker as being highly _____.",
+      "back": "Reliable"
+    },
+    {
+      "front": "In the context of the 1-hour timeframe, what signifies the 'end' of a bullish correction?",
+      "back": "The breaking of the correction's uptrend structure."
+    },
+    {
+      "front": "What is the logic behind targeting an 'old low' that was once a 'creator'?",
+      "back": "Price tends to return to and test the origins of previous significant buying pressure."
+    },
+    {
+      "front": "What is a common mistake traders make regarding historical data vs. current price action?",
+      "back": "Getting confused by the distant past instead of focusing on current structure and trends."
+    },
+    {
+      "front": "How does a 'lower high' relate to the concept of a 'creator' in a downtrend?",
+      "back": "The lower high is the creator of the subsequent new lower low."
+    },
+    {
+      "front": "What is the 'simplest' way to trade according to the speaker?",
+      "back": "Trading off the higher timeframes like the Daily and 4-hour."
+    }
+  ]
+}

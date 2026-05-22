@@ -1,0 +1,213 @@
+{
+  "title": "Gold Quiz",
+  "questions": [
+    {
+      "question": "According to the speaker, what is the typical frequency of high-probability trades when following the higher timeframes for gold?",
+      "answerOptions": [
+        {
+          "text": "20 trades every day",
+          "isCorrect": false,
+          "rationale": "The speaker explicitly warns against trading 20 times a day, noting that overtrading is not necessary for success."
+        },
+        {
+          "text": "4 to 5 times per month",
+          "isCorrect": true,
+          "rationale": "The speaker mentions that price usually gives one good move per week on the higher timeframe, resulting in about 4 to 5 trades a month."
+        },
+        {
+          "text": "4 to 5 times per week",
+          "isCorrect": false,
+          "rationale": "While one move per week is the target, the total monthly frequency is emphasized as being quite low to maintain quality."
+        },
+        {
+          "text": "Once every two months",
+          "isCorrect": false,
+          "rationale": "The speaker suggests a weekly rhythm for high-probability setups, making once every two months far too infrequent based on the material."
+        }
+      ],
+      "hint": "Consider the speaker's observation that the market typically offers one major move per week."
+    },
+    {
+      "question": "Which combination of timeframes does the speaker identify as the 'bread and butter' for establishing a trading bias?",
+      "answerOptions": [
+        {
+          "text": "Monthly, Weekly, and Daily",
+          "isCorrect": false,
+          "rationale": "While high timeframes are important, the speaker specifically highlights three lower than the monthly for his daily execution."
+        },
+        {
+          "text": "1-hour, 15-minute, and 5-minute",
+          "isCorrect": false,
+          "rationale": "These are generally considered scalping timeframes, whereas the speaker emphasizes a higher timeframe approach for his 'bread and butter'."
+        },
+        {
+          "text": "Daily, 4-hour, and 1-hour",
+          "isCorrect": true,
+          "rationale": "The speaker states that these three timeframes must correlate and match to determine a successful bias and entry."
+        },
+        {
+          "text": "Weekly, 4-hour, and 15-minute",
+          "isCorrect": false,
+          "rationale": "The speaker emphasizes the alignment of the Daily, 4-hour, and 1-hour timeframes specifically."
+        }
+      ],
+      "hint": "Think about the sequence of high-to-mid timeframes mentioned as being essential for the analysis."
+    },
+    {
+      "question": "What is the first step recommended when analyzing the Daily timeframe to find a bias?",
+      "answerOptions": [
+        {
+          "text": "Looking for the highest and lowest points relative to current price",
+          "isCorrect": true,
+          "rationale": "The speaker advises finding the last high and low created from the current price position to determine the immediate range of interest."
+        },
+        {
+          "text": "Waiting for a news event to trigger volatility",
+          "isCorrect": false,
+          "rationale": "The speaker focuses on responding to what the charts communicate rather than waiting for external news triggers."
+        },
+        {
+          "text": "Checking the NASDAQ to see if it correlates with gold",
+          "isCorrect": false,
+          "rationale": "The speaker mentions he stopped chasing NASDAQ and now focuses exclusively on gold as his primary asset."
+        },
+        {
+          "text": "Entering a trade immediately at the New York open",
+          "isCorrect": false,
+          "rationale": "The strategy involves waiting for specific levels to break and correlate rather than entering based on time alone."
+        }
+      ],
+      "hint": "The speaker describes using your finger to move up or down from current price to identify key structural markers."
+    },
+    {
+      "question": "In the context of a downtrend, what event specifically makes the current selling setup 'invalid'?",
+      "answerOptions": [
+        {
+          "text": "Price creating a new lower low",
+          "isCorrect": false,
+          "rationale": "Creating a new lower low actually confirms and continues the downtrend structure."
+        },
+        {
+          "text": "Price breaking above the previous lower high",
+          "isCorrect": true,
+          "rationale": "A break above the lower high signifies that sellers have lost control of that level, breaking the rules of downtrend structure."
+        },
+        {
+          "text": "Price retesting the level it just broke",
+          "isCorrect": false,
+          "rationale": "Retesting a broken level is a common occurrence in a valid trend and does not necessarily invalidate the setup."
+        },
+        {
+          "text": "Price consolidating for several days",
+          "isCorrect": false,
+          "rationale": "The speaker notes that gold can consolidate or stay in an area for days before moving, which is a normal part of price action."
+        }
+      ],
+      "hint": "Consider the rules of market structure and what signifies a change in control from sellers to buyers."
+    },
+    {
+      "question": "Why does the speaker feel confident holding gold sales even when price reaches a previous level of buyers?",
+      "answerOptions": [
+        {
+          "text": "Because he has a $100\\%$ win rate on gold",
+          "isCorrect": false,
+          "rationale": "The speaker explicitly admits to taking losses and states that trading is never $100\\%$ guaranteed."
+        },
+        {
+          "text": "Because the seller pressure was strong enough to break a major daily level",
+          "isCorrect": true,
+          "rationale": "The speaker reasons that if sellers could break a level that previously started a whole uptrend, they are significantly stronger than the buyers."
+        },
+        {
+          "text": "Because he wants to prove his ego right to the community",
+          "isCorrect": false,
+          "rationale": "The speaker warns against letting 'self-pride' or 'ego' drive trading decisions, advocating instead for responding to the market."
+        },
+        {
+          "text": "Because the trade has already been floating in profit for three hours",
+          "isCorrect": false,
+          "rationale": "The length of time a trade is in profit is not the structural reason for the speaker's confidence in the trend's continuation."
+        }
+      ],
+      "hint": "Think about the comparative strength between sellers and the historical importance of the levels they have managed to penetrate."
+    },
+    {
+      "question": "According to the speaker, trading is not about the time spent on charts, but rather about what?",
+      "answerOptions": [
+        {
+          "text": "Predicting the future movement with absolute certainty",
+          "isCorrect": false,
+          "rationale": "The speaker emphasizes probability rather than certainty or prediction."
+        },
+        {
+          "text": "How you respond to what the charts are saying to you",
+          "isCorrect": true,
+          "rationale": "Success is defined as the ability to communicate with the market and respond correctly to the signals it provides."
+        },
+        {
+          "text": "Taking at least one trade every single day to stay sharp",
+          "isCorrect": false,
+          "rationale": "The speaker promotes quality over quantity, often waiting days or a week for a single high-probability setup."
+        },
+        {
+          "text": "Using the most complex indicators available",
+          "isCorrect": false,
+          "rationale": "The speaker suggests taking things off the chart and focusing on clean levels and timeframes like the Daily and 4-hour."
+        }
+      ],
+      "hint": "The speaker views the market as a form of communication that requires a specific reaction from the trader."
+    },
+    {
+      "question": "What is the speaker's perspective on taking a loss in the market?",
+      "answerOptions": [
+        {
+          "text": "It is a sign that the strategy is broken and needs to be changed",
+          "isCorrect": false,
+          "rationale": "The speaker took a loss the previous week but applied the same setup again, showing trust in the strategy despite individual losses."
+        },
+        {
+          "text": "He would rather take a loss than fear himself out of a probable setup",
+          "isCorrect": true,
+          "rationale": "The speaker emphasizes trusting the probability of a setup over the fear of being wrong, accepting losses as part of the process."
+        },
+        {
+          "text": "Losses are impossible if you follow the higher timeframes correctly",
+          "isCorrect": false,
+          "rationale": "The speaker explicitly mentions taking a loss last week, proving that high-timeframe trading still carries risk."
+        },
+        {
+          "text": "A loss should be immediately recovered by doubling the position size",
+          "isCorrect": false,
+          "rationale": "The speaker does not mention revenge trading or doubling down; he focuses on waiting for the market to communicate the next valid entry."
+        }
+      ],
+      "hint": "Focus on the speaker's psychological approach to risk and his willingness to accept a negative outcome if the probability is high."
+    },
+    {
+      "question": "When price is under a significant 'breakage' level on the daily timeframe, what is the primary objective?",
+      "answerOptions": [
+        {
+          "text": "To look for a reversal and buy back to the high",
+          "isCorrect": false,
+          "rationale": "Being under a breakage level suggests seller control, making buying against that pressure lower probability."
+        },
+        {
+          "text": "To wait for price to target the previously established low",
+          "isCorrect": true,
+          "rationale": "The speaker explains that once price is under a breakage level, he looks for it to target the next major low in the structure."
+        },
+        {
+          "text": "To exit all trades and wait for a new month to start",
+          "isCorrect": false,
+          "rationale": "The speaker stays in the trade to capitalize on the downward momentum toward the target low."
+        },
+        {
+          "text": "To switch to the 1-minute timeframe to find a scalping entry",
+          "isCorrect": false,
+          "rationale": "The speaker emphasizes holding setups for days based on the daily and 4-hour timeframes rather than dropping to ultra-low timeframes."
+        }
+      ],
+      "hint": "Think about the 'play' the speaker called out involving a target that was previously missed."
+    }
+  ]
+}

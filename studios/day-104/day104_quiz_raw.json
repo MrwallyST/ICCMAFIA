@@ -1,0 +1,213 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "In the context of an uptrend where the market is making higher highs, what specific market structure represents the 'correction'?",
+      "answerOptions": [
+        {
+          "text": "Higher lows",
+          "isCorrect": true,
+          "rationale": "In an uptrend, a correction is the temporary pullback that forms a low point that remains higher than the previous low."
+        },
+        {
+          "text": "Lower lows",
+          "isCorrect": false,
+          "rationale": "A lower low would typically indicate a break in structure or a trend reversal rather than a correction of the current trend."
+        },
+        {
+          "text": "Stagnant consolidation",
+          "isCorrect": false,
+          "rationale": "While price may consolidate, the specific structural requirement for a correction in an uptrend is the formation of a higher low."
+        },
+        {
+          "text": "Lower highs",
+          "isCorrect": false,
+          "rationale": "Lower highs are part of the internal structure of a correction, but the correction itself within an uptrend is defined by the creation of a higher low."
+        }
+      ],
+      "hint": "Consider the structural point that must be maintained to keep an uptrend valid."
+    },
+    {
+      "question": "What is the primary objective of using the $4$-hour timeframe in this strategy?",
+      "answerOptions": [
+        {
+          "text": "To identify the overall trend",
+          "isCorrect": true,
+          "rationale": "The $4$-hour timeframe is used to establish the macro direction, such as identifying if the market has made a new higher high."
+        },
+        {
+          "text": "To find specific entry points",
+          "isCorrect": false,
+          "rationale": "Entry points are usually found on smaller timeframes like the $15$-minute to get more precise details."
+        },
+        {
+          "text": "To monitor the minute-by-minute flow",
+          "isCorrect": false,
+          "rationale": "The $4$-hour timeframe is too slow for monitoring immediate flow; that task is assigned to the $1$-hour timeframe."
+        },
+        {
+          "text": "To set stop-loss levels exclusively",
+          "isCorrect": false,
+          "rationale": "While it can help with levels, its main purpose is identifying the high-level trend and indications."
+        }
+      ],
+      "hint": "This timeframe provides the broadest 'ID' or identification of the market's path."
+    },
+    {
+      "question": "Why might a trader incorrectly believe the market has reversed when looking at a $1$-hour timeframe during a $4$-hour uptrend?",
+      "answerOptions": [
+        {
+          "text": "The $1$-hour timeframe starts showing a short-term downtrend",
+          "isCorrect": true,
+          "rationale": "The correction on a higher timeframe often appears as a minor downtrend on a lower timeframe, which can be misleading if the higher trend is ignored."
+        },
+        {
+          "text": "The $1$-hour timeframe makes a higher high",
+          "isCorrect": false,
+          "rationale": "Making a higher high on the $1$-hour would align with the bullish trend rather than suggesting a reversal."
+        },
+        {
+          "text": "The $1$-hour timeframe shows no volume",
+          "isCorrect": false,
+          "rationale": "A lack of volume suggests stagnation, but a perceived reversal is usually caused by seeing counter-trend structural shifts."
+        },
+        {
+          "text": "The $4$-hour trend is too weak to follow",
+          "isCorrect": false,
+          "rationale": "The strategy emphasizes that higher timeframe trends are the strongest and should not be disregarded."
+        }
+      ],
+      "hint": "Think about how a pullback on a macro scale looks when you zoom in to a micro scale."
+    },
+    {
+      "question": "What is the specific role of the $15$-minute timeframe in determining if a correction is over?",
+      "answerOptions": [
+        {
+          "text": "To spot the change in direction and find small details",
+          "isCorrect": true,
+          "rationale": "The $15$-minute timeframe allows the trader to see when the internal bearish structure of the correction shifts back to bullish."
+        },
+        {
+          "text": "To identify the main $4$-hour trend",
+          "isCorrect": false,
+          "rationale": "The $4$-hour trend is identified on the $4$-hour chart; the $15$-minute is used for refinements."
+        },
+        {
+          "text": "To verify if the Asian session has ended",
+          "isCorrect": false,
+          "rationale": "While session timing is mentioned, the core functional role of the $15$-minute chart is monitoring structural shifts for entry."
+        },
+        {
+          "text": "To ignore the $1$-hour flow",
+          "isCorrect": false,
+          "rationale": "The strategy requires all timeframes to align, meaning the $15$-minute should support the $1$-hour and $4$-hour."
+        }
+      ],
+      "hint": "This timeframe is where the trader looks for the transition from a 'no trade zone' to a confirmed move."
+    },
+    {
+      "question": "According to the speaker, what constitutes an 'indication' in market structure?",
+      "answerOptions": [
+        {
+          "text": "A higher high or a lower low",
+          "isCorrect": true,
+          "rationale": "Indications are the primary movements that establish the trend direction before a correction begins."
+        },
+        {
+          "text": "A higher low or a lower high",
+          "isCorrect": false,
+          "rationale": "These structures typically represent the correction phase rather than the initial indication of the trend."
+        },
+        {
+          "text": "A period of sideways consolidation",
+          "isCorrect": false,
+          "rationale": "Consolidation is a 'no trade zone' and does not provide a clear indication of trend direction."
+        },
+        {
+          "text": "The end of the New York session",
+          "isCorrect": false,
+          "rationale": "Indications refer to price action structure (highs and lows) rather than specific time-of-day markers."
+        }
+      ],
+      "hint": "These are the markers that tell you which way the market wants to push long-term."
+    },
+    {
+      "question": "What is required for a trade to be considered 'aligned' and ready for entry?",
+      "answerOptions": [
+        {
+          "text": "The $4$-hour, $1$-hour, and $15$-minute timeframes are all on the same accord",
+          "isCorrect": true,
+          "rationale": "High-probability trades occur when the macro trend, the intermediate flow, and the micro details all point in the same direction."
+        },
+        {
+          "text": "The $15$-minute is bullish while the $4$-hour is bearish",
+          "isCorrect": false,
+          "rationale": "Trading the $15$-minute against the $4$-hour trend is the opposite of the alignment strategy taught."
+        },
+        {
+          "text": "The $1$-hour is correcting while the $4$-hour is stagnant",
+          "isCorrect": false,
+          "rationale": "Alignment requires active trending structure across the timeframes, not stagnation or opposing directions."
+        },
+        {
+          "text": "Only the $15$-minute shows a breakout",
+          "isCorrect": false,
+          "rationale": "Relying on a single timeframe's breakout without higher timeframe confirmation ignores the core principle of alignment."
+        }
+      ],
+      "hint": "Recall the 'kindergarten level' analogy for making sure everything is in agreement."
+    },
+    {
+      "question": "When setting a target for a buy trade, where should a trader look on the $4$-hour timeframe?",
+      "answerOptions": [
+        {
+          "text": "The next level of previous highs (sellers)",
+          "isCorrect": true,
+          "rationale": "Previous highs represent areas where sellers are likely to enter, making them logical targets for a long position."
+        },
+        {
+          "text": "The most recent higher low",
+          "isCorrect": false,
+          "rationale": "The higher low is used for stop-loss placement or identifying the correction, not as a target for profit in a buy trade."
+        },
+        {
+          "text": "The bottom of the $15$-minute support level",
+          "isCorrect": false,
+          "rationale": "Targets are generally set at higher timeframe levels because those trends tend to last longer and reach further."
+        },
+        {
+          "text": "The middle of a no-trade zone",
+          "isCorrect": false,
+          "rationale": "No-trade zones are areas of indecision and are not suitable for profit targets."
+        }
+      ],
+      "hint": "Think about the relationship between 'highs' and 'sellers' mentioned in the video."
+    },
+    {
+      "question": "Why does the speaker refer to trading on the higher timeframe as a 'cheat code'?",
+      "answerOptions": [
+        {
+          "text": "Because higher timeframe trends are the strongest and last the longest",
+          "isCorrect": true,
+          "rationale": "Higher timeframes like the $4$-hour provide more reliable trends that can last for days or weeks, making them easier to follow."
+        },
+        {
+          "text": "Because you don't need to look at any other timeframes",
+          "isCorrect": false,
+          "rationale": "The strategy still requires checking the $1$-hour and $15$-minute charts to refine the timing of the entry."
+        },
+        {
+          "text": "Because price moves faster on higher timeframes",
+          "isCorrect": false,
+          "rationale": "Price actually moves more slowly in terms of candle formation on higher timeframes; the 'cheat code' refers to trend reliability."
+        },
+        {
+          "text": "Because corrections do not happen on higher timeframes",
+          "isCorrect": false,
+          "rationale": "Corrections happen on all timeframes, but the higher timeframe helps you stay on the right side of the major move."
+        }
+      ],
+      "hint": "Consider the durability and strength of a trend on a $4$-hour chart compared to a $1$-minute chart."
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "title": "Trading Quiz",
+  "questions": [
+    {
+      "question": "According to the market structure rules presented, why is it considered a poor decision to buy at a \"higher high\" ($HH$)?",
+      "answerOptions": [
+        {
+          "text": "The market is most likely preparing to establish a higher low ($HL$).",
+          "isCorrect": true,
+          "rationale": "The speaker emphasizes that after a new high is made, price will naturally pull back to find a support level or higher low."
+        },
+        {
+          "text": "A higher high indicates that the trend has officially ended.",
+          "isCorrect": false,
+          "rationale": "A higher high actually confirms the continuation of an uptrend, but it is a poor entry point due to the expected retracement."
+        },
+        {
+          "text": "The daily time frame is always bearish when a lower time frame makes a higher high.",
+          "isCorrect": false,
+          "rationale": "While time frames should align, a higher high on a lower time frame does not automatically mean the daily time frame is bearish."
+        },
+        {
+          "text": "Sellers have completely left the market at that specific price point.",
+          "isCorrect": false,
+          "rationale": "The presence of sellers at resistance levels is what causes the price to stop moving up and begin its correction."
+        }
+      ],
+      "hint": "Think about the phase of movement that typically follows the creation of a peak in an uptrend."
+    },
+    {
+      "question": "In a downtrend, what is the specific rule regarding entering a trade at a \"lower low\" ($LL$)?",
+      "answerOptions": [
+        {
+          "text": "Avoid selling at the low because price will likely pull back to create a lower high ($LH$).",
+          "isCorrect": true,
+          "rationale": "Standard market structure suggests that after a move down, the market corrects upward to collect more orders before continuing lower."
+        },
+        {
+          "text": "Buy at the lower low to catch the immediate reversal to a higher high.",
+          "isCorrect": false,
+          "rationale": "The speaker warns against trying to guess reversals; the goal is to follow the trend by selling at the pullback, not buying at the bottom."
+        },
+        {
+          "text": "Sell at the lower low only if the candle is the largest in the sequence.",
+          "isCorrect": false,
+          "rationale": "The speaker specifically mentions that he ignores the size of the candle; selling at the low is avoided regardless of candle appearance."
+        },
+        {
+          "text": "Check if the $1$-minute time frame is bullish before selling the low.",
+          "isCorrect": false,
+          "rationale": "The strategy focuses on higher time frame alignment (4H and 1H) rather than selling at the absolute bottom based on the $1$-minute chart."
+        }
+      ],
+      "hint": "Consider what the market needs to do after a strong move down to keep the trend healthy."
+    },
+    {
+      "question": "What does the concept of a \"team\" represent in the context of time frame correlation?",
+      "answerOptions": [
+        {
+          "text": "Multiple time frames must align in the same bullish or bearish sentiment.",
+          "isCorrect": true,
+          "rationale": "The speaker explains that price cannot move 'solo' and requires alignment across time frames like the $4$-hour and $1$-hour to move strongly."
+        },
+        {
+          "text": "A group of traders must all place orders at the exact same price level.",
+          "isCorrect": false,
+          "rationale": "While the market needs multiple participants, the 'team' rule specifically refers to the synchronization of different chart time frames."
+        },
+        {
+          "text": "The use of at least five different technical indicators simultaneously.",
+          "isCorrect": false,
+          "rationale": "The source focuses on market structure and time frame alignment rather than relying on a high number of indicators."
+        },
+        {
+          "text": "Combining fundamental news data with technical chart patterns.",
+          "isCorrect": false,
+          "rationale": "The speaker emphasizes price action and structure rules over fundamental news analysis in this specific lesson."
+        }
+      ],
+      "hint": "Recall the analogy that price doesn't move 'solo' and requires internal consistency across different charts."
+    },
+    {
+      "question": "Using the speaker's shop analogy, why does price often sell off when it reaches a level of resistance?",
+      "answerOptions": [
+        {
+          "text": "Buyers have insufficient orders to satisfy the total requirements of the sellers.",
+          "isCorrect": true,
+          "rationale": "If sellers at resistance want $20$ orders and buyers only bring $4$, the price must pull back to 'grab more money' or orders before it can pass."
+        },
+        {
+          "text": "The market closes automatically when a specific price level is hit.",
+          "isCorrect": false,
+          "rationale": "Market reactions at resistance are driven by the interaction between supply and demand, not by scheduled closings."
+        },
+        {
+          "text": "Sellers lower their prices to attract more buyers during a peak.",
+          "isCorrect": false,
+          "rationale": "The sell-off at resistance is caused by an influx of sell orders that outweighs the current buying power."
+        },
+        {
+          "text": "Buyers lose interest in the asset because the price has become too high.",
+          "isCorrect": false,
+          "rationale": "The pullback is framed as a strategic move to collect more orders to eventually break the level, rather than a permanent loss of interest."
+        }
+      ],
+      "hint": "Think about what happens when you are 'short' on cash at a store and need to return to your car."
+    },
+    {
+      "question": "Which time frame combination is suggested for traders looking to catch one or two high-quality swing trades per week?",
+      "answerOptions": [
+        {
+          "text": "The $4$-hour and $1$-hour time frames.",
+          "isCorrect": true,
+          "rationale": "The speaker identifies these time frames as the ideal 'team' for catching consistent moves on a week-to-week basis."
+        },
+        {
+          "text": "The Daily and $1$-minute time frames.",
+          "isCorrect": false,
+          "rationale": "The $1$-minute chart is too volatile for swing trading, and the Daily may lag too much for this specific weekly frequency."
+        },
+        {
+          "text": "The $15$-minute and $5$-minute time frames.",
+          "isCorrect": false,
+          "rationale": "These are typically used for day trading or scalping rather than the 'week-to-week' swing trades described."
+        },
+        {
+          "text": "The Monthly and Weekly time frames.",
+          "isCorrect": false,
+          "rationale": "These higher time frames would result in much fewer than one or two trades per week."
+        }
+      ],
+      "hint": "Identify the two specific time frames the speaker pairs together to avoid the lag of the Daily chart."
+    },
+    {
+      "question": "What does the speaker identify as the primary driver of market volume and profit?",
+      "answerOptions": [
+        {
+          "text": "The perceived value of the asset by the economy.",
+          "isCorrect": true,
+          "rationale": "The speaker explains that value brings volume, and volume brings money; if people see value in an asset, they buy it, driving price action."
+        },
+        {
+          "text": "The speed at which a trader executes their orders.",
+          "isCorrect": false,
+          "rationale": "Execution speed is a technical detail, but the source emphasizes the underlying perception of value as the movement driver."
+        },
+        {
+          "text": "The total number of indicators applied to a single chart.",
+          "isCorrect": false,
+          "rationale": "The lesson advocates for simplicity and understanding buyers/sellers rather than cluttering charts with indicators."
+        },
+        {
+          "text": "The amount of money a beginner has in their trading account.",
+          "isCorrect": false,
+          "rationale": "While capital is necessary, the driver of the market itself is the collective economic view of an asset's value."
+        }
+      ],
+      "hint": "Consider the sequence: _____ brings volume, and volume brings money."
+    },
+    {
+      "question": "How does the speaker characterize the role of buyers at a 'support' level in a declining market?",
+      "answerOptions": [
+        {
+          "text": "They act like investors providing capital to keep a 'bleeding' business afloat.",
+          "isCorrect": true,
+          "rationale": "The speaker compares support to a doctor or investor paying the bills for a company that is currently losing money (bleeding)."
+        },
+        {
+          "text": "They are the ones liquidating their positions to exit the market.",
+          "isCorrect": false,
+          "rationale": "Exiting a position would involve selling, whereas buyers at support are attempting to hold the price up."
+        },
+        {
+          "text": "They are irrelevant because the market is 'bleeding' and will always fail.",
+          "isCorrect": false,
+          "rationale": "The speaker notes that while price can fall through support, the buyers' role is the attempt to provide the 'bounce'."
+        },
+        {
+          "text": "They represent the resistance that prevents the price from moving higher.",
+          "isCorrect": false,
+          "rationale": "Sellers create resistance to higher prices; buyers provide support against lower prices."
+        }
+      ],
+      "hint": "Recall the analogy involving a doctor or a business owner needing a cash injection."
+    },
+    {
+      "question": "Why is the Daily time frame described as 'tricky' for beginners to include in their alignment checks?",
+      "answerOptions": [
+        {
+          "text": "It lags significantly behind the $4$-hour and $1$-hour time frames.",
+          "isCorrect": true,
+          "rationale": "The speaker notes the Daily can cause traders to wait much longer for setups, potentially missing moves visible on the $4$H or $1$H."
+        },
+        {
+          "text": "It provides too many false signals compared to lower time frames.",
+          "isCorrect": false,
+          "rationale": "Generally, higher time frames are more reliable, but the speaker's specific concern is the 'lag' and the time it takes to develop."
+        },
+        {
+          "text": "The daily candles are too small to provide meaningful structural data.",
+          "isCorrect": false,
+          "rationale": "Daily candles contain the most data, but their slow formation is what makes them difficult for certain trading styles."
+        },
+        {
+          "text": "It is only accessible to institutional traders and not retail platforms.",
+          "isCorrect": false,
+          "rationale": "The Daily time frame is standard on all trading platforms; the difficulty is purely a matter of time management and patience."
+        }
+      ],
+      "hint": "Think about the frequency of candle closures and how that affects the speed of trade setups."
+    }
+  ]
+}

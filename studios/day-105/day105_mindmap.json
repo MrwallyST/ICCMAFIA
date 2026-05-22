@@ -1,0 +1,149 @@
+{
+  "name": "Day Trading Crash Course",
+  "children": [
+    {
+      "name": "Time Frame Analysis",
+      "children": [
+        {
+          "name": "Daily Time Frame",
+          "children": [
+            {
+              "name": "Swing Low Identification"
+            },
+            {
+              "name": "Bearish Indications"
+            },
+            {
+              "name": "Support Levels"
+            }
+          ]
+        },
+        {
+          "name": "4H & 1H Combo",
+          "children": [
+            {
+              "name": "Preparation for Daily Break"
+            },
+            {
+              "name": "Identifying Structure Changes"
+            },
+            {
+              "name": "Detailed Correction Data"
+            }
+          ]
+        },
+        {
+          "name": "15 Minute Time Frame",
+          "children": [
+            {
+              "name": "Alignment Check"
+            },
+            {
+              "name": "Lower Lows & Lower Highs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ICC Strategy",
+      "children": [
+        {
+          "name": "Indication",
+          "children": [
+            {
+              "name": "Price Breakout"
+            },
+            {
+              "name": "Breaking Swing High/Low"
+            }
+          ]
+        },
+        {
+          "name": "Correction",
+          "children": [
+            {
+              "name": "Counter-trend Movement"
+            },
+            {
+              "name": "Uptrend in Bearish Setup"
+            }
+          ]
+        },
+        {
+          "name": "Continuation",
+          "children": [
+            {
+              "name": "Correction Termination"
+            },
+            {
+              "name": "Resuming Major Trend"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Key Concepts",
+      "children": [
+        {
+          "name": "Original Creator",
+          "children": [
+            {
+              "name": "Source of Movement"
+            },
+            {
+              "name": "Reversal Warnings"
+            }
+          ]
+        },
+        {
+          "name": "Market Structure",
+          "children": [
+            {
+              "name": "Lower Highs Series"
+            },
+            {
+              "name": "Respecting Trend"
+            }
+          ]
+        },
+        {
+          "name": "Session Trading",
+          "children": [
+            {
+              "name": "New York Volume"
+            },
+            {
+              "name": "London Session"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Risk Management",
+      "children": [
+        {
+          "name": "Stop Loss Placement",
+          "children": [
+            {
+              "name": "Above Previous Lower High"
+            }
+          ]
+        },
+        {
+          "name": "Trade Management",
+          "children": [
+            {
+              "name": "Targeting Old Lows"
+            },
+            {
+              "name": "Swing Trading Patience"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

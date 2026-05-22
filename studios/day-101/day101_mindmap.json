@@ -1,0 +1,136 @@
+{
+  "name": "Day Trading Trends & Market Structure",
+  "children": [
+    {
+      "name": "Market Structure Directions",
+      "children": [
+        {
+          "name": "Uptrend",
+          "children": [
+            {
+              "name": "Higher Highs (HH)"
+            },
+            {
+              "name": "Higher Lows (HL)"
+            },
+            {
+              "name": "Buy Trades"
+            }
+          ]
+        },
+        {
+          "name": "Downtrend",
+          "children": [
+            {
+              "name": "Lower Highs (LH)"
+            },
+            {
+              "name": "Lower Lows (LL)"
+            },
+            {
+              "name": "Sell Trades"
+            }
+          ]
+        },
+        {
+          "name": "Range",
+          "children": [
+            {
+              "name": "No Trend"
+            },
+            {
+              "name": "Stuck Price"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Time Frames",
+      "children": [
+        {
+          "name": "Higher Time Frames (HTF)",
+          "children": [
+            {
+              "name": "1 Hour"
+            },
+            {
+              "name": "4 Hour"
+            },
+            {
+              "name": "Daily"
+            }
+          ]
+        },
+        {
+          "name": "HTF Rules",
+          "children": [
+            {
+              "name": "Stronger Structure"
+            },
+            {
+              "name": "Does Not Break Fast"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Core Trading Rules",
+      "children": [
+        {
+          "name": "Patterns",
+          "children": [
+            {
+              "name": "HL leads to HH"
+            },
+            {
+              "name": "HH leads to HL"
+            },
+            {
+              "name": "LH leads to LL"
+            },
+            {
+              "name": "LL leads to LH"
+            }
+          ]
+        },
+        {
+          "name": "Entry Criteria",
+          "children": [
+            {
+              "name": "Buy from Higher Lows"
+            },
+            {
+              "name": "Sell from Lower Highs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chart Analysis Tools",
+      "children": [
+        {
+          "name": "Identification",
+          "children": [
+            {
+              "name": "Establish High and Low First"
+            },
+            {
+              "name": "Look for Shift in Candle Color"
+            }
+          ]
+        },
+        {
+          "name": "Indicators",
+          "children": [
+            {
+              "name": "Pivot Point High Low"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

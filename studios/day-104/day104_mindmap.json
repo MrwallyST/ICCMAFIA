@@ -1,0 +1,134 @@
+{
+  "name": "Understanding Corrections in Day Trading",
+  "children": [
+    {
+      "name": "Core Definition",
+      "children": [
+        {
+          "name": "Movement Types",
+          "children": [
+            {
+              "name": "Higher Lows (Uptrend)"
+            },
+            {
+              "name": "Lower Highs (Downtrend)"
+            }
+          ]
+        },
+        {
+          "name": "Key Rule",
+          "children": [
+            {
+              "name": "Should not break structure"
+            },
+            {
+              "name": "Maintains higher time frame trend"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Time Frame Alignment",
+      "children": [
+        {
+          "name": "4-Hour Time Frame",
+          "children": [
+            {
+              "name": "Identify overall trend"
+            },
+            {
+              "name": "Identify Indications (HH/LL)"
+            }
+          ]
+        },
+        {
+          "name": "1-Hour Time Frame",
+          "children": [
+            {
+              "name": "Monitor Flow State"
+            },
+            {
+              "name": "Keep tabs on structure"
+            }
+          ]
+        },
+        {
+          "name": "15-Minute Time Frame",
+          "children": [
+            {
+              "name": "Small details"
+            },
+            {
+              "name": "Spot change of direction"
+            },
+            {
+              "name": "Determine when correction ends"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trading Strategy",
+      "children": [
+        {
+          "name": "Entry Signals",
+          "children": [
+            {
+              "name": "ICC on smaller time frame"
+            },
+            {
+              "name": "Price pushing off higher lows"
+            },
+            {
+              "name": "Breaking back above levels"
+            }
+          ]
+        },
+        {
+          "name": "Trade Management",
+          "children": [
+            {
+              "name": "Target next level of sellers"
+            },
+            {
+              "name": "Align all time frames"
+            },
+            {
+              "name": "Utilize London/New York sessions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Key Market Indications",
+      "children": [
+        {
+          "name": "Higher Highs"
+        },
+        {
+          "name": "Lower Lows"
+        },
+        {
+          "name": "Stagnation at support/resistance"
+        }
+      ]
+    },
+    {
+      "name": "Practical Tips",
+      "children": [
+        {
+          "name": "Highs equal sellers"
+        },
+        {
+          "name": "Lows equal buyers"
+        },
+        {
+          "name": "Higher time frame trends last longer"
+        }
+      ]
+    }
+  ]
+}
